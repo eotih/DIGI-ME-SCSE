@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Đăng Bài
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+</head>
+
+<body class="user-profile">
+  <div class="wrapper ">
+
+    <div class="main-panel" id="main-panel">
+      
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Đăng Tải Bài Viết</h5>
+              </div>
+              <div class="card-body">
+                <form id="formphoto">
+                  <div class="row">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <label>IDCat</label>
+                        <input type="text" class="form-control" disable="" placeholder="1">
+                      </div>
+                    </div>
+                    <div class="col-md-3 px-1">
+                      <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="txtTitle" class="form-control"
+                          placeholder="Enter your Title">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Slug</label>
+                        <input type="text" id="txtSlug" class="form-control" placeholder="Enter your Slug">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div id="summernote"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+                  
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="submit" value="Save Data"/>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-user">
+              
+              <div class="card-body">
+                <div class="author">
+                  <a href="#">
+                    <img class="avatar border-gray" src="assets/img/duck1.png" style="width: 400px; height: 400;" alt="...">
+                    <h5 class="title">Vịt U Sầu</h5>
+                  </a>
+                  <p class="description">
+                    vịt thâm mắt
+                  </p>
+                </div>
+                <p class="description text-center">
+                  "Lamborghini Mercy <br>
+                  Your chick she so thirsty <br>
+                  I'm in that two seat Lambo"
+                </p>
+              </div>
+              <hr>
+              <div class="button-container">
+                <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+                <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                  <i class="fab fa-twitter"></i>
+                </button>
+                <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                  <i class="fab fa-google-plus-g"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  $('#summernote').summernote({
+    placeholder: 'Hello Bootstrap 4',
+    tabsize: 2,
+    height: 100
+  });
+</script>
+</body>
+
+</html>
+<script>
+  var formphoto = document.getElementById('formphoto')
+formphoto.addEventListener('submit',function(e)
+{
+  e.preventDefault()
+  var obj = {};
+    obj.a = 0;
+    obj.IDCat = 1;
+    obj.Title = $('#txtTitle').val();
+    obj.Slug = $('#txtSlug').val();
+    obj.Image = $('#summernote').summernote('code');
+    fetch("http://localhost:62049/Api/Interface/AddOrEditPhotoGallery",{
+    method : 'POST',
+    body :JSON.stringify({
+        ID: obj.a,
+        IDCat: obj.IDCat,
+        Title: obj.Title,
+        Slug: obj.Slug,
+        Image: obj.Image,
+    }),
+    headers:{
+      "Content-Type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(function(response){
+    return response.json()
+  })
+  .then(function(data)
+  {
+    console.log(data.Status)
+    if(data.Status === 'Success'){
+        alert('Thêm Thành Công')
+    }
+    else
+    {
+        alert('Data not insert')
+    }
+  })
+})
+</script>
+
