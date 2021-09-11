@@ -1,13 +1,16 @@
 const url = "http://localhost:59360/";
+// đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
     fetch(url + "/User/XemDanhSachTaiKhoan")
         .then(function (response) {
             return response.json();
+            // Sẽ trả dữ liệu về dạng json
         })
         .then(function (response) {
             var html = response.map(function (response) {
+                // Sẽ return ra hàm tbody
                 return `<tr>
         <td>${response.IDUser}</td>
         <td>${response.FullName}</td>
@@ -17,6 +20,7 @@ async function loadData() {
         <td><button onclick="return getData(${response.IDUser})" class="btn btn-outline-primary">View</button></td>
         </tr>`;
             })
+            // đây là hàm trả ra tbody
             $('.tbody').html(html);
         })
 }
@@ -47,7 +51,7 @@ async function addData() {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8",
         },
     }).then(function (response) {
         return response.json()
@@ -58,7 +62,7 @@ async function addData() {
                 window.location.reload();
             }
             else {
-                alert('Data not update')
+                alert('Data not insert')
             }
         })
 }
