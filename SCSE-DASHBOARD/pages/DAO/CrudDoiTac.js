@@ -3,7 +3,7 @@ const WEB_API = "http://localhost:59360/";
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(WEB_API + "/Management/XemDanhSachDangKy")
+    fetch(WEB_API + "/Api/Interface/ListPartner")
         .then(function (response) {
             return response.json();
             // Sẽ trả dữ liệu về dạng json
@@ -13,14 +13,13 @@ async function loadData() {
                 // Sẽ return ra hàm tbody
                 return `<tr>
         <td>${response.ID}</td>
-        <td>${response.FirstName}</td>
-        <td>${response.LastName}</td>
-        <td>${response.DOB}</td>
+        <td>${response.Name}</td>
+        <td><img src="${response.Image}"/></td>
+        <td>${response.Field}</td>
         <td>${response.Phone}</td>
         <td>${response.Email}</td>
         <td>${response.Address}</td>
-        <td>${response.Project}</td>
-        <td>${response.Purpose}</td>
+        <td>${response.Link}</td>
         <td><button onclick="return getData(${response.ID})" class="btn btn-outline-primary">View</button></td>
         <td><button onclick="return deleteData(${response.ID})" class="btn btn-outline-primary">Delete</button><td>
         </tr>`;
@@ -30,37 +29,45 @@ async function loadData() {
         })
 }
 async function getData(ID) {
-    fetch(WEB_API + "/Management/GetByIdNguoiDangKy?id=" + ID)
+    fetch(WEB_API + "Api/Interface/GetByIdPartner?ID=" + ID)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
-            $('#ID').val(response.ID);
-            $('#FirstName').val(response.FirstName);
-            $('#LastName').val(response.LastName);
-            $('#DOB').val(response.DOB);
+            $('#ID').val(response.ID),document.getElementById("Image").src = response.Image;
+            $('#Name').val(response.Name);
+            $('#Field').val(response.Field);
             $('#Phone').val(response.Phone);
             $('#Email').val(response.Email);
             $('#Address').val(response.Address);
-            $('#Project').val(response.Project);
-            $('#Purpose').val(response.Purpose);
+            $('#Link').val(response.Link);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
     $('#edit').show();
 }
+function getBaseUrl() {
+    var file = document.querySelector('input[type=file]')['files'][0];
+    var reader = new FileReader();
+    var baseString;
+    reader.onloadend = function () {
+        baseString = reader.result;
+    };
+    reader.readAsDataURL(file);
+    console.log(baseString)
+}
+
 async function addData() {
     var $data = {
-        FirstName: $('#FirstName').val(),
-        LastName: $('#LastName').val(),
-        DOB: $('#DOB').val(),
+        Name: $('#Name').val(),
+        Image: $('#Image').val(),
+        Field: $('#Field').val(),
         Phone: $('#Phone').val(),
         Email: $('#Email').val(),
         Address: $('#Address').val(),
-        Project: $('#Project').val(),
-        Purpose: $('#Purpose').val(),
+        Link: $('#Link').val(),
     };
-    fetch(WEB_API + "Management/DangKiThamGia", {
+    fetch(WEB_API + "Api/Interface/AddOrEditPartner", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -79,9 +86,39 @@ async function addData() {
             }
         })
 }
+async function updateData() {
+    var $data = {
+        ID: $('#ID').val(),
+        Name: $('#Name').val(),
+        Image: $('#Image').val(),
+        Field: $('#Field').val(),
+        Phone: $('#Phone').val(),
+        Email: $('#Email').val(),
+        Address: $('#Address').val(),
+        Link: $('#Link').val(),
+    };
+    fetch(WEB_API + "Api/Interface/AddOrEditPartner", {
+        method: 'POST',
+        body: JSON.stringify($data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Updated') {
+                alert('Sửa Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not update')
+            }
+        })
+}
 
 async function deleteData(ID) {
-    fetch(WEB_API + "Management/XoaNguoiDangKy?id="+ID,{
+    fetch(WEB_API + "Api/Interface/DeletePartner?ID="+ID,{
         method: 'DELETE',
     }).then(function (response){
         return response.json()
