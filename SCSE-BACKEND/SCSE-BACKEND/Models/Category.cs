@@ -17,7 +17,7 @@ namespace SCSE_BACKEND.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
-            this.Posts = new HashSet<Posts>();
+            this.Posts = new HashSet<Post>();
         }
     
         public int IDCat { get; set; }
@@ -26,6 +26,6 @@ namespace SCSE_BACKEND.Models
         public Nullable<int> IDparent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Posts> Posts { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

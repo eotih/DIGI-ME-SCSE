@@ -22,7 +22,7 @@ namespace SCSE_BACKEND.Controllers
             if (ModelState.IsValid)
             {
                 var f_password = GetMD5(lg.Password);
-                var user = db.LoginRole.Where(s => s.Username.Equals(lg.Username) && s.Password.Equals(f_password)).FirstOrDefault();
+                var user = db.LoginRoles.Where(s => s.Username.Equals(lg.Username) && s.Password.Equals(f_password)).FirstOrDefault();
                 if (user != null)
                 {
                     return new UserResponse() { Status = "Success", Message = TokenManager.GenerateToken(user.Fullname, user.RoleName, user.Username, user.Password, user.Email) };
@@ -78,7 +78,7 @@ namespace SCSE_BACKEND.Controllers
                 acc.Password = acc1.Password;
                 acc.IsActive = acc1.IsActive;
                 acc.CreatedByDate = DateTime.Now;
-                db.Account.Add(acc);
+                db.Accounts.Add(acc);
                 db.SaveChanges();
                 return new Response
                 {
@@ -88,7 +88,7 @@ namespace SCSE_BACKEND.Controllers
             }
             else
             {
-                var obj = db.Account.Where(x => x.IDUser == acc1.IDUser).ToList().FirstOrDefault();
+                var obj = db.Accounts.Where(x => x.IDUser == acc1.IDUser).ToList().FirstOrDefault();
                 if (obj.IDUser > 0)
                 {
                     obj.IDRole = acc1.IDRole;
@@ -121,8 +121,8 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpGet]
         public object xemDanhSachTaiKhoan()
         {
-            var a = (from acc in db.Account
-                     from quyen in db.Role
+            var a = (from acc in db.Accounts
+                     from quyen in db.Roles
                      where quyen.IDRole == acc.IDRole
 
                      select new
@@ -146,8 +146,8 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpDelete]
         public object xoaTaiKhoan(int iduser)
         {
-            var obj = db.Account.Where(x => x.IDUser == iduser).ToList().FirstOrDefault();
-            db.Account.Remove(obj);
+            var obj = db.Accounts.Where(x => x.IDUser == iduser).ToList().FirstOrDefault();
+            db.Accounts.Remove(obj);
             db.SaveChanges();
             return new Response
             {
@@ -160,7 +160,7 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpGet]
         public object getbyidTaiKhoan(int iduser)
         {
-            var obj = db.Account.Where(x => x.IDUser == iduser).ToList().FirstOrDefault();
+            var obj = db.Accounts.Where(x => x.IDUser == iduser).ToList().FirstOrDefault();
             return obj;
         }
         //--Quyền-----
@@ -174,7 +174,7 @@ namespace SCSE_BACKEND.Controllers
                 Role role = new Role();
                 role.IDRole = quyen.IDRole;
                 role.RoleName = quyen.RoleName;
-                db.Role.Add(role);
+                db.Roles.Add(role);
                 db.SaveChanges();
                 return new Response
                 {
@@ -197,7 +197,7 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpGet]
         public object xemDanhSachQuyen()
         {
-            var a = db.Role.ToList();
+            var a = db.Roles.ToList();
             return a;
         }
         // Xóa quyền
@@ -205,8 +205,8 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpDelete]
         public object xoaQuyen(int idrole)
         {
-            var obj = db.Role.Where(x => x.IDRole == idrole).ToList().FirstOrDefault();
-            db.Role.Remove(obj);
+            var obj = db.Roles.Where(x => x.IDRole == idrole).ToList().FirstOrDefault();
+            db.Roles.Remove(obj);
             db.SaveChanges();
             return new Response
             {
@@ -219,7 +219,7 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpGet]
         public object getbyIdQuyen(int idrole)
         {
-            var obj = db.Role.Where(x => x.IDRole == idrole).ToList().FirstOrDefault();
+            var obj = db.Roles.Where(x => x.IDRole == idrole).ToList().FirstOrDefault();
             return obj;
         }
         

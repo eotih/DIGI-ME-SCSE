@@ -12,19 +12,15 @@ namespace SCSE_BACKEND.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Posts
+    public partial class Partner
     {
-        public int IDPost { get; set; }
-        public Nullable<int> IDCat { get; set; }
-        public string Title { get; set; }
-        public string Slug { get; set; }
-        public string Details { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
         public string Image { get; set; }
-        public string Video { get; set; }
-        public Nullable<System.DateTime> CreatedByDate { get; set; }
-        public string Author { get; set; }
-        public Nullable<bool> Status { get; set; }
-    
-        public virtual Category Category { get; set; }
+        public string Field { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Link { get; set; }
     }
 }

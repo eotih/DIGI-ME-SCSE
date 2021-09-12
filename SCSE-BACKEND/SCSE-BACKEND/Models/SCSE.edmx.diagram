@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="80d3a52d3c8f483cba3424de0c9ccb92" Name="Diagram1">
+      <Diagram DiagramId="3f4c8dc7885d4cc3b980c2d71eefb3b2" Name="Diagram1">
         <EntityTypeShape EntityType="SCSE_DBModel.Account" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SCSE_DBModel.BankInformation" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SCSE_DBModel.Banner" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
@@ -12,14 +12,13 @@
         <EntityTypeShape EntityType="SCSE_DBModel.Contact" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SCSE_DBModel.ImgPortfolio" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SCSE_DBModel.OrganizationConfiguration" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCSE_DBModel.Partners" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCSE_DBModel.Partner" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SCSE_DBModel.Portfolio" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCSE_DBModel.Posts" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCSE_DBModel.Post" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SCSE_DBModel.PhotoGallery" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SCSE_DBModel.Role" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCSE_DBModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCSE_DBModel.Volunteer" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCSE_DBModel.LoginRole" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCSE_DBModel.Volunteer" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCSE_DBModel.LoginRole" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="SCSE_DBModel.FK_Account_Role" ManuallyRouted="false" />
         <AssociationConnector Association="SCSE_DBModel.FK_Posts_Category" ManuallyRouted="false" />
       </Diagram>

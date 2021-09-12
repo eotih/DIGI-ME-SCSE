@@ -23,7 +23,7 @@ namespace SCSE_BACKEND.Models
         public string Logo { get; set; }
         public string Fanpage { get; set; }
         public string Youtube { get; set; }
-        public Nullable<int> IDBank { get; set; }
+        public int IDBank { get; set; }
         public string UpdatedByUser { get; set; }
         public Nullable<System.DateTime> UpdatedByDate { get; set; }
     }

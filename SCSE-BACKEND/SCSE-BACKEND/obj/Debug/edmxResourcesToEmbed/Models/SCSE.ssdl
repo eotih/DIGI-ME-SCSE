@@ -19,14 +19,11 @@
   <EntityType Name="BankInformation">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="IDBank" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDBank" Type="int" Nullable="false" />
-    <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
-    <Property Name="BankName" Type="nvarchar" MaxLength="50" />
-    <Property Name="AccountNumber" Type="varchar" MaxLength="20" />
-    <Property Name="Branch" Type="nvarchar" MaxLength="50" />
-    <Property Name="Details" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImageQR" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Banner">
     <Key>
@@ -73,6 +70,7 @@
   <EntityType Name="OrganizationConfiguration">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="IDBank" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
@@ -83,7 +81,7 @@
     <Property Name="Logo" Type="nvarchar(max)" />
     <Property Name="Fanpage" Type="nvarchar(max)" />
     <Property Name="Youtube" Type="nvarchar(max)" />
-    <Property Name="IDBank" Type="int" />
+    <Property Name="IDBank" Type="int" Nullable="false" />
     <Property Name="UpdatedByUser" Type="nvarchar" MaxLength="50" />
     <Property Name="UpdatedByDate" Type="date" />
   </EntityType>
@@ -143,16 +141,6 @@
     </Key>
     <Property Name="IDRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Volunteer">
     <Key>
@@ -220,7 +208,6 @@ warning 6002: The table/view 'SCSE_DB.dbo.LoginRole' does not have a primary key
     <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhotoGallery" EntityType="Self.PhotoGallery" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoginRole" EntityType="Self.LoginRole" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

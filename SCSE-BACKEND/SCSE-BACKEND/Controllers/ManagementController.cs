@@ -46,17 +46,18 @@ namespace SCSE_BACKEND.Controllers
         {
             if (posts1.IDPost == 0)
             {
-                Posts post = new Posts();
-                
-                post.IDCat = posts1.IDCat;
-                post.Title = posts1.Title;
-                post.Slug = Init_SlugName(posts1.Title);
-                post.Details = posts1.Details;
-                post.Image = posts1.Image;
-                post.Video = posts1.Video;
-                post.Status = posts1.Status;
-                post.Author = posts1.Author;
-                post.CreatedByDate = DateTime.Now;
+                Post post = new Post
+                {
+                    IDCat = posts1.IDCat,
+                    Title = posts1.Title,
+                    Slug = Init_SlugName(posts1.Title),
+                    Details = posts1.Details,
+                    Image = posts1.Image,
+                    Video = posts1.Video,
+                    Status = posts1.Status,
+                    Author = posts1.Author,
+                    CreatedByDate = DateTime.Now
+                };
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return new Response
@@ -99,7 +100,7 @@ namespace SCSE_BACKEND.Controllers
         public object xemDanhSachBaiViet()
         {
             var a = (from posts in db.Posts
-                     from cat in db.Category
+                     from cat in db.Categories
                      where cat.IDCat == posts.IDCat
 
                      select new
@@ -158,7 +159,7 @@ namespace SCSE_BACKEND.Controllers
                 vol.Purpose = vol1.Purpose;
                 vol.Project = vol1.Project;
                 vol.Status = vol1.Status;
-                db.Volunteer.Add(vol);
+                db.Volunteers.Add(vol);
                 db.SaveChanges();
                 return new Response
                 {
@@ -168,7 +169,7 @@ namespace SCSE_BACKEND.Controllers
             }
             else
             {
-                var obj = db.Volunteer.Where(x => x.ID == vol1.ID).ToList().FirstOrDefault();
+                var obj = db.Volunteers.Where(x => x.ID == vol1.ID).ToList().FirstOrDefault();
                 if (obj.ID > 0)
                 {
                     obj.Status = vol1.Status;
@@ -191,7 +192,7 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpGet]
         public object xemDanhSachDangKy()
         {
-            var a = db.Volunteer.ToList();
+            var a = db.Volunteers.ToList();
             return a;
         }
         // Xóa bài viết
@@ -199,8 +200,8 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpDelete]
         public object xoaNguoiDangKy(int id)
         {
-            var obj = db.Volunteer.Where(x => x.ID == id).ToList().FirstOrDefault();
-            db.Volunteer.Remove(obj);
+            var obj = db.Volunteers.Where(x => x.ID == id).ToList().FirstOrDefault();
+            db.Volunteers.Remove(obj);
             db.SaveChanges();
             return new Response
             {
@@ -213,7 +214,7 @@ namespace SCSE_BACKEND.Controllers
         [System.Web.Http.HttpGet]
         public object getbyidNguoiDangKy(int id)
         {
-            var obj = db.Volunteer.Where(x => x.ID == id).ToList().FirstOrDefault();
+            var obj = db.Volunteers.Where(x => x.ID == id).ToList().FirstOrDefault();
             return obj;
         }
 

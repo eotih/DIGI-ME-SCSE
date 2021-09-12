@@ -25,20 +25,19 @@ namespace SCSE_BACKEND.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Account> Account { get; set; }
-        public virtual DbSet<BankInformation> BankInformation { get; set; }
-        public virtual DbSet<Banner> Banner { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Contact> Contact { get; set; }
-        public virtual DbSet<ImgPortfolio> ImgPortfolio { get; set; }
-        public virtual DbSet<OrganizationConfiguration> OrganizationConfiguration { get; set; }
-        public virtual DbSet<Partners> Partners { get; set; }
-        public virtual DbSet<Portfolio> Portfolio { get; set; }
-        public virtual DbSet<Posts> Posts { get; set; }
-        public virtual DbSet<PhotoGallery> PhotoGallery { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Volunteer> Volunteer { get; set; }
-        public virtual DbSet<LoginRole> LoginRole { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<BankInformation> BankInformations { get; set; }
+        public virtual DbSet<Banner> Banners { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<ImgPortfolio> ImgPortfolios { get; set; }
+        public virtual DbSet<OrganizationConfiguration> OrganizationConfigurations { get; set; }
+        public virtual DbSet<Partner> Partners { get; set; }
+        public virtual DbSet<Portfolio> Portfolios { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<PhotoGallery> PhotoGalleries { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Volunteer> Volunteers { get; set; }
+        public virtual DbSet<LoginRole> LoginRoles { get; set; }
     }
 }

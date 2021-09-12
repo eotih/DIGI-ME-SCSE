@@ -20,14 +20,11 @@
   <EntityType Name="BankInformation">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="IDBank" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDBank" Type="Int32" Nullable="false" />
-    <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageQR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Banner">
     <Key>
@@ -75,6 +72,7 @@
   <EntityType Name="OrganizationConfiguration">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="IDBank" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -85,11 +83,11 @@
     <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Fanpage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Youtube" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="IDBank" Type="Int32" />
+    <Property Name="IDBank" Type="Int32" Nullable="false" />
     <Property Name="UpdatedByUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UpdatedByDate" Type="DateTime" Precision="0" />
   </EntityType>
-  <EntityType Name="Partners">
+  <EntityType Name="Partner">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -112,7 +110,7 @@
     <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Posts">
+  <EntityType Name="Post">
     <Key>
       <PropertyRef Name="IDPost" />
     </Key>
@@ -146,17 +144,7 @@
     </Key>
     <Property Name="IDRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Account" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
   </EntityType>
   <EntityType Name="Volunteer">
     <Key>
@@ -199,7 +187,7 @@
   </Association>
   <Association Name="FK_Posts_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+    <End Role="Posts" Type="Self.Post" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
         <PropertyRef Name="IDCat" />
@@ -210,27 +198,26 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="SCSE_DBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Account" EntityType="Self.Account" />
-    <EntitySet Name="BankInformation" EntityType="Self.BankInformation" />
-    <EntitySet Name="Banner" EntityType="Self.Banner" />
-    <EntitySet Name="Category" EntityType="Self.Category" />
-    <EntitySet Name="Contact" EntityType="Self.Contact" />
-    <EntitySet Name="ImgPortfolio" EntityType="Self.ImgPortfolio" />
-    <EntitySet Name="OrganizationConfiguration" EntityType="Self.OrganizationConfiguration" />
-    <EntitySet Name="Partners" EntityType="Self.Partners" />
-    <EntitySet Name="Portfolio" EntityType="Self.Portfolio" />
-    <EntitySet Name="Posts" EntityType="Self.Posts" />
-    <EntitySet Name="PhotoGallery" EntityType="Self.PhotoGallery" />
-    <EntitySet Name="Role" EntityType="Self.Role" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Volunteer" EntityType="Self.Volunteer" />
-    <EntitySet Name="LoginRole" EntityType="Self.LoginRole" />
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="BankInformations" EntityType="Self.BankInformation" />
+    <EntitySet Name="Banners" EntityType="Self.Banner" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="ImgPortfolios" EntityType="Self.ImgPortfolio" />
+    <EntitySet Name="OrganizationConfigurations" EntityType="Self.OrganizationConfiguration" />
+    <EntitySet Name="Partners" EntityType="Self.Partner" />
+    <EntitySet Name="Portfolios" EntityType="Self.Portfolio" />
+    <EntitySet Name="Posts" EntityType="Self.Post" />
+    <EntitySet Name="PhotoGalleries" EntityType="Self.PhotoGallery" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
+    <EntitySet Name="LoginRoles" EntityType="Self.LoginRole" />
     <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
-      <End Role="Role" EntitySet="Role" />
-      <End Role="Account" EntitySet="Account" />
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Account" EntitySet="Accounts" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_Category" Association="Self.FK_Posts_Category">
-      <End Role="Category" EntitySet="Category" />
+      <End Role="Category" EntitySet="Categories" />
       <End Role="Posts" EntitySet="Posts" />
     </AssociationSet>
   </EntityContainer>

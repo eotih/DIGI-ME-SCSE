@@ -23,7 +23,7 @@ namespace SCSE_BACKEND.Controllers
             Portfolio po = new Portfolio();
             try
             {
-                var obj = db.Portfolio.Where(x => x.ID == po1.ID).ToList().FirstOrDefault();
+                var obj = db.Portfolios.Where(x => x.ID == po1.ID).ToList().FirstOrDefault();
                 if (obj.ID > 0)
                 {
                     po.FullName = po1.FullName;
@@ -52,7 +52,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object getbyIdPortfolio(int id)
         {
-            var obj = db.Portfolio.Where(x => x.ID == id).ToList().FirstOrDefault();
+            var obj = db.Portfolios.Where(x => x.ID == id).ToList().FirstOrDefault();
             return obj;
         }
 
@@ -67,7 +67,7 @@ namespace SCSE_BACKEND.Controllers
                     ImgPortfolio imgpo = new ImgPortfolio();
                     imgpo.IDImg = imgpo1.IDImg;
                     imgpo.ImagePortfolio = imgpo1.ImagePortfolio;
-                    db.ImgPortfolio.Add(imgpo);
+                    db.ImgPortfolios.Add(imgpo);
                     db.SaveChanges();
                     return new Response
                     {
@@ -77,7 +77,7 @@ namespace SCSE_BACKEND.Controllers
                 }
                 else
                 {
-                    var obj = db.ImgPortfolio.Where(x => x.ID == imgpo1.ID).ToList().FirstOrDefault();
+                    var obj = db.ImgPortfolios.Where(x => x.ID == imgpo1.ID).ToList().FirstOrDefault();
                     if (obj.ID > 0)
                     {
                         obj.ImagePortfolio = imgpo1.ImagePortfolio;
@@ -105,7 +105,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object getImagePortfolio(int IDimg)
         {
-            var obj = db.ImgPortfolio.Where(x => x.IDImg == IDimg).ToList();
+            var obj = db.ImgPortfolios.Where(x => x.IDImg == IDimg).ToList();
             return obj;
         }
 
@@ -117,7 +117,7 @@ namespace SCSE_BACKEND.Controllers
             OrganizationConfiguration oc = new OrganizationConfiguration();
             try
             {
-                var obj = db.OrganizationConfiguration.Where(x => x.ID == oc1.ID).ToList().FirstOrDefault();
+                var obj = db.OrganizationConfigurations.Where(x => x.ID == oc1.ID).ToList().FirstOrDefault();
                 if (obj.ID > 0)
                 {
                     obj.Name = oc1.Name;
@@ -154,7 +154,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object getbyIdInfoOrganization(int ID)
         {
-            var obj = db.OrganizationConfiguration.Where(x => x.ID == ID).ToList().FirstOrDefault();
+            var obj = db.OrganizationConfigurations.Where(x => x.ID == ID).ToList().FirstOrDefault();
             return obj;
         }
 
@@ -166,13 +166,9 @@ namespace SCSE_BACKEND.Controllers
             if (bank1.ID == 0)
             {
                 BankInformation bank = new BankInformation();
-                bank.AccountName = bank1.AccountName;
                 bank.IDBank = 1;
-                bank.BankName = bank1.BankName;
-                bank.AccountNumber = bank1.AccountNumber;
-                bank.Branch = bank1.Branch;
-                bank.Details = ReplaceSpecialChars(bank1.Details);
-                db.BankInformation.Add(bank);
+                bank.ImageQR = bank1.ImageQR;
+                db.BankInformations.Add(bank);
                 db.SaveChanges();
                 return new Response
                 {
@@ -182,14 +178,10 @@ namespace SCSE_BACKEND.Controllers
             }
             else
             {
-                var obj = db.BankInformation.Where(x => x.ID == bank1.ID).ToList().FirstOrDefault();
+                var obj = db.BankInformations.Where(x => x.ID == bank1.ID).ToList().FirstOrDefault();
                 if (obj.ID > 0)
                 {
-                    obj.AccountName = bank1.AccountName;
-                    obj.BankName = bank1.BankName;
-                    obj.AccountNumber = bank1.AccountNumber;
-                    obj.Branch = bank1.Branch;
-                    obj.Details = bank1.Details;
+                    obj.ImageQR = bank1.ImageQR;
                     db.SaveChanges();
                     return new Response
                     {
@@ -211,17 +203,23 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object getbyIdBankInfo(int idbank)
         {
-            var obj = db.BankInformation.Where(x => x.IDBank == idbank).ToList().FirstOrDefault();
+            var obj = db.BankInformations.Where(x => x.IDBank == idbank).ToList();
             return obj;
         }
-
+        [Route("GetByID")]
+        [HttpGet]
+        public object getByIDBank(int id)
+        {
+            var obj = db.BankInformations.Where(x => x.ID == id).ToList().FirstOrDefault();
+            return obj;
+        }
         //Xóa thông tin ngân hàng 
         [Route("DeleteBankInfo")]
         [HttpDelete]
         public object deleteBankInfo(int ID)
         {
-            var obj = db.BankInformation.Where(x => x.ID == ID).ToList().FirstOrDefault();
-            db.BankInformation.Remove(obj);
+            var obj = db.BankInformations.Where(x => x.ID == ID).ToList().FirstOrDefault();
+            db.BankInformations.Remove(obj);
             db.SaveChanges();
             return new Response
             {
@@ -237,7 +235,7 @@ namespace SCSE_BACKEND.Controllers
         {
             if (pn1.ID == 0)
             {
-                Partners pn = new Partners();
+                Partner pn = new Partner();
                 pn.Name = pn1.Name;
                 pn.Image = pn1.Image;
                 pn.Field = pn1.Field;
@@ -324,7 +322,7 @@ namespace SCSE_BACKEND.Controllers
                 ct.Email = ct1.Email;
                 ct.Details = ct1.Details;
                 ct.CreatedByDate = DateTime.Now;
-                db.Contact.Add(ct);
+                db.Contacts.Add(ct);
                 db.SaveChanges();
                 return new Response
                 {
@@ -334,7 +332,7 @@ namespace SCSE_BACKEND.Controllers
             }
             else
             {
-                var contact = db.Contact.Where(x => x.ID == ct1.ID).ToList().FirstOrDefault();
+                var contact = db.Contacts.Where(x => x.ID == ct1.ID).ToList().FirstOrDefault();
                 if (ct1.ID > 0)
                 {
                     contact.FirstName = ct1.FirstName;
@@ -362,7 +360,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object listCategory()
         {
-            var cate = db.Category.ToList();
+            var cate = db.Categories.ToList();
             return cate;
         }
 
@@ -370,7 +368,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object getbyidCategory(int ID)
         {
-            var category = db.Category.Where(x => x.IDCat == ID).ToList().FirstOrDefault();
+            var category = db.Categories.Where(x => x.IDCat == ID).ToList().FirstOrDefault();
             return category;
         }
 
@@ -378,7 +376,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object getbyidParentCategory(int ID)
         {
-            var category = db.Category.Where(x => x.IDparent == ID).ToList().FirstOrDefault();
+            var category = db.Categories.Where(x => x.IDparent == ID).ToList().FirstOrDefault();
             return category;
         }
 
@@ -397,7 +395,7 @@ namespace SCSE_BACKEND.Controllers
                     Image = photo1.Image,
                     CreatedByDate = DateTime.Now
                 };
-                db.PhotoGallery.Add(photo);
+                db.PhotoGalleries.Add(photo);
                 db.SaveChanges();
                 return new Response
                 {
@@ -416,7 +414,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object listPhoto()
         {
-            var photo = db.PhotoGallery.ToList();
+            var photo = db.PhotoGalleries.ToList();
             return photo;
         }
 
@@ -424,7 +422,7 @@ namespace SCSE_BACKEND.Controllers
         [HttpGet]
         public object getbySlugGallery(string slug)
         {
-            var category = db.PhotoGallery.Where(x => x.Slug == slug).ToList();
+            var category = db.PhotoGalleries.Where(x => x.Slug == slug).ToList();
             return category;
         }
 
