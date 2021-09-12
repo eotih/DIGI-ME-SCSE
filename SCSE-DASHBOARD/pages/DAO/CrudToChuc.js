@@ -74,7 +74,7 @@ async function getBankInfo() {
             <img src="${posts.ImageQR}" class="img-lg rounded-circle mb-3" />
           </div>
           <div class="wrapper">
-            <a href="#" class="btn btn-outline-primary btn-block">Chỉnh sửa</a>
+          <button onclick="return getData(${posts.ID})" class="btn btn-outline-primary btn-block">Chỉnh sửa</button>
           </div>
         </div>
       </div>
