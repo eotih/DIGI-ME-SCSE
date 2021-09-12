@@ -69,15 +69,15 @@ async function getBankInfo() {
             var html = response.map(function (posts) {
                 return `
                 <div class="col-md-4 col-xl-6 grid-margin stretch-card pricing-card">
-        <div class="card border-primary border pricing-card-body">
-          <div class="text-center pricing-card-head">
-            <img src="${posts.ImageQR}" class="img-lg rounded-circle mb-3" />
-          </div>
-          <div class="wrapper">
-          <button onclick="return getData(${posts.ID})" class="btn btn-outline-primary btn-block">Chỉnh sửa</button>
-          </div>
-        </div>
-      </div>
+                    <div class="card border-primary border pricing-card-body">
+                        <div class="text-center pricing-card-head">
+                            <img src="${posts.ImageQR}" class="img-lg rounded-circle mb-3" />
+                        </div>
+                        <div class="wrapper">
+                        <button onclick="return getData(${posts.ID})" class="btn btn-outline-primary btn-block">Chỉnh sửa</button>
+                        </div>
+                    </div>
+                </div>
                 `;
             });
             document.getElementById("moi").innerHTML = html.join('');
