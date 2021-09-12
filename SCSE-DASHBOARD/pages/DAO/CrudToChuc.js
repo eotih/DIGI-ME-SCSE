@@ -66,26 +66,21 @@ async function getBankInfo() {
             return response.json();
         })
         .then(function (response) {
-            var res = response.map(function (res) {
+            var html = posts.map(function (posts) {
                 return `
-                    <div class="card-body">
-                          <div class="container text-center pt-5">
-                            <div class="row pricing-table">
-                              <div  class="col-md-4 col-xl-4 grid-margin stretch-card pricing-card">
-                                <div class="card border-primary border pricing-card-body">
-                                  <div class="text-center pricing-card-head">
-                                    <img alt="profile" src="${res.ImageQR}" class="img-lg rounded-circle mb-3" />
-                                  </div>
-                                  <div class="wrapper">
-                                    <button onclick="return getData(${res.ID})" class="btn btn-outline-primary btn-block">Chỉnh sửa</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>`;
+                <div class="col-md-4 col-xl-6 grid-margin stretch-card pricing-card">
+        <div class="card border-primary border pricing-card-body">
+          <div class="text-center pricing-card-head">
+            <img src="${posts.ImageQR}" class="img-lg rounded-circle mb-3" />
+          </div>
+          <div class="wrapper">
+            <a href="#" class="btn btn-outline-primary btn-block">Chỉnh sửa</a>
+          </div>
+        </div>
+      </div>
+                `;
             });
-            document.getElementById("moi").innerHTML = res.join('');
+            document.getElementById("moi").innerHTML = html.join('');
 
         })
 }
