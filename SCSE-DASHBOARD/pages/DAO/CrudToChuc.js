@@ -66,7 +66,7 @@ async function getBankInfo() {
             return response.json();
         })
         .then(function (response) {
-            var html = posts.map(function (posts) {
+            var html = response.map(function (posts) {
                 return `
                 <div class="col-md-4 col-xl-6 grid-margin stretch-card pricing-card">
         <div class="card border-primary border pricing-card-body">
