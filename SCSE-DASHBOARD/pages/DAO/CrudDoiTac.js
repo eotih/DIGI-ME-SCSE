@@ -49,18 +49,18 @@ async function getData(ID) {
 function getBaseUrl() {
     var file = document.querySelector('input[type=file]')['files'][0];
     var reader = new FileReader();
-    var baseString;
     reader.onloadend = function () {
         baseString = reader.result;
+        // console.log(baseString)
+        $('#Img').val(baseString),document.getElementById("Image").src = baseString;
+        // return autoUpdate(baseString);
     };
     reader.readAsDataURL(file);
-    console.log(baseString)
 }
-
 async function addData() {
     var $data = {
         Name: $('#Name').val(),
-        Image: $('#Image').val(),
+        Image: $('#Img').val(),
         Field: $('#Field').val(),
         Phone: $('#Phone').val(),
         Email: $('#Email').val(),
@@ -90,7 +90,7 @@ async function updateData() {
     var $data = {
         ID: $('#ID').val(),
         Name: $('#Name').val(),
-        Image: $('#Image').val(),
+        Image: $('#Img').val(),
         Field: $('#Field').val(),
         Phone: $('#Phone').val(),
         Email: $('#Email').val(),
@@ -135,14 +135,13 @@ async function deleteData(ID) {
 }
 function clearTextBox() {
     $('#ID').val("");
-    $('#FirstName').val("");
-    $('#LastName').val("");
-    $('#DOB').val("");
+    $('#Name').val("");
+    $('#Img').val("");
+    $('#Field').val("");
     $('#Phone').val("");
     $('#Email').val("");
     $('#Address').val("");
-    $('#Project').val("");
-    $('#Purpose').val("");
+    $('#Link').val("");
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();
