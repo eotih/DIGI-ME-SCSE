@@ -52,7 +52,8 @@ function getBaseUrl() {
     reader.onloadend = function () {
         baseString = reader.result;
         // console.log(baseString)
-        $('#Img').val(baseString),document.getElementById("Image").src = baseString;
+        $('#Img').val(baseString);
+        document.getElementById("Image").src = baseString;
         // return autoUpdate(baseString);
     };
     reader.readAsDataURL(file);
