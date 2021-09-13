@@ -1,7 +1,9 @@
-(function($) {
+async function addData() {
+  alert("moi")
+}
+(function ($) {
   'use strict';
-  $(function() {
-
+  $(function () {
     //basic config
     if ($("#js-grid").length) {
       $("#js-grid").jsGrid({
@@ -18,50 +20,66 @@
         deleteConfirm: "Do you really want to delete the client?",
         data: db.clients,
         fields: [{
-            name: "Name",
-            type: "text",
-            width: 150
-          },
-          {
-            name: "Age",
-            type: "number",
-            width: 50
-          },
-          {
-            name: "Address",
-            type: "text",
-            width: 200
-          },
-          {
-            name: "Country",
-            type: "select",
-            items: db.countries,
-            valueField: "Id",
-            textField: "Name"
-          },
-          {
-            name: "Married",
-            title: "Is Married",
-            itemTemplate: function(value, item) {
-              return $("<div>")
-                .addClass("form-check mt-0")
-                .append(
-                  $("<label>").addClass("form-check-label")
+          name: "Name",
+          type: "text",
+          width: 150
+        },
+        {
+          name: "Age",
+          type: "number",
+          width: 50
+        },
+        {
+          name: "Address",
+          type: "text",
+          width: 200
+        },
+        {
+          name: "Country",
+          type: "select",
+          items: db.countries,
+          valueField: "Id",
+          textField: "Name"
+        },
+        {
+          name: "Married",
+          title: "Is Married",
+          // insertTemplate: function (value) {
+          //   return this._insertPicker = $("<input>").datepicker({ defaultDate: new Date() });
+          // },
+
+          // editTemplate: function (value) {
+          //   return this._editPicker = $("<input>").datepicker().datepicker("setDate", new Date(value));
+          // },
+
+          // insertValue: function () {
+          //   return this._insertPicker.datepicker("getDate").toISOString();
+          // },
+
+          // editValue: function () {
+          //   return this._editPicker.datepicker("getDate").toISOString();
+          // },
+    
+          itemTemplate: function (value, item) {
+            return $("<div>")
+              .addClass("form-check mt-0")
+              .append(
+                $("<label>").addClass("form-check-label")
                   .append(
                     $("<input>").attr("type", "checkbox")
-                    .addClass("form-check-input")
-                    .attr("checked", value || item.Checked)
-                    .on("change", function() {
-                      item.Checked = $(this).is(":checked");
-                    })
+                      .addClass("form-check-input")
+                      .attr("checked", value || item.Checked)
+                      .on("change", function () {
+                        item.Checked = $(this).is(":checked");
+                      })
                   )
                   .append('<i class="input-helper"></i>')
-                );
-            }
-          },
-          {
-            type: "control"
+              );
           }
+        },
+        {
+          type: "control"
+        }
         ]
       });
     }
@@ -79,47 +97,47 @@
         data: db.clients,
 
         fields: [{
-            name: "Name",
-            type: "text",
-            width: 150
-          },
-          {
-            name: "Age",
-            type: "number",
-            width: 50
-          },
-          {
-            name: "Address",
-            type: "text",
-            width: 200
-          },
-          {
-            name: "Country",
-            type: "select",
-            items: db.countries,
-            valueField: "Id",
-            textField: "Name"
-          },
-          {
-            name: "Married",
-            title: "Is Married",
-            itemTemplate: function(value, item) {
-              return $("<div>")
-                .addClass("form-check mt-0")
-                .append(
-                  $("<label>").addClass("form-check-label")
+          name: "Name",
+          type: "text",
+          width: 150
+        },
+        {
+          name: "Age",
+          type: "number",
+          width: 50
+        },
+        {
+          name: "Address",
+          type: "text",
+          width: 200
+        },
+        {
+          name: "Country",
+          type: "select",
+          items: db.countries,
+          valueField: "Id",
+          textField: "Name"
+        },
+        {
+          name: "Married",
+          title: "Is Married",
+          itemTemplate: function (value, item) {
+            return $("<div>")
+              .addClass("form-check mt-0")
+              .append(
+                $("<label>").addClass("form-check-label")
                   .append(
                     $("<input>").attr("type", "checkbox")
-                    .addClass("form-check-input")
-                    .attr("checked", value || item.Checked)
-                    .on("change", function() {
-                      item.Checked = $(this).is(":checked");
-                    })
+                      .addClass("form-check-input")
+                      .attr("checked", value || item.Checked)
+                      .on("change", function () {
+                        item.Checked = $(this).is(":checked");
+                      })
                   )
                   .append('<i class="input-helper"></i>')
-                );
-            }
+              );
           }
+        }
         ]
       });
     }
@@ -136,53 +154,53 @@
         controller: db,
 
         fields: [{
-            name: "Name",
-            type: "text",
-            width: 150
-          },
-          {
-            name: "Age",
-            type: "number",
-            width: 50
-          },
-          {
-            name: "Address",
-            type: "text",
-            width: 200
-          },
-          {
-            name: "Country",
-            type: "select",
-            items: db.countries,
-            valueField: "Id",
-            textField: "Name"
-          },
-          {
-            name: "Married",
-            title: "Is Married",
-            itemTemplate: function(value, item) {
-              return $("<div>")
-                .addClass("form-check mt-0")
-                .append(
-                  $("<label>").addClass("form-check-label")
+          name: "Name",
+          type: "text",
+          width: 150
+        },
+        {
+          name: "Age",
+          type: "number",
+          width: 50
+        },
+        {
+          name: "Address",
+          type: "text",
+          width: 200
+        },
+        {
+          name: "Country",
+          type: "select",
+          items: db.countries,
+          valueField: "Id",
+          textField: "Name"
+        },
+        {
+          name: "Married",
+          title: "Is Married",
+          itemTemplate: function (value, item) {
+            return $("<div>")
+              .addClass("form-check mt-0")
+              .append(
+                $("<label>").addClass("form-check-label")
                   .append(
                     $("<input>").attr("type", "checkbox")
-                    .addClass("form-check-input")
-                    .attr("checked", value || item.Checked)
-                    .on("change", function() {
-                      item.Checked = $(this).is(":checked");
-                    })
+                      .addClass("form-check-input")
+                      .attr("checked", value || item.Checked)
+                      .on("change", function () {
+                        item.Checked = $(this).is(":checked");
+                      })
                   )
                   .append('<i class="input-helper"></i>')
-                );
-            }
+              );
           }
+        }
         ]
       });
     }
 
     if ($("#sort").length) {
-      $("#sort").on("click", function() {
+      $("#sort").on("click", function () {
         var field = $("#sortingField").val();
         $("#js-grid-sortable").jsGrid("sort", field);
       });
