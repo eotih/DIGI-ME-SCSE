@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css" />
     <!-- endinject -->
     <link rel="shortcut icon" href="../../../images/favicon.png" />
-    <script type="text/javascript" src="../../DAO/CrudThuVien.js"></script>
+    <script type="text/javascript" src="../DAO/CrudTaiKhoan.js"></script>
   </head>
 
   <body>
@@ -750,78 +750,69 @@
           </div>
         </div>
         <!-- partial -->
-        <!-- partial:../../../partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="mdi mdi-grid-large menu-icon"></i>
-                <span class="menu-title">Trang chủ</span>
-              </a>
-            </li>
-            <li class="nav-item nav-category">Cấu hình Tổ chức</li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="" aria-expanded="false" aria-controls="ui-basic">
-                <i class="menu-icon mdi mdi-floor-plan"></i>
-                <span class="menu-title">Quản lý tổ chức</span>
-                <i class="menu-arrow"></i> 
-              </a>
-            </li>
-            <li class="nav-item nav-category">Quan ly bai viet</li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="pages/ui-features/buttons.html" aria-expanded="false" aria-controls="ui-basic">
-                <i class="menu-icon mdi mdi-floor-plan"></i>
-                <span class="menu-title">Quan ly bai viet</span>
-                <i class="menu-arrow"></i> 
-              </a>
-            </li>
-            <li class="nav-item nav-category">Quản lý thành viên</li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="../../pages/Admin/QuanLyTaiKhoan.html" aria-expanded="false" aria-controls="ui-basic">
-                <i class="menu-icon mdi mdi-floor-plan"></i>
-                <span class="menu-title">Quản lý tài khoản</span>
-                <i class="menu-arrow"></i> 
-              </a>
-            </li>
-            <li class="nav-item nav-category">Đăng bài</li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="pages/ui-features/buttons.html" aria-expanded="false" aria-controls="ui-basic">
-                <i class="menu-icon mdi mdi-floor-plan"></i>
-                <span class="menu-title">Quản lý bài đăng</span>
-                <i class="menu-arrow"></i> 
-              </a>
-            </li>
-            <li class="nav-item nav-category">Thông tin trang</li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#manage-posts" aria-expanded="false" aria-controls="form-elements">
-                <i class="menu-icon mdi mdi-view-list"></i>
-                <span class="menu-title">Quản lý thông tin bài viết</span>
-                <i class="menu-arrow"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#approve-applications" aria-expanded="false" aria-controls="form-elements">
-                <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
-                <span class="menu-title">Duyệt đơn của TNV</span>
-                <i class="menu-arrow"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#view-partnerships" aria-expanded="false" aria-controls="form-elements">
-                <i class="menu-icon mdi mdi-human-male-female"></i>
-                <span class="menu-title">Xem danh sách đối tác</span>
-                <i class="menu-arrow"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#form-library" aria-expanded="false" aria-controls="form-elements">
-                <i class="menu-icon mdi mdi-image-area"></i>
-                <span class="menu-title">Quản lý thư viên</span>
-                <i class="menu-arrow"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <!-- partial:../../../partials/_sidebar.html --><nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">
+        <i class="mdi mdi-grid-large menu-icon"></i>
+        <span class="menu-title">Trang chủ</span>
+      </a>
+    </li>
+    <li class="nav-item nav-category">Cấu hình Tổ chức</li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="pages/ui-features/buttons.html" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-floor-plan"></i>
+        <span class="menu-title">Quản lý tổ chức</span>
+        <i class="menu-arrow"></i> 
+      </a>
+    </li>
+    <li class="nav-item nav-category">Quản lý thành viên</li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="pages/ui-features/buttons.html" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-floor-plan"></i>
+        <span class="menu-title">Quản lý tài khoản</span>
+        <i class="menu-arrow"></i> 
+      </a>
+    </li>
+    <li class="nav-item nav-category">Đăng bài</li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="pages/ui-features/buttons.html" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-floor-plan"></i>
+        <span class="menu-title">Quản lý bài đăng</span>
+        <i class="menu-arrow"></i> 
+      </a>
+    </li>
+    <li class="nav-item nav-category">Thông tin trang</li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#manage-posts" aria-expanded="false" aria-controls="form-elements">
+        <i class="menu-icon mdi mdi-view-list"></i>
+        <span class="menu-title">Quản lý thông tin bài viết</span>
+        <i class="menu-arrow"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#approve-applications" aria-expanded="false" aria-controls="form-elements">
+        <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
+        <span class="menu-title">Duyệt đơn của TNV</span>
+        <i class="menu-arrow"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#view-partnerships" aria-expanded="false" aria-controls="form-elements">
+        <i class="menu-icon mdi mdi-human-male-female"></i>
+        <span class="menu-title">Xem danh sách đối tác</span>
+        <i class="menu-arrow"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#form-library" aria-expanded="false" aria-controls="form-elements">
+        <i class="menu-icon mdi mdi-image-area"></i>
+        <span class="menu-title">Quản lý thư viên</span>
+        <i class="menu-arrow"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -836,26 +827,23 @@
                         <table id="order-listing" class="table">
                           <thead>
                             <tr>
-                              <th>IDPost #</th>
-                              <th>IDCat</th>
-                              <th>Title</th>
-                              <th>Slug</th>
-                              <th>Details</th>
-                              <th>Image</th>
-                              <th>Video</th>
-                              <th>Author</th>
-                              <th>Status</th>
+                              <th>ID #</th>
+                              <th>Họ và tên</th>
+                              <th>Email</th>
+                              <th>Kích Hoạt</th>
+                              <th>Quyền</th>
+                              <th>Hành động</th>
                             </tr>
                           </thead>
-                          <tbody id="tbody" name="tbody" class="tbody">
+                          <tbody class="tbody">
                           </tbody>
                         </table>
                       </div>
-                      <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModal-2">Modal title</h5>
+                              <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -863,44 +851,25 @@
                             <div class="modal-body">
                                 <form class="forms-sample">
                                     <div class="form-group">
-                                        <label for="IDPost">IDPost</label>
-                                        <input type="text" class="form-control" id="IDPost" placeholder="IDPost" disabled>
+                                        <label for="FullName">ID</label>
+                                        <input type="text" class="form-control" id="IDUser" placeholder="ID" disabled>
                                       </div>
                                     <div class="form-group">
-                                      <label for="IDCat">IDCat</label>
-                                      <input type="text" class="form-control" id="IDCat" placeholder="IDCat">
+                                      <label for="FullName">Họ và tên</label>
+                                      <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
                                     </div>
                                     <div class="form-group">
-                                      <label for="Title">Title</label>
-                                      <input type="email" class="form-control" id="Title" placeholder="Title">
+                                      <label for="Email">Email</label>
+                                      <input type="email" class="form-control" id="Email" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                      <label for="Slug">Slug</label>
-                                      <input type="text" class="form-control" id="Slug" placeholder="Slug">
+                                      <label for="IsActive">Kích Hoạt</label>
+                                      <input type="text" class="form-control" id="IsActive" placeholder="Kích hoạt">
                                     </div>
                                     <div class="form-group">
-                                        <label for="Details">Details</label>
-                                        <input type="text" class="form-control" id="Details" placeholder="Details">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="Image">Image</label>
-                                        <input type="file" onchange="getBaseUrl()">
-                                        <input type="hidden" class="form-control" id="Image" placeholder="Image" disabled>
-                              <img id="Image1" height="150">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="Video">Video</label>
-                                        <input type="text" class="form-control" id="Video">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="Author">Author</label>
-                                        <input type="text" class="form-control" id="Author" placeholder="Author">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="Status">Status</label>
-                                        <input type="text" class="form-control" id="Status" placeholder="Status">
-                                      </div>
-
+                                      <label for="RoleName">Quyền</label>
+                                      <input type="text" class="form-control" id="IDRole" placeholder="Quyền">
+                                    </div>
                                   </form>
                             </div>
                             <div class="modal-footer">
