@@ -6,7 +6,9 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
 
     <script src="./FormTiengViet.js"></script>
     <!-- Required meta tags -->
@@ -508,7 +510,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Title">Nội dung</label>
-                                                    <div id="summernote"></div>
+                                                    <textarea type="text" class="form-control" id="summernote"></textarea>
                                                 </div>
                                             </form>
                                         </div>
@@ -565,13 +567,14 @@
         <!-- page-body-wrapper ends -->
     </div>>
     <script>
+       
         $('#summernote').summernote({
             placeholder: 'Hello Bootstrap 4',
             tabsize: 2,
             height: 500,
             lang: 'vi-VN'
         });
-        
+
     </script>
     <!-- container-scroller -->
     <!-- plugins:js -->
