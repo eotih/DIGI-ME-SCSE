@@ -17,7 +17,9 @@
         this.clients.push(insertingClient);
       },
 
-      updateItem: function(updatingClient) {},
+      updateItem: function(updatingClient) {
+        
+      },
 
       deleteItem: function(deletingClient) {
         var clientIndex = $.inArray(deletingClient, this.clients);
@@ -64,7 +66,7 @@
     ];
 
     db.clients = [{
-        "Name": "Otto Clay",
+        "Name": "hieu",
         "Age": 61,
         "Country": 6,
         "Address": "Ap #897-1459 Quam Avenue",
