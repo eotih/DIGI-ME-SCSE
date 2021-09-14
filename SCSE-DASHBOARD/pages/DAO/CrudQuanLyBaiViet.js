@@ -23,6 +23,7 @@ async function loadData() {
         <td>${response.Author}</td>
         <td>${response.Status}</td>
         <td><button onclick="return getData(${response.IDPost})" class="btn btn-outline-primary">View</button></td>
+        <td><button onclick="return deleteData(${response.IDPost})" class="btn btn-outline-primary">Delete</button></td>
         </tr>`;
             })
             // đây là hàm trả ra tbody
@@ -66,10 +67,6 @@ async function getData(IDPost) {
         .then(function (response) {
             return response.json();
         })
-        .then(function (response) {
-            
-                return response.json();
-            })
             .then(function (response) {
                 $('#IDpót').val(response.IDPost),document.getElementById("Image1").src = response.Image;
                 $('#IDCat').val(response.IDCat);
@@ -159,6 +156,22 @@ async function autoUpdate(baseString) {
             }
         })
 
+}
+async function deleteData(IDPost) {
+    fetch(url + "/Management/XoaBaiViet?idposts=" + IDPost,{
+        method: 'DELETE',
+    }).then(function (response){
+        return response.json()
+    })
+        .then(function (data){
+            if(data.Status === 'Delete') {
+                alert('Xoá thành công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not delete')
+            }
+        })
 }
 function clearTextBox() {
     $('#IDPost').val("");
