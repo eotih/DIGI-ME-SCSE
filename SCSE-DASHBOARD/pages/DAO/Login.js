@@ -19,7 +19,7 @@ function loginAdmin() {
                 console.log(a)
                 if (a.nameid[1] === "Admin") {
                     alert('Đăng nhập thành công !!!');
-                    window.location.href = "../../index.html"
+                    window.location.href = "./index.html"
                 }
                 else
                     window.location.href = "../QuanLy/DangBai/Index.html"
