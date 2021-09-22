@@ -623,14 +623,14 @@
                 return response.json();
             })
             .then(function (response) {
+                var abc = document.createElement("option");
+                abc.innerHTML = "Vui lòng chọn";
+                abc.value = 0;
+                document.getElementById("abc").appendChild(abc);
                 for (var i = 0; i < response.length; i++) {
-                    var abc = document.createElement("option");
-                    abc.innerHTML = "Vui lòng chọn";
-                    abc.value = 0;
                     var ele = document.createElement("option");
                     ele.value = response[i].IDUser;
                     ele.innerHTML = response[i].FullName;
-                    document.getElementById("abc").appendChild(abc);
                     document.getElementById("abc").appendChild(ele);
                 }
             })
