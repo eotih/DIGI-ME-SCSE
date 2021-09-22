@@ -510,7 +510,7 @@
                                                 <div class="form-group">
                                                     <label for="sel2">input-lg</label>
                                                     <select class="action" id="abc" onchange="change(value)"></select>
-                                                    
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputlg">Large input</label>
@@ -616,27 +616,23 @@
 
 </html>
 <script>
-    $(function loadData() {
-        fetch("http://localhost:59360//api/XemDanhSachTaiLieu")
+    window.addEventListener('load', getData())
+    function getData() {
+        fetch("http://localhost:59360/User/XemDanhSachTaiKhoan")
             .then(function (response) {
                 return response.json();
-                // Sẽ trả dữ liệu về dạng json
             })
             .then(function (response) {
-            console.log(response)
-            for(var i = 0; i < response.length+1; i++) {
-                var ele = document.createElement("option");
-                if(i==5){
-                    ele.value = 0;
-                    ele.innerHTML = "Vui lòng chọn";
+                for (var i = 0; i < response.length; i++) {
+                    var abc = document.createElement("option");
+                    abc.innerHTML = "Vui lòng chọn";
+                    abc.value = 0;
+                    var ele = document.createElement("option");
+                    ele.value = response[i].IDUser;
+                    ele.innerHTML = response[i].FullName;
+                    document.getElementById("abc").appendChild(abc);
                     document.getElementById("abc").appendChild(ele);
                 }
-                else{
-                    ele.value = response[i].ID +1;
-                    ele.innerHTML = response[i].NamePDF;
-                    document.getElementById("abc").appendChild(ele);
-                }
-            }
             })
-    })
+    }
 </script>
