@@ -509,7 +509,7 @@
                                             <form class="forms-sample">
                                                 <div class="form-group">
                                                     <label for="sel2">input-lg</label>
-                                                    <form id="abc"></form>
+                                                    <select class="action" id="abc" onchange="change(value)"></select>
                                                     
                                                 </div>
                                                 <div class="form-group">
@@ -623,21 +623,13 @@
                 // Sẽ trả dữ liệu về dạng json
             })
             .then(function (response) {
-                var html = response.map(function (response) {
-                    // Sẽ return ra hàm tbody
-                    console.log(response.ID)
-                    return `
-                    
-                <select id="mySelect">
-                <option value="${response.ID}">${response.NamePDF}</option>
-                </select>
-                `;
-                });
-               
-                // đây là hàm trả ra tbody
-                // $('.abc').html(html);
-                document.getElementById("abc").innerHTML = html.join('');
-                // $('#exampleModal-2').modal('show');
+            console.log(response)
+            for(var i = 0; i < response.length; i++) {
+                var ele = document.createElement("option");
+                ele.value = response[i].ID;
+                ele.innerHTML = response[i].NamePDF;
+                document.getElementById("abc").appendChild(ele);
+            }
             })
     })
 </script>
