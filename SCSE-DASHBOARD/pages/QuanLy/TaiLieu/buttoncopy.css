@@ -1,0 +1,17 @@
+
+.form-group1{
+    display: flex;
+    margin-bottom: 15px;
+}
+.form-group1 input{
+    width: 260px;
+    height: 100px;
+}
+.form-group1 label{
+    height: 20px;
+    width: 60px;
+}
+.form-group1 button{
+    width: 35px;
+    height: 35px;
+}
