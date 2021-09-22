@@ -624,11 +624,18 @@
             })
             .then(function (response) {
             console.log(response)
-            for(var i = 0; i < response.length; i++) {
+            for(var i = 0; i < response.length+1; i++) {
                 var ele = document.createElement("option");
-                ele.value = response[i].ID;
-                ele.innerHTML = response[i].NamePDF;
-                document.getElementById("abc").appendChild(ele);
+                if(i==5){
+                    ele.value = 0;
+                    ele.innerHTML = "Vui lòng chọn";
+                    document.getElementById("abc").appendChild(ele);
+                }
+                else{
+                    ele.value = response[i].ID +1;
+                    ele.innerHTML = response[i].NamePDF;
+                    document.getElementById("abc").appendChild(ele);
+                }
             }
             })
     })
