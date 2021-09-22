@@ -510,7 +510,7 @@
                                                 <div class="form-group">
                                                     <label for="sel2">input-lg</label>
                                                     <form id="abc"></form>
-                                                    
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputlg">Large input</label>
@@ -616,28 +616,40 @@
 
 </html>
 <script>
-    $(function loadData() {
-        fetch("http://localhost:59360//api/XemDanhSachTaiLieu")
+    window.addEventListener('load', getData())
+    function getData(){
+        fetch("http://localhost:59360/User/XemDanhSachTaiKhoan")
             .then(function (response) {
                 return response.json();
-                // Sẽ trả dữ liệu về dạng json
             })
             .then(function (response) {
-                var html = response.map(function (response) {
-                    // Sẽ return ra hàm tbody
-                    console.log(response.ID)
-                    return `
-                    
-                <select id="mySelect">
-                <option value="${response.ID}">${response.NamePDF}</option>
-                </select>
+                var html = response.map(function (posts) {
+                return `
+                <div>
+                <select>
+                    <option value="${response.ID}">${response.NamePDF}</option>
+                    </select>
+                    </div>
                 `;
-                });
-               
-                // đây là hàm trả ra tbody
-                // $('.abc').html(html);
+            });
+            debugger;
                 document.getElementById("abc").innerHTML = html.join('');
-                // $('#exampleModal-2').modal('show');
             })
-    })
+    }
+    // $(function loadData() {
+    //     fetch("http://localhost:59360//api/XemDanhSachTaiLieu")
+    //         .then(function (response) {
+    //             return response.json();
+    //         })
+    //         .then(function (response) {
+    //             var html = response.map(function (posts) {
+    //             return `
+    //             <select>
+    //                 <option value="${response.ID}">${response.NamePDF}</option>
+    //                 </select>
+    //             `;
+    //         });
+    //             document.getElementById("abc").innerHTML = html.join('');
+    //         })
+    // })
 </script>
