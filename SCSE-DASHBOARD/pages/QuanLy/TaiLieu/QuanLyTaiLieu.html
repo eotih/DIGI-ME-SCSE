@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin2 </title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../../vendors/feather/feather.css">
     <link rel="stylesheet" href="../../../vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../vendors/ti-icons/css/themify-icons.css">
@@ -514,8 +515,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputlg">Link PDF</label>
-                                                    <input class="form-control input-lg" id="xyz" type="text">
-                                                    <button onclick="myFunction()">Copy</button>
+                                                    <input type="text" class="form-control" id="xyz" type="text">
+                                                    </input>
+                                                    <button type="button"  onclick="myFunction()">
+                                                        <i style="font-size:24px" class="fa">&#xf0c5;</i>
+                                                    </button>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" id="edit" onclick="addData();"
@@ -645,7 +649,6 @@
             })
     }
     function myFunction() {
-        
         var copyText = document.getElementById("xyz");
         copyText.select();
         navigator.clipboard.writeText(copyText.value);
