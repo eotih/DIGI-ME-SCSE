@@ -508,14 +508,14 @@
                                         <div class="col-lg-4">
                                             <form class="forms-sample">
                                                 <div class="form-group">
-                                                    <label for="sel2">input-lg</label>
-                                                    <select class="action" id="abc" onchange="change(value)"></select>
+                                                    <label for="sel2">Tên File</label>
+                                                    <select class="action" id="abc" onclick="getbyID(value)"></select>
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputlg">Large input</label>
-                                                    <input class="form-control input-lg" id="inputlg" type="text">
-
+                                                    <label for="inputlg">Link PDF</label>
+                                                    <input class="form-control input-lg" id="xyz" type="text">
+                                                    <button onclick="myFunction()">Copy</button>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" id="edit" onclick="addData();"
@@ -618,7 +618,7 @@
 <script>
     window.addEventListener('load', getData())
     function getData() {
-        fetch("http://localhost:59360/User/XemDanhSachTaiKhoan")
+        fetch("http://localhost:59360/api/XemDanhSachTaiLieu")
             .then(function (response) {
                 return response.json();
             })
@@ -629,10 +629,25 @@
                 document.getElementById("abc").appendChild(abc);
                 for (var i = 0; i < response.length; i++) {
                     var ele = document.createElement("option");
-                    ele.value = response[i].IDUser;
-                    ele.innerHTML = response[i].FullName;
+                    ele.value = response[i].ID;
+                    ele.innerHTML = response[i].NamePDF;
                     document.getElementById("abc").appendChild(ele);
                 }
             })
+    }
+    function getbyID(ID) {
+        fetch("http://localhost:59360/api/GetByIDTaiLieu?id=" + ID)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                document.getElementById("xyz").value = response.Iframe;
+            })
+    }
+    function myFunction() {
+        var copyText = document.getElementById("xyz");
+        copyText.select();
+        navigator.clipboard.writeText(copyText.value);
+        alert("Copied the text: " + copyText.value);
     }
 </script>
