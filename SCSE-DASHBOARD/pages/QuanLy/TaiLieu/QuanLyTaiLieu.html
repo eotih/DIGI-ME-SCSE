@@ -509,7 +509,7 @@
                                             <form class="forms-sample">
                                                 <div class="form-group">
                                                     <label for="sel2">input-lg</label>
-                                                    <form id="abc"></form>
+                                                    <select class="action" id="abc" onchange="change(value)"></select>
 
                                                 </div>
                                                 <div class="form-group">
@@ -617,39 +617,23 @@
 </html>
 <script>
     window.addEventListener('load', getData())
-    function getData(){
+    function getData() {
         fetch("http://localhost:59360/User/XemDanhSachTaiKhoan")
             .then(function (response) {
                 return response.json();
             })
             .then(function (response) {
-                var html = response.map(function (posts) {
-                return `
-                <div>
-                <select>
-                    <option value="${response.ID}">${response.NamePDF}</option>
-                    </select>
-                    </div>
-                `;
-            });
-            debugger;
-                document.getElementById("abc").innerHTML = html.join('');
+                for (var i = 0; i < response.length; i++) {
+                    var abc = document.createElement("option");
+                    abc.innerHTML = "Vui lòng chọn";
+                    abc.value = 0;
+                    var ele = document.createElement("option");
+                    ele.value = response[i].IDUser;
+                    ele.innerHTML = response[i].FullName;
+                    document.getElementById("abc").appendChild(abc);
+                    document.getElementById("abc").appendChild(ele);
+                }
             })
     }
-    // $(function loadData() {
-    //     fetch("http://localhost:59360//api/XemDanhSachTaiLieu")
-    //         .then(function (response) {
-    //             return response.json();
-    //         })
-    //         .then(function (response) {
-    //             var html = response.map(function (posts) {
-    //             return `
-    //             <select>
-    //                 <option value="${response.ID}">${response.NamePDF}</option>
-    //                 </select>
-    //             `;
-    //         });
-    //             document.getElementById("abc").innerHTML = html.join('');
-    //         })
-    // })
+
 </script>
