@@ -10,15 +10,16 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
+                const { ID, IDCat, Title, Slug, Image } = response;
                 // Sẽ return ra hàm tbody
                 return `<tr>
-        <td>${response.ID}</td>
-        <td>${response.IDCat}</td>
-        <td>${response.Title}</td>
-        <td>${response.Slug}</td>
-        <td><img src='${response.Image}'/><td>
-        </tr>`;
-            })
+                    <td>${ID}</td>
+                    <td>${IDCat}</td>
+                    <td>${Title}</td>
+                    <td>${Slug}</td>
+                    <td><img src='${Image}'/><td>
+                    </tr>`;
+                })
             // đây là hàm trả ra tbody
             $('.tbody').html(html);
         })
@@ -114,7 +115,7 @@ async function autoUpdate(baseString) {
             }
         })
 
-} 
+}
 function clearTextBox() {
     $('#ID').val("");
     $('#IDCat').val("");

@@ -11,20 +11,20 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                // Sẽ return ra hàm tbody
+                const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, Status } = response;
                 return `<tr>
-        <td>${response.IDPost}</td>
-        <td>${response.IDCat}</td>
-        <td>${response.Title}</td>
-        <td>${response.Slug}</td>
-        <td>${response.Details}</td>
-        <td><img src='${response.Image}'/><td>
-        <td>${response.Video}</td>
-        <td>${response.Author}</td>
-        <td>${response.Status}</td>
-        <td><button onclick="return getData(${response.IDPost})" class="btn btn-outline-primary">View</button></td>
-        <td><button onclick="return deleteData(${response.IDPost})" class="btn btn-outline-primary">Delete</button></td>
-        </tr>`;
+                    <td>${IDPost}</td>
+                    <td>${IDCat}</td>
+                    <td>${Title}</td>
+                    <td>${Slug}</td>
+                    <td>${Details}</td>
+                    <td><img src='${Image}'/><td>
+                    <td>${Video}</td>
+                    <td>${Author}</td>
+                    <td>${Status}</td>
+                    <td><button onclick="return getData(${IDPost})" class="btn btn-outline-primary">View</button></td>
+                    <td><button onclick="return deleteData(${IDPost})" class="btn btn-outline-primary">Delete</button></td>
+                    </tr>`;
             })
             // đây là hàm trả ra tbody
             debugger;
@@ -67,21 +67,22 @@ async function getData(IDPost) {
         .then(function (response) {
             return response.json();
         })
-            .then(function (response) {
-                $('#IDpót').val(response.IDPost),document.getElementById("Image1").src = response.Image;
-                $('#IDCat').val(response.IDCat);
-                $('#Title').val(response.Title);
-                $('#Slug').val(response.Slug);
-                $('#Details').val(response.Details);
-                $('#Video').val(response.Video);
-                $('#Author').val(response.Author);
-                $('#Status').val(response.Status);
-            })
-        $('#exampleModal-2').modal('show');
-        $('#add').hide();
-        $('#edit').show();
-            
-     
+        .then(function (response) {
+            const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, Status } = response;
+            $('#IDPost').val(IDPost), document.getElementById("Image1").src = Image;
+            $('#IDCat').val(IDCat);
+            $('#Title').val(Title);
+            $('#Slug').val(Slug);
+            $('#Details').val(Details);
+            $('#Video').val(Video);
+            $('#Author').val(Author);
+            $('#Status').val(Status);
+        })
+    $('#exampleModal-2').modal('show');
+    $('#add').hide();
+    $('#edit').show();
+
+
 }
 async function updateData() {
     var dulieu = {
@@ -132,7 +133,7 @@ async function autoUpdate(baseString) {
         Title: $('#Title').val(),
         Slug: $('#Slug').val(),
         Details: $('#Details').val(),
-        Image :baseString,
+        Image: baseString,
         Video: $('#Video').val(),
         Author: $('#Author').val(),
         Status: $('#Status').val()
@@ -158,13 +159,13 @@ async function autoUpdate(baseString) {
 
 }
 async function deleteData(IDPost) {
-    fetch(url + "/Management/XoaBaiViet?idposts=" + IDPost,{
+    fetch(url + "/Management/XoaBaiViet?idposts=" + IDPost, {
         method: 'DELETE',
-    }).then(function (response){
+    }).then(function (response) {
         return response.json()
     })
-        .then(function (data){
-            if(data.Status === 'Delete') {
+        .then(function (data) {
+            if (data.Status === 'Delete') {
                 alert('Xoá thành công')
                 window.location.reload();
             }

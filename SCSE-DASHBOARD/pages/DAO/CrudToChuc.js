@@ -8,24 +8,25 @@ async function loadData() {
             return response.json();
         })
         .then(function (response) {
-            document.getElementById("imgLogo").src = response.Logo;
-            $('#TenCongTy').text(response.Name);
-            $('#lv1').text(response.Field);
-            $('#SoDienThoai').text(response.Phone);
-            $('#mail').text(response.Email);
-            $('#Fanpage2').text(response.Fanpage);
-            $('#Youtube2').text(response.Youtube);
+            const {Name,Field,Phone,Email,Fanpage,Youtube,ID,Logo,Address} = response;
+            document.getElementById("imgLogo").src = Logo;
+            $('#TenCongTy').text(Name);
+            $('#lv1').text(Field);
+            $('#SoDienThoai').text(Phone);
+            $('#mail').text(Email);
+            $('#Fanpage2').text(Fanpage);
+            $('#Youtube2').text(Youtube);
 
 
-            $('#ID').val(response.ID);
-            document.getElementById("LogoToChuc").src = response.Logo;
-            $('#Name').val(response.Name);
-            $('#Field').val(response.Field);
-            $('#Phone').val(response.Phone);
-            $('#Email').val(response.Email);
-            $('#Address').val(response.Address);
-            $('#Fanpage').val(response.Fanpage);
-            $('#Youtube').val(response.Youtube);
+            $('#ID').val(ID);
+            document.getElementById("LogoToChuc").src = Logo;
+            $('#Name').val(Name);
+            $('#Field').val(Field);
+            $('#Phone').val(Phone);
+            $('#Email').val(Email);
+            $('#Address').val(Address);
+            $('#Fanpage').val(Fanpage);
+            $('#Youtube').val(Youtube);
         })
 }
 

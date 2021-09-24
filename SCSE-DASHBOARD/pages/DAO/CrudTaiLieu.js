@@ -12,7 +12,7 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, Title, Slug, Details, CreatedByDate,UpdatedByDate } = response;
+                const { ID, Title, Slug, Details, CreatedByDate, UpdatedByDate } = response;
                 // Sẽ return ra hàm tbody
                 console.log(Slug)
                 return `<tr>

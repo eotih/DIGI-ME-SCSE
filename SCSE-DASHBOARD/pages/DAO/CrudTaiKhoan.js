@@ -10,15 +10,16 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
+                const { IDUser, FullName, Email, IsActive, RoleName } = response;
                 // Sẽ return ra hàm tbody
                 return `<tr>
-        <td>${response.IDUser}</td>
-        <td>${response.FullName}</td>
-        <td>${response.Email}</td>
-        <td>${response.IsActive}</td>
-        <td>${response.RoleName}</td>
-        <td><button onclick="return getData(${response.IDUser})" class="btn btn-outline-primary">View</button></td>
-        </tr>`;
+                    <td>${IDUser}</td>
+                    <td>${FullName}</td>
+                    <td>${Email}</td>
+                    <td>${IsActive}</td>
+                    <td>${RoleName}</td>
+                    <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
+                    </tr>`;
             })
             // đây là hàm trả ra tbody
             $('.tbody').html(html);
@@ -30,11 +31,12 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            $('#IDUser').val(response.IDUser);
-            $('#FullName').val(response.FullName);
-            $('#Email').val(response.Email);
-            $('#IsActive').val(response.IsActive);
-            $('#IDRole').val(response.IDRole);
+            const { IDUser, FullName, Email, IsActive, RoleName } = response;
+            $('#IDUser').val(IDUser);
+            $('#FullName').val(FullName);
+            $('#Email').val(Email);
+            $('#IsActive').val(IsActive);
+            $('#IDRole').val(IDRole);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();

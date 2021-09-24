@@ -1,31 +1,28 @@
 const WEB_API = "http://localhost:59360/";
-// đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
     fetch(WEB_API + "/Management/XemDanhSachDangKy")
         .then(function (response) {
             return response.json();
-            // Sẽ trả dữ liệu về dạng json
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                // Sẽ return ra hàm tbody
+                const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose } = response;
                 return `<tr>
-        <td>${response.ID}</td>
-        <td>${response.FirstName}</td>
-        <td>${response.LastName}</td>
-        <td>${response.DOB}</td>
-        <td>${response.Phone}</td>
-        <td>${response.Email}</td>
-        <td>${response.Address}</td>
-        <td>${response.Project}</td>
-        <td>${response.Purpose}</td>
-        <td><button onclick="return getData(${response.ID})" class="btn btn-outline-primary">View</button></td>
-        <td><button onclick="return deleteData(${response.ID})" class="btn btn-outline-primary">Delete</button><td>
-        </tr>`;
+                    <td>${ID}</td>
+                    <td>${FirstName}</td>
+                    <td>${LastName}</td>
+                    <td>${DOB}</td>
+                    <td>${Phone}</td>
+                    <td>${Email}</td>
+                    <td>${Address}</td>
+                    <td>${Project}</td>
+                    <td>${Purpose}</td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
+                    <td><button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button><td>
+                    </tr>`;
             })
-            // đây là hàm trả ra tbody
             $('.tbody').html(html);
         })
 }
@@ -35,15 +32,16 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            $('#ID').val(response.ID);
-            $('#FirstName').val(response.FirstName);
-            $('#LastName').val(response.LastName);
-            $('#DOB').val(response.DOB);
-            $('#Phone').val(response.Phone);
-            $('#Email').val(response.Email);
-            $('#Address').val(response.Address);
-            $('#Project').val(response.Project);
-            $('#Purpose').val(response.Purpose);
+            const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose } = response;
+            $('#ID').val(ID);
+            $('#FirstName').val(FirstName);
+            $('#LastName').val(LastName);
+            $('#DOB').val(DOB);
+            $('#Phone').val(Phone);
+            $('#Email').val(Email);
+            $('#Address').val(Address);
+            $('#Project').val(Project);
+            $('#Purpose').val(Purpose);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -81,13 +79,13 @@ async function addData() {
 }
 
 async function deleteData(ID) {
-    fetch(WEB_API + "Management/XoaNguoiDangKy?id="+ID,{
+    fetch(WEB_API + "Management/XoaNguoiDangKy?id=" + ID, {
         method: 'DELETE',
-    }).then(function (response){
+    }).then(function (response) {
         return response.json()
     })
-        .then(function (data){
-            if(data.Status === 'Delete') {
+        .then(function (data) {
+            if (data.Status === 'Delete') {
                 alert('Xoá thành công')
                 window.location.reload();
             }
