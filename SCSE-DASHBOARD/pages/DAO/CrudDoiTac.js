@@ -10,18 +10,19 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
+                const { ID, Name, Image, Field, Phone, Email, Address, Link } = response
                 // Sẽ return ra hàm tbody
                 return `<tr>
-        <td>${response.ID}</td>
-        <td>${response.Name}</td>
-        <td><img src="${response.Image}"/></td>
-        <td>${response.Field}</td>
-        <td>${response.Phone}</td>
-        <td>${response.Email}</td>
-        <td>${response.Address}</td>
-        <td>${response.Link}</td>
-        <td><button onclick="return getData(${response.ID})" class="btn btn-outline-primary">View</button></td>
-        <td><button onclick="return deleteData(${response.ID})" class="btn btn-outline-primary">Delete</button><td>
+        <td>${ID}</td>
+        <td>${Name}</td>
+        <td><img src="${Image}"/></td>
+        <td>${Field}</td>
+        <td>${Phone}</td>
+        <td>${Email}</td>
+        <td>${Address}</td>
+        <td>${Link}</td>
+        <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
+        <td><button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button><td>
         </tr>`;
             })
             // đây là hàm trả ra tbody
