@@ -34,13 +34,15 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            $('#ID').val(response.ID),document.getElementById("Image").src = response.Image;
-            $('#Name').val(response.Name);
-            $('#Field').val(response.Field);
-            $('#Phone').val(response.Phone);
-            $('#Email').val(response.Email);
-            $('#Address').val(response.Address);
-            $('#Link').val(response.Link);
+            const { Image, Name, Field, Phone, Email, Address, Link } = response;
+            $('#ID').val(ID),
+                document.getElementById("Image").src = Image;
+            $('#Name').val(Name);
+            $('#Field').val(Field);
+            $('#Phone').val(Phone);
+            $('#Email').val(Email);
+            $('#Address').val(Address);
+            $('#Link').val(Link);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -119,13 +121,13 @@ async function updateData() {
 }
 
 async function deleteData(ID) {
-    fetch(WEB_API + "Api/Interface/DeletePartner?ID="+ID,{
+    fetch(WEB_API + "Api/Interface/DeletePartner?ID=" + ID, {
         method: 'DELETE',
-    }).then(function (response){
+    }).then(function (response) {
         return response.json()
     })
-        .then(function (data){
-            if(data.Status === 'Delete') {
+        .then(function (data) {
+            if (data.Status === 'Delete') {
                 alert('Xoá thành công')
                 window.location.reload();
             }
