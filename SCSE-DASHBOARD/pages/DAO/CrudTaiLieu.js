@@ -4,7 +4,7 @@ const url = "http://localhost:59360/";
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(url + "Api/Interface/ListDocument")
+    fetch(url + "api/XemDanhSachTaiLieu")
         .then(function (response) {
             return response.json();
             // Sẽ trả dữ liệu về dạng json
@@ -12,17 +12,14 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, Title, Slug, Details, CreatedByDate, UpdatedByDate } = response;
+                console.log(response)
+                const { ID, NamePDF, Iframe} = response;
                 // Sẽ return ra hàm tbody
-                console.log(Slug)
+               
                 return `<tr>
         <td>${ID}</td>
-        <td>${Title}</td>
-        <td>${Slug}</td>
-        <td>${Details}</td>
-        <td>${CreatedByDate}</td>
-        <td>${UpdatedByDate}</td>
-        <td><button onclick="getData('${Slug}')" class="btn btn-outline-primary">View</button>
+        <td>${NamePDF}</td>
+        <td>
         <button onclick="deleteData(${ID})" class="btn btn-outline-primary">Delete</button></td>
         </tr>`;
             })
@@ -114,13 +111,13 @@ function getBaseUrl() {
 }
 
 async function deleteData(ID) {
-    fetch(url + "Api/Interface/DeleteDocument?id=" + ID, {
+    fetch(url + "api/DeleteFile?id=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()
     })
         .then(function (data) {
-            if (data.Status === 'Delete') {
+            if (data.Status === 'Success') {
                 alert('Xoá thành công')
                 window.location.reload();
             }
