@@ -633,13 +633,16 @@
             <div class="card">
               <div class="card-body">
                 <!-- Upload File PDF -->
-                <form method="post" enctype="multipart/form-data" action="http://localhost:59360/api/UploadFile">
+                <form name="upload-file-form" method="POST" enctype="multipart/form-data"
+                  action="http://localhost:59360/api/UploadFile">
                   <div>
                     <label for="pdf">PDF File</label>
                     <input name="pdf" type="file" />
                   </div>
                   <div>
-                    <input type="submit" value="Submit"/>
+                    <button id="uploadFile" class="btn btn-primary btn-sm btn-check-all-submit disabled">
+                      Thực hiện
+                    </button>
                   </div>
                 </form>
                 <h4 class="card-title">Data table</h4>
@@ -749,5 +752,18 @@
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
 </body>
+<script>
+  // Đặt 1 biến name trên form và lấy nó xuống
+  var containerForm = document.forms['upload-file-form']
+  // Lấy cái id của button upload
+  var uploadFile = document.getElementById('uploadFile')
+
+  // Hàm sử lí khi uploadFile đc click và chống load
+  uploadFile.addEventListener('click', function (e) {
+    e.preventDefault();
+    containerForm.submit();
+  })
+
+</script>
 
 </html>
