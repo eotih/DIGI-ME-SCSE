@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example translate language with i18next</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/1.11.1/i18next.min.js"></script>
+    <script>
+        $(function() {
+            // Configuration
+            // Add options
+            i18n.init({
+                resGetPath: 'js/languages/__lng__.json',
+                debug: true,
+                fallbackLng: false,
+                load: 'unspecific'
+            },function () {
+                $('body').i18n();
+            });
+            // English
+            if(i18n.lng() === "en") {
+                // Set active class
+                $('.language-switch .dropdown-menu li').removeClass('active');
+                $('.english').parent().addClass('active');
+                // Change language in dropdown
+                $('.language-switch-current').html("English ");
+            }
+            // Vietnam
+            if(i18n.lng() === "vn") {
+                // Set active class
+                $('.language-switch .dropdown-menu li').removeClass('active');
+                $('.vietnam').parent().addClass('active');
+                // Change language in dropdown
+                $('.language-switch-current').html("Việt Nam ");
+            }
+            
+            // Change languages when click
+            // English
+            $('.english').on('click', function () {
+                // Set language
+                $.i18n.setLng('en', function() {
+                    $('body').i18n();
+                });
+                // Set active class
+                $('.language-switch .dropdown-menu li').removeClass('active');
+                $('.english').parent().addClass('active');
+                // Change name language in dropdown
+                 $('.language-switch-current').html("English ");
+            });
+            // Vietnam
+            $('.vietnam').on('click', function () {
+                // Set language
+                $.i18n.setLng('vi', function() {
+                    $('body').i18n();
+                });
+                // Set active class
+                $('.language-switch .dropdown-menu li').removeClass('active');
+                $('.vietnam').parent().addClass('active');
+                // Change name language in dropdown
+                 $('.language-switch-current').html("Việt Nam ");
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" data-i18n="header.home">Trang chủ</a></li>
+                    <li><a href="#" data-i18n="header.introduce">Giới thiệu</a></li>
+                    <li><a href="#" data-i18n="header.product">Sản phẩm</a></li>
+                    <li><a href="#" data-i18n="header.service">Dịch vụ</a></li>
+                    <li><a href="#" data-i18n="header.contact">Liên hệ</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown language-switch">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                         <span class="language-switch-current">Việt Nam </span><span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                             <a role="button" class="english">English</a>   
+                            </li>
+                            <li  class="active">
+                             <a role="button" class="vietnam">Việt Nam</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
+<script>
+    $(function XemDS(nn) {
+        fetch("http://localhost:59360/Management/XemDanhSachBaiViet?nn="+nn)
+        .then(function (response) {
+            return response.json();
+            // Sẽ trả dữ liệu về dạng json
+        })
+        .then(function (response) {
+            
+            var html = response.map(function (response) {
+                console.log(response)
+                const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, Status } = response;
+                return `<tr>
+                    <td>${IDPost}</td>
+                    <td>${IDCat}</td>
+                    <td>${Title}</td>
+                    <td>${Slug}</td>
+                    <td>${Details}</td>
+                    <td><img src='${Image}'/><td>
+                    <td>${Video}</td>
+                    <td>${Author}</td>
+                    <td>${Status}</td>
+                    <td><button onclick="return getData(${IDPost})" class="btn btn-outline-primary">View</button></td>
+                    <td><button onclick="return deleteData(${IDPost})" class="btn btn-outline-primary">Delete</button></td>
+                    </tr>`;
+            })
+            // đây là hàm trả ra tbody
+            debugger;
+            $('.tbody').html(html);
+        })
+})
+</script>
