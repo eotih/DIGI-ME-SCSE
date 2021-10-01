@@ -10,24 +10,26 @@ async function loadData() {
             // Sẽ trả dữ liệu về dạng json
         })
         .then(function (response) {
+            console.log(response)
             var html = response.map(function (response) {
+                let a = response.Details.substring(0,500)
                 const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, Status } = response;
                 return `<tr>
                     <td>${IDPost}</td>
                     <td>${IDCat}</td>
                     <td>${Title}</td>
                     <td>${Slug}</td>
-                    <td>${Details}</td>
+                    <td>${a}</td>
                     <td><img src='${Image}'/><td>
                     <td>${Video}</td>
                     <td>${Author}</td>
                     <td>${Status}</td>
-                    <td><button onclick="return getData(${IDPost})" class="btn btn-outline-primary">View</button></td>
+                    <td><a onclick="getData(${IDPost})" class="btn btn-outline-primary">View</a></td>
                     <td><button onclick="return deleteData(${IDPost})" class="btn btn-outline-primary">Delete</button></td>
                     </tr>`;
             })
+            
             // đây là hàm trả ra tbody
-            debugger;
             $('.tbody').html(html);
         })
 }
@@ -37,7 +39,7 @@ async function addData() {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
         Slug: $('#Slug').val(),
-        Details: $('#Details').val(),
+        Details: $('#summernote').summernote('code'),
         Image: $('#Image').val(),
         Video: $('#Video').val(),
         Author: $('#Author').val(),
@@ -55,34 +57,16 @@ async function addData() {
         .then(function (data) {
             if (data.Status === 'Success') {
                 alert('Thêm Thành Công')
-                window.location.reload();
+                window.location.href="./QuanLyBaiDang.html";
             }
             else {
                 alert('Data not insert')
             }
         })
 }
-async function getData(IDPost) {
-    fetch(url + "/Management/GetByIdBaiViet?idposts=" + IDPost)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, Status } = response;
-            $('#IDPost').val(IDPost), document.getElementById("Image1").src = Image;
-            $('#IDCat').val(IDCat);
-            $('#Title').val(Title);
-            $('#Slug').val(Slug);
-            $('#Details').val(Details);
-            $('#Video').val(Video);
-            $('#Author').val(Author);
-            $('#Status').val(Status);
-        })
-    $('#exampleModal-2').modal('show');
-    $('#add').hide();
-    $('#edit').show();
-
-
+function getData(IDPost) {
+            window.location.href="./Edit.html"
+            localStorage.setItem('post', IDPost);
 }
 async function updateData() {
     var dulieu = {
