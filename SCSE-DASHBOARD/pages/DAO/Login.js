@@ -14,17 +14,21 @@ function loginAdmin() {
     }).then((Response) => Response.json())
         .then((result) => {
             if (result.Status === 'Success') {
-                localStorage.setItem('token', result.Message);
-                var a = parseJwt(result.Message)
-                console.log(a)
-                if (a.nameid[1] === "Admin") {
-                    alert('Đăng nhập thành công !!!');
-                    window.location.href = "./index.html"
+                var resultInfo = parseJwt(result.Message)
+                if (resultInfo.nameid[5] === 'True') {
+                    localStorage.setItem('token', resultInfo);
+                    if (resultInfo.nameid[1] === "Admin") {
+                        alert('Đăng nhập thành công !!!');
+                        window.location.href = "./index.html"
+                    }
+                    else
+                        window.location.href = "../QuanLy/DangBai/Index.html"
                 }
-                else
-                    window.location.href = "../QuanLy/DangBai/Index.html"
-            }
-            else {
+                else {
+                    alert("Vui lòng liên hệ Admin để cấp quyền truy cập")
+                }
+
+            } else {
                 alert('Sai thông tin tài khoản');
             }
         })
