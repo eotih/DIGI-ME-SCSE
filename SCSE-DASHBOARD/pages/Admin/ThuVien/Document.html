@@ -626,24 +626,14 @@
           </li>
         </ul>
       </nav>
-      <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="card">
               <div class="card-body">
-                <!-- Upload File PDF -->
-                <form name="upload-file-form" method="POST" enctype="multipart/form-data"
-                  action="http://localhost:59360/api/UploadFile">
-                  <div>
-                    <label for="pdf">PDF File</label>
-                    <input name="pdf" type="file" />
-                  </div>
-                  <div>
-                    <button id="uploadFile" class="btn btn-primary btn-sm btn-check-all-submit">
-                      Thực hiện
-                    </button>
-                  </div>
+                <form id="uploaad_file" enctype="">
+                  <input type="file" name="file" id="file">
+                  <input type="submit" value="upload">
                 </form>
                 <h4 class="card-title">Data table</h4>
                 <div class="row">
@@ -752,18 +742,29 @@
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
 </body>
-<script>
-  // Đặt 1 biến name trên form và lấy nó xuống
-  var containerForm = document.forms['upload-file-form']
-  // Lấy cái id của button upload
-  var uploadFile = document.getElementById('uploadFile')
+<script type="text/javascript">
+  $(function () {
+    $('#uploaad_file').on('submit', function (e) {
+      var data = new FormData(this);
 
-  // Hàm sử lí khi uploadFile đc click và chống load
-  uploadFile.addEventListener('click', function (e) {
-    e.preventDefault();
-    containerForm.submit();
+      e.preventDefault();
+      $.ajax({
+        url: 'http://localhost:59360/api/UploadFile',
+        data: data,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function () {
+          alert("Upload File Thành Công")
+          window.location.reload();
+        },
+        error: function () {
+          alert("Upload File Thất Bại")
+        }
+      })
+      return false;
+    })
   })
-
 </script>
 
 </html>
