@@ -1,32 +1,84 @@
 
-const url = "http://localhost:59360/";
+const BASE_URL = "http://localhost:59360/";
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
+
+
 window.addEventListener('load', loadData)
+
+
 async function loadData() {
-    fetch(url + "/User/XemDanhSachTaiKhoan")
+    fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
         .then(function (response) {
             return response.json();
             // Sẽ trả dữ liệu về dạng json
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { IDUser, FullName, Email, IsActive, RoleName } = response;
+                let { IDUser, FullName, Email, IsLocked, RoleName } = response;
+                if (IsLocked === false) {
+                    IsLocked = `<form id="toggleForm" class="form-check form-switch">
+                    <input class="form-check-input" data-id="${IDUser}" type="checkbox" name="checkbox">
+                  </form>`
+                } else {
+                    IsLocked = `<form id="toggleForm" class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="checkbox" checked>
+                  </form>`
+                }
                 // Sẽ return ra hàm tbody
                 return `<tr>
                     <td>${IDUser}</td>
                     <td>${FullName}</td>
                     <td>${Email}</td>
-                    <td>${IsActive}</td>
+                    <td>${IsLocked}</td>
                     <td>${RoleName}</td>
                     <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
                     </tr>`;
             })
             // đây là hàm trả ra tbody
             $('.tbody').html(html);
+            var checkbox = document.querySelector("input[name=checkbox]");
+            var userID = checkbox.getAttribute('data-id');
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    updateLocked(1, userID)
+                } else {
+                    updateLocked(0, userID)
+                }
+            });
+        })
+}
+async function updateLocked(toggleVal, userID) {
+    if (toggleVal === 1) {
+        IsLocked = 'True'
+    } else {
+        IsLocked = 'False'
+    }
+    let data = {
+        IDUser: userID,
+        IsLocked,
+    }
+    console.log(JSON.stringify(data))
+    fetch(BASE_URL+ "/User/ThemTaiKhoan", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Updated') {
+                alert('Sửa Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not update')
+            }
         })
 }
 async function getData(ID) {
-    fetch(url + "/User/GetByIdTaiKhoan?iduser=" + ID)
+    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -49,7 +101,7 @@ async function addData() {
         IsActive: $('#IsActive').val(),
         IDRole: $('#IDRole').val()
     };
-    fetch(url + "/User/ThemTaiKhoan", {
+    fetch(BASE_URL + "/User/ThemTaiKhoan", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -76,7 +128,7 @@ async function updateData() {
         IsActive: $('#IsActive').val(),
         IDRole: $('#IDRole').val()
     };
-    fetch(url + "/User/ThemTaiKhoan", {
+    fetch(BASE_URL + "/User/ThemTaiKhoan", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
