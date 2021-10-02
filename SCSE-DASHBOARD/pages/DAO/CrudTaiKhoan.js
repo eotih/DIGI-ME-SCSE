@@ -1,16 +1,9 @@
-
 const BASE_URL = "http://localhost:59360/";
-// đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
-
-
 window.addEventListener('load', loadData)
-
-
 async function loadData() {
     fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
         .then(function (response) {
             return response.json();
-            // Sẽ trả dữ liệu về dạng json
         })
         .then(function (response) {
             var html = response.map(function (response) {
@@ -21,10 +14,9 @@ async function loadData() {
                   </form>`
                 } else {
                     IsLocked = `<form id="toggleForm" class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="checkbox" checked>
+                    <input class="form-check-input" data-id="${IDUser}" type="checkbox" name="checkbox" checked>
                   </form>`
                 }
-                // Sẽ return ra hàm tbody
                 return `<tr>
                     <td>${IDUser}</td>
                     <td>${FullName}</td>
@@ -34,7 +26,6 @@ async function loadData() {
                     <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
                     </tr>`;
             })
-            // đây là hàm trả ra tbody
             $('.tbody').html(html);
             var checkbox = document.querySelector("input[name=checkbox]");
             var userID = checkbox.getAttribute('data-id');
@@ -58,7 +49,7 @@ async function updateLocked(toggleVal, userID) {
         IsLocked,
     }
     console.log(JSON.stringify(data))
-    fetch(BASE_URL+ "/User/ThemTaiKhoan", {
+    fetch(BASE_URL + "/User/ThemTaiKhoan", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
