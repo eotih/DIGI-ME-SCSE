@@ -432,8 +432,7 @@
                     </li>
                     <li class="nav-item nav-category">Cấu hình Tổ chức</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../ToChuc/index.html"
-                            aria-expanded="false" aria-controls="ui-basic">
+                        <a class="nav-link" href="../ToChuc/index.html" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
                             <span class="menu-title">Quản lý tổ chức</span>
                             <i class="menu-arrow"></i>
@@ -441,15 +440,15 @@
                     </li>
                     <li class="nav-item nav-category">Quản lý thành viên</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../QuanLyTaiKhoan.html"
-                            aria-expanded="false" aria-controls="ui-basic">
+                        <a class="nav-link" href="../QuanLyTaiKhoan.html" aria-expanded="false"
+                            aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
                             <span class="menu-title">Quản lý tài khoản</span>
                             <i class="menu-arrow"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="../BaiDang/QuanLyBaiDang.html" aria-expanded="false"
+                        <a class="nav-link" href="../BaiDang/QuanLyBaiDang.html" aria-expanded="false"
                             aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-view-list"></i>
                             <span class="menu-title">Quản lý bài viết</span>
@@ -509,48 +508,16 @@
                                         <div class="col-lg-4">
                                             <form class="forms-sample">
                                                 <div class="form-group">
-                                                    <label for="IDCat">Thể loại</label>
-                                                    <!-- <div class="dropdown">
-                                                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuSizeButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                          Dropdown
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2" style="">
-                                                          <h6 class="dropdown-header">Settings</h6>
-                                                          <a class="dropdown-item" href="#">Action</a>
-                                                          <a class="dropdown-item" href="#">Another action</a>
-                                                          <a class="dropdown-item" href="#">Something else here</a>
-                                                          <div class="dropdown-divider"></div>
-                                                          <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                      </div> -->
-                                                    <input type="text" class="form-control" id="IDCat"
-                                                        placeholder="ID thể loại">
+                                                    <label for="Phone">Chọn thể loại</label>
+                                                    <select class="form-control">
+                                                        <option value="">----- Vui lòng chọn -----</option>
+                                                        <option value="1">Có</option>
+                                                        <option value="0">Không</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Name">Thêm hình ảnh</label>
-                                                    <input type="text" class="form-control" id="Phone"
-                                                        placeholder="Team front end nhớ làm" disabled="disabled">
-                                                    <!-- <div class="file-upload-wrapper">
-                                                        <div id="fileuploader">
-                                                            <div class="ajax-upload-dragdrop"
-                                                                style="vertical-align: top; width: 400px;">
-                                                                <div class="ajax-file-upload"
-                                                                    style="position: relative; overflow: hidden; cursor: default;">
-                                                                    Upload
-                                                                    <form method="POST" action="YOUR_FILE_UPLOAD_URL"
-                                                                        enctype="multipart/form-data"
-                                                                        style="margin: 0px; padding: 0px;"><input
-                                                                            type="file"
-                                                                            id="ajax-upload-id-1631527539738"
-                                                                            name="myfile[]" accept="*" multiple=""
-                                                                            style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
-                                                                    </form>
-                                                                </div><span><b> Drag &amp; Drop Files</b></span>
-                                                            </div>
-                                                            <div></div>
-                                                        </div>
-                                                        <div class="ajax-file-upload-container"></div>
-                                                    </div> -->
+                                                    <input type="file" name="" id="fileId">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Author">Tác giả</label>
@@ -559,8 +526,10 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Phone">Công khai hay không</label>
-                                                    <input type="text" class="form-control" id="Phone"
-                                                        placeholder="Team front end nhớ làm" disabled="disabled">
+                                                    <select class="form-control">
+                                                        <option value="1">Có</option>
+                                                        <option value="0">Không</option>
+                                                    </select>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" id="edit" onclick="addData();"
@@ -618,7 +587,18 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
-    <!-- End custom js for this page-->
+    <script>
+        const fileInput = document.querySelector('input[id="fileId"]');
+        // listen for the change event so we can capture the file
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                console.log(reader.result);
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
 </body>
 
 </html>
