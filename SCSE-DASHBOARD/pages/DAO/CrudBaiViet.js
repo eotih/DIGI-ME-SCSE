@@ -3,6 +3,7 @@ async function addData() {
     var $data = {
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
+        Image: $('#image').val(),
         IDCat: $('#IDCat').val(),
         Author: $('#Author').val()
     };

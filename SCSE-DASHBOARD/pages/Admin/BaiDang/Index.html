@@ -509,16 +509,14 @@
                                             <form class="forms-sample">
                                                 <div class="form-group">
                                                     <label for="Phone">Chọn thể loại</label>
-                                                    <select class="form-control">
-                                                        <option value="">----- Vui lòng chọn -----</option>
-                                                        <option value="1">Có</option>
-                                                        <option value="0">Không</option>
-                                                    </select>
+                                                        <select class="form-select" id="abc" onclick="getbyID(value)"></select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="Name">Thêm hình ảnh</label>
-                                                    <input type="file" name="" id="fileId">
-                                                </div>
+                                                <!-- <div class="form-group">
+                                                    <label for="Image">Them hinh anh</label>
+                                                    <input type="hidden" class="form-control" id="Image" placeholder="Hình" disabled>
+                                                    <input type="file" onchange="getBaseUrl()">
+                                                    <img id="Image" height="150">
+                                                  </div> -->
                                                 <div class="form-group">
                                                     <label for="Author">Tác giả</label>
                                                     <input type="text" class="form-control" id="Author"
@@ -598,6 +596,48 @@
             };
             reader.readAsDataURL(file);
         });
+        window.addEventListener('load', getData())
+        function getData() {
+        fetch("http://localhost:59360/Api/Interface/ListCategory")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                var abc = document.createElement("option");
+                abc.innerHTML = "Vui lòng chọn";
+                abc.value = 0;
+                document.getElementById("abc").appendChild(abc);
+                for (var i = 0; i < response.length; i++) {
+                    var ele = document.createElement("option");
+                    ele.value = response[i].IDCat;
+                    ele.innerHTML = response[i].CategoryName;
+                    document.getElementById("abc").appendChild(ele);
+                }
+            })
+    }
+    function getbyID(IDCat) {
+        fetch("http://localhost:59360/Management/GetByIdCategory?idcat=" + IDCat)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                document.getElementById("xyz").value = response.Iframe;
+            })
+    }
+    // function getBaseUrl() {
+    //         var file = document.querySelector('input[type=file]')['files'][0];
+    //         var reader = new FileReader();
+    //         reader.onloadend = function () {
+    //             baseString = reader.result;
+    //             $('#Image').val(baseString);
+    //             document.getElementById("Image").src = baseString;
+    //             // return autoUpdate(baseString);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     } 
+    </script>
+    <script>
+       
     </script>
 </body>
 
