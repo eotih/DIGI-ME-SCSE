@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="body">
+
+    </div>
+    <script type="text/javascript">
+        window.addEventListener('load', getBySlug)
+        function getBySlug() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slugResult = urlParams.get('slug');
+            fetch("http://localhost:3333/post/" + slugResult)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (response) {
+                    const data = [response]
+                    var html = data.map(function (response) {
+                        const { title, createdAt, content } = response
+                        return `<div class="mt-5">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <!-- Post content-->
+                                        <article>
+                                            <!-- Post header-->
+                                            <header class="mb-4">
+                                                <!-- Post title-->
+                                                <h1 class="fw-bolder mb-1">${title}</h1>
+                                                <!-- Post meta content-->
+                                                <div class="text-muted fst-italic mb-2">${createdAt}</div>
+                                                <!-- Post categories-->
+                                            
+                                            </header>
+                                            <!-- Preview image figure-->
+                                            <!-- Post content-->
+                                            <section class="mb-5">
+                                                <div>${content}</div>
+                                            </section>
+                                        </article>
+                                    </div>
+                                </div>
+                    </div>`;
+                    })
+                    // đây là hàm trả ra tbody
+                    $('#body').html(html);
+                })
+        }
+    </script>
+</body>
+
+</html>
