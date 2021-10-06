@@ -21,48 +21,25 @@ async function loadData() {
             $('.tbody').html(html);
         })
 }
-async function getData(ID) {
-    fetch(WEB_API + "Api/Interface/GetByIdPartner?ID=" + ID)
+async function getData(IDCat) {
+    fetch(WEB_API + "Api/Interface/GetByIdCategory?ID=" + IDCat)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
-            const { Image, Name, Field, Phone, Email, Address, Link } = response;
-            $('#ID').val(ID),
-                document.getElementById("Image").src = Image;
-            $('#Name').val(Name);
-            $('#Field').val(Field);
-            $('#Phone').val(Phone);
-            $('#Email').val(Email);
-            $('#Address').val(Address);
-            $('#Link').val(Link);
+            const { IDCat,CategoryName} = response;
+            $('#IDCat').val(IDCat),
+            $('#CategoryName').val(CategoryName)
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
     $('#edit').show();
 }
-function getBaseUrl() {
-    var file = document.querySelector('input[type=file]')['files'][0];
-    var reader = new FileReader();
-    reader.onloadend = function () {
-        baseString = reader.result;
-        $('#Img').val(baseString);
-        document.getElementById("Image").src = baseString;
-        // return autoUpdate(baseString);
-    };
-    reader.readAsDataURL(file);
-}
 async function addData() {
     var $data = {
-        Name: $('#Name').val(),
-        Image: $('#Img').val(),
-        Field: $('#Field').val(),
-        Phone: $('#Phone').val(),
-        Email: $('#Email').val(),
-        Address: $('#Address').val(),
-        Link: $('#Link').val(),
+        CategoryName: $('#CategoryName').val(),
     };
-    fetch(WEB_API + "Api/Interface/AddOrEditPartner", {
+    fetch(WEB_API + "Api/Interface/AddOrEditCategory", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -83,16 +60,10 @@ async function addData() {
 }
 async function updateData() {
     var $data = {
-        ID: $('#ID').val(),
-        Name: $('#Name').val(),
-        Image: $('#Img').val(),
-        Field: $('#Field').val(),
-        Phone: $('#Phone').val(),
-        Email: $('#Email').val(),
-        Address: $('#Address').val(),
-        Link: $('#Link').val(),
+        IDCat: $('#IDCat').val(),
+        CategoryName: $('#CategoryName').val(),
     };
-    fetch(WEB_API + "Api/Interface/AddOrEditPartner", {
+    fetch(WEB_API + "Api/Interface/AddOrEditCategory", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -129,14 +100,8 @@ async function deleteData(ID) {
         })
 }
 function clearTextBox() {
-    $('#ID').val("");
-    $('#Name').val("");
-    $('#Img').val("");
-    $('#Field').val("");
-    $('#Phone').val("");
-    $('#Email').val("");
-    $('#Address').val("");
-    $('#Link').val("");
+    $('#IDCat').val("");
+    $('#CategoryName').val("");
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();
