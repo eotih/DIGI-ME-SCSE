@@ -13,7 +13,7 @@ async function loadData() {
             console.log(response)
             var html = response.map(function (response) {
                 let a = response.Details.substring(0,500)
-                const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, Status } = response;
+                const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, IDState } = response;
                 return `<tr>
                     <td>${IDPost}</td>
                     <td>${IDCat}</td>
@@ -23,14 +23,14 @@ async function loadData() {
                     <td><img src='${Image}'/><td>
                     <td>${Video}</td>
                     <td>${Author}</td>
-                    <td>${Status}</td>
+                    <td>${IDState}</td>
                     <td><a onclick="getData(${IDPost})" class="btn btn-outline-primary">View</a></td>
                     <td><button onclick="return deleteData(${IDPost})" class="btn btn-outline-primary">Delete</button></td>
                     </tr>`;
             })
             
             // đây là hàm trả ra tbody
-            $('.tbody').html(html);
+            $('#tbody').html(html);
         })
 }
 

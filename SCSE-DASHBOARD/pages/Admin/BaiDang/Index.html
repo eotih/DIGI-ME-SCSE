@@ -509,14 +509,14 @@
                                             <form class="forms-sample">
                                                 <div class="form-group">
                                                     <label for="Phone">Chọn thể loại</label>
-                                                        <select class="form-select" id="abc"></select>
+                                                    <select class="form-select" id="Category"></select>
                                                 </div>
-                                                
-                                                    <div class="form-group">
-                                                        <label for="Name">Thêm hình ảnh</label>
-                                                        <input type="file" name="" id="fileId">
-                                                        <img id="img">
-                                                    </div>
+
+                                                <div class="form-group">
+                                                    <label for="Name">Thêm hình ảnh</label>
+                                                    <input type="file" name="" id="fileId">
+                                                    <img id="img">
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="Author">Tác giả</label>
                                                     <input type="text" class="form-control" id="Author"
@@ -524,9 +524,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Phone">Công khai hay không</label>
-                                                    <select class="form-control">
+                                                    <select class="form-control" id="State">
                                                         <option value="1">Có</option>
-                                                        <option value="0">Không</option>
+                                                        <option value="2">Không</option>
                                                     </select>
                                                 </div>
                                                 <div class="modal-footer">
@@ -586,38 +586,20 @@
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
     <script>
-         const fileInput = document.querySelector('input[id="fileId"]');
+        const fileInput = document.querySelector('input[id="fileId"]');
         // listen for the change event so we can capture the file
         fileInput.addEventListener("change", (e) => {
             const file = e.target.files[0];
             const reader = new FileReader();
             reader.onloadend = () => {
-                base64= reader.result;
+                base64 = reader.result;
                 $('#img').val(base64);
-                             
+
             };
             reader.readAsDataURL(file);
         });
-        window.addEventListener('load', getData())
-        function getData() {
-        fetch("http://localhost:59360/Api/Interface/ListCategory")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (response) {
-                var abc = document.createElement("option");
-                abc.innerHTML = "Vui lòng chọn";
-                abc.value = 0;
-                document.getElementById("abc").appendChild(abc);
-                for (var i = 0; i < response.length; i++) {
-                    var ele = document.createElement("option");
-                    ele.value = response[i].IDCat;
-                    ele.innerHTML = response[i].CategoryName;
-                    document.getElementById("abc").appendChild(ele);
-                }
-            })
-            
-    }
+        
     </script>
 </body>
+
 </html>
