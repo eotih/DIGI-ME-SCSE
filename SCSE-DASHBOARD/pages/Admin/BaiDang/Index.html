@@ -509,14 +509,14 @@
                                             <form class="forms-sample">
                                                 <div class="form-group">
                                                     <label for="Phone">Chọn thể loại</label>
-                                                        <select class="form-select" id="abc" onclick="getbyID(value)"></select>
+                                                        <select class="form-select" id="abc"></select>
                                                 </div>
-                                                <!-- <div class="form-group">
-                                                    <label for="Image">Them hinh anh</label>
-                                                    <input type="hidden" class="form-control" id="Image" placeholder="Hình" disabled>
-                                                    <input type="file" onchange="getBaseUrl()">
-                                                    <img id="Image" height="150">
-                                                  </div> -->
+                                                
+                                                    <div class="form-group">
+                                                        <label for="Name">Thêm hình ảnh</label>
+                                                        <input type="file" name="" id="fileId">
+                                                        <img id="img">
+                                                    </div>
                                                 <div class="form-group">
                                                     <label for="Author">Tác giả</label>
                                                     <input type="text" class="form-control" id="Author"
@@ -586,13 +586,15 @@
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
     <script>
-        const fileInput = document.querySelector('input[id="fileId"]');
+         const fileInput = document.querySelector('input[id="fileId"]');
         // listen for the change event so we can capture the file
         fileInput.addEventListener("change", (e) => {
             const file = e.target.files[0];
             const reader = new FileReader();
             reader.onloadend = () => {
-                console.log(reader.result);
+                base64= reader.result;
+                $('#img').val(base64);
+                             
             };
             reader.readAsDataURL(file);
         });
@@ -614,30 +616,8 @@
                     document.getElementById("abc").appendChild(ele);
                 }
             })
+            
     }
-    function getbyID(IDCat) {
-        fetch("http://localhost:59360/Management/GetByIdCategory?idcat=" + IDCat)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (response) {
-                document.getElementById("xyz").value = response.Iframe;
-            })
-    }
-    // function getBaseUrl() {
-    //         var file = document.querySelector('input[type=file]')['files'][0];
-    //         var reader = new FileReader();
-    //         reader.onloadend = function () {
-    //             baseString = reader.result;
-    //             $('#Image').val(baseString);
-    //             document.getElementById("Image").src = baseString;
-    //             // return autoUpdate(baseString);
-    //         };
-    //         reader.readAsDataURL(file);
-    //     } 
-    </script>
-    <script>
-       
     </script>
 </body>
 

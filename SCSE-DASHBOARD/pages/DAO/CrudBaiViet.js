@@ -1,11 +1,13 @@
 const WEB_API = "http://localhost:59360/";
 async function addData() {
+    console.log($('#img').val())
     var $data = {
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
-        Image: $('#image').val(),
-        IDCat: $('#IDCat').val(),
+        IDCat: $('#abc').val(),
+        Image: $('#img').val(),
         Author: $('#Author').val()
+        
     };
     fetch(WEB_API + "Management/ThemBaiViet", {
         method: 'POST',
@@ -25,4 +27,5 @@ async function addData() {
                 alert('Data not insert')
             }
         })
+       
 }

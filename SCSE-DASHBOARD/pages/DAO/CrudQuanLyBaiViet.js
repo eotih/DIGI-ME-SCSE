@@ -39,7 +39,7 @@ async function addData() {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
         Slug: $('#Slug').val(),
-        Details: $('#summernote').summernote('code'),
+        Details: $('#Details').val(),
         Image: $('#Image').val(),
         Video: $('#Video').val(),
         Author: $('#Author').val(),
