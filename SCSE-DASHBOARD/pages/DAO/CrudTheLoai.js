@@ -37,7 +37,7 @@ async function getData(IDCat) {
 }
 async function addData() {
     var $data = {
-        CategoryName: $('#CategoryName').val(),
+        CategoryName: $('#CategoryName').val().toUpperCase(),
     };
     fetch(WEB_API + "Api/Interface/AddOrEditCategory", {
         method: 'POST',
