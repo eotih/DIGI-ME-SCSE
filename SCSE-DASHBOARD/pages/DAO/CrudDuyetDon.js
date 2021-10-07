@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/"; 
+const WEB_API = "http://localhost:59360/";
 window.addEventListener('load', loadData)
 
 async function loadData() {
@@ -8,8 +8,19 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose,IDState } = response;
-                console.log(IDState)
+                let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
+                if(IDState === 1){
+                    IDState = 'Pending'
+                }
+                if(IDState === 2){
+                    IDState = 'Approved'
+                }
+                if(IDState === 3){
+                    IDState = 'NotApproved'
+                }
+                else{
+                    IDState = 'Deleted'
+                }
                 return `<tr>
                     <td>${ID}</td>
                     <td>${FirstName}</td>
@@ -45,7 +56,7 @@ async function getData(ID) {
             $('#Address').val(Address);
             $('#Project').val(Project);
             $('#Purpose').val(Purpose);
-            $('IDState').val(IDState)
+            $('#IDState').val(IDState);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -61,7 +72,6 @@ async function addData() {
         Address: $('#Address').val(),
         Project: $('#Project').val(),
         Purpose: $('#Purpose').val(),
-        IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',
@@ -85,14 +95,6 @@ async function addData() {
 async function updateData() {
     var data = {
         ID: $('#ID').val(),
-        FirstName: $('#FirstName').val(),
-        LastName: $('#LastName').val(),
-        DOB: $('#DOB').val(),
-        Phone: $('#Phone').val(),
-        Email: $('#Email').val(),
-        Address: $('#Address').val(),
-        Project: $('#Project').val(),
-        Purpose: $('#Purpose').val(),
         IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "Management/DangKiThamGia", {
