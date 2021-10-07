@@ -7,8 +7,22 @@ function getQuantityPendingAccount() {
     })
     .then(function (response) {
         let data = {
-            Subject: 'THÔNG BÁO DUYỆT TÌNH NGUYỆN VIÊN',
+            Subject: 'THÔNG BÁO DUYỆT CỘNG TÁC VIÊN',
             Name: 'Thành viên',
+            Count: response.length
+        }
+        sendEmail(data)
+    })
+}
+function getQuantityPendingVolunteers() {
+    fetch(WEB_API + "Management/GetByStateVolunteers?IDState=1")
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (response) {
+        let data = {
+            Subject: 'THÔNG BÁO DUYỆT TÌNH NGUYỆN VIÊN',
+            Name: 'TÌNH NGUYỆN VIÊN',
             Count: response.length
         }
         sendEmail(data)
