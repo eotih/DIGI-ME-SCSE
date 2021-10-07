@@ -1,37 +1,42 @@
 const WEB_API = "http://localhost:59360/";
-
+// var now = new Date();
+// var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 0, 0) - now;
+// if (millisTill10 < 0) {
+//     millisTill10 += 1; // it's after 10am, try 10am tomorrow.
+// }
+// setTimeout(function () {getQuantityPendingAccount() }, millisTill10);
 function getQuantityPendingAccount() {
     fetch(WEB_API + "User/GetByStateUser?IDState=1")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (response) {
-        let data = {
-            Subject: 'THÔNG BÁO DUYỆT CỘNG TÁC VIÊN',
-            Name: 'Thành viên',
-            Count: response.length
-        }
-        sendEmail(data)
-    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            let data = {
+                Subject: 'THÔNG BÁO DUYỆT CỘNG TÁC VIÊN',
+                Name: 'Thành viên',
+                Count: response.length
+            }
+            sendEmail(data)
+        })
 }
 function getQuantityPendingVolunteers() {
     fetch(WEB_API + "Management/GetByStateVolunteers?IDState=1")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (response) {
-        let data = {
-            Subject: 'THÔNG BÁO DUYỆT TÌNH NGUYỆN VIÊN',
-            Name: 'TÌNH NGUYỆN VIÊN',
-            Count: response.length
-        }
-        sendEmail(data)
-    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            let data = {
+                Subject: 'THÔNG BÁO DUYỆT TÌNH NGUYỆN VIÊN',
+                Name: 'TÌNH NGUYỆN VIÊN',
+                Count: response.length
+            }
+            sendEmail(data)
+        })
 }
 function sendEmail(dulieu) {
     let data = {
         To: 'eotihvn@gmail.com',
-        Subject:`${dulieu.Subject}`,
+        Subject: `${dulieu.Subject}`,
         Body: `Hi anh Giang, </br> Hiện tại đang có <b> ${dulieu.Count} - ${dulieu.Name}</b> đang chờ duyệt. 
         <a href="https://github.com/eotih/DIGI-ME-SCSE/issues"> Xem ngay </a>`
     }

@@ -18,7 +18,7 @@ async function loadData() {
                 if(IDState === 3){
                     IDState = 'NotApproved'
                 }
-                else{
+                if(IDState === 4){
                     IDState = 'Deleted'
                 }
                 return `<tr>
