@@ -8,8 +8,7 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
-                console.log(IDState)
+                let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
                 return `<tr>
                     <td>${ID}</td>
                     <td>${FirstName}</td>
@@ -84,14 +83,7 @@ async function addData() {
 async function updateData() {
     var data = {
         ID: $('#ID').val(),
-        FirstName: $('#FirstName').val(),
-        LastName: $('#LastName').val(),
-        DOB: $('#DOB').val(),
-        Phone: $('#Phone').val(),
-        Email: $('#Email').val(),
-        Address: $('#Address').val(),
-        Project: $('#Project').val(),
-        Purpose: $('#Purpose').val(),
+        IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',
