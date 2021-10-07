@@ -9,6 +9,18 @@ async function loadData() {
         .then(function (response) {
             var html = response.map(function (response) {
                 let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
+                if(IDState === 1){
+                    IDState = 'Pending'
+                }
+                if(IDState === 2){
+                    IDState = 'Approved'
+                }
+                if(IDState === 3){
+                    IDState = 'NotApproved'
+                }
+                else{
+                    IDState = 'Deleted'
+                }
                 return `<tr>
                     <td>${ID}</td>
                     <td>${FirstName}</td>
@@ -44,6 +56,7 @@ async function getData(ID) {
             $('#Address').val(Address);
             $('#Project').val(Project);
             $('#Purpose').val(Purpose);
+            $('#Purpose').val(Purpose);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -58,8 +71,7 @@ async function addData() {
         Email: $('#Email').val(),
         Address: $('#Address').val(),
         Project: $('#Project').val(),
-        Purpose: $('#Purpose').val(),
-        IDState: 1
+        Purpose: $('#Purpose').val()
     };
     fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',

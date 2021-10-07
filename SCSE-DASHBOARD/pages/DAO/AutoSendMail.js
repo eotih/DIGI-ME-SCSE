@@ -7,6 +7,7 @@ function getQuantityPendingAccount() {
     })
     .then(function (response) {
         let data = {
+            Subject: 'THÔNG BÁO DUYỆT TÌNH NGUYỆN VIÊN',
             Name: 'Thành viên',
             Count: response.length
         }
@@ -16,7 +17,7 @@ function getQuantityPendingAccount() {
 function sendEmail(dulieu) {
     let data = {
         To: 'eotihvn@gmail.com',
-        Subject: 'Đây là email tự động, vui lòng không trả lời',
+        Subject:`${dulieu.Subject}`,
         Body: `Hi anh Giang, </br> Hiện tại đang có <b> ${dulieu.Count} - ${dulieu.Name}</b> đang chờ duyệt. 
         <a href="https://github.com/eotih/DIGI-ME-SCSE/issues"> Xem ngay </a>`
     }
