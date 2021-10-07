@@ -10,30 +10,63 @@ async function loadData() {
             // Sẽ trả dữ liệu về dạng json
         })
         .then(function (response) {
-            console.log(response)
-            var html = response.map(function (response) {
-                let a = response.Details.substring(0,500)
-                const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, IDState } = response;
+            var result = response.filter(v => v.IDState !== 4)
+            var html = result.map(function (response) {
+                let a = response.Details.substring(0, 300)
+                let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
+                if(IDState === 1){
+                    IDState = 'Pending'
+                }
+                if(IDState === 2){
+                    IDState = 'Approved'
+                }
+                if(IDState === 3){
+                    IDState = 'NotApproved'
+                }
+                if(IDState === 4){
+                    IDState = 'Deleted'
+                }
                 return `<tr>
                     <td>${IDPost}</td>
                     <td>${IDCat}</td>
                     <td>${Title}</td>
-                    <td>${Slug}</td>
                     <td>${a}</td>
-                    <td><img src='${Image}'/><td>
-                    <td>${Video}</td>
+                    <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><a onclick="getData(${IDPost})" class="btn btn-outline-primary">View</a></td>
-                    <td><button onclick="return deleteData(${IDPost})" class="btn btn-outline-primary">Delete</button></td>
+                    <td><a onclick="getData(${IDPost})" class="btn btn-outline-primary">View</a>
+                    <button onclick="return deleteTamThoi(${IDPost})" class="btn btn-outline-primary">Delete</button></td>
                     </tr>`;
             })
-            
+
             // đây là hàm trả ra tbody
             $('#tbody').html(html);
         })
 }
-
+function deleteTamThoi(ID) {
+    const data = {
+        IDPost: ID,
+        IDState: 4,
+    }
+    fetch(url + "/User/ThemTaiKhoan", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Updated') {
+                alert('Sửa Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not update')
+            }
+        })
+}
 async function addData() {
     var dulieu = {
         IDCat: $('#IDCat').val(),
@@ -57,20 +90,17 @@ async function addData() {
         .then(function (data) {
             if (data.Status === 'Success') {
                 alert('Thêm Thành Công')
-                window.location.href="./QuanLyBaiDang.html";
+                window.location.href = "./QuanLyBaiDang.html";
             }
             else {
                 alert('Data not insert')
             }
         })
 }
-function getData(IDPost) {
-            window.location.href="./Edit.html"
-            localStorage.setItem('post', IDPost);
-}
+
 async function updateData() {
     var dulieu = {
-        IDPost: $('£IDPost').val(),
+        IDPost: $('$IDPost').val(),
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
         Slug: $('#Slug').val(),
