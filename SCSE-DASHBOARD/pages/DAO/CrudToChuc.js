@@ -3,7 +3,7 @@ window.addEventListener('load', loadData)
 window.addEventListener('load', getBankInfo)
 
 async function loadData() {
-    fetch(WEB_API + "Api/Interface/GetbyIdInfoOrganization?ID=1")
+    fetch(WEB_API + "Api/Interface/GetbyIdInfoOrganization?ID=3")
         .then(function (response) {
             return response.json();
         })
@@ -16,12 +16,8 @@ async function loadData() {
             $('#mail').text(Email);
             $('#Fanpage2').text(Fanpage);
             $('#Youtube2').text(Youtube);
-
-
             $('#ID').val(ID);
-            document.getElementById("LogoToChuc").src = Logo;
             $('#Name').val(Name);
-            $('#Field').val(Field);
             $('#Phone').val(Phone);
             $('#Email').val(Email);
             $('#Address').val(Address);
@@ -31,16 +27,18 @@ async function loadData() {
 }
 
 async function updateData() {
+    const file='AAAA'
     var $data = {
         ID: $('#ID').val(),
         Name: $('#Name').val(),
-        Field: $('#Field').val(),
+        Field: file,
         Phone: $('#Phone').val(),
         Email: $('#Email').val(),
         Address: $('#Address').val(),
         Fanpage: $('#Fanpage').val(),
         Youtube: $('#Youtube').val(),
     };
+    debugger;
     fetch(WEB_API + "Api/Interface/EditInfoOrganization", {
         method: 'POST',
         body: JSON.stringify($data),
@@ -69,10 +67,13 @@ async function getBankInfo() {
         .then(function (response) {
             var html = response.map(function (posts) {
                 return `
-                <div class="col-md-4 col-xl-6 grid-margin stretch-card pricing-card">
+                <div class="col-lg grid-margin stretch-card pricing-card">
                     <div class="card border-primary border pricing-card-body">
                         <div class="text-center pricing-card-head">
                             <img src="${posts.ImageQR}" class="img-lg rounded-circle mb-3" />
+                            <tr>
+                            <td>${BankName}</td>
+                            </tr>
                         </div>
                         <div class="wrapper">
                         <button onclick="return getData(${posts.ID})" class="btn btn-outline-primary btn-block">Chỉnh sửa</button>
@@ -93,6 +94,7 @@ async function getData(ID) {
         .then(function (response) {
             $('#ID3').val(response.ID),
                 document.getElementById("img").src = response.ImageQR;
+                $()
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
