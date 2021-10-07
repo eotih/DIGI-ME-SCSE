@@ -863,7 +863,7 @@
                                     </div>
                                     <div class="form-group">
                                       <label for="DOB">Ngày Sinh</label>
-                                      <input type="datetime-local" value="" class="form-control" id="DOB" placeholder="Ngày Sinh">
+                                      <input type="date" value="" class="form-control" id="DOB" placeholder="Ngày Sinh">
                                     </div>
                                     <div class="form-group">
                                       <label for="Phone">Số điện thoại</label>
@@ -964,28 +964,6 @@
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
     <script>
-      const WEB_API = "http://localhost:59360/";
-
-window.addEventListener('load', getData())
-function getData() {
-    fetch(WEB_API + "Api/Interface/ListCategory")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            var Category = document.createElement("option");
-            Category.innerHTML = "Vui lòng chọn";
-            Category.value = 0;
-            document.getElementById("IDState").appendChild(IDState);
-            for (var i = 0; i < response.length; i++) {
-                var ele = document.createElement("option");
-                ele.value = response[i].IDState;
-                ele.innerHTML = response[i].StateName;
-                document.getElementById("IDState").appendChild(ele);
-            }
-        })
-
-}
     </script>
   </body>
 </html>

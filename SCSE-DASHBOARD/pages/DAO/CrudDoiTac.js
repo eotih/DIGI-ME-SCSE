@@ -3,7 +3,7 @@ const WEB_API = "http://localhost:59360/";
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(WEB_API + "Api/Interface/ListCategory")
+    fetch(WEB_API + "Api/Interface/ListPartner")
         .then(function (response) {
             return response.json();
         })

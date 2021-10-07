@@ -8,7 +8,7 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
+                const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose,IDState } = response;
                 console.log(IDState)
                 return `<tr>
                     <td>${ID}</td>
@@ -20,7 +20,7 @@ async function loadData() {
                     <td>${Address}</td>
                     <td>${Project}</td>
                     <td>${Purpose}</td>
-                    <td<${IDState}</td>
+                    <td>${IDState}</td>
                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
                     <button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button><td>
                     </tr>`
@@ -35,7 +35,7 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose } = response;
+            const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose , IDState } = response;
             $('#ID').val(ID);
             $('#FirstName').val(FirstName);
             $('#LastName').val(LastName);
@@ -45,6 +45,7 @@ async function getData(ID) {
             $('#Address').val(Address);
             $('#Project').val(Project);
             $('#Purpose').val(Purpose);
+            $('IDState').val(IDState)
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -60,7 +61,7 @@ async function addData() {
         Address: $('#Address').val(),
         Project: $('#Project').val(),
         Purpose: $('#Purpose').val(),
-        IDState: 1
+        IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',
@@ -92,6 +93,7 @@ async function updateData() {
         Address: $('#Address').val(),
         Project: $('#Project').val(),
         Purpose: $('#Purpose').val(),
+        IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',
