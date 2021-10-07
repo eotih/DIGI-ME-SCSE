@@ -24,7 +24,7 @@
   <link rel="shortcut icon" href="../../../images/favicon.png" />
 </head>
 
-<body>
+<body style="font-family: 'Montserrat', sans-serif !important;">
   <div class="container-scroller">
     <!-- partial:../../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
@@ -457,77 +457,69 @@
               <div class="card">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-lg-4">
-
+                    <div class="col-lg-5">
                       <div class="border-bottom text-center pb-4" id="profile" name="profile">
                         <img id="imgLogo" alt="profile" class="img-lg rounded-circle mb-3" />
                         <div class="mb-3">
                           <h3 id="TenCongTy"></h3>
                           <div class="d-flex align-items-center justify-content-center">
-                            <h5 class="mb-0 me-2 text-muted">SCSE</h5>
+                            <h5 class="mb-0 me-2 text-muted">GẮN KẾT CÙNG PHÁT TRIỂN</h5>
                           </div>
                         </div>
-                        <p class="w-75 mx-auto mb-3">Bureau Oberhaeuser is a design bureau focused on Information- and
-                          Interface Design. </p>
+                        <p class="mx-auto mb-3" style="font-size:16px">Chúng tôi tin rằng kết nối sẽ tạo ra những thay đổi tích cực trong xã hội, thúc đẩy sự công bằng trong tiếp cận nguồn lực vào góp phần phát triển bền vững.</p>
                       </div>
                       <div class="border-bottom py-4">
                         <p>Lĩnh vực</p>
                         <div>
-                          <label id="lv1" class="badge badge-outline-dark"></label>
-                          <label class="badge badge-outline-dark">Hand lettering</label>
-                          <label class="badge badge-outline-dark">Information Design</label>
-                          <label class="badge badge-outline-dark">Graphic Design</label>
-                          <label class="badge badge-outline-dark">Web Design</label>
+                          <label class="badge badge-outline-dark">Gới và bình đẳng giới</label>
+                          <label class="badge badge-outline-dark">Biến đổi khí hậu và môi trường</label>
+                          <label class="badge badge-outline-dark">Thực tập sinh</label>
+                          <label class="badge badge-outline-dark">Nghiên cứu - đào tạo</label>
                         </div>
                       </div>
                       <div class="py-4">
-                        <p>Thông tin liên hệ</p>
-                        <p class="clearfix">
+                        <h2>Thông tin liên hệ</h2>
+                        <h3 class="clearfix">
                           <span class="float-left">
                             Phone :
                           </span>
-                          <span id="SoDienThoai" class="float-right text-muted"></span>
-                        </p>
-                        <p class="clearfix">
+                          <span id="SoDienThoai" class="float-right"></span>
+                        </h3>
+                        <h3 class="clearfix">
                           <span class="float-left">
                             Mail :
                           </span>
-                          <span id="mail" class="float-right text-muted"></span>
-                        </p>
-                        <p class="clearfix">
+                          <span id="mail" class="float-right"></span>
+                        </h3>
+                        <h3 class="clearfix">
                           <span class="float-left">
                             Facebook :
                           </span>
                           <span class="float-right text-muted">
-                            <a id="Fanpage2" href=""> SCSE</a>
+                            <a id="Fanpage2" href=" www.facebook.com/scsevn"> SCSE</a>
                           </span>
-                        </p>
-                        <p class="clearfix">
+                        </h3>
+                        <h3 class="clearfix">
                           <span class="float-left">
                             Youtube
                           </span>
                           <span class="float-right text-muted">
-                            <a id="Youtube2" href="#">SCSE</a>
+                            <a id="Youtube2" href=" www.youtube.com/scsevn">SCSE</a>
                           </span>
-                        </p>
+                        </h3>
                       </div>
                     </div>
-                    <div class="col-lg-8">
-                      <form class="forms-sample">
+                    <div class="col-lg-7">
+                      <form class="forms-sample"> 
                         <div class="form-group">
-                          <img id="LogoToChuc" alt="profile" class="img-lg rounded-circle mb-3" />
+                          <input type="text" hidden class="form-control" id="ID" placeholder="Tên tổ chức">
                         </div>
                         <div class="form-group">
-                          <label for="ID">ID</label>
-                          <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
+                          <input type="text" hidden class="form-control" id="Logo" placeholder="Tên tổ chức">
                         </div>
                         <div class="form-group">
-                          <label for="Name">Tên tổ chức</label>
+                          <label for="Name" >Tên tổ chức</label>
                           <input type="text" class="form-control" id="Name" placeholder="Tên tổ chức">
-                        </div>
-                        <div class="form-group">
-                          <label for="Field">Lĩnh vực hoạt động</label>
-                          <input type="text" class="form-control" id="Field" placeholder="Lĩnh vực hoạt động">
                         </div>
                         <div class="form-group">
                           <label for="Phone">Số điện thoại</label>
@@ -555,7 +547,7 @@
                         </div>
                       </form>
                       <div class="wrapper-content">
-                        <div class="col-12">
+                        <div class="col-lg">
                           <div class="card">
                             <div class="card-body">
                               <div class="container text-center pt-9">
@@ -580,6 +572,10 @@
                               <input type="file" onchange="getBaseUrl()">
                               <p id="b64"></p>
                               <img id="img" height="150">
+                              <div class="form-group">
+                                <label for="Fanpage">BankName</label>
+                                <input type="text" class="form-control" id="BankName" placeholder="BankName">
+                              </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
