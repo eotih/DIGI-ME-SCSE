@@ -15,8 +15,8 @@ function loginAdmin() {
         .then((result) => {
             if (result.Status === 'Success') {
                 var resultInfo = parseJwt(result.Message)
-                if (resultInfo.nameid[5] === 'True') {
-                    localStorage.setItem('token', resultInfo);
+                if (resultInfo.nameid[5] === '2') {
+                    localStorage.setItem('token', result.Message);
                     if (resultInfo.nameid[1] === "Admin") {
                         alert('Đăng nhập thành công !!!');
                         window.location.href = "./index.html"

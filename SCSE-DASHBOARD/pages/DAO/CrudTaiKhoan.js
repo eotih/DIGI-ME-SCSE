@@ -7,22 +7,15 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                let { IDUser, FullName, Email, IsLocked, RoleName } = response;
-                if (IsLocked === false) {
-                    IsLocked = `<form id="toggleForm" class="form-check form-switch">
-                    <input class="form-check-input" data-id="${IDUser}" type="checkbox" name="checkbox">
-                  </form>`
-                } else {
-                    IsLocked = `<form id="toggleForm" class="form-check form-switch">
-                    <input class="form-check-input" data-id="${IDUser}" type="checkbox" name="checkbox" checked>
-                  </form>`
-                }
+                let { IDUser, FullName, Email, StateName, RoleName, Image } = response;
+                
                 return `<tr>
                     <td>${IDUser}</td>
                     <td>${FullName}</td>
                     <td>${Email}</td>
-                    <td>${IsLocked}</td>
+                    <td>${StateName}</td>
                     <td>${RoleName}</td>
+                    <td><img src="${Image}"></td>
                     <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
                     </tr>`;
             })
@@ -39,14 +32,9 @@ async function loadData() {
         })
 }
 async function updateLocked(toggleVal, userID) {
-    if (toggleVal === 1) {
-        IsLocked = 'True'
-    } else {
-        IsLocked = 'False'
-    }
     let data = {
         IDUser: userID,
-        IsLocked,
+        StateName,
     }
     console.log(JSON.stringify(data))
     fetch(BASE_URL + "/User/ThemTaiKhoan", {
@@ -74,12 +62,17 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            const { IDUser, FullName, Email, IsActive, RoleName } = response;
+            const { IDUser, Username, Password, Image , FullName, Email, Phone, IDState, IDRole , Sex } = response;
             $('#IDUser').val(IDUser);
+            $('#UserName').val(Username);
+            $('#Password').val(Password);
+            document.getElementById('img').src=Image;
             $('#FullName').val(FullName);
             $('#Email').val(Email);
-            $('#IsActive').val(IsActive);
+            $('#Phone').val(Phone);
+            $('#IDState').val(IDState);
             $('#IDRole').val(IDRole);
+            $('#Sex').val(Sex);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -87,10 +80,15 @@ async function getData(ID) {
 }
 async function addData() {
     var dulieu = {
+        Username: $('#UserName').val(),
+        Password: $('#Password').val(),
+        Image: $('#img').val(),
         FullName: $('#FullName').val(),
         Email: $('#Email').val(),
-        IsActive: $('#IsActive').val(),
-        IDRole: $('#IDRole').val()
+        Phone: $('#Phone').val(),
+        IDState: $('#IDState').val(),
+        IDRole: $('#IDRole').val(),
+        Sex: $('#Sex').val(),
     };
     fetch(BASE_URL + "/User/ThemTaiKhoan", {
         method: 'POST',
@@ -114,10 +112,15 @@ async function addData() {
 async function updateData() {
     var dulieu = {
         IDUser: $('#IDUser').val(),
+        Username: $('#UserName').val(),
+        Password: $('#Password').val(),
+        Image: $('#img').val(),
         FullName: $('#FullName').val(),
         Email: $('#Email').val(),
-        IsActive: $('#IsActive').val(),
-        IDRole: $('#IDRole').val()
+        Phone: $('#Phone').val(),
+        IDState: $('#IDState').val(),
+        IDRole: $('#IDRole').val(),
+        Sex: $('#Sex').val(),
     };
     fetch(BASE_URL + "/User/ThemTaiKhoan", {
         method: 'POST',
@@ -140,10 +143,15 @@ async function updateData() {
 }
 function clearTextBox() {
     $('#IDUser').val("");
+    $('#UserName').val("");
+    $('#Password').val("");
+    $('#img').val("");
     $('#FullName').val("");
     $('#Email').val("");
-    $('#IsActive').val("");
+    $('#Phone').val("");
+    $('#IDState').val("");
     $('#IDRole').val("");
+    $('#Sex').val("");
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();

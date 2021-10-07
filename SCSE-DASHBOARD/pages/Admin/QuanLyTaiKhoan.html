@@ -649,8 +649,9 @@
                             <th>ID #</th>
                             <th>Họ và tên</th>
                             <th>Email</th>
-                            <th>Kích Hoạt</th>
+                            <th>Trạng thái</th>
                             <th>Quyền</th>
+                            <th>Ảnh đại diện</th>
                             <th>Hành động</th>
                           </tr>
                         </thead>
@@ -671,24 +672,57 @@
                           <div class="modal-body">
                             <form class="forms-sample">
                               <div class="form-group">
-                                <label for="FullName">ID</label>
+                                <label for="IDUser">ID</label>
                                 <input type="text" class="form-control" id="IDUser" placeholder="ID" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="UserName">UserName</label>
+                                <input type="text" class="form-control" id="UserName" placeholder="UserName">
+                              </div>
+                              <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="text" class="form-control" id="Password" placeholder="Password">
+                              </div>
+                              <div class="form-group">
+                                <label for="Avatar">Thêm ảnh đại diện</label>
+                                <input type="file" name="Avatar" id="avatar">
+                                <img src="" id="img" style="width: 300px;">
                               </div>
                               <div class="form-group">
                                 <label for="FullName">Họ và tên</label>
                                 <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
                               </div>
                               <div class="form-group">
+                                <label for="Phone">Số điện thoại</label>
+                                <input type="text" class="form-control" id="Phone" placeholder="Phone">
+                              </div>
+                              <div class="form-group">
                                 <label for="Email">Email</label>
                                 <input type="email" class="form-control" id="Email" placeholder="Email">
                               </div>
                               <div class="form-group">
-                                <label for="IsActive">Kích Hoạt</label>
-                                <input type="text" class="form-control" id="IsActive" placeholder="Kích hoạt">
+                                <label for="IDState">Trạng thái</label>
+                                <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
+                                  <option value="1">Pending</option>
+                                  <option value="2">Approved</option>
+                                  <option value="3">NotApproved</option>
+                                  <option value="4">Deleted</option>
+                                </select>
                               </div>
                               <div class="form-group">
                                 <label for="RoleName">Quyền</label>
-                                <input type="text" class="form-control" id="IDRole" placeholder="Quyền">
+                                <select type="text" class="form-control" id="IDRole" placeholder="Quyền">
+                                  <option value="1">Admin</option>
+                                  <option value="2">Supporter</option>
+                                  <option value="3">Mod</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="Sex">Giới tính</label>
+                                <select type="text" class="form-control" id="Sex" placeholder="Sex">
+                                  <option value="Nam">Nam</option>
+                                  <option value="Nữ">Nữ</option>
+                                </select>
                               </div>
                             </form>
                           </div>
@@ -752,5 +786,20 @@
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
 </body>
+<script>
+  const fileInput = document.querySelector('input[id="avatar"]');
+  // listen for the change event so we can capture the file
+  fileInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      base64 = reader.result;
+      $('#img').val(base64);
+      document.getElementById('img').src = base64;
+    };
+    reader.readAsDataURL(file);
+  });
+
+</script>
 
 </html>
