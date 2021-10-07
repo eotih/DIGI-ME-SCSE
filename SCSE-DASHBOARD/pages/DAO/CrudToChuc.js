@@ -71,9 +71,6 @@ async function getBankInfo() {
                     <div class="card border-primary border pricing-card-body">
                         <div class="text-center pricing-card-head">
                             <img src="${posts.ImageQR}" class="img-lg rounded-circle mb-3" />
-                            <tr>
-                            <td>${BankName}</td>
-                            </tr>
                         </div>
                         <div class="wrapper">
                         <button onclick="return getData(${posts.ID})" class="btn btn-outline-primary btn-block">Chỉnh sửa</button>
@@ -81,6 +78,7 @@ async function getBankInfo() {
                     </div>
                 </div>
                 `;
+                
             });
             document.getElementById("moi").innerHTML = html.join('');
 

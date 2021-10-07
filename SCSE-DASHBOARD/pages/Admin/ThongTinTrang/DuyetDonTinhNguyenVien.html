@@ -812,7 +812,7 @@
           <div class="content-wrapper">
             <div class="row">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body" id="dtBasicExample">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Form</button><br /><br />
                   <h4 class="card-title">Data table</h4>
                   <div class="row">
@@ -828,8 +828,10 @@
                               <th>Số điện thoại</th>
                               <th>Email</th>
                               <th>Địa chỉ</th>
-                              <th>Hoạt động đăng ký</th>
-                              <th>Lí do tham gia</th>
+                              <th>Chủ đề</th>
+                              <th>Nội dung</th>
+                              <th>Trạng thái</th>
+                              <th>Hành động</th>
                             </tr>
                           </thead>
                           <tbody class="tbody">
@@ -876,13 +878,20 @@
                                       <input type="text" class="form-control" id="Address" placeholder="Địa chỉ">
                                     </div>
                                     <div class="form-group">
-                                      <label for="Project">Hoạt động đăng ký</label>
-                                      <input type="text" class="form-control" id="Project" placeholder="Hoạt động đăng ký">
+                                      <label for="Project">Chủ đề</label>
+                                      <input type="text" class="form-control" id="Project" placeholder="Chủ đề">
                                     </div>
                                     <div class="form-group">
-                                      <label for="Purpose">Lí do tham gia</label>
-                                      <input type="text" class="form-control" id="Purpose" placeholder="Lí do tham gia">
+                                      <label for="Purpose">Nội dung</label>
+                                      <input type="text" class="form-control" id="Purpose" placeholder="Nội dung">
                                     </div>
+                                    <label for="IDState">Trạng thái</label>
+                                <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
+                                  <option value="1">Pending</option>
+                                  <option value="2">Approved</option>
+                                  <option value="3">NotApproved</option>
+                                  <option value="4">Deleted</option>
+                                </select>
                                   </form>
                             </div>
                             <div class="modal-footer">
@@ -954,5 +963,29 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
+    <script>
+      const WEB_API = "http://localhost:59360/";
+
+window.addEventListener('load', getData())
+function getData() {
+    fetch(WEB_API + "Api/Interface/ListCategory")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            var Category = document.createElement("option");
+            Category.innerHTML = "Vui lòng chọn";
+            Category.value = 0;
+            document.getElementById("IDState").appendChild(IDState);
+            for (var i = 0; i < response.length; i++) {
+                var ele = document.createElement("option");
+                ele.value = response[i].IDState;
+                ele.innerHTML = response[i].StateName;
+                document.getElementById("IDState").appendChild(ele);
+            }
+        })
+
+}
+    </script>
   </body>
 </html>
