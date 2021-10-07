@@ -145,7 +145,7 @@ function clearTextBox() {
     $('#IDUser').val("");
     $('#UserName').val("");
     $('#Password').val("");
-    $('#img').val("");
+    document.getElementById('img').src="";
     $('#FullName').val("");
     $('#Email').val("");
     $('#Phone').val("");
