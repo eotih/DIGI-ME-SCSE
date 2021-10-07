@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/"; 
+const WEB_API = "http://localhost:59360/";
 window.addEventListener('load', loadData)
 
 async function loadData() {
@@ -20,7 +20,7 @@ async function loadData() {
                     <td>${Address}</td>
                     <td>${Project}</td>
                     <td>${Purpose}</td>
-                    <td<${IDState}</td>
+                    <td>${IDState}</td>
                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
                     <button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button><td>
                     </tr>`
