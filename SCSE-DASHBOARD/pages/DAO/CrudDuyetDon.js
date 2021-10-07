@@ -18,7 +18,7 @@ async function loadData() {
                 if(IDState === 3){
                     IDState = 'NotApproved'
                 }
-                else{
+                if(IDState === 4){
                     IDState = 'Deleted'
                 }
                 return `<tr>
@@ -62,6 +62,31 @@ async function getData(ID) {
     $('#add').hide();
     $('#edit').show();
 }
+(function($) {
+    'use strict';
+    $(function() {
+      $('#order-listing').DataTable({
+        "aLengthMenu": [
+          [5, 10, 15, -1],
+          [5, 10, 15, "All"]
+        ],
+        "iDisplayLength": 10,
+        "language": {
+          search: ""
+        }
+      });
+      $('#order-listing').each(function() {
+        var datatable = $(this);
+        // SEARCH - Add the placeholder for Search and Turn this into in-line form control
+        var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+        search_input.attr('placeholder', 'Search');
+        search_input.removeClass('form-control-sm');
+        // LENGTH - Inline-Form control
+        var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+        length_sel.removeClass('form-control-sm');
+      });
+    });
+  })(jQuery);
 async function addData() {
     var $data = {
         FirstName: $('#FirstName').val(),
@@ -72,6 +97,7 @@ async function addData() {
         Address: $('#Address').val(),
         Project: $('#Project').val(),
         Purpose: $('#Purpose').val(),
+        IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',
@@ -97,6 +123,7 @@ async function updateData() {
         ID: $('#ID').val(),
         IDState: $('#IDState').val(),
     };
+    debugger
     fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',
         body: JSON.stringify(data),
@@ -142,6 +169,7 @@ function clearTextBox() {
     $('#Address').val("");
     $('#Project').val("");
     $('#Purpose').val("");
+    $('#IDState').val("");
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();
