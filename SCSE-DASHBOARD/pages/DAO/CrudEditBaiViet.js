@@ -64,6 +64,7 @@ async function updateData() {
         Image: $('#img').val(),
         Author: $('#Author').val(),
     }
+    console.log(dulieu)
     fetch(WEB_API + "Management/ThemBaiViet", {
         method: 'POST',
         body: JSON.stringify(dulieu),

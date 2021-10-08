@@ -124,7 +124,7 @@ async function updateData() {
         ID: $('#ID').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(WEB_API + "Management/DangKiThamGia", {
+    fetch(url + "Management/DangKiThamGia", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
