@@ -25,7 +25,7 @@
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
-    <!-- <script type="text/javascript" src="../../DAO/CrudBaiViet.js"></script> -->
+    <script type="text/javascript" src="../../DAO/CrudEditBaiViet.js"></script>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
@@ -432,8 +432,7 @@
                     </li>
                     <li class="nav-item nav-category">Cấu hình Tổ chức</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../ToChuc/index.html"
-                            aria-expanded="false" aria-controls="ui-basic">
+                        <a class="nav-link" href="../ToChuc/index.html" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
                             <span class="menu-title">Quản lý tổ chức</span>
                             <i class="menu-arrow"></i>
@@ -441,15 +440,15 @@
                     </li>
                     <li class="nav-item nav-category">Quản lý thành viên</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../QuanLyTaiKhoan.html"
-                            aria-expanded="false" aria-controls="ui-basic">
+                        <a class="nav-link" href="../QuanLyTaiKhoan.html" aria-expanded="false"
+                            aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
                             <span class="menu-title">Quản lý tài khoản</span>
                             <i class="menu-arrow"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="../BaiDang/QuanLyBaiDang.html" aria-expanded="false"
+                        <a class="nav-link" href="../BaiDang/QuanLyBaiDang.html" aria-expanded="false"
                             aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-view-list"></i>
                             <span class="menu-title">Quản lý bài viết</span>
@@ -498,6 +497,9 @@
                                                     <label for="Title">Tiêu đề</label>
                                                     <input type="text" class="form-control" id="Title"
                                                         placeholder="Nhập tiêu đề bài viết">
+                                                        <input type="text" class="form-control" id="IDPost"
+                                                        hidden="true">
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Title">Nội dung</label>
@@ -509,48 +511,18 @@
                                         <div class="col-lg-4">
                                             <form class="forms-sample">
                                                 <div class="form-group">
-                                                    <label for="IDCat">Thể loại</label>
-                                                    <!-- <div class="dropdown">
-                                                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuSizeButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                          Dropdown
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2" style="">
-                                                          <h6 class="dropdown-header">Settings</h6>
-                                                          <a class="dropdown-item" href="#">Action</a>
-                                                          <a class="dropdown-item" href="#">Another action</a>
-                                                          <a class="dropdown-item" href="#">Something else here</a>
-                                                          <div class="dropdown-divider"></div>
-                                                          <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                      </div> -->
-                                                    <input type="text" class="form-control" id="IDCat"
-                                                        placeholder="ID thể loại">
+                                                    <label for="Phone">Chọn thể loại</label>
+                                                    <select class="form-select" id="Category">
+                                                        <option value="1">Tin Tức</option>
+                                                        <option value="2">Dự Án</option>
+                                                        <option value="3">Hoạt động thiện nguyện</option>
+                                                    </select>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label for="Name">Thêm hình ảnh</label>
-                                                    <input type="text" class="form-control" id="Phone"
-                                                        placeholder="Team front end nhớ làm" disabled="disabled">
-                                                    <!-- <div class="file-upload-wrapper">
-                                                        <div id="fileuploader">
-                                                            <div class="ajax-upload-dragdrop"
-                                                                style="vertical-align: top; width: 400px;">
-                                                                <div class="ajax-file-upload"
-                                                                    style="position: relative; overflow: hidden; cursor: default;">
-                                                                    Upload
-                                                                    <form method="POST" action="YOUR_FILE_UPLOAD_URL"
-                                                                        enctype="multipart/form-data"
-                                                                        style="margin: 0px; padding: 0px;"><input
-                                                                            type="file"
-                                                                            id="ajax-upload-id-1631527539738"
-                                                                            name="myfile[]" accept="*" multiple=""
-                                                                            style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;">
-                                                                    </form>
-                                                                </div><span><b> Drag &amp; Drop Files</b></span>
-                                                            </div>
-                                                            <div></div>
-                                                        </div>
-                                                        <div class="ajax-file-upload-container"></div>
-                                                    </div> -->
+                                                    <input type="file" name="" id="fileId">
+                                                    <img id="img" style="width: 200px; height:300px" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Author">Tác giả</label>
@@ -559,13 +531,18 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Phone">Công khai hay không</label>
-                                                    <input type="text" class="form-control" id="Phone"
-                                                        placeholder="Team front end nhớ làm" disabled="disabled">
+                                                    <select class="form-control" id="State">
+                                                        <option value="1">Có</option>
+                                                        <option value="2">Không</option>
+                                                    </select>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" id="edit" onclick="updateData();"
                                                         class="btn btn-success">Sửa bài viết</button>
+                                                    <button type="button" id="delete" onclick="deleteTamThoi();"
+                                                        class="btn btn-danger">Xóa bài viết</button>
                                                 </div>
+
                                             </form>
                                         </div>
                                     </div>
@@ -592,15 +569,7 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>>
-    <!-- <script>
-        $('#summernote').summernote({
-            placeholder: 'Hello Bootstrap 4',
-            tabsize: 2,
-            height: 500,
-            lang: 'vi-VN'
-        });
 
-    </script> -->
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="../../../vendors/js/vendor.bundle.base.js"></script>
@@ -618,59 +587,21 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
-    <!-- End custom js for this page-->
+    <script>
+        const fileInput = document.querySelector('input[id="fileId"]');
+        // listen for the change event so we can capture the file
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                base64 = reader.result;
+                $('#img').val(base64);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+    </script>
 </body>
 
 </html>
-<script>
-    $(function getData() {
-    fetch("http://localhost:59360/Management/GetByIdBaiViet?idposts=" + localStorage.getItem("post"))
-        .then(function (response) {
-            return response.json();
-        })
-        
-        .then(function (response) {
-            console.log(response)
-            const { IDPost, IDCat, Title, Slug, Details, Image, Video, Author, Status } = response;
-            $('#IDPost').val(IDPost);
-            $('#IDCat').val(IDCat);
-            $('#Title').val(Title);
-            $('#Slug').val(Slug);
-            $('#summernote').summernote('code', Details);;
-            $('#Video').val(Video);
-            $('#Author').val(Author);
-            $('#Status').val(Status);
-        })
-})
-function updateData() {
-    var dulieu = {
-        IDPost: localStorage.getItem("post"),
-        IDCat: $('#IDCat').val(),
-        Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
-        Details: $('#summernote').summernote('code'),
-        Image: $('#Image').val(),
-        Video: $('#Video').val(),
-        Author: $('#Author').val(),
-        Status: $('#Status').val()
-    };
-    fetch("http://localhost:59360/Management/ThemBaiViet", {
-        method: 'POST',
-        body: JSON.stringify(dulieu),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.href="./QuanLyBaiDang.html";
-            }
-            else {
-                alert('Data not update')
-            }
-        })
-}
-</script>
