@@ -1,36 +1,36 @@
 const BASE_URL = "http://localhost:59360/";
-window.addEventListener('load', loadData)
-async function loadData() {
-    fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            var html = response.map(function (response) {
-                let { IDUser, FullName, Email, StateName, RoleName, Image } = response;
+// window.addEventListener('load', loadData)
+// async function loadData() {
+//     fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (response) {
+//             var html = response.map(function (response) {
+//                 let { IDUser, FullName, Email, StateName, RoleName, Image } = response;
                 
-                return `<tr>
-                    <td>${IDUser}</td>
-                    <td>${FullName}</td>
-                    <td>${Email}</td>
-                    <td>${StateName}</td>
-                    <td>${RoleName}</td>
-                    <td><img src="${Image}"></td>
-                    <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
-                    </tr>`;
-            })
-            $('#tbody').html(html);
-            var checkbox = document.querySelector("input[name=checkbox]");
-            var userID = checkbox.getAttribute('data-id');
-            checkbox.addEventListener('change', function () {
-                if (this.checked) {
-                    updateLocked(1, userID)
-                } else {
-                    updateLocked(0, userID)
-                }
-            });
-        })
-}
+//                 return `<tr>
+//                     <td>${IDUser}</td>
+//                     <td>${FullName}</td>
+//                     <td>${Email}</td>
+//                     <td>${StateName}</td>
+//                     <td>${RoleName}</td>
+//                     <td><img src="${Image}"></td>
+//                     <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
+//                     </tr>`;
+//             })
+//             $('#tbody').html(html);
+//             var checkbox = document.querySelector("input[name=checkbox]");
+//             var userID = checkbox.getAttribute('data-id');
+//             checkbox.addEventListener('change', function () {
+//                 if (this.checked) {
+//                     updateLocked(1, userID)
+//                 } else {
+//                     updateLocked(0, userID)
+//                 }
+//             });
+//         })
+// }
 async function updateLocked(toggleVal, userID) {
     let data = {
         IDUser: userID,
@@ -114,12 +114,12 @@ async function updateData() {
         IDUser: $('#IDUser').val(),
         Username: $('#UserName').val(),
         Password: $('#Password').val(),
-        Image: $('#img').val(),
+        Image: document.getElementById('img').src,
         FullName: $('#FullName').val(),
         Email: $('#Email').val(),
         Phone: $('#Phone').val(),
         IDState: $('#IDState').val(),
-        IDRole: $('#IDRole').val(),
+        IDRole: $('#IDRole').text(),
         Sex: $('#Sex').val(),
     };
     fetch(BASE_URL + "/User/ThemTaiKhoan", {
@@ -157,3 +157,45 @@ function clearTextBox() {
     $('#edit').hide();
 }
 
+(function ($) {
+    const fields = [
+        { name: 'IDUser', title: 'ID #' },
+        { name: 'FullName', title: 'Họ và tên' },
+        { name: 'Email', title: 'Email' },
+        { name: 'StateName', title: 'Trạng thái' },
+        { name: 'RoleName', title: 'Quyền' },
+        { name: 'Image', title: 'Ảnh đại diện' },
+        { name: 'Action', title: 'Hành động' }
+    ]
+    'use strict';
+    $(function () {
+        fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                var result = response.filter(v => v.StateName !== "Deleted")
+                var html = result.map(function (response) {
+                    let { IDUser, FullName, Email, StateName, RoleName, Image} = response;
+                    return `<tr>
+                    <td>${IDUser}</td>
+                    <td>${FullName}</td>
+                    <td>${Email}</td>
+                    <td>${StateName}</td>
+                    <td>${RoleName}</td>
+                    <td><img src='${Image}'/></td>
+                    <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
+                    </tr>`;
+                })
+                $('#tbody').html(html);
+                $(document).ready(function () {
+                    $('#dataTable').DataTable({
+                        "order": [[0, "desc"]]
+                    });
+                });
+            })
+            .catch(error => {
+                throw error;
+            })
+    });
+})(jQuery);

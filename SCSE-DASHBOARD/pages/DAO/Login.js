@@ -15,14 +15,16 @@ function loginAdmin() {
         .then((result) => {
             if (result.Status === 'Success') {
                 var resultInfo = parseJwt(result.Message)
-                if (resultInfo.nameid[5] === '2') {
+                console.log(resultInfo);
+                if (resultInfo.nameid[6] === '2') {
                     localStorage.setItem('token', result.Message);
-                    if (resultInfo.nameid[1] === "Admin") {
+                    if (resultInfo.nameid[2] === "Admin") {
                         alert('Đăng nhập thành công !!!');
                         window.location.href = "./index.html"
                     }
                     else
-                        window.location.href = "../QuanLy/DangBai/Index.html"
+                        alert('Đăng nhập thành công !!!');
+                    // window.location.href = "../QuanLy/DangBai/Index.html"
                 }
                 else {
                     alert("Vui lòng liên hệ Admin để cấp quyền truy cập")
@@ -33,6 +35,7 @@ function loginAdmin() {
             }
         })
 };
+
 function parseJwt(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

@@ -22,7 +22,11 @@
   <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../../images/favicon.png" />
+<<<<<<< HEAD
   <script src="../../DAO/CrudTaiKhoan.js"></script>
+=======
+  <link rel="stylesheet" href="../../DAO/CrudDuyetDon.js">
+>>>>>>> 9323a3d519c0a45684cfe48fc7d07b8eff47de21
 </head>
 
 <body>
@@ -640,162 +644,86 @@
                   <div class="table-responsive">
                     <table id="order-listing" class="table">
                       <thead>
-                        <tr>
-                            <th>Order #</th>
-                            <th>Purchased On</th>
-                            <th>Customer</th>
-                            <th>Ship to</th>
-                            <th>Base Price</th>
-                            <th>Purchased Price</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                        <th>ID #</th>
+                        <th>Tên</th>
+                        <th>Họ</th>
+                        <th>Ngày sinh</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Chủ đề</th>
+                        <th>Nội dung</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2012/08/03</td>
-                            <td>Edinburgh</td>
-                            <td>New York</td>
-                            <td>$1500</td>
-                            <td>$3200</td>
-                            <td>
-                              <label class="badge badge-info">On hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2015/04/01</td>
-                            <td>Doe</td>
-                            <td>Brazil</td>
-                            <td>$4500</td>
-                            <td>$7500</td>
-                            <td>
-                              <label class="badge badge-danger">Pending</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2010/11/21</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2016/01/12</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2017/12/28</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>2000/10/30</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-info">On-hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>2011/03/11</td>
-                            <td>Cris</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>2015/06/25</td>
-                            <td>Tim</td>
-                            <td>Italy</td>
-                            <td>$6300</td>
-                            <td>$2100</td>
-                            <td>
-                              <label class="badge badge-info">On-hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>2016/11/12</td>
-                            <td>John</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>2003/12/26</td>
-                            <td>Tom</td>
-                            <td>Germany</td>
-                            <td>$1100</td>
-                            <td>$2300</td>
-                            <td>
-                              <label class="badge badge-danger">Pending</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
+                      <tbody class="tbody">
                       </tbody>
                     </table>
                   </div>
-                </div>
+                  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="forms-sample">
+                          <div class="form-group">
+                            <label for="ID">ID</label>
+                            <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
+                          </div>
+                          <div class="form-group">
+                            <label for="FirstName">Tên</label>
+                            <input type="text" class="form-control" id="FirstName" placeholder="Tên">
+                          </div>
+                          <div class="form-group">
+                            <label for="LastName">Họ</label>
+                            <input type="text" class="form-control" id="LastName" placeholder="Họ">
+                          </div>
+                          <div class="form-group">
+                            <label for="DOB">Ngày Sinh</label>
+                            <input type="date" value="" class="form-control" id="DOB"
+                              placeholder="Ngày Sinh">
+                          </div>
+                          <div class="form-group">
+                            <label for="Phone">Số điện thoại</label>
+                            <input type="text" class="form-control" id="Phone" placeholder="Số điện thoại">
+                          </div>
+                          <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" class="form-control" id="Email" placeholder="Email">
+                          </div>
+                          <div class="form-group">
+                            <label for="Address">Địa chỉ</label>
+                            <input type="text" class="form-control" id="Address" placeholder="Địa chỉ">
+                          </div>
+                          <div class="form-group">
+                            <label for="Project">Chủ đề</label>
+                            <input type="text" class="form-control" id="Project" placeholder="Chủ đề">
+                          </div>
+                          <div class="form-group">
+                            <label for="Purpose">Nội dung</label>
+                            <input type="text" class="form-control" id="Purpose" placeholder="Nội dung">
+                          </div>
+                          <label for="IDState">Trạng thái</label>
+                          <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
+                            <option value="1">Pending</option>
+                            <option value="2">Approved</option>
+                            <option value="3">NotApproved</option>
+                            <option value="4">Deleted</option>
+                          </select>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
+                        <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                      </div>
               </div>
             </div>
           </div>

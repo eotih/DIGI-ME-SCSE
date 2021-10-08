@@ -647,108 +647,215 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="border-bottom text-center pb-4">
-                                                <img src="../../../../images/faces/face12.jpg" alt="profile"
+                                                <img src="../../../../images/faces/face12.jpg" id="avatar" alt="profile"
                                                     class="img-lg rounded-circle mb-3" />
                                                 <div class="mb-3">
-                                                    <h3>David Grey. H</h3>
+                                                    <h3 id="Full-Name">David Grey. H</h3>
                                                 </div>
-                                                <p class="w-75 mx-auto mb-3">Bureau Oberhaeuser is a design bureau
-                                                    focused on Information- and Interface Design. </p>
+
                                             </div>
                                             <div class="py-4">
                                                 <p class="clearfix">
                                                     <span class="float-left">
-                                                        Vị trí
+                                                        Username:
                                                     </span>
-                                                    <span class="float-right text-muted">
-                                                        Admin
-                                                    </span>
-                                                </p>
-                                                <p class="clearfix">
-                                                    <span class="float-left">
-                                                        Giới Tính
-                                                    </span>
-                                                    <span class="float-right text-muted">
-                                                        Nam
+                                                    <span class="float-right text-muted" id="user-name">
+
                                                     </span>
                                                 </p>
                                                 <p class="clearfix">
                                                     <span class="float-left">
-                                                        Phone
+                                                        Vị trí:
                                                     </span>
-                                                    <span class="float-right text-muted">
-                                                        006 3435 22
+                                                    <span class="float-right text-muted" id="IDRole"
+                                                        style="visibility: hidden;">
+
+                                                    </span>
+                                                    <span class="float-right text-muted" id="RoleName">
+
                                                     </span>
                                                 </p>
                                                 <p class="clearfix">
                                                     <span class="float-left">
-                                                        Mail
+                                                        Giới Tính:
                                                     </span>
-                                                    <span class="float-right text-muted">
-                                                        Jacod@testmail.com
+                                                    <span class="float-right text-muted" id="Sexs">
+
+                                                    </span>
+                                                </p>
+                                                <p class="clearfix">
+                                                    <span class="float-left">
+                                                        Phone:
+                                                    </span>
+                                                    <span class="float-right text-muted" id="Phones">
+
+                                                    </span>
+                                                </p>
+                                                <p class="clearfix">
+                                                    <span class="float-left">
+                                                        Mail:
+                                                    </span>
+                                                    <span class="float-right text-muted" id="Mail">
+
                                                     </span>
                                                 </p>
                                             </div>
+                                            <button type="button" class="btn btn-primary btn-block mb-2" data-toggle="modal"
+                                                data-target="#exampleModal-2" onclick="clearTextBox();">Thay đổi mật
+                                                khẩu</button>
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h4 class="card-title">Horizontal Form</h4>
+                                                    <h4 class="card-title">Sửa thông tin cá nhân</h4>
                                                     <p class="card-description">
-                                                        Horizontal form layout
+                                                        Thông tin cá nhân
                                                     </p>
                                                     <form class="forms-sample">
                                                         <div class="form-group row">
-                                                            <label for="exampleInputUsername2"
+                                                            <label for="Avatar" class="col-sm-3 col-form-label">Ảnh đại
+                                                                diện</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="file" class="form-control" id="Image"
+                                                                    placeholder="Avatar">
+                                                                <img src="" id="img" style="width: 300px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="Fullname" class="col-sm-3 col-form-label">Họ và
+                                                                tên</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="FullName"
+                                                                    placeholder="Fullname">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="Sex" class="col-sm-3 col-form-label">Giới
+                                                                tính</label>
+                                                            <div class="col-sm-9">
+                                                                <select type="text" class="form-control" id="Sex"
+                                                                    placeholder="Sex">
+                                                                    <option value="none">Chọn thông tin...</option>
+                                                                    <option value="Nam">Nam</option>
+                                                                    <option value="Nữ">Nữ</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="Email"
                                                                 class="col-sm-3 col-form-label">Email</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    id="exampleInputUsername2" placeholder="Username">
+                                                                <input type="email" class="form-control" id="Email"
+                                                                    placeholder="Email">
                                                             </div>
                                                         </div>
+
                                                         <div class="form-group row">
-                                                            <label for="exampleInputEmail2"
-                                                                class="col-sm-3 col-form-label">Email</label>
+                                                            <label for="Phone" class="col-sm-3 col-form-label">Số điện
+                                                                thoại</label>
                                                             <div class="col-sm-9">
-                                                                <input type="email" class="form-control"
-                                                                    id="exampleInputEmail2" placeholder="Email">
+                                                                <input type="text" class="form-control" id="Phone"
+                                                                    placeholder="Mobile number">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="exampleInputMobile"
-                                                                class="col-sm-3 col-form-label">Mobile</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                    id="exampleInputMobile" placeholder="Mobile number">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="exampleInputPassword2"
+                                                            <label for="Password"
                                                                 class="col-sm-3 col-form-label">Password</label>
                                                             <div class="col-sm-9">
                                                                 <input type="password" class="form-control"
-                                                                    id="exampleInputPassword2" placeholder="Password">
+                                                                    id="Password" placeholder="Verify Password">
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="exampleInputConfirmPassword2"
-                                                                class="col-sm-3 col-form-label">Re Password</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="password" class="form-control"
-                                                                    id="exampleInputConfirmPassword2"
+                                                        <button type="button" class="btn btn-primary me-2"
+                                                            onclick="updateData();">Submit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel-2">Modal title
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="forms-sample">
+                                                            <div class="form-group">
+                                                                <label for="IDUser">ID</label>
+                                                                <input type="text" class="form-control" id="IDUser"
+                                                                    placeholder="ID" disabled>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="UserName">UserName</label>
+                                                                <input type="text" class="form-control" id="UserName"
+                                                                    placeholder="UserName">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Password">Password</label>
+                                                                <input type="text" class="form-control" id="Password"
                                                                     placeholder="Password">
                                                             </div>
-                                                        </div>
-                                                        <div class="form-check form-check-flat form-check-primary">
-                                                            <label class="form-check-label">
-                                                                <input type="checkbox" class="form-check-input">
-                                                                Remember me
-                                                            </label>
-                                                        </div>
-                                                        <button type="submit"
-                                                            class="btn btn-primary me-2">Submit</button>
-                                                        <button class="btn btn-light">Cancel</button>
-                                                    </form>
+                                                            <div class="form-group">
+                                                                <label for="Avatar">Thêm ảnh đại diện</label>
+                                                                <input type="file" name="Avatar" id="avatar">
+                                                                <img src="" id="img" style="width: 300px;">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="FullName">Họ và tên</label>
+                                                                <input type="text" class="form-control" id="FullName"
+                                                                    placeholder="Họ Tên">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Phone">Số điện thoại</label>
+                                                                <input type="text" class="form-control" id="Phone"
+                                                                    placeholder="Phone">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Email">Email</label>
+                                                                <input type="email" class="form-control" id="Email"
+                                                                    placeholder="Email">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="IDState">Trạng thái</label>
+                                                                <select type="text" class="form-control" id="IDState"
+                                                                    placeholder="Trạng thái">
+                                                                    <option value="1">Pending</option>
+                                                                    <option value="2">Approved</option>
+                                                                    <option value="3">NotApproved</option>
+                                                                    <option value="4">Deleted</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="RoleName">Quyền</label>
+                                                                <select type="text" class="form-control" id="IDRole"
+                                                                    placeholder="Quyền">
+                                                                    <option value="1">Admin</option>
+                                                                    <option value="2">Supporter</option>
+                                                                    <option value="3">Mod</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Sex">Giới tính</label>
+                                                                <select type="text" class="form-control" id="Sex"
+                                                                    placeholder="Sex">
+                                                                    <option value="Nam">Nam</option>
+                                                                    <option value="Nữ">Nữ</option>
+                                                                </select>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" id="edit" onclick="updateData();"
+                                                            class="btn btn-success">Sửa</button>
+                                                        <button type="button" class="btn btn-light"
+                                                            data-dismiss="modal">Hủy</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -803,21 +910,22 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
+    <script>
+        const fileInput = document.querySelector('input[id="Image"]');
+        // listen for the change event so we can capture the file
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                base64 = reader.result;
+                $('#img').val(base64);
+                document.getElementById('img').src = base64;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 </body>
-<script>
-    const fileInput = document.querySelector('input[id="avatar"]');
-    // listen for the change event so we can capture the file
-    fileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            base64 = reader.result;
-            $('#img').val(base64);
-            document.getElementById('img').src = base64;
-        };
-        reader.readAsDataURL(file);
-    });
-
-</script>
 
 </html>

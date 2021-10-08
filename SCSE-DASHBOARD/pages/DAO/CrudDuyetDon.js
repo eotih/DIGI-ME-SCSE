@@ -1,27 +1,40 @@
-const WEB_API = "http://localhost:59360/";
-window.addEventListener('load', loadData)
-
-async function loadData() {
-    fetch(WEB_API + "/Management/XemDanhSachDangKy")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            var html = response.map(function (response) {
-                let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
-                if(IDState === 1){
-                    IDState = 'Pending'
-                }
-                if(IDState === 2){
-                    IDState = 'Approved'
-                }
-                if(IDState === 3){
-                    IDState = 'NotApproved'
-                }
-                if(IDState === 4){
-                    IDState = 'Deleted'
-                }
-                return `<tr>
+const url = "http://localhost:59360/";
+(function ($) {
+    const fields = [
+        { name: 'ID', title: 'ID' },
+        { name: 'FirstName', title: 'FirstName' },
+        { name: 'LastName', title: 'LastName' },
+        { name: 'DOB', title: 'DOB' },
+        { name: 'Phone', title: 'Phone' },
+        { name: 'Email', title: 'Email' },
+        { name: 'Address', title: 'Address' },
+        { name: 'Project', title: 'Project' },
+        { name: 'Purpose', title: 'Purpose' },
+        { name: 'IDState', title: 'IDState' },
+    ]
+    'use strict';
+    $(function () {
+        fetch(url + "/Management/XemDanhSachDangKy")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                var result = response.filter(v => v.IDState !== 4)
+                var html = result.map(function (response) {
+                    let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
+                    if (IDState === 1) {
+                        IDState = '<div class="badge badge-opacity-warning">Pending</div>'
+                    }
+                    if (IDState === 2) {
+                        IDState = '<div class="badge badge-opacity-success">Approved</div>'
+                    }
+                    if (IDState === 3) {
+                        IDState = '<div class="badge badge-opacity-danger">NotApproved</div>'
+                    }
+                    if (IDState === 4) {
+                        IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
+                    }
+                    return `<tr>
                     <td>${ID}</td>
                     <td>${FirstName}</td>
                     <td>${LastName}</td>
@@ -33,15 +46,29 @@ async function loadData() {
                     <td>${Purpose}</td>
                     <td>${IDState}</td>
                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
-                    <button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button><td>
-                    </tr>`
+                   <button onclick="Delete(${ID})" class="btn btn-danger">Delete</button>
+
+                    </tr>`;
+                })
+                $('#tbody').html(html);
+                $(document).ready(function () {
+                    $('#dataTable').DataTable({
+                        "order": [[0, "desc"]]
+                    });
+                });
             })
-            $('.tbody').html(html);
-            //Thiếu IDState
-        })
-}
+            .catch(error => {
+                throw error;
+            })
+    });
+})(jQuery);
+function  Delete(ID){
+    $('#abc').val(ID)
+    $('#Delete').modal('show');
+  }
+
 async function getData(ID) {
-    fetch(WEB_API + "/Management/GetByIdNguoiDangKy?id=" + ID)
+    fetch(url + "/Management/GetByIdNguoiDangKy?id=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -73,7 +100,7 @@ async function addData() {
         Project: $('#Project').val(),
         Purpose: $('#Purpose').val()
     };
-    fetch(WEB_API + "Management/DangKiThamGia", {
+    fetch(url + "Management/DangKiThamGia", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -116,8 +143,9 @@ async function updateData() {
             }
         })
 }
-async function deleteData(ID) {
-    fetch(WEB_API + "Management/XoaNguoiDangKy?id=" + ID, {
+async function deleteData() {
+    var ID = $('#abc').val()
+    fetch(url + "Management/XoaNguoiDangKy?id=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()
