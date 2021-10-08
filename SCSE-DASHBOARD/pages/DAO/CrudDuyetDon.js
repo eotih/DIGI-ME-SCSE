@@ -23,16 +23,16 @@ const url = "http://localhost:59360/";
                 var html = result.map(function (response) {
                     let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
                     if (IDState === 1) {
-                        IDState = 'Pending'
+                        IDState = '<div class="badge badge-opacity-warning">Pending</div>'
                     }
                     if (IDState === 2) {
-                        IDState = 'Approved'
+                        IDState = '<div class="badge badge-opacity-success">Approved</div>'
                     }
                     if (IDState === 3) {
-                        IDState = 'NotApproved'
+                        IDState = '<div class="badge badge-opacity-danger">NotApproved</div>'
                     }
                     if (IDState === 4) {
-                        IDState = 'Deleted'
+                        IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
                     return `<tr>
                     <td>${ID}</td>
@@ -46,7 +46,8 @@ const url = "http://localhost:59360/";
                     <td>${Purpose}</td>
                     <td>${IDState}</td>
                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
-                    <button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button></td>
+                   <button onclick="Delete(${ID})" class="btn btn-danger">Delete</button>
+
                     </tr>`;
                 })
                 $('#tbody').html(html);
@@ -61,14 +62,69 @@ const url = "http://localhost:59360/";
             })
     });
 })(jQuery);
+function  Delete(ID){
+    $('#abc').val(ID)
+    $('#Delete').modal('show');
+  }
 
-
-function deleteTamThoi(ID) {
-    const data = {
-        IDPost: ID,
-        IDState: 4,
-    }
-    fetch(url + "/User/ThemTaiKhoan", {
+async function getData(ID) {
+    fetch(url + "/Management/GetByIdNguoiDangKy?id=" + ID)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            const { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose } = response;
+            $('#ID').val(ID);
+            $('#FirstName').val(FirstName);
+            $('#LastName').val(LastName);
+            $('#DOB').val(DOB);
+            $('#Phone').val(Phone);
+            $('#Email').val(Email);
+            $('#Address').val(Address);
+            $('#Project').val(Project);
+            $('#Purpose').val(Purpose);
+            $('#Purpose').val(Purpose);
+        })
+    $('#exampleModal-2').modal('show');
+    $('#add').hide();
+    $('#edit').show();
+}
+async function addData() {
+    var $data = {
+        FirstName: $('#FirstName').val(),
+        LastName: $('#LastName').val(),
+        DOB: $('#DOB').val(),
+        Phone: $('#Phone').val(),
+        Email: $('#Email').val(),
+        Address: $('#Address').val(),
+        Project: $('#Project').val(),
+        Purpose: $('#Purpose').val()
+    };
+    fetch(url + "Management/DangKiThamGia", {
+        method: 'POST',
+        body: JSON.stringify($data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Success') {
+                alert('Thêm Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not insert')
+            }
+        })
+}
+async function updateData() {
+    var data = {
+        ID: $('#ID').val(),
+        IDState: $('#IDState').val(),
+    };
+    fetch(WEB_API + "Management/DangKiThamGia", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -87,113 +143,9 @@ function deleteTamThoi(ID) {
             }
         })
 }
-async function addData() {
-    var dulieu = {
-        IDCat: $('#IDCat').val(),
-        Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
-        Details: $('#Details').val(),
-        Image: $('#Image').val(),
-        Video: $('#Video').val(),
-        Author: $('#Author').val(),
-        Status: $('#Status').val()
-    };
-    fetch(url + "/Management/ThemBaiViet", {
-        method: 'POST',
-        body: JSON.stringify(dulieu),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Success') {
-                alert('Thêm Thành Công')
-                window.location.href = "./QuanLyBaiDang.html";
-            }
-            else {
-                alert('Data not insert')
-            }
-        })
-}
-
-async function updateData() {
-    var dulieu = {
-        IDPost: $('$IDPost').val(),
-        IDCat: $('#IDCat').val(),
-        Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
-        Details: $('#Details').val(),
-        Image: $('#Image').val(),
-        Video: $('#Video').val(),
-        Author: $('#Author').val(),
-        Status: $('#Status').val()
-    };
-    fetch(url + "/User/ThemTaiKhoan", {
-        method: 'POST',
-        body: JSON.stringify(dulieu),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
-        })
-}
-function getBaseUrl() {
-    var file = document.querySelector('input[type=file]')['files'][0];
-    var reader = new FileReader();
-    reader.onloadend = function () {
-        baseString = reader.result;
-        $('#Image').val(baseString);
-        document.getElementById("Image1").src = baseString;
-    };
-    reader.readAsDataURL(file);
-    //console.log(baseString)
-}
-async function autoUpdate(baseString) {
-    var $data = {
-        IDPost: $('£IDPost').val(),
-        IDCat: $('#IDCat').val(),
-        Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
-        Details: $('#Details').val(),
-        Image: baseString,
-        Video: $('#Video').val(),
-        Author: $('#Author').val(),
-        Status: $('#Status').val()
-    }
-    fetch(WEB_API + "Management/ThemBaiViet", {
-        method: 'POST',
-        body: JSON.stringify($data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
-        })
-
-}
-async function deleteData(IDPost) {
-    fetch(url + "/Management/XoaBaiViet?idposts=" + IDPost, {
+async function deleteData() {
+    var ID = $('#abc').val()
+    fetch(url + "Management/XoaNguoiDangKy?id=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()
@@ -209,16 +161,15 @@ async function deleteData(IDPost) {
         })
 }
 function clearTextBox() {
-    $('#IDPost').val("");
-    $('#IDCat').val("");
-    $('#Title').val("");
-    $('#Slug').val("");
-    $('#Details').val("");
-    $('#Image').val("");
-    $('#Video').val("");
-    $('#Author').val("");
-    $('#Status').val("");
-
+    $('#ID').val("");
+    $('#FirstName').val("");
+    $('#LastName').val("");
+    $('#DOB').val("");
+    $('#Phone').val("");
+    $('#Email').val("");
+    $('#Address').val("");
+    $('#Project').val("");
+    $('#Purpose').val("");
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();
