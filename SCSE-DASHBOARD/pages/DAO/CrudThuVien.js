@@ -58,7 +58,7 @@ async function updateData() {
         Slug: $('#Slug').val(),
         Image: $('#Image').val()
     };
-    fetch(url + "/Api/Interface/AddOrEditPhotoGallery", {
+    fetch(url + "api/UploadImage", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {

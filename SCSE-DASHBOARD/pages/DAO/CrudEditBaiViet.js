@@ -57,7 +57,7 @@ async function updateData() {
     var dulieu = {
         IDPost: $('#IDPost').val(),
         IDCat: $('#Category').val(),
-        IDState: $('#IDState').val(),
+        IDState: $('#State').val(),
         Title: $('#Title').val(),
         Slug: $('#Slug').val(),
         Details: $('#summernote').summernote('code'),

@@ -8,18 +8,19 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
+                console.log(response)
                 let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
-                if(IDState === 1){
-                    IDState = 'Pending'
+                if (IDState === 1) {
+                    IDState = '<div class="badge badge-opacity-warning">Pending</div>'
                 }
-                if(IDState === 2){
-                    IDState = 'Approved'
+                if (IDState === 2) {
+                    IDState = '<div class="badge badge-opacity-success">Approved</div>'
                 }
-                if(IDState === 3){
-                    IDState = 'NotApproved'
+                if (IDState === 3) {
+                    IDState = '<div class="badge badge-opacity-danger">NotApproved</div>'
                 }
-                if(IDState === 4){
-                    IDState = 'Deleted'
+                if (IDState === 4) {
+                    IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                 }
                 return `<tr>
                     <td>${ID}</td>
@@ -32,14 +33,20 @@ async function loadData() {
                     <td>${Project}</td>
                     <td>${Purpose}</td>
                     <td>${IDState}</td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
-                    <button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button><td>
-                    </tr>`
+                    <td><a href="./Edit.html?Slug=${ID}" class="btn btn-outline-primary">View</a></td>
+                    </tr>`;
             })
-            $('.tbody').html(html);
-            //Thiếu IDState
+            $('#tbody').html(html);
+            $(document).ready(function () {
+                $('#dataTable').DataTable({
+                    "order": [[0, "desc"]]
+                });
+            });
         })
-}
+        .catch(error => {
+            throw error;
+        })
+} (jQuery);
 async function getData(ID) {
     fetch(WEB_API + "/Management/GetByIdNguoiDangKy?id=" + ID)
         .then(function (response) {

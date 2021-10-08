@@ -1,15 +1,6 @@
 const WEB_API = "http://localhost:59360/";
 (function ($) {
-    const fields = [
-        { name: 'IDPost', title: 'IDPost' },
-        { name: 'IDCat', title: 'IDCat' },
-        { name: 'Title', title: 'Title' },
-        { name: 'Details', title: 'Details' },
-        { name: 'Image', title: 'Image' },
-        { name: 'Author', title: 'Author' },
-        { name: 'State', title: 'State' },
-        { name: 'Action', title: 'Action' }
-    ]
+
     'use strict';
     $(function () {
         fetch(WEB_API + "Management/XemDanhSachBaiViet")
@@ -19,25 +10,23 @@ const WEB_API = "http://localhost:59360/";
             .then(function (response) {
                 var result = response.filter(v => v.IDState !== 4)
                 var html = result.map(function (response) {
-                    let a = response.Details.substring(0, 200)
                     let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
                     if (IDState === 1) {
-                        IDState = 'Pending'
+                        IDState = '<div class="badge badge-opacity-warning">Pending</div>'
                     }
                     if (IDState === 2) {
-                        IDState = 'Approved'
+                        IDState = '<div class="badge badge-opacity-success">Approved</div>'
                     }
                     if (IDState === 3) {
-                        IDState = 'NotApproved'
+                        IDState = '<div class="badge badge-opacity-danger">NotApproved</div>'
                     }
                     if (IDState === 4) {
-                        IDState = 'Deleted'
+                        IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
                     return `<tr>
                     <td>${IDPost}</td>
                     <td>${IDCat}</td>
                     <td>${Title}</td>
-                    <td>${a}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
