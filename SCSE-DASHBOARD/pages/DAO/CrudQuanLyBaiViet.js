@@ -1,32 +1,39 @@
 const url = "http://localhost:59360/";
-
-// đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
-window.addEventListener('load', loadData)
-
-async function loadData() {
-    fetch(url + "Management/XemDanhSachBaiViet")
-        .then(function (response) {
-            return response.json();
-            // Sẽ trả dữ liệu về dạng json
-        })
-        .then(function (response) {
-            var result = response.filter(v => v.IDState !== 4)
-            var html = result.map(function (response) {
-                let a = response.Details.substring(0, 300)
-                let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
-                if(IDState === 1){
-                    IDState = 'Pending'
-                }
-                if(IDState === 2){
-                    IDState = 'Approved'
-                }
-                if(IDState === 3){
-                    IDState = 'NotApproved'
-                }
-                if(IDState === 4){
-                    IDState = 'Deleted'
-                }
-                return `<tr>
+(function ($) {
+    const fields = [
+        { name: 'IDPost', title: 'IDPost' },
+        { name: 'IDCat', title: 'IDCat' },
+        { name: 'Title', title: 'Title' },
+        { name: 'Details', title: 'Details' },
+        { name: 'Image', title: 'Image' },
+        { name: 'Author', title: 'Author' },
+        { name: 'State', title: 'State' },
+        { name: 'Action', title: 'Action' }
+    ]
+    'use strict';
+    $(function () {
+        fetch(url + "Management/XemDanhSachBaiViet")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                var result = response.filter(v => v.IDState !== 4)
+                var html = result.map(function (response) {
+                    let a = response.Details.substring(0, 200)
+                    let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
+                    if (IDState === 1) {
+                        IDState = 'Pending'
+                    }
+                    if (IDState === 2) {
+                        IDState = 'Approved'
+                    }
+                    if (IDState === 3) {
+                        IDState = 'NotApproved'
+                    }
+                    if (IDState === 4) {
+                        IDState = 'Deleted'
+                    }
+                    return `<tr>
                     <td>${IDPost}</td>
                     <td>${IDCat}</td>
                     <td>${Title}</td>
@@ -37,12 +44,21 @@ async function loadData() {
                     <td><a onclick="getData(${IDPost})" class="btn btn-outline-primary">View</a>
                     <button onclick="return deleteTamThoi(${IDPost})" class="btn btn-outline-primary">Delete</button></td>
                     </tr>`;
+                })
+                $('#tbody').html(html);
+                $(document).ready(function () {
+                    $('#dataTable').DataTable({
+                        "order": [[6, "desc"]]
+                    });
+                });
             })
+            .catch(error => {
+                throw error;
+            })
+    });
+})(jQuery);
 
-            // đây là hàm trả ra tbody
-            $('#tbody').html(html);
-        })
-}
+
 function deleteTamThoi(ID) {
     const data = {
         IDPost: ID,
