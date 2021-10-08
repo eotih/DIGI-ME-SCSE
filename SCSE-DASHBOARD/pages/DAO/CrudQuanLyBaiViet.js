@@ -1,6 +1,5 @@
 const WEB_API = "http://localhost:59360/";
 (function ($) {
-
     'use strict';
     $(function () {
         fetch(WEB_API + "Management/XemDanhSachBaiViet")

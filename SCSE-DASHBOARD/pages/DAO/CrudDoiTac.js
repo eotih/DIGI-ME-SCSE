@@ -19,14 +19,19 @@ async function loadData() {
                         <td>${Email}</td>
                         <td>${Address}</td>
                         <td>${Link}</td>
-                        <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
-                        <td><button onclick="return deleteData(${ID})" class="btn btn-outline-primary">Delete</button><td>
+                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">View</a>
+                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Delete</a></td>
                         </tr>`;
             })
             // đây là hàm trả ra tbody
-            $('.tbody').html(html);
+            $('#tbody').html(html);
+            $(document).ready(function () {
+                $('#dataTable').DataTable({
+                    "order": [[0, "desc"]]
+                });
+            });
         })
-}
+}(jQuery);
 async function getData(ID) {
     fetch(WEB_API + "Api/Interface/GetByIdPartner?ID=" + ID)
         .then(function (response) {
