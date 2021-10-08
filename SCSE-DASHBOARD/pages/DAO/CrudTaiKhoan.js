@@ -19,7 +19,7 @@ async function loadData() {
                     <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
                     </tr>`;
             })
-            $('.tbody').html(html);
+            $('#tbody').html(html);
             var checkbox = document.querySelector("input[name=checkbox]");
             var userID = checkbox.getAttribute('data-id');
             checkbox.addEventListener('change', function () {
