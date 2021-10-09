@@ -38,11 +38,11 @@ async function loadData() {
 
         })
 }(jQuery);
-async function addData(base64) {
+
+ function addData(base64) {
     let dulieu = {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
         Image: base64
     };
     fetch(url + "Api/Interface/AddOrEditPhotoGallery", {
@@ -64,11 +64,10 @@ async function addData(base64) {
             }
         })
 }
-function getBaseUrl() {
+function AlertAdd(){
     var file = document.querySelector('input[type=file]')['files'];
     for (let i = 0; i < file.length; i++) {
         (function (file) {
-            // var name = file.name; Đây là để lấy ra tên file nhập vào
             var reader = new FileReader();
             reader.onload = function () {
                 var text = reader.result;
@@ -77,8 +76,6 @@ function getBaseUrl() {
             reader.readAsDataURL(file);
         })(file[i]);
     }
-
-    //console.log(baseString)
 }
 async function updateData() {
     var dulieu = {
@@ -145,34 +142,3 @@ function clearTextBox() {
     $('#add').show();
     $('#edit').hide();
 }
-// (function ($) {
-//     'use strict';
-//     $(function () {
-//         fetch(url + "/Api/Interface/ListPhoto")
-//             .then(function (response) {
-//                 return response.json();
-//             })
-//             .then(function (response) {
-//                 // var result = response.filter(v => v.StateName !== "Deleted")
-//                 var html = response.map(function (response) {
-//                     let { ID, Title, IDCat, Image} = response;
-//                     return `<tr>
-//                     <td>${ID}</td>
-//                     <td>${Title}</td>
-//                     <td>${IDCat}</td>
-//                     <td><img src='${Image}'/></td>
-//                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
-//                     </tr>`;
-//                 })
-//                 $('#tbody').html(html);
-//                 $(document).ready(function () {
-//                     $('#dataTable').DataTable({
-//                         "order": [[0, "desc"]]
-//                     });
-//                 });
-//             })
-//             .catch(error => {
-//                 throw error;
-//             })
-//     });
-// })(jQuery);
