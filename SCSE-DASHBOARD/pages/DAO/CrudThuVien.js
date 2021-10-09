@@ -58,7 +58,6 @@ function getBaseUrl() {
             var reader = new FileReader();
             reader.onload = function () {
                 var text = reader.result;
-
                 addData(text)
             }
             reader.readAsDataURL(file);

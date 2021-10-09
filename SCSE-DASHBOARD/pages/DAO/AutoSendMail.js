@@ -1,10 +1,5 @@
 const WEB_API = "http://localhost:59360/";
-// var now = new Date();
-// var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 0, 0) - now;
-// if (millisTill10 < 0) {
-//     millisTill10 += 1; // it's after 10am, try 10am tomorrow.
-// }
-// setTimeout(function () {getQuantityPendingAccount() }, millisTill10);
+
 function getQuantityPendingAccount() {
     fetch(WEB_API + "User/GetByStateUser?IDState=1")
         .then(function (response) {

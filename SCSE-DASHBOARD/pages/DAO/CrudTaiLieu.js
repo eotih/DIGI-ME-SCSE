@@ -13,9 +13,9 @@ async function loadData() {
         .then(function (response) {
             var html = response.map(function (response) {
                 console.log(response)
-                const { ID, NamePDF, Iframe} = response;
+                const { ID, NamePDF, Iframe } = response;
                 // Sẽ return ra hàm tbody
-               
+
                 return `<tr>
         <td>${ID}</td>
         <td>${NamePDF}</td>
