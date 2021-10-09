@@ -1,5 +1,5 @@
 const url = "http://localhost:59360/";
-// đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
+//đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
@@ -9,22 +9,37 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, IDCat, Title, Slug, Image } = response;
+                let { ID, Title, IDCat, Image } = response;
+                if(IDCat===1){
+                    IDCat="Tin tức";
+                }
+                if(IDCat===2){
+                    IDCat="Dự án";
+                }
+                if(IDCat===3){
+                    IDCat="Hợp tác nghiên cứu";
+                }
                 // Sẽ return ra hàm tbody
                 return `<tr>
                     <td>${ID}</td>
-                    <td>${IDCat}</td>
                     <td>${Title}</td>
-                    <td>${Slug}</td>
-                    <td><img src='${Image}'/><td>
+                    <td>${IDCat}</td>
+                    <td><img src='${Image}'></td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
                     </tr>`;
             })
             // đây là hàm trả ra tbody
-            $('.tbody').html(html);
+            $('#tbody').html(html);
+            $(document).ready(function () {
+                $('#dataTable').DataTable({
+                    "order": [[0, "asc"]]
+                });
+            });
+
         })
-}
+}(jQuery);
 async function addData(base64) {
-    var dulieu = {
+    let dulieu = {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
         Slug: $('#Slug').val(),
@@ -49,7 +64,6 @@ async function addData(base64) {
             }
         })
 }
-
 function getBaseUrl() {
     var file = document.querySelector('input[type=file]')['files'];
     for (let i = 0; i < file.length; i++) {
@@ -101,7 +115,7 @@ async function autoUpdate(baseString) {
         Slug: $('#Slug').val(),
         Image: baseString
     }
-    fetch(WEB_API + "Api/Interface/AddOrEditPhotoGallery", {
+    fetch(url + "Api/Interface/AddOrEditPhotoGallery", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -131,3 +145,34 @@ function clearTextBox() {
     $('#add').show();
     $('#edit').hide();
 }
+// (function ($) {
+//     'use strict';
+//     $(function () {
+//         fetch(url + "/Api/Interface/ListPhoto")
+//             .then(function (response) {
+//                 return response.json();
+//             })
+//             .then(function (response) {
+//                 // var result = response.filter(v => v.StateName !== "Deleted")
+//                 var html = response.map(function (response) {
+//                     let { ID, Title, IDCat, Image} = response;
+//                     return `<tr>
+//                     <td>${ID}</td>
+//                     <td>${Title}</td>
+//                     <td>${IDCat}</td>
+//                     <td><img src='${Image}'/></td>
+//                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
+//                     </tr>`;
+//                 })
+//                 $('#tbody').html(html);
+//                 $(document).ready(function () {
+//                     $('#dataTable').DataTable({
+//                         "order": [[0, "desc"]]
+//                     });
+//                 });
+//             })
+//             .catch(error => {
+//                 throw error;
+//             })
+//     });
+// })(jQuery);
