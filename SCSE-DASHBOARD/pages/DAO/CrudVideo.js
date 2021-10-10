@@ -1,15 +1,17 @@
 const url = "http://localhost:59360/";
-//đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
-
+function convertDate(input) {
+    var result = new Date(input)
+    return result.toLocaleDateString()
+}
 async function loadData() {
-    fetch(url + "/Api/Interface/ListPhoto")
+    fetch(url + "Api/Interface/ShowAllVideo")
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                let { ID, Title, IDCat, Image } = response;
+                let { ID, Title, IDCat, Image, UpdateByDate, CreatedByDate, LinkYTB } = response;
                 if (IDCat === 1) {
                     IDCat = "Tin tức";
                 }
@@ -22,10 +24,14 @@ async function loadData() {
                 // Sẽ return ra hàm tbody
                 return `<tr>
                     <td>${ID}</td>
-                    <td>${Title}</td>
                     <td>${IDCat}</td>
+                    <td>${Title}</td>
                     <td><img src='${Image}'></td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
+                    <td>${LinkYTB}</td>
+                    <td>${convertDate(CreatedByDate)}</td>
+                    <td>${convertDate(UpdateByDate)}</td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
+                    <button onclick="return showDeletePopUp(${ID})" class="btn btn-outline-danger">Delete</button></td>
                     </tr>`;
             })
             // đây là hàm trả ra tbody
@@ -38,14 +44,34 @@ async function loadData() {
 
         })
 } (jQuery);
+function showDeletePopUp(ID) {
+    $('#IDDuPhong').val(ID);
+    $('#Delete').modal('show');
+}
+function splitLink() {
+    var dataInput = $('#LinkYTB').val();
+    var url = dataInput.split('v=')[1];
+    var result = url.indexOf('&')
+    if (result != -1) {
+        url = url.substring(0, result);
+    }
+    return url
+}
+function getImage(input) {
+    const BASE_URL = "https://img.youtube.com/vi/"
+    var result = BASE_URL + input + '/sddefault.jpg';
+    return result
+}
 
-function addData(base64) {
+function addData() {
     let dulieu = {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
-        Image: base64
+        Image: getImage(splitLink($('#LinkYTB').val())),
+        LinkYTB: $('#LinkYTB').val(),
+        VideoID: splitLink($('#LinkYTB').val())
     };
-    fetch(url + "Api/Interface/AddOrEditPhotoGallery", {
+    fetch(url + "Api/Interface/AddOrEditVideo", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -64,81 +90,74 @@ function addData(base64) {
             }
         })
 }
-function AlertAdd() {
-    var file = document.querySelector('input[type=file]')['files'];
-    for (let i = 0; i < file.length; i++) {
-        (function (file) {
-            let name = file.name
-            var reader = new FileReader();
-            reader.onload = function () {
-                var text = reader.result;
-                addData(text)
-            }
-            reader.readAsDataURL(file);
-        })(file[i]);
-    }
-}
-async function updateData() {
-    var dulieu = {
-        ID: $('#ID').val(),
-        IDCat: $('#IDCat').val(),
-        Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
-        Image: $('#Image').val()
-    };
-    fetch(url + "api/UploadImage", {
-        method: 'POST',
-        body: JSON.stringify(dulieu),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
+function getData(ID) {
+    fetch(url + "Api/Interface/GetByIDVideo?id=" + ID)
+        .then(function (response) {
+            return response.json();
         })
-}
-async function autoUpdate(baseString) {
-    var $data = {
-        ID: $('#ID').val(),
-        IDCat: $('#IDCat').val(),
-        Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
-        Image: baseString
-    }
-    fetch(url + "Api/Interface/AddOrEditPhotoGallery", {
-        method: 'POST',
-        body: JSON.stringify($data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
+        .then(function (response) {
+            let { ID, Title, IDCat, LinkYTB, Image } = response;
+            $('#ID').val(ID),
+                $('#Title').val(Title);
+            $('#LinkYTB').val(LinkYTB);
+            $('#IDCat').val(IDCat);
         })
+    $('#exampleModal-2').modal('show');
+    $('#add').hide();
+    $('#edit').show();
+}
 
+function updateData() {
+    let data = {
+        ID: $('#ID').val(),
+        IDCat: $('#IDCat').val(),
+        Title: $('#Title').val(),
+        Image: getImage(splitLink($('#LinkYTB').val())),
+        LinkYTB: $('#LinkYTB').val(),
+        VideoID: splitLink($('#LinkYTB').val())
+    };
+    console.log(data)
+    fetch(url + "Api/Interface/AddOrEditVideo", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Updated') {
+                alert('Sửa Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not update')
+            }
+        })
+}
+function deleteData() {
+    var ID = $('#IDDuPhong').val()
+    fetch(url + "Api/Interface/DeleteVideo?id=" + ID, {
+        method: 'DELETE',
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Delete') {
+                alert('Xoá thành công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not delete')
+            }
+        })
 }
 function clearTextBox() {
     $('#ID').val("");
     $('#IDCat').val("");
     $('#Title').val("");
-    $('#Slug').val("");
-    $('#Image').val("");
+    $('#LinkYTB').val("");
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();

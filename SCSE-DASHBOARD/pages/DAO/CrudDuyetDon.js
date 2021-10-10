@@ -62,7 +62,7 @@ const url = "http://localhost:59360/";
             })
     });
 })(jQuery);
-function  Delete(ID){
+function Delete(ID){
     $('#abc').val(ID)
     $('#Delete').modal('show');
   }
