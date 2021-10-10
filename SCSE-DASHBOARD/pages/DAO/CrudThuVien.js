@@ -9,9 +9,9 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                let { ID, Title, IDCat, Image } = response;
-                if (IDCat === 1) {
-                    IDCat = "Tin tức";
+                let { ID, Title, IDCat, Image, Slug } = response;
+                if(IDCat===1){
+                    IDCat="Tin tức";
                 }
                 if (IDCat === 2) {
                     IDCat = "Dự án";
@@ -37,8 +37,25 @@ async function loadData() {
             });
 
         })
-} (jQuery);
-
+}(jQuery);
+async function getData(ID) {
+    console.log(ID);
+    fetch(url + "Api/Interface/GetByIDPhotoGalary?id=" + ID)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            const { ID, Title, IDCat, Image } = response;
+            console.log(response)
+            $('#ID').val(ID),
+                document.getElementById("Image1").src = Image;
+            $('#Title').val(Title);
+            $('#IDCat').val(IDCat);
+        })
+    $('#exampleModal-2').modal('show');
+    $('#add').hide();
+    $('#edit').show();
+}
 function addData(base64) {
     let dulieu = {
         IDCat: $('#IDCat').val(),
@@ -83,7 +100,6 @@ async function updateData() {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
-        Slug: $('#Slug').val(),
         Image: $('#Image').val()
     };
     fetch(url + "api/UploadImage", {
