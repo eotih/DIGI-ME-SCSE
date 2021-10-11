@@ -10,8 +10,8 @@ async function loadData() {
         .then(function (response) {
             var html = response.map(function (response) {
                 let { ID, Title, IDCat, Image, Slug } = response;
-                if(IDCat===1){
-                    IDCat="Tin tức";
+                if (IDCat === 1) {
+                    IDCat = "Tin tức";
                 }
                 if (IDCat === 2) {
                     IDCat = "Dự án";
@@ -37,7 +37,7 @@ async function loadData() {
             });
 
         })
-}(jQuery);
+} (jQuery);
 async function getData(ID) {
     fetch(url + "Api/Interface/GetByIDPhotoGalary?id=" + ID)
         .then(function (response) {
