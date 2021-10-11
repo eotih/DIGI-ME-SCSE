@@ -457,11 +457,7 @@
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Employee</button>
-              <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="QuanLyTaiKhoan-Xoa.html">Trash
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCount">
-                  </span>
-              </a><br /><br />
+              <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" href="QuanLyTaiKhoan.html">Quay lại</a> <br> <br>
               <h4 class="card-title">Quản lý Tài khoản</h4>
               <div class="row">
                 <div class="col-12">
@@ -495,115 +491,40 @@
                           <div class="modal-body">
                             <form class="forms-sample">
                               <div class="form-group">
+                                <h3>Bạn muốn khôi phục tài khoản này ?</h3>
+                              </div>
+                              <div class="form-group"hidden>
                                 <label for="IDUser">ID</label>
                                 <input type="text" class="form-control" id="IDUser" placeholder="ID" disabled>
                               </div>
-                              <div class="form-group">
-                                <label for="UserName">UserName</label>
-                                <input type="text" class="form-control" id="UserName" placeholder="UserName">
-                              </div>
-                              <div class="form-group">
-                                <label for="Password">Password</label>
-                                <input type="text" class="form-control" id="Password" placeholder="Password">
-                              </div>
-                              <div class="form-group">
-                                <label for="Avatar">Thêm ảnh đại diện</label>
-                                <input type="file" name="Avatar" id="avatar">
-                                <img src="" id="img" style="width: 300px;">
-                              </div>
-                              <div class="form-group">
-                                <label for="FullName">Họ và tên</label>
-                                <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
-                              </div>
-                              <div class="form-group">
-                                <label for="Phone">Số điện thoại</label>
-                                <input type="text" class="form-control" id="Phone" placeholder="Phone">
-                              </div>
-                              <div class="form-group">
-                                <label for="Email">Email</label>
-                                <input type="email" class="form-control" id="Email" placeholder="Email">
-                              </div>
-                              <div class="form-group">
-                                <label for="IDState">Trạng thái</label>
-                                <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
-                                  <option value="1">Pending</option>
-                                  <option value="2">Approved</option>
-                                  <option value="3">NotApproved</option>
-                                  <option value="4">Deleted</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label for="RoleName">Quyền</label>
-                                <select type="text" class="form-control" id="IDRole" placeholder="Quyền">
-                                  <option value="1">Admin</option>
-                                  <option value="2">Supporter</option>
-                                  <option value="3">Mod</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label for="Sex">Giới tính</label>
-                                <select type="text" class="form-control" id="Sex" placeholder="Sex">
-                                  <option value="Nam">Nam</option>
-                                  <option value="Nữ">Nữ</option>
-                                </select>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                            <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="form-group">
-                                <h3>Bạn muốn xoá tài khoản này ?</h3>
-                              </div>
-                              <div class="form-group" hidden>
-                                <label for="IDUser">ID</label>
-                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
-                              </div>
                               <div class="form-group"hidden>
                                 <label for="UserName">UserName</label>
-                                <input type="text" class="form-control" id="User" placeholder="UserName"disabled>
+                                <input type="text" class="form-control" id="UserName" placeholder="UserName"disabled>
                               </div>
                               <div class="form-group"hidden>
                                 <label for="Password">Password</label>
-                                <input type="text" class="form-control" id="Pass" placeholder="Password"disabled>
+                                <input type="text" class="form-control" id="Password" placeholder="Password"disabled>
                               </div>
                               <div class="form-group"hidden>
                                 <label for="Avatar">Thêm ảnh đại diện</label>
                                 <input type="file" name="Avatar" id="avatar"disabled>
-                                <img src="" id="Stock" style="width: 300px;">
+                                <img src="" id="img" style="width: 300px;">
                               </div>
                               <div class="form-group"hidden>
                                 <label for="FullName">Họ và tên</label>
-                                <input type="text" class="form-control" id="Name" placeholder="Họ Tên" disabled>
+                                <input type="text" class="form-control" id="FullName" placeholder="Họ Tên"disabled>
                               </div>
                               <div class="form-group"hidden>
                                 <label for="Phone">Số điện thoại</label>
-                                <input type="text" class="form-control" id="Phones" placeholder="Phone" disabled>
+                                <input type="text" class="form-control" id="Phone" placeholder="Phone"disabled>
                               </div>
                               <div class="form-group"hidden>
                                 <label for="Email">Email</label>
-                                <input type="email" class="form-control" id="Mail" placeholder="Email" disabled>
+                                <input type="email" class="form-control" id="Email" placeholder="Email"disabled>
                               </div>
                               <div class="form-group"hidden>
                                 <label for="IDState">Trạng thái</label>
-                                <select type="text" class="form-control" id="State" placeholder="Trạng thái" disabled>
+                                <select type="text" class="form-control" id="IDState" placeholder="Trạng thái"disabled>
                                   <option value="1">Pending</option>
                                   <option value="2">Approved</option>
                                   <option value="3">NotApproved</option>
@@ -612,7 +533,7 @@
                               </div>
                               <div class="form-group"hidden>
                                 <label for="RoleName">Quyền</label>
-                                <select type="text" class="form-control" id="Role" placeholder="Quyền" disabled>
+                                <select type="text" class="form-control" id="IDRole" placeholder="Quyền"disabled>
                                   <option value="1">Admin</option>
                                   <option value="2">Supporter</option>
                                   <option value="3">Mod</option>
@@ -620,7 +541,7 @@
                               </div>
                               <div class="form-group"hidden>
                                 <label for="Sex">Giới tính</label>
-                                <select type="text" class="form-control" id="Gender" placeholder="Sex" disabled>
+                                <select type="text" class="form-control" id="Sex" placeholder="Sex"disabled>
                                   <option value="Nam">Nam</option>
                                   <option value="Nữ">Nữ</option>
                                 </select>
@@ -628,7 +549,7 @@
                             </form>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" id="edit" onclick="updateDelete();" class="btn btn-success">Xoá</button>
+                            <button type="button" id="edit" onclick="restoreData();" class="btn btn-success">Khôi phục</button>
                             <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                           </div>
                       </div>
@@ -673,7 +594,7 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../DAO/CrudTaiKhoan.js"></script>
+  <script src="../DAO/CrudTaiKhoan-Xoa.js"></script>
   <!-- End custom js for this page-->
   <script>
     const fileInput = document.querySelector('input[id="avatar"]');

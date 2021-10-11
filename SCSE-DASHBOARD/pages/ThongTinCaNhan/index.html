@@ -668,10 +668,6 @@
                                                     <span class="float-left">
                                                         Vị trí:
                                                     </span>
-                                                    <span class="float-right text-muted" id="IDRole"
-                                                        style="visibility: hidden;">
-
-                                                    </span>
                                                     <span class="float-right text-muted" id="RoleName">
 
                                                     </span>
@@ -702,7 +698,7 @@
                                                 </p>
                                             </div>
                                             <button type="button" class="btn btn-primary btn-block mb-2" data-toggle="modal"
-                                                data-target="#exampleModal-2" onclick="clearTextBox();">Thay đổi mật
+                                                data-target="#exampleModal-2" onclick="getData();">Thay đổi mật
                                                 khẩu</button>
                                         </div>
                                         <div class="col-lg-8">
@@ -728,6 +724,13 @@
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" id="FullName"
                                                                     placeholder="Fullname">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row" hidden>
+                                                            <label for="Role" class="col-sm-3 col-form-label">Role</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" class="form-control" id="IDRole"
+                                                                    placeholder="Role" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -759,6 +762,14 @@
                                                                     placeholder="Mobile number">
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row" hidden>
+                                                            <label for="Password"
+                                                                class="col-sm-3 col-form-label">Old Password</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="password" class="form-control"
+                                                                    id="OldPassword" placeholder="Password" disabled>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group row">
                                                             <label for="Password"
                                                                 class="col-sm-3 col-form-label">Password</label>
@@ -778,7 +789,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel-2">Modal title
+                                                        <h5 class="modal-title" id="exampleModalLabel-2">Đổi mật khẩu
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -787,64 +798,79 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <form class="forms-sample">
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="IDUser">ID</label>
-                                                                <input type="text" class="form-control" id="IDUser"
+                                                                <input type="text" class="form-control" id="ID_User"
                                                                     placeholder="ID" disabled>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="UserName">UserName</label>
-                                                                <input type="text" class="form-control" id="UserName"
-                                                                    placeholder="UserName">
+                                                                <input type="text" class="form-control" id="User_Name"
+                                                                    placeholder="UserName"disabled>
+                                                            </div>
+                                                            <div class="form-group" hidden>
+                                                                <label for="Password">Mật khẩu cũ </label>
+                                                                <input type="password" class="form-control" id="Old_Password"
+                                                                    placeholder="Old_Password" disabled>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="Password">Password</label>
-                                                                <input type="text" class="form-control" id="Password"
+                                                                <label for="Password">Mật khẩu cũ </label>
+                                                                <input type="password" class="form-control" id="Pass_word"
                                                                     placeholder="Password">
                                                             </div>
                                                             <div class="form-group">
+                                                                <label for="Password">Mật khẩu mới </label>
+                                                                <input type="password" class="form-control" id="PasswordNew"
+                                                                    placeholder="Password">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="Password">Lập lại mật khẩu mới </label>
+                                                                <input type="password" class="form-control" id="Re_PasswordNew"
+                                                                    placeholder="Password">
+                                                            </div>
+                                                            <div class="form-group" hidden>
                                                                 <label for="Avatar">Thêm ảnh đại diện</label>
                                                                 <input type="file" name="Avatar" id="avatar">
-                                                                <img src="" id="img" style="width: 300px;">
+                                                                <img src="" id="IMAG" style="width: 300px;"disabled>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="FullName">Họ và tên</label>
-                                                                <input type="text" class="form-control" id="FullName"
-                                                                    placeholder="Họ Tên">
+                                                                <input type="text" class="form-control" id="Full_Name"
+                                                                    placeholder="Họ Tên"disabled>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="Phone">Số điện thoại</label>
-                                                                <input type="text" class="form-control" id="Phone"
-                                                                    placeholder="Phone">
+                                                                <input type="text" class="form-control" id="PhoneNumber"
+                                                                    placeholder="Phone"disabled>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="Email">Email</label>
-                                                                <input type="email" class="form-control" id="Email"
-                                                                    placeholder="Email">
+                                                                <input type="email" class="form-control" id="E-mail"
+                                                                    placeholder="Email"disabled>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="IDState">Trạng thái</label>
-                                                                <select type="text" class="form-control" id="IDState"
-                                                                    placeholder="Trạng thái">
+                                                                <select type="text" class="form-control" id="ID_State"
+                                                                    placeholder="Trạng thái"disabled>
                                                                     <option value="1">Pending</option>
                                                                     <option value="2">Approved</option>
                                                                     <option value="3">NotApproved</option>
                                                                     <option value="4">Deleted</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="RoleName">Quyền</label>
-                                                                <select type="text" class="form-control" id="IDRole"
-                                                                    placeholder="Quyền">
+                                                                <select type="text" class="form-control" id="ID_Role"
+                                                                    placeholder="Quyền"disabled>
                                                                     <option value="1">Admin</option>
                                                                     <option value="2">Supporter</option>
                                                                     <option value="3">Mod</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="Sex">Giới tính</label>
-                                                                <select type="text" class="form-control" id="Sex"
-                                                                    placeholder="Sex">
+                                                                <select type="text" class="form-control" id="Sexx"
+                                                                    placeholder="Sex"disabled>
                                                                     <option value="Nam">Nam</option>
                                                                     <option value="Nữ">Nữ</option>
                                                                 </select>
@@ -852,7 +878,7 @@
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" id="edit" onclick="updateData();"
+                                                        <button type="button" id="edit" onclick="changePassword();"
                                                             class="btn btn-success">Sửa</button>
                                                         <button type="button" class="btn btn-light"
                                                             data-dismiss="modal">Hủy</button>

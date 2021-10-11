@@ -39,14 +39,12 @@ async function loadData() {
         })
 }(jQuery);
 async function getData(ID) {
-    console.log(ID);
     fetch(url + "Api/Interface/GetByIDPhotoGalary?id=" + ID)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             const { ID, Title, IDCat, Image } = response;
-            console.log(response)
             $('#ID').val(ID),
                 document.getElementById("Image1").src = Image;
             $('#Title').val(Title);
