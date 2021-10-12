@@ -74,17 +74,13 @@ async function updateData() {
     if (hash === Passwords){
         var dulieu = {
             IDUser: GetToken.nameid[0],
-            UserName: GetToken.nameid[1],
-            Password: $('#Password').val(),
             Image: document.getElementById('img').src,
             FullName: $('#FullName').val(),
             Email: $('#Email').val(),
             Phone: $('#Phone').val(),
-            IDState: GetToken.nameid[6],
-            IDRole: $('#IDRole').val(),
             Sex: $('#Sex').val(),
         };
-        fetch(BASE_URL + "/User/ThemTaiKhoan", {
+        fetch(BASE_URL + "/User/EditThongTinCaNhan", {
             method: 'POST',
             body: JSON.stringify(dulieu),
             headers: {
