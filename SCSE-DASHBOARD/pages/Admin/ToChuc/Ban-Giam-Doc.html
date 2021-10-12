@@ -14,11 +14,9 @@
   <link rel="stylesheet" href="../../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
-  <!-- plugin css for this page -->
-  <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
-  <script type="text/javascript" src="../../DAO/CrudToChuc.js"></script>
-  <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
-  <script type="text/javascript" src="../../DAO/CrudPhanQuyen.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
@@ -26,9 +24,9 @@
   <link rel="shortcut icon" href="../../../images/favicon.png" />
 </head>
 
-<body style="font-family: 'Montserrat', sans-serif !important;">
+<body>
   <div class="container-scroller">
-    <!-- partial:../../../partials/_navbar.html -->
+    <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <div class="me-3">
@@ -37,10 +35,10 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand brand-logo" href="../../../index.html">
+          <a class="navbar-brand brand-logo" href="../../index.html">
             <img src="../../../images/logo.svg" alt="logo" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="../../../index.html">
+          <a class="navbar-brand brand-logo-mini" href="../../index.html">
             <img src="../../../images/logo-mini.svg" alt="logo" />
           </a>
         </div>
@@ -212,7 +210,7 @@
     </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:../../../partials/_settings-panel.html -->
+      <!-- partial:../../partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
@@ -395,7 +393,7 @@
         </div>
       </div>
       <!-- partial -->
-      <!-- partial:../../../partials/_sidebar.html -->
+      <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
@@ -404,24 +402,25 @@
               <span class="menu-title">Trang chủ</span>
             </a>
           </li>
+          <li class="nav-item nav-category">Cấu hình Tổ chức</li>
+          <li class="nav-item">
+            <a class="nav-link" href="../ToChuc/index.html" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-floor-plan"></i>
+              <span class="menu-title">Quản lý tổ chức</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
           <li class="nav-item nav-category">Quản lý thành viên</li>
           <li class="nav-item">
-            <a class="nav-link"  href="../QuanLyTaiKhoan.html" aria-expanded="false">
+            <a class="nav-link" href="../QuanLyTaiKhoan.html" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan"></i>
               <span class="menu-title">Quản lý tài khoản</span>
-              <i class="menu-arrow"></i> 
-            </a>
-          </li>
-          <li class="nav-item nav-category">Đăng bài</li>
-          <li class="nav-item">
-            <a class="nav-link"  href="../BaiDang/Index.html" aria-expanded="false">
-              <i class="menu-icon mdi mdi-floor-plan"></i>
-              <span class="menu-title">Đăng bài</span>
-              <i class="menu-arrow"></i> 
+              <i class="menu-arrow"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="../BaiDang/QuanLyBaiDang.html" aria-expanded="false">
+            <a class="nav-link" href="../BaiDang/QuanLyBaiDang.html" aria-expanded="false"
+              aria-controls="form-elements">
               <i class="menu-icon mdi mdi-view-list"></i>
               <span class="menu-title">Quản lý bài viết</span>
               <i class="menu-arrow"></i>
@@ -429,21 +428,23 @@
           </li>
           <li class="nav-item nav-category">Thông tin trang</li>
           <li class="nav-item">
-            <a class="nav-link" href="../ThongTinTrang/DuyetDonTinhNguyenVien.html" aria-expanded="false">
+            <a class="nav-link" href="../ThongTinTrang/DuyetDonTinhNguyenVien.html" aria-expanded="false"
+              aria-controls="form-elements">
               <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
               <span class="menu-title">Duyệt đơn của TNV</span>
               <i class="menu-arrow"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../ThongTinTrang/DanhSachDoiTac.html" aria-expanded="false">
+            <a class="nav-link" href="../ThongTinTrang/DanhSachDoiTac.html" aria-expanded="false"
+              aria-controls="form-elements">
               <i class="menu-icon mdi mdi-human-male-female"></i>
               <span class="menu-title">Xem danh sách đối tác</span>
               <i class="menu-arrow"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="../ThuVien/ThuVien.html" aria-expanded="false">
+            <a class="nav-link" href="../ThuVien/ThuVien.html" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon mdi mdi-image-area"></i>
               <span class="menu-title">Quản lý thư viên</span>
               <i class="menu-arrow"></i>
@@ -454,138 +455,137 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-5">
-                      <div class="border-bottom text-center pb-4" id="profile" name="profile">
-                        <img id="imgLogo" alt="profile" class="img-lg rounded-circle mb-3" />
-                        <div class="mb-3">
-                          <h3 id="TenCongTy"></h3>
-                          <div class="d-flex align-items-center justify-content-center">
-                            <h5 class="mb-0 me-2 text-muted">GẮN KẾT CÙNG PHÁT TRIỂN</h5>
+          <div class="card">
+            <div class="card-body">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Portfolio</button><br /><br />
+              <h4 class="card-title">Quản lý Tài khoản</h4>
+              <div class="row">
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table id="dataTable" class="table">
+                      <thead>
+                        <tr>
+                          <th>ID #</th>
+                          <th>Họ và tên</th>
+                          <th>Ảnh</th>
+                          <th>Vị trí</th>
+                          <th>Thông tin</th>
+                          <th>Hành động</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbody">
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                           </div>
-                        </div>
-                        <p class="mx-auto mb-3" style="font-size:16px">Chúng tôi tin rằng kết nối sẽ tạo ra những thay đổi tích cực trong xã hội, thúc đẩy sự công bằng trong tiếp cận nguồn lực vào góp phần phát triển bền vững.</p>
-                      </div>
-                      <div class="border-bottom py-4">
-                        <p>Lĩnh vực</p>
-                        <div>
-                          <label class="badge badge-outline-dark">Gới và bình đẳng giới</label>
-                          <label class="badge badge-outline-dark">Biến đổi khí hậu và môi trường</label>
-                          <label class="badge badge-outline-dark">Thực tập sinh</label>
-                          <label class="badge badge-outline-dark">Nghiên cứu - đào tạo</label>
-                        </div>
-                      </div>
-                      <div class="py-4">
-                        <h2>Thông tin liên hệ</h2>
-                        <h3 class="clearfix">
-                          <span class="float-left">
-                            Phone :
-                          </span>
-                          <span id="SoDienThoai" class="float-right"></span>
-                        </h3>
-                        <h3 class="clearfix">
-                          <span class="float-left">
-                            Mail :
-                          </span>
-                          <span id="mail" class="float-right"></span>
-                        </h3>
-                        <h3 class="clearfix">
-                          <span class="float-left">
-                            Facebook :
-                          </span>
-                          <span class="float-right text-muted">
-                            <a id="Fanpage2" href=" www.facebook.com/scsevn"> SCSE</a>
-                          </span>
-                        </h3>
-                        <h3 class="clearfix">
-                          <span class="float-left">
-                            Youtube
-                          </span>
-                          <span class="float-right text-muted">
-                            <a id="Youtube2" href=" www.youtube.com/scsevn">SCSE</a>
-                          </span>
-                        </h3>
+                          <div class="modal-body">
+                            <form class="forms-sample">
+                              <div class="form-group">
+                                <label for="IDUser">ID</label>
+                                <input type="text" class="form-control" id="IDUser" placeholder="ID" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="UserName">UserName</label>
+                                <input type="text" class="form-control" id="UserName" placeholder="UserName">
+                              </div>
+                              <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="text" class="form-control" id="Password" placeholder="Password">
+                              </div>
+                              <div class="form-group">
+                                <label for="Avatar">Thêm ảnh đại diện</label>
+                                <input type="file" name="Avatar" id="avatar">
+                                <img src="" id="img" style="width: 300px;">
+                              </div>
+                              <div class="form-group">
+                                <label for="FullName">Họ và tên</label>
+                                <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
+                              </div>
+                              <div class="form-group">
+                                <label for="Phone">Số điện thoại</label>
+                                <input type="text" class="form-control" id="Phone" placeholder="Phone">
+                              </div>
+                              <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" placeholder="Email">
+                              </div>
+                              <div class="form-group">
+                                <label for="IDState">Trạng thái</label>
+                                <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
+                                  <option value="1">Pending</option>
+                                  <option value="2">Approved</option>
+                                  <option value="3">NotApproved</option>
+                                  <option value="4">Deleted</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="RoleName">Quyền</label>
+                                <select type="text" class="form-control" id="IDRole" placeholder="Quyền">
+                                  <option value="1">Admin</option>
+                                  <option value="2">Supporter</option>
+                                  <option value="3">Mod</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="Sex">Giới tính</label>
+                                <select type="text" class="form-control" id="Sex" placeholder="Sex">
+                                  <option value="Nam">Nam</option>
+                                  <option value="Nữ">Nữ</option>
+                                </select>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
+                            <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                          </div>
                       </div>
                     </div>
-                    <div class="col-lg-7">
-                      <form class="forms-sample"> 
-                        <div class="form-group">
-                          <input type="text" hidden class="form-control" id="ID" placeholder="Tên tổ chức">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" hidden class="form-control" id="Logo" placeholder="Tên tổ chức">
-                        </div>
-                        <div class="form-group">
-                          <label for="Name" >Tên tổ chức</label>
-                          <input type="text" class="form-control" id="Name" placeholder="Tên tổ chức">
-                        </div>
-                        <div class="form-group">
-                          <label for="Phone">Số điện thoại</label>
-                          <input type="text" class="form-control" id="Phone" placeholder="Số điện thoại">
-                        </div>
-                        <div class="form-group">
-                          <label for="Email">Email</label>
-                          <input type="email" class="form-control" id="Email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                          <label for="Address">Địa chỉ</label>
-                          <input type="text" class="form-control" id="Address" placeholder="Lĩnh vực hoạt động">
-                        </div>
-                        <div class="form-group">
-                          <label for="Fanpage">Fanpage</label>
-                          <input type="text" class="form-control" id="Fanpage" placeholder="Fanpage">
-                        </div>
-                        <div class="form-group">
-                          <label for="Youtube">Youtube</label>
-                          <input type="text" class="form-control" id="Youtube" placeholder="Youtube">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa Thông
-                            Tin</button>
-                        </div>
-                      </form>
-                      <div class="wrapper-content">
-                        <div class="col-lg">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="container text-center pt-9">
-                                <div id="moi" class="row pricing-table">
-                                </div>
-                              </div>
-                            </div>
+                  </div>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                           </div>
-                        </div>
-                      </div>
-                      <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <input type="text" class="form-control" id="ID3" placeholder="ID" disabled>
-                              <input type="file" onchange="getBaseUrl()">
-                              <p id="b64"></p>
-                              <img id="img" height="150">
+                          <div class="modal-body">
+                            <form class="forms-sample">
                               <div class="form-group">
-                                <label for="Fanpage">BankName</label>
-                                <input type="text" class="form-control" id="BankName" placeholder="BankName">
+                                <h3>Bạn muốn xoá tài khoản này ?</h3>
                               </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                              <button type="button" id="edit"  onclick="autoUpdate();" class="btn btn-success">Sửa</button>
-                              <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                            </div>
+                              <div class="form-group" hidden>
+                                <label for="IDUser">ID</label>
+                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
+                              </div>
+                              <div class="form-group"hidden>
+                                <label for="IDState">Trạng thái</label>
+                                <select type="text" class="form-control" id="State" placeholder="Trạng thái" disabled>
+                                  <option value="1">Pending</option>
+                                  <option value="2">Approved</option>
+                                  <option value="3">NotApproved</option>
+                                  <option value="4">Deleted</option>
+                                </select>
+                              </div>
+                            </form>
                           </div>
-                        </div>
+                          <div class="modal-footer">
+                            <button type="button" id="edit" onclick="updateDelete();" class="btn btn-success">Xoá</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -595,7 +595,7 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:../../../partials/_footer.html -->
+        <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
@@ -617,7 +617,8 @@
   <script src="../../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="../../../vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+  <script src="../../../vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="../../../js/off-canvas.js"></script>
@@ -627,8 +628,23 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../../js/profile-demo.js"></script>
+  <script src="../DAO/CrudBanGiamDoc.js"></script>
   <!-- End custom js for this page-->
+  <script>
+    const fileInput = document.querySelector('input[id="avatar"]');
+    // listen for the change event so we can capture the file
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        base64 = reader.result;
+        $('#img').val(base64);
+        document.getElementById('img').src = base64;
+      };
+      reader.readAsDataURL(file);
+    });
+  
+  </script>
 </body>
 
 </html>

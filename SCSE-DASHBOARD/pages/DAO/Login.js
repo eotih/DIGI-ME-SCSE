@@ -22,9 +22,10 @@ function loginAdmin() {
                         alert('Đăng nhập thành công !!!');
                         window.location.href = "./index.html"
                     }
-                    else
+                    else{
                         alert('Đăng nhập thành công !!!');
-                    // window.location.href = "../QuanLy/DangBai/Index.html"
+                    window.location.href = "../QuanLy/DangBai/Index.html"
+                    }
                 }
                 else {
                     alert("Vui lòng liên hệ Admin để cấp quyền truy cập")
