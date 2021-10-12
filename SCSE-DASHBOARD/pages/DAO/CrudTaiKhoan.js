@@ -1,36 +1,5 @@
 const BASE_URL = "http://localhost:59360/";
-// window.addEventListener('load', loadData)
-// async function loadData() {
-//     fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (response) {
-//             var html = response.map(function (response) {
-//                 let { IDUser, FullName, Email, StateName, RoleName, Image } = response;
-                
-//                 return `<tr>
-//                     <td>${IDUser}</td>
-//                     <td>${FullName}</td>
-//                     <td>${Email}</td>
-//                     <td>${StateName}</td>
-//                     <td>${RoleName}</td>
-//                     <td><img src="${Image}"></td>
-//                     <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button></td>
-//                     </tr>`;
-//             })
-//             $('#tbody').html(html);
-//             var checkbox = document.querySelector("input[name=checkbox]");
-//             var userID = checkbox.getAttribute('data-id');
-//             checkbox.addEventListener('change', function () {
-//                 if (this.checked) {
-//                     updateLocked(1, userID)
-//                 } else {
-//                     updateLocked(0, userID)
-//                 }
-//             });
-//         })
-// }
+
 async function updateLocked(toggleVal, userID) {
     let data = {
         IDUser: userID,
@@ -62,11 +31,11 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            const { IDUser, Username, Password, Image , FullName, Email, Phone, IDState, IDRole , Sex } = response;
+            const { IDUser, Username, Password, Image, FullName, Email, Phone, IDState, IDRole, Sex } = response;
             $('#IDUser').val(IDUser);
             $('#UserName').val(Username);
             $('#Password').val(Password);
-            document.getElementById('img').src=Image;
+            document.getElementById('img').src = Image;
             $('#FullName').val(FullName);
             $('#Email').val(Email);
             $('#Phone').val(Phone);
@@ -141,14 +110,14 @@ async function updateData() {
             }
         })
 }
-async function deleteData(IDUser){
+async function deleteData(IDUser) {
     fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + IDUser)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
-            const { IDUser, Username, Password, Image , FullName, Email, Phone, IDState, IDRole , Sex } = response;
-            $('#ID').val(IDUser),document.getElementById('Stock').src=Image;;
+            const { IDUser, Username, Password, Image, FullName, Email, Phone, IDState, IDRole, Sex } = response;
+            $('#ID').val(IDUser), document.getElementById('Stock').src = Image;;
             $('#User').val(Username);
             $('#Pass').val(Password);
             $('#Name').val(FullName);
@@ -159,10 +128,10 @@ async function deleteData(IDUser){
             $('#Gender').val(Sex);
         })
     $('#exampleModal').modal('show');
-    $('#edit').show();  
+    $('#edit').show();
 }
 
-async function updateDelete(){
+async function updateDelete() {
     var dulieu = {
         IDUser: $('#ID').val(),
         Username: $('#User').val(),
@@ -194,13 +163,13 @@ async function updateDelete(){
                 alert('Data not update')
             }
         })
-        clearDelete();
+    clearDelete();
 }
-function clearDelete(){
+function clearDelete() {
     $('#User').val("");
     $('#Name').val("");
     $('#Pass').val("");
-    document.getElementById('Stock').src="";
+    document.getElementById('Stock').src = "";
     $('#Name').val("");
     $('#Mail').val("");
     $('#Phones').val("");
@@ -212,7 +181,7 @@ function clearTextBox() {
     $('#IDUser').val("");
     $('#UserName').val("");
     $('#Password').val("");
-    document.getElementById('img').src="";
+    document.getElementById('img').src = "";
     $('#FullName').val("");
     $('#Email').val("");
     $('#Phone').val("");
@@ -225,18 +194,9 @@ function clearTextBox() {
 }
 
 (function ($) {
-    const fields = [
-        { name: 'IDUser', title: 'ID #' },
-        { name: 'FullName', title: 'Họ và tên' },
-        { name: 'Email', title: 'Email' },
-        { name: 'StateName', title: 'Trạng thái' },
-        { name: 'RoleName', title: 'Quyền' },
-        { name: 'Image', title: 'Ảnh đại diện' },
-        { name: 'Action', title: 'Hành động' }
-    ]
     'use strict';
     $(function () {
-        fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
+        fetch(BASE_URL + "User/XemDanhSachTaiKhoan")
             .then(function (response) {
                 return response.json();
             })
@@ -245,7 +205,7 @@ function clearTextBox() {
                 $('#deleteCount').text(deleted.length);
                 var result = response.filter(v => v.StateName !== "Deleted")
                 var html = result.map(function (response) {
-                    let { IDUser, FullName, Email, StateName, RoleName, Image} = response;
+                    let { IDUser, FullName, Email, StateName, RoleName, Image } = response;
                     return `<tr>
                     <td>${IDUser}</td>
                     <td>${FullName}</td>
