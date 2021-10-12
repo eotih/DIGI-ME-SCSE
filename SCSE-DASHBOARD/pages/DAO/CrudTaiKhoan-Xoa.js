@@ -29,17 +29,9 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            const { IDUser, Username, Password, Image , FullName, Email, Phone, IDState, IDRole , Sex } = response;
+            const { IDUser} = response;
             $('#IDUser').val(IDUser);
-            $('#UserName').val(Username);
-            $('#Password').val(Password);
-            document.getElementById('img').src=Image;
-            $('#FullName').val(FullName);
-            $('#Email').val(Email);
-            $('#Phone').val(Phone);
             $('#IDState').val("1");
-            $('#IDRole').val(IDRole);
-            $('#Sex').val(Sex);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -48,17 +40,9 @@ async function getData(ID) {
 async function restoreData(IDUser) {
     var dulieu = {
         IDUser: $('#IDUser').val(),
-        Username: $('#UserName').val(),
-        Password: $('#Password').val(),
-        Image: document.getElementById('img').src,
-        FullName: $('#FullName').val(),
-        Email: $('#Email').val(),
-        Phone: $('#Phone').val(),
         IDState: $('#IDState').val(),
-        IDRole: $('#IDRole').val(),
-        Sex: $('#Sex').val(),
     };
-    fetch(BASE_URL + "/User/ThemTaiKhoan", {
+    fetch(BASE_URL + "User/EditState", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {

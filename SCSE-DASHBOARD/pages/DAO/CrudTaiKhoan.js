@@ -116,16 +116,9 @@ async function deleteData(IDUser) {
             return response.json();
         })
         .then(function (response) {
-            const { IDUser, Username, Password, Image, FullName, Email, Phone, IDState, IDRole, Sex } = response;
-            $('#ID').val(IDUser), document.getElementById('Stock').src = Image;;
-            $('#User').val(Username);
-            $('#Pass').val(Password);
-            $('#Name').val(FullName);
-            $('#Mail').val(Email);
-            $('#Phones').val(Phone);
+            const { IDUser} = response;
+            $('#ID').val(IDUser);
             $('#State').val("4");
-            $('#Role').val(IDRole);
-            $('#Gender').val(Sex);
         })
     $('#exampleModal').modal('show');
     $('#edit').show();
@@ -134,18 +127,10 @@ async function deleteData(IDUser) {
 async function updateDelete() {
     var dulieu = {
         IDUser: $('#ID').val(),
-        Username: $('#User').val(),
-        Password: $('#Pass').val(),
-        Image: document.getElementById('Stock').src,
-        FullName: $('#Name').val(),
-        Email: $('#Mail').val(),
-        Phone: $('#Phones').val(),
         IDState: $('#State').val(),
-        IDRole: $('#Role').val(),
-        Sex: $('#Gender').val(),
     };
     console.log(dulieu)
-    fetch(BASE_URL + "/User/ThemTaiKhoan", {
+    fetch(BASE_URL + "/User/EditState", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
