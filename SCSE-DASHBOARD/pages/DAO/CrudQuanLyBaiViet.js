@@ -1,4 +1,9 @@
 const WEB_API = "http://localhost:59360/";
+function convertDate(input) {
+    var result = new Date(input)
+    return result.toLocaleDateString()
+}
+
 (function ($) {
     'use strict';
     $(function () {
@@ -7,6 +12,7 @@ const WEB_API = "http://localhost:59360/";
                 return response.json();
             })
             .then(function (response) {
+                
                 var result = response.filter(v => v.IDState !== 4)
                 var html = result.map(function (response) {
                     let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
