@@ -1,4 +1,3 @@
-const BASE_URL = "http://localhost:59360/";
 
 var GetToken = parseJwt(localStorage.getItem("token"));
 
@@ -13,7 +12,6 @@ if(GetToken.nameid[2] === "Supporter"){
 if(GetToken.nameid[2] === "Mod"){
     Role=3;
 }
-console.log(Role);
 switch(Role){
     case 2:
         if(current === "http://127.0.0.1:5502/pages/Admin/ToChuc/index.html"){
@@ -21,11 +19,12 @@ switch(Role){
         }
         break;
     case 3:
-        if(current !== "http://127.0.0.1:5502/QuanLy/DangBai/Index.html"){
-            window.location.href = "http://127.0.0.1:5502/QuanLy/DangBai/Index.html"
+        if(current === "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html" || current === "http://127.0.0.1:5502/pages/ThongTinCaNhan/index.html"){
+            
         }
-        if(current === "http://127.0.0.1:5502/pages/ThongTinCaNhan/index.html")
-            window.location.href = "http://127.0.0.1:5502/pages/ThongTinCaNhan/index.html"
+        else{
+            window.location.href = "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html"
+        }
         break;
 }
 // if(GetToken.nameid[2] !== "Admin" && current === "http://127.0.0.1:5502/pages/Admin/ToChuc/index.html") {
