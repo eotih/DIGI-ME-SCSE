@@ -18,7 +18,7 @@ function loginAdmin() {
                 console.log(resultInfo);
                 if (resultInfo.nameid[6] === '2') {
                     localStorage.setItem('token', result.Message);
-                    if (resultInfo.nameid[2] === "Admin") {
+                    if (resultInfo.nameid[2] === "Admin"|| resultInfo.nameid[2] === "Supporter") {
                         alert('Đăng nhập thành công !!!');
                         window.location.href = "./index.html"
                     }
