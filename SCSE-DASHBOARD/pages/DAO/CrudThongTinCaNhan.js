@@ -10,6 +10,7 @@ async function loadData() {
         })
         .then(function (response) {
             const { Username, Password, Image, FullName, Email, Phone, IDRole, Sex } = response;
+            console.log(response)
             document.getElementById('avatar').src = Image;
             document.getElementById('img').src =Image;
             $('#Full-Name').text(FullName);
