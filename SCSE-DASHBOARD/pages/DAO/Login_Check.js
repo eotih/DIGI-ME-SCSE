@@ -5,7 +5,7 @@ var getToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 function loadData() {
     try {
-        fetch(CHECK + "/User/GetByIdTaiKhoan?iduser=" + getToken.nameid[0])
+        fetch(CHECK + "/User/GetByIdTaiKhoan?iduser=" + getToken.nameid[6])
             .then(function (response) {
                 return response.json();
             })
@@ -21,13 +21,13 @@ function loadData() {
                 if (getToken.nameid[2] === "Mod") {
                     Roles = 3;
                 }
-                if (getToken.nameid[0] !== IDUser.toString()
+                if (getToken.nameid[6] !== IDUser.toString()
                     || getToken.nameid[1] !== Username
                     || Roles !== IDRole
                     || getToken.nameid[3] !== FullName
                     || getToken.nameid[4] !== Password
                     || getToken.nameid[5] !== Email
-                    || getToken.nameid[6] !== IDState.toString()) {
+                    || getToken.nameid[0] !== IDState.toString()) {
                     localStorage.removeItem("token");
                     window.location.href = "http://127.0.0.1:5502/login.html"
                 }

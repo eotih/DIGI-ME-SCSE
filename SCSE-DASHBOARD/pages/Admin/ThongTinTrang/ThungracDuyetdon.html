@@ -457,12 +457,7 @@
           <div class="row">
             <div class="card">
               <div class="card-body" id="dtBasicExample">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2"
-                  onclick="clearTextBox();">Add New Form</button>
-                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="ThungracDuyetdon.html">Trash
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCount">
-                      </span>
-                  </a><br /><br />
+                  <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" href="DuyetDonTinhNguyenVien.html">Quay lại</a><br /><br />
                 <h4 class="card-title">Quản lý tình nguyện viên</h4>
                 <div class="row">
                   <div class="col-12">
@@ -486,71 +481,6 @@
                         <tbody id="tbody"></tbody>
                       </table>
                     </div>
-                    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="form-group">
-                                <label for="ID">ID</label>
-                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
-                              </div>
-                              <div class="form-group">
-                                <label for="FirstName">Tên</label>
-                                <input type="text" class="form-control" id="FirstName" placeholder="Tên">
-                              </div>
-                              <div class="form-group">
-                                <label for="LastName">Họ</label>
-                                <input type="text" class="form-control" id="LastName" placeholder="Họ">
-                              </div>
-                              <div class="form-group">
-                                <label for="DOB">Ngày Sinh</label>
-                                <input type="date" value="" class="form-control" id="DOB" placeholder="Ngày Sinh">
-                              </div>
-                              <div class="form-group">
-                                <label for="Phone">Số điện thoại</label>
-                                <input type="text" class="form-control" id="Phone" placeholder="Số điện thoại">
-                              </div>
-                              <div class="form-group">
-                                <label for="Email">Email</label>
-                                <input type="email" class="form-control" id="Email" placeholder="Email">
-                              </div>
-                              <div class="form-group">
-                                <label for="Address">Địa chỉ</label>
-                                <input type="text" class="form-control" id="Address" placeholder="Địa chỉ">
-                              </div>
-                              <div class="form-group">
-                                <label for="Project">Chủ đề</label>
-                                <input type="text" class="form-control" id="Project" placeholder="Chủ đề">
-                              </div>
-                              <div class="form-group">
-                                <label for="Purpose">Nội dung</label>
-                                <input type="text" class="form-control" id="Purpose" placeholder="Nội dung">
-                              </div>
-                              <label for="IDState">Trạng thái</label>
-                              <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
-                                <option value="1">Pending</option>
-                                <option value="2">Approved</option>
-                                <option value="3">NotApproved</option>
-                                <option value="4">Deleted</option>
-                              </select>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                            <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     <div class="modal fade" id="Delete" tabindex="-1" role="dialog" aria-labelledby="Delete"
                       aria-hidden="true">
                       <div class="modal-dialog" role="document">
@@ -559,10 +489,10 @@
                             <form class="forms-sample">
                               <div class="card">
                                 <div class="card-body">
-                                  <h5 class="card-title">Are you sure you want to delete this</h5>
-                                  <input hidden type="text" class="form-control" id="ID2">
-                                  <input hidden type="text" class="form-control" id="State">
-                                  <button type="button" onclick="deleteData()" class="btn btn-success">Delete</button>
+                                  <h5 class="card-title">Bạn có muốn khôi phục người đăng kí này?</h5>
+                                  <input type="text" class="form-control" id="ID2">
+                                  <input type="text" class="form-control" id="State">
+                                  <button type="button" onclick="restoreData()" class="btn btn-success">Khôi phục</button>
                                 </div>
                               </div>
                             </form>
@@ -608,7 +538,7 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../DAO/CrudDuyetDon.js"></script>
+  <script src="../../DAO/CrudThungRacDuyetDon.js"></script>
   <!-- End custom js for this page-->
 </body>
 
