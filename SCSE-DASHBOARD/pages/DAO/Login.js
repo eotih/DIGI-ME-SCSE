@@ -17,13 +17,13 @@ function loginAdmin() {
                 var resultInfo = parseJwt(result.Message)
                 if (resultInfo.nameid[6] === '2') {
                     localStorage.setItem('token', result.Message);
-                    if (resultInfo.nameid[2] === "Admin") {
+                    if (resultInfo.nameid[2] === "Admin" || resultInfo.nameid[2] === "Supporter") {
                         alert('Đăng nhập thành công !!!');
                         window.location.href = "./index.html"
                     }
-                    else{
+                    else {
                         alert('Đăng nhập thành công !!!');
-                    window.location.href = "../QuanLy/DangBai/Index.html"
+                        window.location.href = "../QuanLy/DangBai/Index.html"
                     }
                 }
                 else {

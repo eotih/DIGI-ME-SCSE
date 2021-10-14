@@ -1,8 +1,8 @@
 const BASE_URL = "http://localhost:59360/";
 
 var GetToken = parseJwt(localStorage.getItem("token"));
-console.log(GetToken.nameid.length);
 window.addEventListener('load', loadData)
+console.log(GetToken)
 async function loadData() {
     fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[0])
         .then(function (response) {

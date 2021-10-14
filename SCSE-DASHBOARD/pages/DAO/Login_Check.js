@@ -1,10 +1,28 @@
 var getToken = parseJwt(localStorage.getItem("token"));
-if (getToken.nameid.length !== 7) {
-    alert("Vui lòng đăng nhập")
-    window.location.href = "http://127.0.0.1:5502/login.html"
+
+window.addEventListener('load', loadData)
+function loadData() {
+    try {
+        var Roles = "";
+        if (GetToken.nameid[2] === "Admin") {
+            Roles = 1;
+        }
+        if (GetToken.nameid[2] === "Supporter") {
+            Roles = 2;
+        }
+        if (GetToken.nameid[2] === "Mod") {
+            Roles = 3;
+        }
+    }
+    catch (e) {
+        alert("Vui lòng đăng nhập")
+        localStorage.removeItem("token");
+        window.location.href = "http://127.0.0.1:5502/login.html"
+    }
 }
+
 function parseJwt(token) {
-    try{
+    try {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
@@ -13,6 +31,7 @@ function parseJwt(token) {
         return JSON.parse(jsonPayload);
     }
     catch (e) {
+        localStorage.removeItem("token");
         window.location.href = "http://127.0.0.1:5502/login.html"
     }
 };
