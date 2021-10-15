@@ -129,7 +129,6 @@ async function updateDelete() {
         IDUser: $('#ID').val(),
         IDState: $('#State').val(),
     };
-    console.log(dulieu)
     fetch(BASE_URL + "/User/EditState", {
         method: 'POST',
         body: JSON.stringify(dulieu),

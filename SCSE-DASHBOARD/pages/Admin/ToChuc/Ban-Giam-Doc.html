@@ -457,7 +457,8 @@
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Portfolio</button><br /><br />
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Portfolio</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" onclick="clearTextBox2();">Add New Pictures</button><br /><br />
               <h4 class="card-title">Quản lý Tài khoản</h4>
               <div class="row">
                 <div class="col-12">
@@ -467,6 +468,7 @@
                         <tr>
                           <th>ID #</th>
                           <th>Họ và tên</th>
+                          <th>IDImg</th>
                           <th>Ảnh</th>
                           <th>Vị trí</th>
                           <th>Thông tin</th>
@@ -491,18 +493,16 @@
                             <form class="forms-sample">
                               <div class="form-group">
                                 <label for="IDUser">ID</label>
-                                <input type="text" class="form-control" id="IDUser" placeholder="ID" disabled>
+                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
                               </div>
                               <div class="form-group">
                                 <label for="FullName">Họ và tên</label>
                                 <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
                               </div>
                               <div class="form-group">
-                                <label for="Avatar">Thêm ảnh</label>
-                                <input type="file" name="Avatar" id="avatar">
-                                <img src="" id="img" style="width: 300px;">
+                                <label for="IDImg">IDImg</label>
+                                <input type="text" class="form-control" id="IDImg" placeholder="IDImg">
                               </div>
-                              
                               <div class="form-group">
                                 <label for="Position">Vị trí</label>
                                 <input type="text" class="form-control" id="Position" placeholder="Position">
@@ -521,12 +521,12 @@
                       </div>
                     </div>
                   </div>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                  <div class="modal fade" id="Modal" tabindex="-1" role="dialog"
                       aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
+                            <h5 class="modal-title" id="exampleModalLabel-2">Thêm ảnh đại diện</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -534,25 +534,87 @@
                           <div class="modal-body">
                             <form class="forms-sample">
                               <div class="form-group">
-                                <h3>Bạn muốn xoá tài khoản này ?</h3>
+                                <label for="IDImg1">IDImg</label>
+                                <input type="text" class="form-control" id="IDImgadd" placeholder="IDImg1">
                               </div>
-                              <div class="form-group" hidden>
-                                <label for="IDUser">ID</label>
-                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
-                              </div>
-                              <div class="form-group"hidden>
-                                <label for="IDState">Trạng thái</label>
-                                <select type="text" class="form-control" id="State" placeholder="Trạng thái" disabled>
-                                  <option value="1">Pending</option>
-                                  <option value="2">Approved</option>
-                                  <option value="3">NotApproved</option>
-                                  <option value="4">Deleted</option>
-                                </select>
+                              <div class="form-group">
+                                <label for="Avatar">Thêm<h5><b>3 ẢNH</b></h5></label>
+                                <input type="file" id="getFile" multiple>
+                                <img src="" id="imgadd" style="width: 300px;">
                               </div>
                             </form>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" id="edit" onclick="updateDelete();" class="btn btn-success">Xoá</button>
+                            <button type="button" id="edit1" onclick="AlertAdd();" class="btn btn-success">Thêm</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel-2">Chỉnh sửa ảnh</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form class="forms-sample">
+                              <div class="form-group">
+                                <label for="ID">ID</label>
+                                <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="IDImg1">IDImg</label>
+                                <input type="text" class="form-control" id="IDImg1" placeholder="IDImg1" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="Avatar">Thêm ảnh</label>
+                                <input type="file" name="Avatar" id="avatar">
+                                <img src="" id="img1" style="width: 300px;">
+                              </div>
+                              <div class="form-group">
+                                <button type="button" id="edit" onclick="updateImg1();" class="btn btn-success">Sửa</button>
+                              </div>
+                              <div class="form-group">
+                                <label for="ID">ID</label>
+                                <input type="text" class="form-control" id="ID2" placeholder="ID" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="IDImg1">IDImg</label>
+                                <input type="text" class="form-control" id="IDImg2" placeholder="IDImg1" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="Avatar">Thêm ảnh</label>
+                                <input type="file" name="Avatar" id="avatar1">
+                                <img src="" id="img2" style="width: 300px;">
+                              </div>
+                              <div class="form-group">
+                                <button type="button" id="edit" onclick="updateImg2();" class="btn btn-success">Sửa</button>
+                              </div>
+                              <div class="form-group">
+                                <label for="ID">ID</label>
+                                <input type="text" class="form-control" id="ID3" placeholder="ID" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="IDImg1">IDImg</label>
+                                <input type="text" class="form-control" id="IDImg3" placeholder="IDImg1" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="Avatar">Thêm ảnh</label>
+                                <input type="file" name="Avatar" id="avatar2">
+                                <img src="" id="img3" style="width: 300px;">
+                              </div>
+                              <div class="form-group">
+                                <button type="button" id="edit" onclick="updateImg3();" class="btn btn-success">Sửa</button>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" id="edit1" onclick="updateImg();" class="btn btn-success">Update</button>
                             <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                           </div>
                       </div>
@@ -597,7 +659,7 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../DAO/CrudBanGiamDoc.js"></script>
+  <script src="../../DAO/CrudBanGiamDoc.js"></script>
   <!-- End custom js for this page-->
   <script>
     const fileInput = document.querySelector('input[id="avatar"]');
@@ -607,8 +669,30 @@
       const reader = new FileReader();
       reader.onloadend = () => {
         base64 = reader.result;
-        $('#img').val(base64);
-        document.getElementById('img').src = base64;
+        $('#img1').val(base64);
+        document.getElementById('img1').src = base64;
+      };
+      reader.readAsDataURL(file);
+    });
+    const fileInput1 = document.querySelector('input[id="avatar1"]');
+    fileInput1.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        base64 = reader.result;
+        $('#img2').val(base64);
+        document.getElementById('img2').src = base64;
+      };
+      reader.readAsDataURL(file);
+    });
+    const fileInput2 = document.querySelector('input[id="avatar2"]');
+    fileInput2.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        base64 = reader.result;
+        $('#img3').val(base64);
+        document.getElementById('img3').src = base64;
       };
       reader.readAsDataURL(file);
     });

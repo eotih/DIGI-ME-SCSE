@@ -476,9 +476,7 @@
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="profile-tab">
-                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="ThungRacIndex.html">Trash
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCount">
-                      </span>
+                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="QuanLyBaiDang.html">Quay lại
                   </a><br /><br />
                   <div class="row">
                     <div class="col-12">
@@ -511,7 +509,7 @@
                             <div class="modal-body">
                               <form class="forms-sample">
                                 <div class="form-group">
-                                  <h4>Bạn có thực sự muốn xoá?</h4>
+                                  <h4>Bạn có thực sự muốn Khôi phục?</h4>
                                 </div>
                                 <div class="form-group" hidden>
                                   <label for="IDPost">ID</label>
@@ -524,8 +522,8 @@
                               </form>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" id="edit" onclick="deleteTamThoi();"
-                                class="btn btn-success">Xóa</button>
+                              <button type="button" id="edit" onclick="updateRestore();"
+                                class="btn btn-success">Khôi phục</button>
                               <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                             </div>
                           </div>
@@ -535,9 +533,8 @@
                   </div>
                 </div>
                 <div class="tab-pane fade" id="ENG" role="tabpanel" aria-labelledby="profile-tab">
-                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="ThungRacIndex.html">Trash
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCountEN">
-                      </span>
+                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="QuanLyBaiDang.html">Return
+                    
                   </a><br /><br />
                   <div class="row">
                     <div class="col-12">
@@ -570,7 +567,7 @@
                             <div class="modal-body">
                               <form class="forms-sample">
                                 <div class="form-group">
-                                  <h4>Are you sure you want to delete?</h4>
+                                  <h4>Are you sure you want to restore?</h4>
                                 </div>
                                 <div class="form-group" hidden>
                                   <label for="IDPost">ID</label>
@@ -583,8 +580,8 @@
                               </form>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" id="edit" onclick="deleteTamThoiEN();"
-                                class="btn btn-success">Xóa</button>
+                              <button type="button" id="edit" onclick="updateRestoreEN();"
+                                class="btn btn-success">Restore</button>
                               <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                             </div>
                           </div>
@@ -631,7 +628,7 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../DAO/CrudQuanLyBaiViet.js"></script>
+  <script src="../../DAO/CrudXoaQuanLyBaiViet.js"></script>
   <!-- End custom js for this page-->
 </body>
 

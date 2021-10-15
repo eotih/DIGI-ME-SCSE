@@ -12,10 +12,7 @@ function convertDate(input) {
                 return response.json();
             })
             .then(function (response) {
-                
-                var deleted = response.filter(v => v.IDState === 4)
-                $('#deleteCount').text(deleted.length);
-                var result = response.filter(v => v.IDState !== 4)
+                var result = response.filter(v => v.IDState === 4)
                 var html = result.map(function (response) {
                     let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
                     if (IDState === 1) {
@@ -37,7 +34,7 @@ function convertDate(input) {
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><a href="./Edit.html?Slug=${Slug}"" class="btn btn-outline-primary">View</a> <button onclick="return deleteData(${IDPost})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return restoreData(${(IDPost)})" class="btn btn-success">Khôi phục</button> <button onclick="return deleteData(${Slug})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbody').html(html);
@@ -61,10 +58,8 @@ function convertDate(input) {
                 return response.json();
             })
             .then(function (response) {
-                
-                var deletedEN = response.filter(v => v.IDState === 4)
-                $('#deleteCountEN').text(deletedEN.length);
-                var result = response.filter(v => v.IDState !== 4)
+
+                var result = response.filter(v => v.IDState === 4)
                 var html = result.map(function (response) {
                     let { IDPostEN, IDCat, Title, SlugEN, Image, Author, IDState } = response;
                     if (IDState === 1) {
@@ -86,7 +81,7 @@ function convertDate(input) {
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><a href="./EditEN.html?Slug=${SlugEN}" class="btn btn-outline-primary">View</a> <button onclick="return deleteDataEN(${IDPostEN})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><a onclick="return restoreDataEN(${(IDPostEN)})" class="btn btn-success">Restore</a> <button onclick="return deleteDataEN(${SlugEN})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbodyENG').html(html);
@@ -102,19 +97,19 @@ function convertDate(input) {
     });
 })(jQuery);
 
-function deleteData(ID){
+function restoreData(ID) {
     $('#IDPost').val(ID);
-    $('#IDState').val("4");
+    $('#IDState').val("1");
     $('#exampleModal-2').modal('show');
     $('#edit').show();
 }
-function deleteDataEN(ID){
+function restoreDataEN(ID) {
     $('#IDPostEN').val(ID);
-    $('#IDStateEN').val("4");
+    $('#IDStateEN').val("1");
     $('#exampleModal').modal('show');
     $('#edit').show();
 }
-async function deleteTamThoi(){
+async function updateRestore() {
     var dulieu = {
         IDPost: $('#IDPost').val(),
         IDState: $('#IDState').val(),
@@ -130,7 +125,7 @@ async function deleteTamThoi(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                alert('Xoá Thành Công')
+                alert('Khôi phục Thành Công')
                 window.location.reload();
             }
             else {
@@ -138,7 +133,7 @@ async function deleteTamThoi(){
             }
         })
 }
-async function deleteTamThoiEN(){
+async function updateRestoreEN() {
     var dulieu = {
         IDPostEN: $('#IDPostEN').val(),
         IDState: $('#IDStateEN').val(),
@@ -154,11 +149,54 @@ async function deleteTamThoiEN(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                alert('Xoá Thành Công')
+                alert('Khôi phục Thành Công')
                 window.location.reload();
             }
             else {
                 alert('Data not update')
             }
         })
+}
+async function deleteData(Slug) {
+    if (confirm('Bạn có muốn xoá tài khoản?')) {
+        fetch(WEB_API + "Management/XoaBaiViet?slug=" + Slug, {
+            method: "DELETE",
+        })
+        then(function (response) {
+            return response.json();
+        })
+            .then(function (data) {
+                if (data.Status === 'Delete') {
+                    alert('Xoá thành công')
+                    window.location.reload();
+                }
+                else {
+                    alert('Data not deleted')
+                }
+            })
+    } else {
+
+    }
+}
+async function deleteDataEN(SlugEN) {
+    console.log(SlugEN)
+    if (confirm('Are you sure you want to delete?')) {
+        fetch(WEB_API + "Management/XoaBaiVietEN?slugen=" + SlugEN, {
+            method: "DELETE",
+        })
+        then(function (response) {
+            return response.json();
+        })
+            .then(function (data) {
+                if (data.Status === 'Delete') {
+                    alert('Xoá thành công')
+                    window.location.reload();
+                }
+                else {
+                    alert('Data not deleted')
+                }
+            })
+    } else {
+
+    }
 }
