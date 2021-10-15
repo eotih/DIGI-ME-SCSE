@@ -457,77 +457,122 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Quản lý bài đăng</h4>
-              <div class="row">
-                <div class="col-12">
-                  <div class="table-responsive">
-                    <table id="dataTable" class="table">
-                      <thead>
-                        <tr>
-                          <th>IDPost #</th>
-                          <th>IDCat</th>
-                          <th>Title</th>
-                          <th>Image</th>
-                          <th>Author</th>
-                          <th>State</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody id="tbody"></tbody>
-                    </table>
-                  </div>
-                  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="forms-sample">
-                            <div class="form-group">
-                              <label for="IDPost">ID</label>
-                              <input type="text" class="form-control" id="IDPost" placeholder="IDPost" disabled>
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#VN" role="tab" aria-controls="VN"
+                    aria-selected="true">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2560px-Flag_of_Vietnam.svg.png"
+                      style="width: 20px; height: 15px" alt=""> Tiếng Việt
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#ENG" role="tab" aria-controls="ENG"
+                    aria-selected="false"> <img
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
+                      style="width: 20px; height: 15px" alt=""> Tiếng Anh
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table id="dataTable" class="table">
+                          <thead>
+                            <tr>
+                              <th>IDPost #</th>
+                              <th>IDCat</th>
+                              <th>Title</th>
+                              <th>Image</th>
+                              <th>Author</th>
+                              <th>State</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody"></tbody>
+                        </table>
+                      </div>
+                      <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                             </div>
-                            <div class="form-group">
-                              <label for="IDCat">IDCat</label>
-                              <input type="text" class="form-control" id="IDCat" placeholder="IDCat">
-                            </div>
-                            <div class="form-group">
-                              <label for="IDState">IDState</label>
-                              <input type="text" class="form-control" id="IDState" placeholder="IDCat">
-                            </div>
-                            <div class="form-group">
-                              <label for="Title">Title</label>
-                              <input type="text" class="form-control" id="Title" placeholder="IDCat">
-                            </div>
-                            <div class="form-group">
-                              <label for="Slug">Slug</label>
-                              <input type="text" class="form-control" id="Slug" placeholder="Slug">
-                            </div>
-                            <div class="form-group">
-                              <label for="Details">Details</label>
-                              <input type="text" class="form-control" id="Details" placeholder="Details">
-                            </div>
-                            <div class="form-group">
-                              <label for="Image">Image</label>
-                              <input type="text" class="form-control" id="Image" placeholder="Image">
-                            </div>
+                            <div class="modal-body">
+                              <form class="forms-sample">
+                                <div class="form-group">
+                                  <label for="IDPost">ID</label>
+                                  <input type="text" class="form-control" id="IDPost" placeholder="IDPost" disabled>
+                                </div>
+                                <div class="form-group">
+                                  <label for="IDCat">IDCat</label>
+                                  <input type="text" class="form-control" id="IDCat" placeholder="IDCat">
+                                </div>
+                                <div class="form-group">
+                                  <label for="IDState">IDState</label>
+                                  <input type="text" class="form-control" id="IDState" placeholder="IDCat">
+                                </div>
+                                <div class="form-group">
+                                  <label for="Title">Title</label>
+                                  <input type="text" class="form-control" id="Title" placeholder="IDCat">
+                                </div>
+                                <div class="form-group">
+                                  <label for="Slug">Slug</label>
+                                  <input type="text" class="form-control" id="Slug" placeholder="Slug">
+                                </div>
+                                <div class="form-group">
+                                  <label for="Details">Details</label>
+                                  <input type="text" class="form-control" id="Details" placeholder="Details">
+                                </div>
+                                <div class="form-group">
+                                  <label for="Image">Image</label>
+                                  <input type="text" class="form-control" id="Image" placeholder="Image">
+                                </div>
 
-                            <div class="form-group">
-                              <label for="Author">Author</label>
-                              <input type="text" class="form-control" id="Author" placeholder="Author">
+                                <div class="form-group">
+                                  <label for="Author">Author</label>
+                                  <input type="text" class="form-control" id="Author" placeholder="Author">
+                                </div>
+                              </form>
                             </div>
-                          </form>
+                            <div class="modal-footer">
+                              <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
+                              <button type="button" id="edit" onclick="updateData();"
+                                class="btn btn-success">Sửa</button>
+                              <button type="button" id="edit" onclick="deleteTamThoi();"
+                                class="btn btn-success">Xóa</button>
+                              <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                            </div>
+                          </div>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                          <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                          <button type="button" id="edit" onclick="deleteTamThoi();" class="btn btn-success">Xóa</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="ENG" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table id="dataTableENG" class="table">
+                          <thead>
+                            <tr>
+                              <th>IDPost #</th>
+                              <th>IDCat</th>
+                              <th>Title</th>
+                              <th>Image</th>
+                              <th>Author</th>
+                              <th>State</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbodyENG"></tbody>
+                        </table>
                       </div>
                     </div>
                   </div>

@@ -3,13 +3,13 @@ window.addEventListener('load', getData)
 async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
     const slugResult = urlParams.get('Slug');
-    fetch(WEB_API + "/Management/GetBySlugBaiViet?slug=" + slugResult)
+    fetch(WEB_API + "/Management/GetBySlugBaiVietEN?slugen=" + slugResult)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
-            let { IDPost, IDCat, Title, Slug, Image, Author, IDState, Details } = response;
-            $('#IDPost').val(IDPost),
+            let { IDPostEN, IDCat, Title, Slug, Image, Author, IDState, Details } = response;
+            $('#IDPost').val(IDPostEN),
                 $('#IDCat').val(IDCat),
                 $('#IDState').val(IDState),
                 $('#Title').val(Title),
@@ -25,7 +25,7 @@ async function getData() {
 
 async function updateData() {
     var dulieu = {
-        IDPost: $('#IDPost').val(),
+        IDPostEN: $('#IDPost').val(),
         IDCat: $('#Category').val(),
         IDState: $('#State').val(),
         Title: $('#Title').val(),
@@ -34,7 +34,7 @@ async function updateData() {
         Author: $('#Author').val(),
     }
     console.log(dulieu)
-    fetch(WEB_API + "Management/ThemBaiViet", {
+    fetch(WEB_API + "Management/SuaBaiVietEN", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {

@@ -15,7 +15,8 @@ function loginAdmin() {
         .then((result) => {
             if (result.Status === 'Success') {
                 var resultInfo = parseJwt(result.Message)
-                if (resultInfo.nameid[6] === '2') {
+                console.log(resultInfo);
+                if (resultInfo.nameid[0] === '2') {
                     localStorage.setItem('token', result.Message);
                     if (resultInfo.nameid[2] === "Admin" || resultInfo.nameid[2] === "Supporter") {
                         alert('Đăng nhập thành công !!!');

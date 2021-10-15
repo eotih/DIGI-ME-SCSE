@@ -4,13 +4,12 @@ var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 console.log(GetToken)
 async function loadData() {
-    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[0])
+    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             const { Username, Password, Image, FullName, Email, Phone, IDRole, Sex } = response;
-            console.log(response)
             document.getElementById('avatar').src = Image;
             document.getElementById('img').src =Image;
             $('#Full-Name').text(FullName);
@@ -40,13 +39,13 @@ async function loadData() {
         })
 }
 async function getData(){
-    fetch(BASE_URL + "User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[0])
+    fetch(BASE_URL + "User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             const { Username, Password, Image, FullName, Email,IDState, Phone, IDRole, Sex } = response;
-            $('#ID_User').val(GetToken.nameid[0]);
+            $('#ID_User').val(GetToken.nameid[6]);
             $('#User_Name').val(Username);
             $('#Old_Password').val(Password);
             $('#Full_Name').val(FullName);
@@ -73,7 +72,7 @@ async function updateData() {
     const Passwords = $('#OldPassword').val();
     if (hash === Passwords){
         var dulieu = {
-            IDUser: GetToken.nameid[0],
+            IDUser: GetToken.nameid[6],
             Image: document.getElementById('img').src,
             FullName: $('#FullName').val(),
             Email: $('#Email').val(),
@@ -115,14 +114,14 @@ function changePassword(){
     const Passwords = $('#Old_Password').val();
     if (hash === Passwords && newpassword == repassword) {
         var dulieu = {
-            IDUser: GetToken.nameid[0],
+            IDUser: GetToken.nameid[6],
             UserName: GetToken.nameid[1],
             Password: $('#PasswordNew').val(),
             Image: document.getElementById('img').src,
             FullName: $('#FullName').val(),
             Email: $('#Email').val(),
             Phone: $('#Phone').val(),
-            IDState: GetToken.nameid[6],
+            IDState: GetToken.nameid[0],
             IDRole: $('#IDRole').val(),
             Sex: $('#Sex').val(),
         };

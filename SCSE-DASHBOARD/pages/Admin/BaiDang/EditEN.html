@@ -25,7 +25,7 @@
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
-    <script type="text/javascript" src="../../DAO/CrudBaiViet.js"></script>
+    <script type="text/javascript" src="../../DAO/CrudEditBaiVietEN.js"></script>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
@@ -486,146 +486,81 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-md-12 col-xl-12 grid-margin stretch-card">
+                        <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Thêm bài viết</h4>
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#VN"
-                                                role="tab" aria-controls="VN" aria-selected="true">
-                                                <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2560px-Flag_of_Vietnam.svg.png"
-                                                style="width: 20px; height: 15px"
-                                                alt=""> Tiếng Việt
-                                                </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#ENG"
-                                                role="tab" aria-controls="ENG" aria-selected="false"> <img
-                                                src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
-                                                style="width: 20px; height: 15px"
-                                                alt=""> Tiếng Anh 
-                                                </a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="VN" role="tabpanel"
-                                            aria-labelledby="home-tab">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <form class="forms-sample">
-                                                        <div class="form-group">
-                                                            <label for="tieude">Tiêu đề</label>
-                                                            <input type="text" class="form-control" id="tieude"
-                                                                placeholder="Nhập tiêu đề bài viết">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="noidung">Nội dung</label>
-                                                            <textarea type="text" class="form-control"
-                                                                id="summernote"></textarea>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <form class="forms-sample">
-                                                        <div class="form-group">
-                                                            <label for="theloai">Chọn thể loại</label>
-                                                            <select class="form-select" id="theloai">
-                                                                <option value="0">Vui lòng chọn</option>
-                                                                <option value="1">Tin tức</option>
-                                                                <option value="2">Dự án</option>
-                                                                <option value="3">Hợp tác nghiên cứu</option>
-                                                            </select>
-                                                        </div>
+                                    <h4 class="card-title">Sửa bài viết</h4>
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <form class="forms-sample">
+                                                <div class="form-group">
+                                                    <label for="Title">Tiêu đề</label>
+                                                    <input type="text" class="form-control" id="Title"
+                                                        placeholder="Nhập tiêu đề bài viết">
+                                                        <input type="text" class="form-control" id="IDPost"
+                                                        hidden="true">
 
-                                                        <div class="form-group">
-                                                            <label for="Name">Thêm hình ảnh</label>
-                                                            <input type="file" name="" id="fileId">
-                                                            <img id="hinhanh">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="tacgia">Tác giả</label>
-                                                            <input type="text" class="form-control" id="tacgia"
-                                                                placeholder="Tác giả">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" id="edit" onclick="themBaiViet();"
-                                                                class="btn btn-success">Thêm bài viết</button>
-                                                        </div>
-                                                    </form>
                                                 </div>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label for="Title">Nội dung</label>
+                                                    <textarea type="text" class="form-control"
+                                                        id="summernote"></textarea>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="tab-pane fade" id="ENG" role="tabpanel"
-                                            aria-labelledby="profile-tab">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <form class="forms-sample">
-                                                        <div class="form-group">
-                                                            <label for="Title">Title</label>
-                                                            <input type="text" class="form-control" id="Title"
-                                                                placeholder="Nhập tiêu đề bài viết">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Title">Content</label>
-                                                            <textarea type="text" class="form-control"
-                                                                id="ENGPOST"></textarea>
-                                                        </div>
-                                                    </form>
+                                        <div class="col-lg-4">
+                                            <form class="forms-sample">
+                                                <div class="form-group">
+                                                    <label for="Phone">Chọn thể loại</label>
+                                                    <select class="form-select" id="Category">
+                                                        <option value="1">Tin Tức</option>
+                                                        <option value="2">Dự Án</option>
+                                                        <option value="3">Hoạt động thiện nguyện</option>
+                                                    </select>
                                                 </div>
-                                                <div class="col-lg-4">
-                                                    <form class="forms-sample">
-                                                        <div class="form-group">
-                                                            <label for="Phone">Category</label>
-                                                            <select class="form-select" id="Category">
-                                                                <option value="0">Vui lòng chọn</option>
-                                                                <option value="1">Tin tức</option>
-                                                                <option value="2">Dự án</option>
-                                                                <option value="3">Hợp tác nghiên cứu</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="PostVN">Post Vietnamese</label>
-                                                            <select class="form-select" id="PostVN">
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Name">Picture</label>
-                                                            <input type="file" name="" id="fileIdENG">
-                                                            <img id="img">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Author">Author</label>
-                                                            <input type="text" class="form-control" id="Author"
-                                                                placeholder="Tác giả">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" id="edit" onclick="addData();"
-                                                                class="btn btn-success">Upload</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
 
+                                                <div class="form-group">
+                                                    <label for="Name">Thêm hình ảnh</label>
+                                                    <input type="file" name="" id="fileId">
+                                                    <img id="img" style="width: 200px; height:300px" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Author">Tác giả</label>
+                                                    <input type="text" class="form-control" id="Author"
+                                                        placeholder="Tác giả">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Phone">Công khai hay không</label>
+                                                    <select class="form-control" id="State">
+                                                        <option value="2">Có</option>
+                                                        <option value="3">Không</option>
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" id="edit" onclick="updateData();"
+                                                        class="btn btn-success">Sửa bài viết</button>
+                                                    <button type="button" id="delete" onclick="deleteTamThoi();"
+                                                        class="btn btn-danger">Xóa bài viết</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <!-- content-wrapper ends -->
-                <!-- partial:../../partials/_footer.html -->
+                <!-- partial:../../../partials/_footer.html -->
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
                                 href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
                             BootstrapDash.</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All
-                            rights reserved.</span>
+                            rights
+                            reserved.</span>
                     </div>
                 </footer>
                 <!-- partial -->
@@ -634,21 +569,7 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>>
-    <script>
-        $('#summernote').summernote({
-            placeholder: 'Hello Bootstrap 4',
-            tabsize: 2,
-            height: 500,
-            lang: 'vi-VN'
-        });
-        $('#ENGPOST').summernote({
-            placeholder: 'Hello Bootstrap 4',
-            tabsize: 2,
-            height: 500,
-            lang: 'vi-VN'
-        });
 
-    </script>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="../../../vendors/js/vendor.bundle.base.js"></script>
@@ -668,25 +589,13 @@
     <script src="../../../js/profile-demo.js"></script>
     <script>
         const fileInput = document.querySelector('input[id="fileId"]');
-        const fileInputENG = document.querySelector('input[id="fileIdENG"]');
-
-        fileInputENG.addEventListener("change", (e) => {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                base64 = reader.result;
-                $('#img').val(base64);
-
-            };
-            reader.readAsDataURL(file);
-        });
         // listen for the change event so we can capture the file
         fileInput.addEventListener("change", (e) => {
             const file = e.target.files[0];
             const reader = new FileReader();
             reader.onloadend = () => {
                 base64 = reader.result;
-                $('#hinhanh').val(base64);
+                $('#img').val(base64);
 
             };
             reader.readAsDataURL(file);

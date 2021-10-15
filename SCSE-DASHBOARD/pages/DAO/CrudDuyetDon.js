@@ -19,6 +19,8 @@ const url = "http://localhost:59360/";
                 return response.json();
             })
             .then(function (response) {
+                var deleted = response.filter(v => v.IDState === 4);
+                $('#deleteCount').text(deleted.length);
                 var result = response.filter(v => v.IDState !== 4)
                 var html = result.map(function (response) {
                     let { ID, FirstName, LastName, DOB, Phone, Email, Address, Project, Purpose, IDState } = response;
@@ -63,7 +65,8 @@ const url = "http://localhost:59360/";
     });
 })(jQuery);
 function Delete(ID){
-    $('#abc').val(ID)
+    $('#ID2').val(ID);
+    $('#State').val("4");
     $('#Delete').modal('show');
   }
 
@@ -144,19 +147,27 @@ async function updateData() {
         })
 }
 async function deleteData() {
-    var ID = $('#abc').val()
-    fetch(url + "Management/XoaNguoiDangKy?id=" + ID, {
-        method: 'DELETE',
+    var dulieu = {
+        ID: $('#ID2').val(),
+        IDState: $('#State').val(),
+    };
+    console.log(dulieu)
+    fetch(url + "/Management/EditState", {
+        method: 'POST',
+        body: JSON.stringify(dulieu),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
     }).then(function (response) {
         return response.json()
     })
         .then(function (data) {
-            if (data.Status === 'Delete') {
-                alert('Xoá thành công')
+            if (data.Status === 'Updated') {
+                alert('Xoá Thành Công')
                 window.location.reload();
             }
             else {
-                alert('Data not delete')
+                alert('Data not update')
             }
         })
 }
