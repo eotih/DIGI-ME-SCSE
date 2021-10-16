@@ -14,8 +14,8 @@ if(GetToken.nameid[2] === "Mod"){
 }
     switch(Role){
         case 2:
-            if(current === "http://127.0.0.1:5502/pages/Admin/ToChuc/index.html"
-            || current === "http://127.0.0.1:5502/pages/Admin/BaiDang/Index.html"){
+            if(current === "http://127.0.0.1:5502/pages/Admin/ToChuc/BanGiamDoc.html"
+            ){
                 window.location.href = "http://127.0.0.1:5502/index.html"
             }
             break;

@@ -469,15 +469,17 @@
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
-                    <table id="dataTable" class="table">
+                    <table id="dataTable" class="table select-table">
                       <thead>
                         <tr>
-                          <th>ID #</th>
-                          <th>Họ và tên</th>
-                          <th>Email</th>
+                          <th>
+                            <div class="form-check form-check-flat mt-0">
+                              <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
+                            </div>
+                          </th>
+                          <th>Thông tin</th>
                           <th>Trạng thái</th>
-                          <th>Quyền</th>
-                          <th>Ảnh đại diện</th>
                           <th>Hành động</th>
                         </tr>
                       </thead>
@@ -507,7 +509,7 @@
                             </div>
                             <div class="form-group" id="formPassword">
                               <label for="Password">Password</label>
-                              <input type="text" class="form-control" id="Password" placeholder="Password">
+                              <input type="password" class="form-control" id="Password" placeholder="Password">
                             </div>
                             <div class="form-group">
                               <label for="Avatar">Thêm ảnh đại diện</label>
