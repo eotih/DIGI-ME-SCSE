@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
@@ -7,7 +7,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiViet")
+        fetch(WEB_API + "Management/ShowAllPost")
             .then(function (response) {
                 return response.json();
             })
@@ -58,7 +58,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiVietEN")
+        fetch(WEB_API + "Management/ShowAllPostEN")
             .then(function (response) {
                 return response.json();
             })
@@ -146,14 +146,14 @@ function approveDataEN(ID){
     $('#approveEN').show();
     $('#deleteEN').hide();
 }
-async function deleteTamThoi(){
-    var dulieu = {
+async function updateState(){
+    var data = {
         IDPost: $('#IDPost').val(),
         IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "/Management/EditStatePost", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -170,14 +170,14 @@ async function deleteTamThoi(){
             }
         })
 }
-async function deleteTamThoiEN(){
-    var dulieu = {
+async function updateStateEN(){
+    var data = {
         IDPostEN: $('#IDPostEN').val(),
         IDState: $('#IDStateEN').val(),
     };
     fetch(WEB_API + "/Management/EditStatePostEN", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },

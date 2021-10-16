@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 
 function getQuantityPendingAccount() {
     fetch(WEB_API + "User/GetByStateUser?IDState=1")

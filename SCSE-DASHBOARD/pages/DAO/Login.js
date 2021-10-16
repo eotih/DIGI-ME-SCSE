@@ -1,7 +1,7 @@
 function loginAdmin() {
     var Username = $('#Username').val();
     var Password = $('#Password').val();
-    fetch("http://localhost:59360/User/Login", {
+    fetch("http://localhost:59360/API/User/Login", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

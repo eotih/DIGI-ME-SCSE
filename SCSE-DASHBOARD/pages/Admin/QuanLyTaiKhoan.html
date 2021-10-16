@@ -457,10 +457,13 @@
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Employee</button>
-              <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="QuanLyTaiKhoan-Xoa.html">Trash
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCount">
-                  </span>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2"
+                onclick="clearTextBox();">Add New Employee</button>
+              <a type="button" class="btn btn-outline-primary position-relative ms-auto"
+                href="QuanLyTaiKhoan-Xoa.html">Trash
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  id="deleteCount">
+                </span>
               </a><br /><br />
               <h4 class="card-title">Quản lý Tài khoản</h4>
               <div class="row">
@@ -483,114 +486,146 @@
                     </table>
                   </div>
                   <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="form-group">
-                                <label for="IDUser">ID</label>
-                                <input type="text" class="form-control" id="IDUser" placeholder="ID" disabled>
-                              </div>
-                              <div class="form-group">
-                                <label for="UserName">UserName</label>
-                                <input type="text" class="form-control" id="UserName" placeholder="UserName">
-                              </div>
-                              <div class="form-group">
-                                <label for="Password">Password</label>
-                                <input type="text" class="form-control" id="Password" placeholder="Password">
-                              </div>
-                              <div class="form-group">
-                                <label for="Avatar">Thêm ảnh đại diện</label>
-                                <input type="file" name="Avatar" id="avatar">
-                                <img src="" id="img" style="width: 300px;">
-                              </div>
-                              <div class="form-group">
-                                <label for="FullName">Họ và tên</label>
-                                <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
-                              </div>
-                              <div class="form-group">
-                                <label for="Phone">Số điện thoại</label>
-                                <input type="text" class="form-control" id="Phone" placeholder="Phone">
-                              </div>
-                              <div class="form-group">
-                                <label for="Email">Email</label>
-                                <input type="email" class="form-control" id="Email" placeholder="Email">
-                              </div>
-                              <div class="form-group">
-                                <label for="IDState">Trạng thái</label>
-                                <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
-                                  <option value="1">Pending</option>
-                                  <option value="2">Approved</option>
-                                  <option value="3">NotApproved</option>
-                                  <option value="4">Deleted</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label for="RoleName">Quyền</label>
-                                <select type="text" class="form-control" id="IDRole" placeholder="Quyền">
-                                  <option value="1">Admin</option>
-                                  <option value="2">Supporter</option>
-                                  <option value="3">Mod</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label for="Sex">Giới tính</label>
-                                <select type="text" class="form-control" id="Sex" placeholder="Sex">
-                                  <option value="Nam">Nam</option>
-                                  <option value="Nữ">Nữ</option>
-                                </select>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                            <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                          </div>
+                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="forms-sample">
+                            <div class="form-group">
+                              <label for="IDUser">ID</label>
+                              <input type="text" class="form-control" id="IDUser" placeholder="ID" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="UserName">UserName</label>
+                              <input type="text" class="form-control" id="UserName" placeholder="UserName">
+                            </div>
+                            <div class="form-group" id="formPassword">
+                              <label for="Password">Password</label>
+                              <input type="text" class="form-control" id="Password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                              <label for="Avatar">Thêm ảnh đại diện</label>
+                              <input type="file" name="Avatar" id="avatar">
+                              <img src="" id="img" style="width: 300px;">
+                            </div>
+                            <div class="form-group">
+                              <label for="FullName">Họ và tên</label>
+                              <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
+                            </div>
+                            <div class="form-group">
+                              <label for="Phone">Số điện thoại</label>
+                              <input type="text" class="form-control" id="Phone" placeholder="Phone">
+                            </div>
+                            <div class="form-group">
+                              <label for="Email">Email</label>
+                              <input type="email" class="form-control" id="Email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                              <label for="IDState">Trạng thái</label>
+                              <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
+                                <option value="1">Pending</option>
+                                <option value="2">Approved</option>
+                                <option value="3">NotApproved</option>
+                                <option value="4">Deleted</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="RoleName">Quyền</label>
+                              <select type="text" class="form-control" id="IDRole" placeholder="Quyền">
+                                <option value="1">Admin</option>
+                                <option value="2">Supporter</option>
+                                <option value="3">Mod</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="Sex">Giới tính</label>
+                              <select type="text" class="form-control" id="Sex" placeholder="Sex">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                              </select>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
+                          <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="Modal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="forms-sample">
+                            <div class="form-group">
+                              <h3>Bạn muốn reset password tài khoản này ?</h3>
+                            </div>
+                            <div class="form-group" hidden>
+                              <label for="IDUser">ID</label>
+                              <input type="text" class="form-control" id="IDReset" placeholder="ID" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="PasswordReset">Mật khẩu mới</label>
+                              <input type="password" class="form-control" id="PasswordReset" placeholder="PasswordReset">
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="edit" onclick="resetPassword();" class="btn btn-success">Xoá</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="form-group">
-                                <h3>Bạn muốn xoá tài khoản này ?</h3>
-                              </div>
-                              <div class="form-group" hidden>
-                                <label for="IDUser">ID</label>
-                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
-                              </div>
-                              <div class="form-group"hidden>
-                                <label for="IDState">Trạng thái</label>
-                                <select type="text" class="form-control" id="State" placeholder="Trạng thái" disabled>
-                                  <option value="1">Pending</option>
-                                  <option value="2">Approved</option>
-                                  <option value="3">NotApproved</option>
-                                  <option value="4">Deleted</option>
-                                </select>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" id="edit" onclick="updateDelete();" class="btn btn-success">Xoá</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                          </div>
+                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="forms-sample">
+                            <div class="form-group">
+                              <h3>Bạn muốn xoá tài khoản này ?</h3>
+                            </div>
+                            <div class="form-group" hidden>
+                              <label for="IDUser">ID</label>
+                              <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
+                            </div>
+                            <div class="form-group" hidden>
+                              <label for="IDState">Trạng thái</label>
+                              <select type="text" class="form-control" id="State" placeholder="Trạng thái" disabled>
+                                <option value="1">Pending</option>
+                                <option value="2">Approved</option>
+                                <option value="3">NotApproved</option>
+                                <option value="4">Deleted</option>
+                              </select>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="edit" onclick="updateDelete();" class="btn btn-success">Xoá</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -633,6 +668,8 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script type="text/javascript" src="../DAO/CrudPhanQuyen.js"></script>
+  <script type="text/javascript" src="../DAO/Login_Check.js"></script>
   <script src="../DAO/CrudTaiKhoan.js"></script>
   <!-- End custom js for this page-->
   <script>
@@ -648,7 +685,7 @@
       };
       reader.readAsDataURL(file);
     });
-  
+
   </script>
 </body>
 

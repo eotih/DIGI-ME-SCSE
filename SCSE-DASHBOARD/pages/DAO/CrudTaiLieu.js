@@ -1,10 +1,10 @@
-const url = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(url + "api/XemDanhSachTaiLieu")
+    fetch(WEB_API + "Interface/ListDocument")
         .then(function (response) {
             return response.json();
             // Sẽ trả dữ liệu về dạng json
@@ -29,14 +29,14 @@ async function loadData() {
 }
 
 async function addData() {
-    var dulieu = {
+    var data = {
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
 
     };
-    fetch(url + "Api/Interface/AddOrEditDocument", {
+    fetch(WEB_API + "Interface/AddOrEditDocument", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },
@@ -54,7 +54,7 @@ async function addData() {
         })
 }
 async function getData(Slug) {
-    fetch(url + "Api/Interface/GetBySlugDocument?slug=" + Slug)
+    fetch(WEB_API + "Interface/GetBySlugDocument?slug=" + Slug)
         .then(function (response) {
             return response.json();
         })
@@ -74,14 +74,14 @@ async function getData(Slug) {
 
 }
 async function updateData() {
-    var dulieu = {
+    var data = {
         ID: $('#ID').val(),
         Title: $('#Title').val(),
         Details: $('#Details').val(),
     };
-    fetch(url + "Api/Interface/AddOrEditDocument", {
+    fetch(WEB_API + "Interface/AddOrEditDocument", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -98,7 +98,7 @@ async function updateData() {
             }
         })
 }
-function getBaseUrl() {
+function getBaseWEB_API() {
     var file = document.querySelector('input[type=file]')['files'][0];
     var reader = new FileReader();
     reader.onloadend = function () {
@@ -106,12 +106,12 @@ function getBaseUrl() {
         $('#Image').val(baseString);
         document.getElementById("Image1").src = baseString;
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataWEB_API(file);
     //console.log(baseString)
 }
 
 async function deleteData(ID) {
-    fetch(url + "api/DeleteFile?id=" + ID, {
+    fetch(WEB_API + "Interface/DeleteDocument?id=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()

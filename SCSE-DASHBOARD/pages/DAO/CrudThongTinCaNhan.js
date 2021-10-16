@@ -1,10 +1,10 @@
-const BASE_URL = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 console.log(GetToken)
 async function loadData() {
-    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[6])
+    fetch(WEB_API + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
@@ -39,7 +39,7 @@ async function loadData() {
         })
 }
 async function getData(){
-    fetch(BASE_URL + "User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[6])
+    fetch(WEB_API + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
@@ -79,7 +79,7 @@ async function updateData() {
             Phone: $('#Phone').val(),
             Sex: $('#Sex').val(),
         };
-        fetch(BASE_URL + "/User/EditThongTinCaNhan", {
+        fetch(WEB_API + "User/EditPersonalInformation", {
             method: 'POST',
             body: JSON.stringify(dulieu),
             headers: {
@@ -125,7 +125,7 @@ function changePassword(){
             IDRole: $('#IDRole').val(),
             Sex: $('#Sex').val(),
         };
-        fetch(BASE_URL + "/User/ThemTaiKhoan", {
+        fetch(WEB_API + "User/AddOrEditAccount", {
             method: 'POST',
             body: JSON.stringify(dulieu),
             headers: {

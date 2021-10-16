@@ -1,11 +1,11 @@
-const url = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 window.addEventListener('load', loadData)
 function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
 }
 async function loadData() {
-    fetch(url + "Api/Interface/ShowAllVideo")
+    fetch(WEB_API + "Interface/ShowAllVideo")
         .then(function (response) {
             return response.json();
         })
@@ -50,16 +50,16 @@ function showDeletePopUp(ID) {
 }
 function splitLink() {
     var dataInput = $('#LinkYTB').val();
-    var url = dataInput.split('v=')[1];
-    var result = url.indexOf('&')
+    var WEB_API = dataInput.split('v=')[1];
+    var result = WEB_API.indexOf('&')
     if (result != -1) {
-        url = url.substring(0, result);
+        WEB_API = WEB_API.substring(0, result);
     }
-    return url
+    return WEB_API
 }
 function getImage(input) {
-    const BASE_URL = "https://img.youtube.com/vi/"
-    var result = BASE_URL + input + '/sddefault.jpg';
+    const BASE_WEB_API = "https://img.youtube.com/vi/"
+    var result = BASE_WEB_API + input + '/sddefault.jpg';
     return result
 }
 
@@ -71,7 +71,7 @@ function addData() {
         LinkYTB: $('#LinkYTB').val(),
         VideoID: splitLink($('#LinkYTB').val())
     };
-    fetch(url + "Api/Interface/AddOrEditVideo", {
+    fetch(WEB_API + "Interface/AddOrEditVideo", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -91,7 +91,7 @@ function addData() {
         })
 }
 function getData(ID) {
-    fetch(url + "Api/Interface/GetByIDVideo?id=" + ID)
+    fetch(WEB_API + "Interface/GetByIDVideo?id=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -117,7 +117,7 @@ function updateData() {
         VideoID: splitLink($('#LinkYTB').val())
     };
     console.log(data)
-    fetch(url + "Api/Interface/AddOrEditVideo", {
+    fetch(WEB_API + "Interface/AddOrEditVideo", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -138,7 +138,7 @@ function updateData() {
 }
 function deleteData() {
     var ID = $('#IDDuPhong').val()
-    fetch(url + "Api/Interface/DeleteVideo?id=" + ID, {
+    fetch(WEB_API + "Interface/DeleteVideo?id=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()

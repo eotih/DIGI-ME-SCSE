@@ -1,8 +1,8 @@
-const url = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 (function ($) {
     'use strict';
     $(function () {
-        fetch(url + "/Management/XemDanhSachDangKy")
+        fetch(WEB_API + "/Management/XemDanhSachDangKy")
             .then(function (response) {
                 return response.json();
             })
@@ -50,7 +50,7 @@ const url = "http://localhost:59360/";
     });
 })(jQuery);
 async function getData(ID) {
-    fetch(url + "Management/GetByIdNguoiDangKy?id=" + ID)
+    fetch(WEB_API + "Management/GetByIdVolunteer?id=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -68,7 +68,7 @@ async function restoreData(ID) {
         ID: $('#ID2').val(),
         IDState: $('#State').val(),
     };
-    fetch(url + "Management/EditState", {
+    fetch(WEB_API + "Management/EditState", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -88,9 +88,9 @@ async function restoreData(ID) {
         })
 }
 async function deleteData(ID) {
-    if(confirm('Bạn có muốn xoá tài khoản?')){
+    if(confirm('Bạn có muốn xoá đơn này?')){
 
-        fetch(url + "Management/XoaNguoiDangKy?id="+ ID,{
+        fetch(WEB_API + "Management/DeleteVolunteer?id="+ ID,{
             method: "DELETE",
         })
             .then(function (response) {

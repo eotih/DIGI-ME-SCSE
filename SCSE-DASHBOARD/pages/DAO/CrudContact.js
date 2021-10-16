@@ -1,9 +1,9 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(WEB_API + "Api/Interface/ViewAllContact")
+    fetch(WEB_API + "Interface/ViewAllContact")
         .then(function (response) {
             return response.json();
         })
@@ -28,7 +28,7 @@ async function loadData() {
 
 
 async function deleteData(ID) {
-    fetch(WEB_API + "Api/Interface/DeleteContact?ID=" + ID, {
+    fetch(WEB_API + "Interface/DeleteContact?ID=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()

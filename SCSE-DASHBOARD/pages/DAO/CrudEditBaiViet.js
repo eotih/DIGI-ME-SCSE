@@ -1,9 +1,9 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 window.addEventListener('load', getData)
 async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
     const slugResult = urlParams.get('Slug');
-    fetch(WEB_API + "/Management/GetBySlugBaiViet?slug=" + slugResult)
+    fetch(WEB_API + "Management/GetBySlugPost?slug=" + slugResult)
         .then(function (response) {
             return response.json();
         })
@@ -24,7 +24,7 @@ async function getData() {
 }
 
 async function updateData() {
-    var dulieu = {
+    var $data = {
         IDPost: $('#IDPost').val(),
         IDCat: $('#Category').val(),
         IDState: $('#State').val(),
@@ -33,10 +33,9 @@ async function updateData() {
         Image: document.getElementById('img').src,
         Author: $('#Author').val(),
     }
-    console.log(dulieu)
-    fetch(WEB_API + "Management/ThemBaiViet", {
+    fetch(WEB_API + "Management/AddOrEditPost", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify($data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },

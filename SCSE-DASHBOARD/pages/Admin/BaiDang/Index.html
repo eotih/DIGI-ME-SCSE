@@ -25,7 +25,6 @@
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
-    <script type="text/javascript" src="../../DAO/CrudBaiViet.js"></script>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
@@ -550,7 +549,7 @@
                                                                 placeholder="Tác giả">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" id="edit" onclick="themBaiViet();"
+                                                            <button type="button" id="edit" onclick="addPost();"
                                                                 class="btn btn-success">Thêm bài viết</button>
                                                         </div>
                                                     </form>
@@ -601,7 +600,7 @@
                                                                 placeholder="Tác giả">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" id="edit" onclick="addData();"
+                                                            <button type="button" id="edit" onclick="addPostEN();"
                                                                 class="btn btn-success">Upload</button>
                                                         </div>
                                                     </form>
@@ -664,6 +663,7 @@
     <script src="../../../js/settings.js"></script>
     <script src="../../../js/todolist.js"></script>
     <!-- endinject -->
+    <script type="text/javascript" src="../../DAO/CrudBaiViet.js"></script>
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
     <script>

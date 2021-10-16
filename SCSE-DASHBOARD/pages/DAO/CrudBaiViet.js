@@ -1,7 +1,7 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 // ------------------------ TIẾNG VIỆT ------------------------ //
 
-async function themBaiViet() {
+async function addPost() {
     var data = {
         Title: $('#tieude').val(),
         Details: $('#summernote').summernote('code'),
@@ -9,7 +9,7 @@ async function themBaiViet() {
         Image: $('#hinhanh').val(),
         Author: $('#tacgia').val(),
     };
-    fetch(WEB_API + "Management/ThemBaiViet", {
+    fetch(WEB_API + "Management/AddOrEditPost", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -32,7 +32,7 @@ async function themBaiViet() {
 
 window.addEventListener('load', getData)
 function getData() {
-    fetch(WEB_API + "Management/DSBaiVietTiengAnhCanDang")
+    fetch(WEB_API + "Management/ShowAllPostENNeedPost")
         .then(function (response) {
             return response.json();
         })
@@ -52,7 +52,7 @@ function getData() {
 }
 
 
-async function addData() {
+async function addPostEN() {
     var data = {
         IDPostEN: $('#PostVN').val(),
         IDCat: $('#Category').val(),
@@ -61,7 +61,7 @@ async function addData() {
         Image: $('#img').val(),
         Author: $('#Author').val(),
     };
-    fetch(WEB_API + "Management/ThemBaiVietEN", {
+    fetch(WEB_API + "Management/AddPostEN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

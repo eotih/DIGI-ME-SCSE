@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
@@ -7,7 +7,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiViet")
+        fetch(WEB_API + "Management/ShowAllPost")
             .then(function (response) {
                 return response.json();
             })
@@ -53,7 +53,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiVietEN")
+        fetch(WEB_API + "Management/ShowAllPostEN")
             .then(function (response) {
                 return response.json();
             })
@@ -159,7 +159,7 @@ async function updateRestoreEN() {
 }
 async function deleteData(IDPost) {
     if (confirm('Bạn có muốn xoá tài khoản?')) {
-        fetch(WEB_API + "Management/XoaBaiViet?ID=" + IDPost, {
+        fetch(WEB_API + "Management/DeletePost?ID=" + IDPost, {
             method: "DELETE",
         })
         .then(function (response) {
@@ -180,7 +180,7 @@ async function deleteData(IDPost) {
 }
 async function deleteDataEN(IDPostEN) {
     if (confirm('Are you sure you want to delete?')) {
-        fetch(WEB_API + "Management/XoaBaiVietEN?ID=" + IDPostEN, {
+        fetch(WEB_API + "Management/DeletePostEN?ID=" + IDPostEN, {
             method: "DELETE",
         })
         .then(function (response) {

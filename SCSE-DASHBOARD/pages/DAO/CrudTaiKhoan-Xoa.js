@@ -1,7 +1,7 @@
-const BASE_URL = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 window.addEventListener('load', loadData)
 async function loadData() {
-    fetch(BASE_URL + "/User/XemDanhSachTaiKhoan")
+    fetch(WEB_API + "User/ShowAllAccount")
         .then(function (response) {
             return response.json();
         })
@@ -36,7 +36,7 @@ async function loadData() {
         })
 }
 async function getData(ID) {
-    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + ID)
+    fetch(WEB_API + "User/GetByIdAccount?iduser=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -50,13 +50,13 @@ async function getData(ID) {
     $('#edit').show();
 }
 async function restoreData(IDUser) {
-    var dulieu = {
+    var data = {
         IDUser: $('#IDUser').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(BASE_URL + "User/EditState", {
+    fetch(WEB_API + "User/EditState", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -76,7 +76,7 @@ async function restoreData(IDUser) {
 async function deleteData(IDUser) {
     if(confirm('Bạn có muốn xoá tài khoản?')){
 
-        fetch(BASE_URL + "User/XoaTaiKhoan?iduser="+ IDUser,{
+        fetch(WEB_API + "User/DeleteAccount?iduser="+ IDUser,{
             method: "DELETE",
         })
             .then(function (response) {

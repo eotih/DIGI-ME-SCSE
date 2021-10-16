@@ -1,20 +1,8 @@
-const url = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 (function ($) {
-    const fields = [
-        { name: 'ID', title: 'ID' },
-        { name: 'FirstName', title: 'FirstName' },
-        { name: 'LastName', title: 'LastName' },
-        { name: 'DOB', title: 'DOB' },
-        { name: 'Phone', title: 'Phone' },
-        { name: 'Email', title: 'Email' },
-        { name: 'Address', title: 'Address' },
-        { name: 'Project', title: 'Project' },
-        { name: 'Purpose', title: 'Purpose' },
-        { name: 'IDState', title: 'IDState' },
-    ]
     'use strict';
     $(function () {
-        fetch(url + "/Management/XemDanhSachDangKy")
+        fetch(WEB_API + "Management/ShowAllVolunteers")
             .then(function (response) {
                 return response.json();
             })
@@ -71,7 +59,7 @@ function Delete(ID){
   }
 
 async function getData(ID) {
-    fetch(url + "/Management/GetByIdNguoiDangKy?id=" + ID)
+    fetch(WEB_API + "Management/GetByIdVolunteer?id=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -103,7 +91,7 @@ async function addData() {
         Project: $('#Project').val(),
         Purpose: $('#Purpose').val()
     };
-    fetch(url + "Management/DangKiThamGia", {
+    fetch(WEB_API + "Management/RegisterVolunteer", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -127,7 +115,7 @@ async function updateData() {
         ID: $('#ID').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(url + "Management/DangKiThamGia", {
+    fetch(WEB_API + "Management/RegisterVolunteer", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -152,7 +140,7 @@ async function deleteData() {
         IDState: $('#State').val(),
     };
     console.log(dulieu)
-    fetch(url + "/Management/EditState", {
+    fetch(WEB_API + "/Management/EditState", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
