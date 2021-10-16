@@ -44,17 +44,9 @@ async function getData(){
             return response.json();
         })
         .then(function (response) {
-            const { Username, Password, Image, FullName, Email,IDState, Phone, IDRole, Sex } = response;
+            const {Password,} = response;
             $('#ID_User').val(GetToken.nameid[6]);
-            $('#User_Name').val(Username);
             $('#Old_Password').val(Password);
-            $('#Full_Name').val(FullName);
-            document.getElementById("IMAG").src = Image;
-            $('#ID_State').val(IDState);
-            $('#E-mail').val(Email);
-            $('#PhoneNumber').val(Phone);
-            $('#ID_Role').val(IDRole);
-            $('#Sexx').val(Sex);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -115,17 +107,9 @@ function changePassword(){
     if (hash === Passwords && newpassword == repassword) {
         var dulieu = {
             IDUser: GetToken.nameid[6],
-            UserName: GetToken.nameid[1],
             Password: $('#PasswordNew').val(),
-            Image: document.getElementById('img').src,
-            FullName: $('#FullName').val(),
-            Email: $('#Email').val(),
-            Phone: $('#Phone').val(),
-            IDState: GetToken.nameid[0],
-            IDRole: $('#IDRole').val(),
-            Sex: $('#Sex').val(),
         };
-        fetch(WEB_API + "User/AddOrEditAccount", {
+        fetch(WEB_API + "User/EditPasswordAccount", {
             method: 'POST',
             body: JSON.stringify(dulieu),
             headers: {
