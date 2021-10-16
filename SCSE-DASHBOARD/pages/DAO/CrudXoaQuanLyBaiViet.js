@@ -34,7 +34,7 @@ function convertDate(input) {
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><button onclick="return restoreData(${(IDPost)})" class="btn btn-success">Khôi phục</button> <button onclick="return deleteData(${Slug})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return restoreData(${(IDPost)})" class="btn btn-success">Khôi phục</button> <button onclick="return deleteData(${IDPost})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbody').html(html);
@@ -81,7 +81,7 @@ function convertDate(input) {
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><a onclick="return restoreDataEN(${(IDPostEN)})" class="btn btn-success">Restore</a> <button onclick="return deleteDataEN(${SlugEN})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><a onclick="return restoreDataEN(${(IDPostEN)})" class="btn btn-success">Restore</a> <button onclick="return deleteDataEN(${IDPostEN})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbodyENG').html(html);
@@ -157,12 +157,12 @@ async function updateRestoreEN() {
             }
         })
 }
-async function deleteData(Slug) {
+async function deleteData(IDPost) {
     if (confirm('Bạn có muốn xoá tài khoản?')) {
-        fetch(WEB_API + "Management/XoaBaiViet?slug=" + Slug, {
+        fetch(WEB_API + "Management/XoaBaiViet?ID=" + IDPost, {
             method: "DELETE",
         })
-        then(function (response) {
+        .then(function (response) {
             return response.json();
         })
             .then(function (data) {
@@ -178,16 +178,16 @@ async function deleteData(Slug) {
 
     }
 }
-async function deleteDataEN(SlugEN) {
-    console.log(SlugEN)
+async function deleteDataEN(IDPostEN) {
     if (confirm('Are you sure you want to delete?')) {
-        fetch(WEB_API + "Management/XoaBaiVietEN?slugen=" + SlugEN, {
+        fetch(WEB_API + "Management/XoaBaiVietEN?ID=" + IDPostEN, {
             method: "DELETE",
         })
-        then(function (response) {
+        .then(function (response) {
             return response.json();
         })
             .then(function (data) {
+                debugger;
                 if (data.Status === 'Delete') {
                     alert('Xoá thành công')
                     window.location.reload();

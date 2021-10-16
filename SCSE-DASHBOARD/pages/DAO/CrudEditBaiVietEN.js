@@ -30,7 +30,7 @@ async function updateData() {
         IDState: $('#State').val(),
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
-        Image: $('#img').val(),
+        Image: document.getElementById('img').src,
         Author: $('#Author').val(),
     }
     console.log(dulieu)

@@ -37,7 +37,9 @@ function convertDate(input) {
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><a href="./Edit.html?Slug=${Slug}"" class="btn btn-outline-primary">View</a> <button onclick="return deleteData(${IDPost})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return approveData(${IDPost})" class="btn btn-success">Duyệt bài</button>
+                    <a href="./Edit.html?Slug=${Slug}"" class="btn btn-outline-primary">View</a>
+                    <button onclick="return deleteData(${IDPost})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbody').html(html);
@@ -86,7 +88,9 @@ function convertDate(input) {
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><a href="./EditEN.html?Slug=${SlugEN}" class="btn btn-outline-primary">View</a> <button onclick="return deleteDataEN(${IDPostEN})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return approveDataEN(${IDPostEN})" class="btn btn-success">Approve</button>
+                    <a href="./EditEN.html?Slug=${SlugEN}" class="btn btn-outline-primary">View</a>
+                    <button onclick="return deleteDataEN(${IDPostEN})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbodyENG').html(html);
@@ -106,13 +110,41 @@ function deleteData(ID){
     $('#IDPost').val(ID);
     $('#IDState').val("4");
     $('#exampleModal-2').modal('show');
-    $('#edit').show();
+    $('#showform').hide();
+    $('#HeaderApprove').hide();
+    $('#HeaderDelete').show();
+    $('#approveVN').hide();
+    $('#deleteVN').show();
 }
 function deleteDataEN(ID){
     $('#IDPostEN').val(ID);
     $('#IDStateEN').val("4");
     $('#exampleModal').modal('show');
-    $('#edit').show();
+    $('#showformEN').hide();
+    $('#HeaderApproveEN').hide();
+    $('#HeaderDeleteEN').show();
+    $('#approveEN').hide();
+    $('#deleteEN').show();
+}
+function approveData(ID){
+    $('#IDPost').val(ID);
+    $('#IDState').val("");
+    $('#exampleModal-2').modal('show');
+    $('#showform').show();
+    $('#HeaderApprove').show();
+    $('#HeaderDelete').hide();
+    $('#approveVN').show();
+    $('#deleteVN').hide();
+}
+function approveDataEN(ID){
+    $('#IDPostEN').val(ID);
+    $('#IDStateEN').val("");
+    $('#exampleModal').modal('show');
+    $('#showformEN').show();
+    $('#HeaderApproveEN').show();
+    $('#HeaderDeleteEN').hide();
+    $('#approveEN').show();
+    $('#deleteEN').hide();
 }
 async function deleteTamThoi(){
     var dulieu = {
@@ -130,7 +162,7 @@ async function deleteTamThoi(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                alert('Xoá Thành Công')
+                alert('Cập nhật Thành Công')
                 window.location.reload();
             }
             else {
@@ -154,7 +186,7 @@ async function deleteTamThoiEN(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                alert('Xoá Thành Công')
+                alert('Cập nhật Thành Công')
                 window.location.reload();
             }
             else {
