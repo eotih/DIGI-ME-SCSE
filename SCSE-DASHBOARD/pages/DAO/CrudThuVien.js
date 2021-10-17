@@ -1,9 +1,9 @@
-const url = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 //đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(url + "/Api/Interface/ListPhoto")
+    fetch(WEB_API + "Interface/ListPhoto")
         .then(function (response) {
             return response.json();
         })
@@ -39,7 +39,7 @@ async function loadData() {
         })
 } (jQuery);
 async function getData(ID) {
-    fetch(url + "Api/Interface/GetByIDPhotoGalary?id=" + ID)
+    fetch(WEB_API + "Interface/GetByIDPhotoGallery?ID=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -60,7 +60,7 @@ function addData(base64) {
         Title: $('#Title').val(),
         Image: base64
     };
-    fetch(url + "Api/Interface/AddOrEditPhotoGallery", {
+    fetch(WEB_API + "Interface/AddOrEditPhotoGallery", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -100,7 +100,7 @@ async function updateData() {
         Title: $('#Title').val(),
         Image: $('#Image').val()
     };
-    fetch(url + "api/UploadImage", {
+    fetch(WEB_API + "api/UploadImage", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -127,7 +127,7 @@ async function autoUpdate(baseString) {
         Slug: $('#Slug').val(),
         Image: baseString
     }
-    fetch(url + "Api/Interface/AddOrEditPhotoGallery", {
+    fetch(WEB_API + "Interface/AddOrEditPhotoGallery", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {

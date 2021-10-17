@@ -1,9 +1,9 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(WEB_API + "Api/Interface/ListPartner")
+    fetch(WEB_API + "Interface/ListPartner")
         .then(function (response) {
             return response.json();
         })
@@ -33,7 +33,7 @@ async function loadData() {
         })
 }(jQuery);
 async function getData(ID) {
-    fetch(WEB_API + "Api/Interface/GetByIdPartner?ID=" + ID)
+    fetch(WEB_API + "Interface/GetByIdPartner?ID=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -73,7 +73,7 @@ async function addData() {
         Address: $('#Address').val(),
         Link: $('#Link').val(),
     };
-    fetch(WEB_API + "Api/Interface/AddOrEditPartner", {
+    fetch(WEB_API + "Interface/AddOrEditPartner", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -103,7 +103,7 @@ async function updateData() {
         Address: $('#Address').val(),
         Link: $('#Link').val(),
     };
-    fetch(WEB_API + "Api/Interface/AddOrEditPartner", {
+    fetch(WEB_API + "Interface/AddOrEditPartner", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -124,7 +124,8 @@ async function updateData() {
 }
 
 async function deleteData(ID) {
-    fetch(WEB_API + "Api/Interface/DeletePartner?ID=" + ID, {
+    if(confirm('Bạn có muốn xoá đối tác này?')){
+    fetch(WEB_API + "Interface/DeletePartner?ID=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()
@@ -138,6 +139,10 @@ async function deleteData(ID) {
                 alert('Data not delete')
             }
         })
+    }
+    else{
+        
+    }
 }
 function clearTextBox() {
     $('#ID').val("");

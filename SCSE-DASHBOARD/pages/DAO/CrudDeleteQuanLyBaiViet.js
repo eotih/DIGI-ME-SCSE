@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
@@ -7,7 +7,11 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
+<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
         fetch(WEB_API + "API/Management/ShowAllPost")
+=======
+        fetch(WEB_API + "Management/ShowAllPost")
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             .then(function (response) {
                 return response.json();
             })
@@ -53,7 +57,11 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
+<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
         fetch(WEB_API + "API/Management/ShowAllPostEN")
+=======
+        fetch(WEB_API + "Management/ShowAllPostEN")
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             .then(function (response) {
                 return response.json();
             })
@@ -159,7 +167,11 @@ async function updateRestoreEN() {
 }
 async function deleteData(IDPost) {
     if (confirm('Bạn có muốn xoá tài khoản?')) {
+<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
         fetch(WEB_API + "API/Management/XoaBaiViet?ID=" + IDPost, {
+=======
+        fetch(WEB_API + "Management/DeletePost?ID=" + IDPost, {
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             method: "DELETE",
         })
         .then(function (response) {
@@ -180,7 +192,11 @@ async function deleteData(IDPost) {
 }
 async function deleteDataEN(IDPostEN) {
     if (confirm('Are you sure you want to delete?')) {
+<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
         fetch(WEB_API + "API/Management/XoaBaiVietEN?ID=" + IDPostEN, {
+=======
+        fetch(WEB_API + "Management/DeletePostEN?ID=" + IDPostEN, {
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             method: "DELETE",
         })
         .then(function (response) {

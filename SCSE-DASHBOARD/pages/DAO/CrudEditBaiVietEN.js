@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 const WEB_API = "http://localhost:59360/";
 var getToken = parseJwt(localStorage.getItem("token"));
+=======
+const WEB_API = "http://localhost:59360/API/";
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
 window.addEventListener('load', getData)
 async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
     const slugResult = urlParams.get('Slug');
+<<<<<<< HEAD
     fetch(WEB_API + "API/Management/GetBySlugBaiVietEN?slugen=" + slugResult)
+=======
+    fetch(WEB_API + "Management/GetBySlugPostEN?slugen=" + slugResult)
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
         .then(function (response) {
             return response.json();
         })
@@ -25,7 +33,7 @@ async function getData() {
 }
 
 async function updateData() {
-    var dulieu = {
+    var data = {
         IDPostEN: $('#IDPost').val(),
         IDCat: $('#Category').val(),
         IDState: $('#State').val(),
@@ -34,9 +42,14 @@ async function updateData() {
         Image: document.getElementById('img').src,
         Author: $('#Author').val(),
     }
+<<<<<<< HEAD
     fetch(WEB_API + "API/Management/SuaBaiVietEN", {
+=======
+    console.log(data)
+    fetch(WEB_API + "Management/EditPostEN", {
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -47,7 +60,7 @@ async function updateData() {
             if (data.Status === 'Updated') {
                 addNoti(2);
                 alert('Sửa Thành Công')
-                window.location.reload();
+                window.location.href = "http://127.0.0.1:5502/pages/Admin/BaiDang/QuanLyBaiDang.html"
             }
             else {
                 alert('Data not update')

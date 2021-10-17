@@ -23,9 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
-    <script type="text/javascript" src="../DAO/CrudThongTinCaNhan.js"></script>
-    <script type="text/javascript" src="../DAO/CrudPhanQuyen.js"></script>
-    <script type="text/javascript" src="../DAO/Login_Check.js"></script>
+
 
 </head>
 
@@ -580,65 +578,107 @@
             <!-- partial:../../partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../index.html">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Trang chủ</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Cấu hình Tổ chức</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Admin/ToChuc/index.html" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="menu-icon mdi mdi-floor-plan"></i>
-                            <span class="menu-title">Quản lý tổ chức</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Đăng bài</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Admin/BaiDang/Index.html" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="menu-icon mdi mdi-floor-plan"></i>
-                            <span class="menu-title">Quản lý bài đăng</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Thông tin trang</li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#manage-posts" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-view-list"></i>
-                            <span class="menu-title">Quản lý thông tin bài viết</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#approve-applications" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
-                            <span class="menu-title">Duyệt đơn của TNV</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#view-partnerships" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-human-male-female"></i>
-                            <span class="menu-title">Xem danh sách đối tác</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-library" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-image-area"></i>
-                            <span class="menu-title">Quản lý thư viên</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../index.html">
+                      <i class="mdi mdi-apps menu-icon"></i>
+                      <span class="menu-title">Trang chủ</span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-category">Cấu hình Tổ chức</li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/ToChuc/Ban-Giam-Doc.html">
+                      <i class="menu-icon mdi mdi-briefcase"></i>
+                      <span class="menu-title">Ban giám đốc</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">
+                      <i class="menu-icon mdi mdi-panorama"></i>
+                      <span class="menu-title">Banner</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/ToChuc/Ban-Giam-Doc.html">
+                      <i class="menu-icon mdi mdi-bank"></i>
+                      <span class="menu-title">Thông tin ngân hàng</span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-category">Quản lý thành viên</li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/QuanLyTaiKhoan.html">
+                      <i class="menu-icon mdi mdi-key-variant"></i>
+                      <span class="menu-title">Quản lý tài khoản</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/Trang-Thai/">
+                      <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
+                      <span class="menu-title">Quản lý trạng thái</span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-category">Đăng bài</li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/BaiDang/Index.html">
+                      <i class="menu-icon mdi mdi-format-align-left"></i>
+                      <span class="menu-title">Đăng bài</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/BaiDang/QuanLyBaiDang.html" aria-expanded="false"
+                      aria-controls="form-elements">
+                      <i class="menu-icon mdi mdi-file-document-box"></i>
+                      <span class="menu-title">Quản lý bài viết</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/TheLoai/Index.html">
+                      <i class="menu-icon mdi mdi-file-multiple"></i>
+                      <span class="menu-title">Quản lý thể loại </span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-category">Quản lý thư viện</li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/ThuVien/ThuVien.html">
+                      <i class="menu-icon mdi mdi-folder-multiple-image"></i>
+                      <span class="menu-title">Thư viện hình ảnh</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/TaiLieu/QuanLyTaiLieu.html">
+                      <i class="menu-icon mdi mdi-note-text"></i>
+                      <span class="menu-title">Thư viện tài liệu</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/ThuVien/VideoGallery.html">
+                      <i class="menu-icon mdi mdi-movie"></i>
+                      <span class="menu-title">Thư viện Video</span>
+                    </a>
+                  </li>
+                  <li class="nav-item nav-category">Duyệt đơn</li>
+        
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html" aria-expanded="false"
+                      aria-controls="form-elements">
+                      <i class="menu-icon mdi mdi-account-plus"></i>
+                      <span class="menu-title">Duyệt đơn TNV</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../Admin/DoiTac/DanhSachDoiTac.html" aria-expanded="false"
+                      aria-controls="form-elements">
+                      <i class="menu-icon mdi mdi-human-male-female"></i>
+                      <span class="menu-title">Danh sách đối tác</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="" aria-expanded="false" aria-controls="form-elements">
+                      <i class="menu-icon mdi mdi-logout"></i>
+                      <span class="menu-title">Đăng xuất</span>
+                    </a>
+                  </li>
                 </ul>
-            </nav>
+              </nav>
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -805,11 +845,6 @@
                                                                     placeholder="ID" disabled>
                                                             </div>
                                                             <div class="form-group" hidden>
-                                                                <label for="UserName">UserName</label>
-                                                                <input type="text" class="form-control" id="User_Name"
-                                                                    placeholder="UserName"disabled>
-                                                            </div>
-                                                            <div class="form-group" hidden>
                                                                 <label for="Password">Mật khẩu cũ </label>
                                                                 <input type="password" class="form-control" id="Old_Password"
                                                                     placeholder="Old_Password" disabled>
@@ -828,53 +863,6 @@
                                                                 <label for="Password">Lập lại mật khẩu mới </label>
                                                                 <input type="password" class="form-control" id="Re_PasswordNew"
                                                                     placeholder="Password">
-                                                            </div>
-                                                            <div class="form-group" hidden>
-                                                                <label for="Avatar">Thêm ảnh đại diện</label>
-                                                                <input type="file" name="Avatar" id="avatar">
-                                                                <img src="" id="IMAG" style="width: 300px;"disabled>
-                                                            </div>
-                                                            <div class="form-group" hidden>
-                                                                <label for="FullName">Họ và tên</label>
-                                                                <input type="text" class="form-control" id="Full_Name"
-                                                                    placeholder="Họ Tên"disabled>
-                                                            </div>
-                                                            <div class="form-group" hidden>
-                                                                <label for="Phone">Số điện thoại</label>
-                                                                <input type="text" class="form-control" id="PhoneNumber"
-                                                                    placeholder="Phone"disabled>
-                                                            </div>
-                                                            <div class="form-group" hidden>
-                                                                <label for="Email">Email</label>
-                                                                <input type="email" class="form-control" id="E-mail"
-                                                                    placeholder="Email"disabled>
-                                                            </div>
-                                                            <div class="form-group" hidden>
-                                                                <label for="IDState">Trạng thái</label>
-                                                                <select type="text" class="form-control" id="ID_State"
-                                                                    placeholder="Trạng thái"disabled>
-                                                                    <option value="1">Pending</option>
-                                                                    <option value="2">Approved</option>
-                                                                    <option value="3">NotApproved</option>
-                                                                    <option value="4">Deleted</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group" hidden>
-                                                                <label for="RoleName">Quyền</label>
-                                                                <select type="text" class="form-control" id="ID_Role"
-                                                                    placeholder="Quyền"disabled>
-                                                                    <option value="1">Admin</option>
-                                                                    <option value="2">Supporter</option>
-                                                                    <option value="3">Mod</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group" hidden>
-                                                                <label for="Sex">Giới tính</label>
-                                                                <select type="text" class="form-control" id="Sexx"
-                                                                    placeholder="Sex"disabled>
-                                                                    <option value="Nam">Nam</option>
-                                                                    <option value="Nữ">Nữ</option>
-                                                                </select>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -937,6 +925,9 @@
     <script src="../../js/modal-demo.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
+    <script type="text/javascript" src="../DAO/CrudThongTinCaNhan.js"></script>
+    <script type="text/javascript" src="../DAO/CrudPhanQuyen.js"></script>
+    <script type="text/javascript" src="../DAO/Login_Check.js"></script>
     <!-- End custom js for this page-->
     <script>
         const fileInput = document.querySelector('input[id="Image"]');

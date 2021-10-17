@@ -1,8 +1,12 @@
-const url = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 (function ($) {
     'use strict';
     $(function () {
+<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudThungRacDuyetDon.js
         fetch(url + "API/Management/RegisterVolunteer")
+=======
+        fetch(WEB_API + "/Management/XemDanhSachDangKy")
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteDuyetDon.js
             .then(function (response) {
                 return response.json();
             })
@@ -50,7 +54,11 @@ const url = "http://localhost:59360/";
     });
 })(jQuery);
 async function getData(ID) {
+<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudThungRacDuyetDon.js
     fetch(url + "API/Management/GetByIdVolunteer?id=" + ID)
+=======
+    fetch(WEB_API + "Management/GetByIdVolunteer?id=" + ID)
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteDuyetDon.js
         .then(function (response) {
             return response.json();
         })
@@ -68,7 +76,7 @@ async function restoreData(ID) {
         ID: $('#ID2').val(),
         IDState: $('#State').val(),
     };
-    fetch(url + "Management/EditState", {
+    fetch(WEB_API + "Management/EditState", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -88,9 +96,13 @@ async function restoreData(ID) {
         })
 }
 async function deleteData(ID) {
-    if(confirm('Bạn có muốn xoá tài khoản?')){
+    if(confirm('Bạn có muốn xoá đơn này?')){
 
+<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudThungRacDuyetDon.js
         fetch(url + "API/Management/DeleteVolunteer?id="+ ID,{
+=======
+        fetch(WEB_API + "Management/DeleteVolunteer?id="+ ID,{
+>>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteDuyetDon.js
             method: "DELETE",
         })
             .then(function (response) {

@@ -1,8 +1,8 @@
-const BASE_URL = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 
 window.addEventListener('load', loadData)
 async function loadData() {
-    fetch(BASE_URL + "/Api/Interface/ShowAllPorfolio")
+    fetch(WEB_API + "Interface/ShowAllPorfolio")
         .then(function (response) {
             return response.json();
         })
@@ -21,14 +21,14 @@ async function loadData() {
                     <td><img src='${img[0]}'/><img src='${img[1]}'/><img src='${img[2]}'/></td>
                     <td>${Position}</td>
                     <td>${Details}</td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button> <button onclick="return getDatas(${IDImg})" class="btn btn-outline-primary">View Img</button> <button onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button> <button onclick="return getDataImg(${IDImg})" class="btn btn-outline-primary">View Img</button> <button onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
             })
             $('#tbody').html(html);
         })
 }
 async function getData(ID) {
-    fetch(BASE_URL + "/Api/Interface/GetbyIdPortfolios?id=" + ID)
+    fetch(WEB_API + "Interface/GetByIdPortfolios?id=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -44,9 +44,9 @@ async function getData(ID) {
     $('#add').hide();
     $('#edit').show();
 }
-async function getDatas(IDImg) {
+async function getDataImg(IDImg) {
     var data =IDImg;
-    fetch(BASE_URL + "/Api/Interface/GetbyIdimgPortfolios?IDimg=" + IDImg)
+    fetch(WEB_API + "/Api/Interface/GetbyIdimgPortfolios?IDimg=" + IDImg)
         .then(function (response) {
             return response.json();
         })
@@ -74,16 +74,16 @@ async function getDatas(IDImg) {
     $('#edit1').show();
 }
 async function addData() {
-    var dulieu = {
+    var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
         IDImg: $('#IDImg').val(),
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
-    fetch(BASE_URL + "/Api/Interface/AddorEditPortfolios", {
+    fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },
@@ -93,7 +93,7 @@ async function addData() {
         .then(function (data) {
             if (data.Status === 'Success') {
                 alert('Thêm Thành Công')
-                window.location.reload();
+                clearTextBox2();
             }
             else {
                 alert('Data not insert')
@@ -101,17 +101,17 @@ async function addData() {
         })
 }
 async function updateData() {
-    var dulieu = {
+    var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
         IDImg: $('#IDImg').val(),
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
-    console.table(dulieu)
-    fetch(BASE_URL + "/Api/Interface/AddorEditPortfolios", {
+    console.table(data)
+    fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -132,14 +132,14 @@ async function updateImg() {
     window.location.reload();
 }
 async function updateImg1() {
-    var dulieu = {
+    var data = {
         ID: $('#ID1').val(),
         IDImg: $('#IDImg1').val(),
         ImagePortfolio: document.getElementById('img1').src,
     };
-    fetch(BASE_URL + "/Api/Interface/EditImagePortfolios", {
+    fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -156,14 +156,14 @@ async function updateImg1() {
         })
 }
 async function updateImg2() {
-    var dulieu = {
+    var data = {
         ID: $('#ID2').val(),
         IDImg: $('#IDImg2').val(),
         ImagePortfolio: document.getElementById('img2').src,
     };
-    fetch(BASE_URL + "/Api/Interface/EditImagePortfolios", {
+    fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -180,14 +180,14 @@ async function updateImg2() {
         })
 }
 async function updateImg3() {
-    var dulieu = {
+    var data = {
         ID: $('#ID3').val(),
         IDImg: $('#IDImg3').val(),
         ImagePortfolio: document.getElementById('img3').src,
     };
-    fetch(BASE_URL + "/Api/Interface/EditImagePortfolios", {
+    fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -203,14 +203,14 @@ async function updateImg3() {
             }
         })
 }
-function addDatas(base64) {
-    let dulieu = {
+function addDataImg(base64) {
+    let data = {
         IDImg: $('#IDImgadd').val(),
         ImagePortfolio: base64
     };
-    fetch(BASE_URL + "Api/Interface/EditImagePortfolios", {
+    fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },
@@ -235,7 +235,7 @@ function AlertAdd() {
             var reader = new FileReader();
             reader.onload = function () {
                 var text = reader.result;
-                addDatas(text)
+                addDataImg(text)
             }
             reader.readAsDataURL(file);
         })(file[i]);

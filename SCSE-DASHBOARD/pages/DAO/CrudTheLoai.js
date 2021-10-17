@@ -1,9 +1,9 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(WEB_API + "Api/Interface/ListCategory")
+    fetch(WEB_API + "Interface/ListCategory")
         .then(function (response) {
             return response.json();
         })
@@ -22,7 +22,7 @@ async function loadData() {
         })
 }
 async function getData(IDCat) {
-    fetch(WEB_API + "Api/Interface/GetByIdCategory?ID=" + IDCat)
+    fetch(WEB_API + "Interface/GetByIdCategory?ID=" + IDCat)
         .then(function (response) {
             return response.json();
         })
@@ -39,7 +39,7 @@ async function addData() {
     var $data = {
         CategoryName: $('#CategoryName').val().toUpperCase(),
     };
-    fetch(WEB_API + "Api/Interface/AddOrEditCategory", {
+    fetch(WEB_API + "Interface/AddOrEditCategory", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -79,23 +79,6 @@ async function updateData() {
             }
             else {
                 alert('Data not update')
-            }
-        })
-}
-
-async function deleteData(ID) {
-    fetch(WEB_API + "Api/Interface/DeletePartner?ID=" + ID, {
-        method: 'DELETE',
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Delete') {
-                alert('Xoá thành công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not delete')
             }
         })
 }

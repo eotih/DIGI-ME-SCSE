@@ -1,10 +1,10 @@
-const BASE_URL = "http://localhost:59360/";
+const WEB_API = "http://localhost:59360/API/";
 
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 console.log(GetToken)
 async function loadData() {
-    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[6])
+    fetch(WEB_API + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
@@ -39,22 +39,14 @@ async function loadData() {
         })
 }
 async function getData(){
-    fetch(BASE_URL + "User/GetByIdTaiKhoan?iduser=" + GetToken.nameid[6])
+    fetch(WEB_API + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
-            const { Username, Password, Image, FullName, Email,IDState, Phone, IDRole, Sex } = response;
+            const {Password,} = response;
             $('#ID_User').val(GetToken.nameid[6]);
-            $('#User_Name').val(Username);
             $('#Old_Password').val(Password);
-            $('#Full_Name').val(FullName);
-            document.getElementById("IMAG").src = Image;
-            $('#ID_State').val(IDState);
-            $('#E-mail').val(Email);
-            $('#PhoneNumber').val(Phone);
-            $('#ID_Role').val(IDRole);
-            $('#Sexx').val(Sex);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -79,7 +71,7 @@ async function updateData() {
             Phone: $('#Phone').val(),
             Sex: $('#Sex').val(),
         };
-        fetch(BASE_URL + "/User/EditThongTinCaNhan", {
+        fetch(WEB_API + "User/EditPersonalInformation", {
             method: 'POST',
             body: JSON.stringify(dulieu),
             headers: {
@@ -115,17 +107,9 @@ function changePassword(){
     if (hash === Passwords && newpassword == repassword) {
         var dulieu = {
             IDUser: GetToken.nameid[6],
-            UserName: GetToken.nameid[1],
             Password: $('#PasswordNew').val(),
-            Image: document.getElementById('img').src,
-            FullName: $('#FullName').val(),
-            Email: $('#Email').val(),
-            Phone: $('#Phone').val(),
-            IDState: GetToken.nameid[0],
-            IDRole: $('#IDRole').val(),
-            Sex: $('#Sex').val(),
         };
-        fetch(BASE_URL + "/User/ThemTaiKhoan", {
+        fetch(WEB_API + "User/EditPasswordAccount", {
             method: 'POST',
             body: JSON.stringify(dulieu),
             headers: {
