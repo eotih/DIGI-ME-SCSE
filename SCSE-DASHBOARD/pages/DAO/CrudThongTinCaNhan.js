@@ -2,7 +2,6 @@ const WEB_API = "http://localhost:59360/API/";
 
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
-console.log(GetToken)
 async function loadData() {
     fetch(WEB_API + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
@@ -63,7 +62,7 @@ async function updateData() {
 
     const Passwords = $('#OldPassword').val();
     if (hash === Passwords){
-        var dulieu = {
+        var data = {
             IDUser: GetToken.nameid[6],
             Image: document.getElementById('img').src,
             FullName: $('#FullName').val(),
@@ -73,7 +72,7 @@ async function updateData() {
         };
         fetch(WEB_API + "User/EditPersonalInformation", {
             method: 'POST',
-            body: JSON.stringify(dulieu),
+            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json; charset=UTF-8"
             },
@@ -105,13 +104,13 @@ function changePassword(){
     console.log(newpassword);
     const Passwords = $('#Old_Password').val();
     if (hash === Passwords && newpassword == repassword) {
-        var dulieu = {
+        var data = {
             IDUser: GetToken.nameid[6],
             Password: $('#PasswordNew').val(),
         };
         fetch(WEB_API + "User/EditPasswordAccount", {
             method: 'POST',
-            body: JSON.stringify(dulieu),
+            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json; charset=UTF-8"
             },

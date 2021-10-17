@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-const WEB_API = "http://localhost:59360/";
-var getToken = parseJwt(localStorage.getItem("token"));
-=======
 const WEB_API = "http://localhost:59360/API/";
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
+var getToken = parseJwt(localStorage.getItem("token"));
+
 window.addEventListener('load', getData)
 async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
     const slugResult = urlParams.get('Slug');
-<<<<<<< HEAD
-    fetch(WEB_API + "API/Management/GetBySlugBaiVietEN?slugen=" + slugResult)
-=======
     fetch(WEB_API + "Management/GetBySlugPostEN?slugen=" + slugResult)
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
         .then(function (response) {
             return response.json();
         })
@@ -42,12 +35,8 @@ async function updateData() {
         Image: document.getElementById('img').src,
         Author: $('#Author').val(),
     }
-<<<<<<< HEAD
-    fetch(WEB_API + "API/Management/SuaBaiVietEN", {
-=======
     console.log(data)
     fetch(WEB_API + "Management/EditPostEN", {
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

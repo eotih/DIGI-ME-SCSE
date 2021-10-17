@@ -7,11 +7,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
-        fetch(WEB_API + "API/Management/ShowAllPost")
-=======
         fetch(WEB_API + "Management/ShowAllPost")
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             .then(function (response) {
                 return response.json();
             })
@@ -57,11 +53,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
-        fetch(WEB_API + "API/Management/ShowAllPostEN")
-=======
         fetch(WEB_API + "Management/ShowAllPostEN")
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             .then(function (response) {
                 return response.json();
             })
@@ -118,13 +110,13 @@ function restoreDataEN(ID) {
     $('#edit').show();
 }
 async function updateRestore() {
-    var dulieu = {
+    var data = {
         IDPost: $('#IDPost').val(),
         IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "API/Management/EditStatePost", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -142,13 +134,13 @@ async function updateRestore() {
         })
 }
 async function updateRestoreEN() {
-    var dulieu = {
+    var data = {
         IDPostEN: $('#IDPostEN').val(),
         IDState: $('#IDStateEN').val(),
     };
     fetch(WEB_API + "API/Management/EditStatePostEN", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -167,11 +159,7 @@ async function updateRestoreEN() {
 }
 async function deleteData(IDPost) {
     if (confirm('Bạn có muốn xoá tài khoản?')) {
-<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
-        fetch(WEB_API + "API/Management/XoaBaiViet?ID=" + IDPost, {
-=======
         fetch(WEB_API + "Management/DeletePost?ID=" + IDPost, {
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             method: "DELETE",
         })
         .then(function (response) {
@@ -192,11 +180,7 @@ async function deleteData(IDPost) {
 }
 async function deleteDataEN(IDPostEN) {
     if (confirm('Are you sure you want to delete?')) {
-<<<<<<< HEAD:SCSE-DASHBOARD/pages/DAO/CrudXoaQuanLyBaiViet.js
-        fetch(WEB_API + "API/Management/XoaBaiVietEN?ID=" + IDPostEN, {
-=======
         fetch(WEB_API + "Management/DeletePostEN?ID=" + IDPostEN, {
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791:SCSE-DASHBOARD/pages/DAO/CrudDeleteQuanLyBaiViet.js
             method: "DELETE",
         })
         .then(function (response) {

@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-const WEB_API = "http://localhost:59360/";
-var getToken = parseJwt(localStorage.getItem("token"));
-=======
 const WEB_API = "http://localhost:59360/API/";
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
 function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
@@ -12,11 +7,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-<<<<<<< HEAD
-        fetch(WEB_API + "API/Management/ShowAllPost")
-=======
         fetch(WEB_API + "Management/ShowAllPost")
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
             .then(function (response) {
                 return response.json();
             })
@@ -67,11 +58,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-<<<<<<< HEAD
-        fetch(WEB_API + "API/Management/ShowAllPostEN")
-=======
         fetch(WEB_API + "Management/ShowAllPostEN")
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
             .then(function (response) {
                 return response.json();
             })

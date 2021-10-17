@@ -55,14 +55,14 @@ async function getData(ID) {
     $('#edit').show();
 }
 function addData(base64) {
-    let dulieu = {
+    let data = {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
         Image: base64
     };
     fetch(WEB_API + "Interface/AddOrEditPhotoGallery", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },
@@ -94,7 +94,7 @@ function AlertAdd() {
     }
 }
 async function updateData() {
-    var dulieu = {
+    var data = {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
@@ -102,7 +102,7 @@ async function updateData() {
     };
     fetch(WEB_API + "api/UploadImage", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
