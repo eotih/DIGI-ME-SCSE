@@ -89,7 +89,7 @@ function AlertAdd() {
                 var text = reader.result;
                 addData(text)
             }
-            reader.readAsDataWEB_API(file);
+            reader.readAsDataURL(file);
         })(file[i]);
     }
 }

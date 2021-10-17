@@ -4,24 +4,20 @@ const WEB_API = "http://localhost:59360/API/";
 window.addEventListener('load', loadData)
 
 async function loadData() {
-    fetch(WEB_API + "Interface/ListDocument")
+    fetch(WEB_API + "ShowAllDocument")
         .then(function (response) {
             return response.json();
-            // Sẽ trả dữ liệu về dạng json
-
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                console.log(response)
                 const { ID, NamePDF, Iframe } = response;
                 // Sẽ return ra hàm tbody
-
                 return `<tr>
-        <td>${ID}</td>
-        <td>${NamePDF}</td>
-        <td>
-        <button onclick="deleteData(${ID})" class="btn btn-outline-primary">Delete</button></td>
-        </tr>`;
+                <td>${ID}</td>
+                <td>${NamePDF}</td>
+                <td>
+                <button onclick="deleteData(${ID})" class="btn btn-outline-primary">Delete</button></td>
+                </tr>`;
             })
             // đây là hàm trả ra tbody
             $('.tbody').html(html);
