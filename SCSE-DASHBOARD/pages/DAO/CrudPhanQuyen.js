@@ -29,6 +29,23 @@ switch (Role) {
         }
         break;
 }
+switch (Role) {
+    case 2:
+        if (current === "http://127.0.0.1:5502/pages/Admin/ToChuc/BanGiamDoc.html"
+        ) {
+            window.location.href = "http://127.0.0.1:5502/index.html"
+        }
+        break;
+    case 3:
+        if (current === "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html"
+            || current === "http://127.0.0.1:5502/pages/ThongTinCaNhan/index.html") {
+
+        }
+        else {
+            window.location.href = "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html"
+        }
+        break;
+}
 function parseJwt(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

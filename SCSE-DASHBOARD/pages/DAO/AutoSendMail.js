@@ -28,6 +28,20 @@ function getQuantityPendingVolunteers() {
             sendEmail(data)
         })
 }
+function getQuantityContactPending() {
+    fetch(WEB_API + "Interface/ViewAllContact")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            let data = {
+                Subject: 'THÔNG BÁO CÓ LIÊN HỆ MỚI',
+                Name: 'LIÊN HỆ MỚI',
+                Count: response.length
+            }
+            sendEmail(data)
+        })
+}
 function sendEmail(dulieu) {
     let data = {
         To: 'eotihvn@gmail.com,hieult18@uef.edu.vn',

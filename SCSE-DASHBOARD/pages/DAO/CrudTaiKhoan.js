@@ -115,15 +115,8 @@ async function resetPassword() {
         })
 }
 async function deleteData(IDUser) {
-    fetch(WEB_API + "User/DeleteAccount?iduser=" + IDUser)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            const { IDUser } = response;
-            $('#ID').val(IDUser);
-            $('#State').val("4");
-        })
+    $('#ID').val(IDUser);
+    $('#State').val("4");
     $('#exampleModal').modal('show');
     $('#edit').show();
 }
@@ -133,7 +126,7 @@ async function updateDelete() {
         IDUser: $('#ID').val(),
         IDState: $('#State').val(),
     };
-    fetch(WEB_API + "/User/EditState", {
+    fetch(WEB_API + "User/EditStateAccount", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -154,16 +147,8 @@ async function updateDelete() {
     clearDelete();
 }
 function clearDelete() {
-    $('#User').val("");
-    $('#Name').val("");
-    $('#Pass').val("");
-    document.getElementById('Stock').src = "";
-    $('#Name').val("");
-    $('#Mail').val("");
-    $('#Phones').val("");
-    $('#State').val("");
-    $('#Role').val("");
-    $('#Gender').val("");
+    $('#IDReset').val("");
+    $('#PasswordReset').val("");
 }
 function clearTextBox() {
     $('#IDUser').val("");
@@ -208,12 +193,23 @@ function clearTextBox() {
                         StateName = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
                     return `<tr>
-                    <td>${IDUser}</td>
-                    <td>${FullName}</td>
-                    <td>${Email}</td>
+                    <td>
+                      <div class="form-check form-check-flat mt-0">
+                        <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
+                      </div>
+                    </td>
+                    <td>
+                        <div class="d-flex ">
+                            <img class="me-3" style="height:60px;width:60px" src='${Image}'/>
+                            <div>
+                              <h6>${FullName}</h6>
+                              <p>${Email}</p>
+                              <p><b>${RoleName}</b></p>
+                            </div>
+                        </div>
+                    </td>
                     <td>${StateName}</td>
-                    <td>${RoleName}</td>
-                    <td><img src='${Image}'/></td>
                     <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button>
                     <button onclick="return getDataPass(${IDUser})" class="btn btn-outline-warning">Reset Password</button>
                     <button onclick="return deleteData(${IDUser})" class="btn btn-outline-danger">Xoá</button></td>
