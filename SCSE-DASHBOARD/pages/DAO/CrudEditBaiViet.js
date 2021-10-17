@@ -77,7 +77,7 @@ function addNoti(numb){
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
-    fetch(WEB_API + "API/Management/Notification", {
+    fetch(WEB_API + "Management/Notification", {
         method: 'POST',
         body: JSON.stringify($dataNoti),
         headers: {
