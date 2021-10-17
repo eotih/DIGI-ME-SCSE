@@ -39,7 +39,7 @@ async function loadData() {
         })
 } (jQuery);
 async function getData(ID) {
-    fetch(WEB_API + "Interface/GetBySlugPhotoGallery?ID=" + ID)
+    fetch(WEB_API + "Interface/GetByIDPhotoGallery?ID=" + ID)
         .then(function (response) {
             return response.json();
         })

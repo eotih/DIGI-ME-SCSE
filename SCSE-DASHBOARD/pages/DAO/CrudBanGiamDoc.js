@@ -74,7 +74,7 @@ async function getDataImg(IDImg) {
     $('#edit1').show();
 }
 async function addData() {
-    var dulieu = {
+    var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
         IDImg: $('#IDImg').val(),
@@ -83,7 +83,7 @@ async function addData() {
     };
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },
@@ -101,17 +101,17 @@ async function addData() {
         })
 }
 async function updateData() {
-    var dulieu = {
+    var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
         IDImg: $('#IDImg').val(),
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
-    console.table(dulieu)
+    console.table(data)
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -132,14 +132,14 @@ async function updateImg() {
     window.location.reload();
 }
 async function updateImg1() {
-    var dulieu = {
+    var data = {
         ID: $('#ID1').val(),
         IDImg: $('#IDImg1').val(),
         ImagePortfolio: document.getElementById('img1').src,
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -156,14 +156,14 @@ async function updateImg1() {
         })
 }
 async function updateImg2() {
-    var dulieu = {
+    var data = {
         ID: $('#ID2').val(),
         IDImg: $('#IDImg2').val(),
         ImagePortfolio: document.getElementById('img2').src,
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -180,14 +180,14 @@ async function updateImg2() {
         })
 }
 async function updateImg3() {
-    var dulieu = {
+    var data = {
         ID: $('#ID3').val(),
         IDImg: $('#IDImg3').val(),
         ImagePortfolio: document.getElementById('img3').src,
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -204,13 +204,13 @@ async function updateImg3() {
         })
 }
 function addDataImg(base64) {
-    let dulieu = {
+    let data = {
         IDImg: $('#IDImgadd').val(),
         ImagePortfolio: base64
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },
