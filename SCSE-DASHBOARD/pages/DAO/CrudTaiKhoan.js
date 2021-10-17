@@ -215,15 +215,12 @@ function parseJwt(token) {
 (function ($) {
     'use strict';
     $(function () {
-<<<<<<< HEAD
-        fetch(BASE_URL + "API/User/ShowAllAccount")
-=======
         fetch(WEB_API + "User/ShowAllAccount")
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
             .then(function (response) {
                 return response.json();
             })
             .then(function (response) {
+                console.log(response);
                 var deleted = response.filter(v => v.IDState === 4);
                 $('#deleteCount').text(deleted.length);
                 var result = response.filter(v => v.IDState !== 4)

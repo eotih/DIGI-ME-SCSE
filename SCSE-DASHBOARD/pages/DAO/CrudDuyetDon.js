@@ -2,11 +2,7 @@ const WEB_API = "http://localhost:59360/API/";
 (function ($) {
     'use strict';
     $(function () {
-<<<<<<< HEAD
-        fetch(url + "API/Management/RegisterVolunteer")
-=======
         fetch(WEB_API + "Management/ShowAllVolunteers")
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
             .then(function (response) {
                 return response.json();
             })
@@ -63,11 +59,7 @@ function Delete(ID) {
 }
 
 async function getData(ID) {
-<<<<<<< HEAD
-    fetch(url + "API/Management/GetByIdVolunteer?id=" + ID)
-=======
     fetch(WEB_API + "Management/GetByIdVolunteer?id=" + ID)
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
         .then(function (response) {
             return response.json();
         })

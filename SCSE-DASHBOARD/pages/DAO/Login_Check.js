@@ -5,11 +5,7 @@ var getToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 function loadData() {
     try {
-<<<<<<< HEAD
-        fetch(CHECK + "/API/User/GetByIdTaiKhoan?iduser=" + getToken.nameid[6])
-=======
         fetch(CHECK + "User/GetByIdAccount?iduser=" + getToken.nameid[6])
->>>>>>> c247a2b6fbff74c8c11708a9f237940a29b39791
             .then(function (response) {
                 return response.json();
             })
