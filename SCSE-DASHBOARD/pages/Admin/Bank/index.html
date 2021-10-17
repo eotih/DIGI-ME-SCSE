@@ -621,6 +621,21 @@
     <!-- Custom js for this page-->
     <script src="../../DAO/CrudNganHang.js"></script>
     <!-- End custom js for this page-->
+    <script>
+        const fileInput = document.querySelector('input[id="avatar"]');
+        // listen for the change event so we can capture the file
+        fileInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            base64 = reader.result;
+            $('#img').val(base64);
+            document.getElementById('img').src = base64;
+          };
+          reader.readAsDataURL(file);
+        });
+    
+      </script>
 </body>
 
 </html>

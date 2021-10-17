@@ -476,7 +476,7 @@
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Quản lý bài đăng</h4>
+              <h4 class="card-title">Quản lý tin tức</h4>
               <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#VN" role="tab" aria-controls="VN"
@@ -496,7 +496,9 @@
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="profile-tab">
-                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="QuanLyBaiDang.html">Quay lại
+                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="DeleteIndex.html">Trash
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCount">
+                      </span>
                   </a><br /><br />
                   <div class="row">
                     <div class="col-12">
@@ -504,8 +506,8 @@
                         <table id="dataTable" class="table">
                           <thead>
                             <tr>
-                              <th>IDPost #</th>
-                              <th>IDCat</th>
+                              <th>IDNews #</th>
+                              <th>IdField</th>
                               <th>Title</th>
                               <th>Image</th>
                               <th>Author</th>
@@ -529,21 +531,29 @@
                             <div class="modal-body">
                               <form class="forms-sample">
                                 <div class="form-group">
-                                  <h4>Bạn có thực sự muốn Khôi phục?</h4>
+                                  <h4 id="HeaderDelete">Bạn có thực sự muốn xoá?</h4>
+                                  <h4 id="HeaderApprove">Bạn có thực sự muốn duyệt bài này?</h4>
                                 </div>
                                 <div class="form-group" hidden>
-                                  <label for="IDPost">ID</label>
-                                  <input type="text" class="form-control" id="IDPost" placeholder="IDPost" disabled>
+                                  <label for="IDNews">ID</label>
+                                  <input type="text" class="form-control" id="IDNews" placeholder="IDNews" disabled>
                                 </div>
-                                <div class="form-group" hidden>
-                                  <label for="IDState">IDState</label>
-                                  <input type="text" class="form-control" id="IDState" placeholder="IDCat">
+                                <div class="form-group" id="showform">
+                                  <label for="IDState">Chọn trạng thái duyệt</label>
+                                  <select type="text" class="form-control" id="IDState" placeholder="IdField">
+                                    <option value="1">Pending</option>
+                                    <option value="2">Approved</option>
+                                    <option value="3">NotApproved</option>
+                                    <option value="4">Deleted</option>
+                                  </select>
                                 </div>
                               </form>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" id="edit" onclick="updateRestore();"
-                                class="btn btn-success">Khôi phục</button>
+                              <button type="button" id="approveVN" onclick="updateState();"
+                                class="btn btn-success">Xác nhận</button>
+                              <button type="button" id="deleteVN" onclick="updateState();"
+                                class="btn btn-success">Xóa</button>
                               <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                             </div>
                           </div>
@@ -553,8 +563,9 @@
                   </div>
                 </div>
                 <div class="tab-pane fade" id="ENG" role="tabpanel" aria-labelledby="profile-tab">
-                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="QuanLyBaiDang.html">Return
-                    
+                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="DeleteIndex.html">Trash
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCountEN">
+                      </span>
                   </a><br /><br />
                   <div class="row">
                     <div class="col-12">
@@ -562,8 +573,8 @@
                         <table id="dataTableENG" class="table">
                           <thead>
                             <tr>
-                              <th>IDPost #</th>
-                              <th>IDCat</th>
+                              <th>IDNews #</th>
+                              <th>IdField</th>
                               <th>Title</th>
                               <th>Image</th>
                               <th>Author</th>
@@ -587,21 +598,29 @@
                             <div class="modal-body">
                               <form class="forms-sample">
                                 <div class="form-group">
-                                  <h4>Are you sure you want to restore?</h4>
+                                  <h4 id="HeaderDeleteEN">Are you sure you want to delete?</h4>
+                                  <h4 id="HeaderApproveEN">Are you sure you want to approve?</h4>
                                 </div>
                                 <div class="form-group" hidden>
-                                  <label for="IDPost">ID</label>
-                                  <input type="text" class="form-control" id="IDPostEN" placeholder="IDPost" disabled>
+                                  <label for="IDNews">ID</label>
+                                  <input type="text" class="form-control" id="IDNewsEN" placeholder="IDNews" disabled>
                                 </div>
-                                <div class="form-group"hidden>
-                                  <label for="IDState">IDState</label>
-                                  <input type="text" class="form-control" id="IDStateEN" placeholder="IDCat">
+                                <div class="form-group" id="showformEN">
+                                  <label for="IDState">Select State</label>
+                                  <select type="text" class="form-control" id="IDStateEN" placeholder="IdField">
+                                    <option value="1">Pending</option>
+                                    <option value="2">Approved</option>
+                                    <option value="3">NotApproved</option>
+                                    <option value="4">Deleted</option>
+                                  </select>
                                 </div>
                               </form>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" id="edit" onclick="updateRestoreEN();"
-                                class="btn btn-success">Restore</button>
+                              <button type="button" id="approveEN" onclick="updateStateEN();"
+                                class="btn btn-success">Approved</button>
+                              <button type="button" id="deleteEN" onclick="updateStateEN();"
+                                class="btn btn-success">Xóa</button>
                               <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                             </div>
                           </div>
@@ -648,7 +667,7 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../DAO/CrudDeleteQuanLyBaiViet.js"></script>
+  <script src="../../DAO/CrudQuanLyTinTuc.js"></script>
   <!-- End custom js for this page-->
 </body>
 
