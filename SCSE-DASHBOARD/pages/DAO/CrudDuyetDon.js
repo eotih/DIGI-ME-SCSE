@@ -14,7 +14,7 @@ const url = "http://localhost:59360/";
     ]
     'use strict';
     $(function () {
-        fetch(url + "/Management/XemDanhSachDangKy")
+        fetch(url + "API/Management/RegisterVolunteer")
             .then(function (response) {
                 return response.json();
             })
@@ -64,14 +64,14 @@ const url = "http://localhost:59360/";
             })
     });
 })(jQuery);
-function Delete(ID){
+function Delete(ID) {
     $('#ID2').val(ID);
     $('#State').val("4");
     $('#Delete').modal('show');
-  }
+}
 
 async function getData(ID) {
-    fetch(url + "/Management/GetByIdNguoiDangKy?id=" + ID)
+    fetch(url + "API/Management/GetByIdVolunteer?id=" + ID)
         .then(function (response) {
             return response.json();
         })

@@ -2,7 +2,7 @@ const url = "http://localhost:59360/";
 (function ($) {
     'use strict';
     $(function () {
-        fetch(url + "/Management/XemDanhSachDangKy")
+        fetch(url + "API/Management/RegisterVolunteer")
             .then(function (response) {
                 return response.json();
             })
@@ -50,7 +50,7 @@ const url = "http://localhost:59360/";
     });
 })(jQuery);
 async function getData(ID) {
-    fetch(url + "Management/GetByIdNguoiDangKy?id=" + ID)
+    fetch(url + "API/Management/GetByIdVolunteer?id=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -90,7 +90,7 @@ async function restoreData(ID) {
 async function deleteData(ID) {
     if(confirm('Bạn có muốn xoá tài khoản?')){
 
-        fetch(url + "Management/XoaNguoiDangKy?id="+ ID,{
+        fetch(url + "API/Management/DeleteVolunteer?id="+ ID,{
             method: "DELETE",
         })
             .then(function (response) {

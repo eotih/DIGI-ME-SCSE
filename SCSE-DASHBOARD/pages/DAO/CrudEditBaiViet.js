@@ -1,9 +1,11 @@
 const WEB_API = "http://localhost:59360/";
+var getToken = parseJwt(localStorage.getItem("token"));
+
 window.addEventListener('load', getData)
 async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
     const slugResult = urlParams.get('Slug');
-    fetch(WEB_API + "/Management/GetBySlugBaiViet?slug=" + slugResult)
+    fetch(WEB_API + "API/Management/GetBySlugPost?slug=" + slugResult)
         .then(function (response) {
             return response.json();
         })
@@ -34,7 +36,7 @@ async function updateData() {
         Author: $('#Author').val(),
     }
     console.log(dulieu)
-    fetch(WEB_API + "Management/ThemBaiViet", {
+    fetch(WEB_API + "API/Management/AddOrEditPost", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -45,6 +47,7 @@ async function updateData() {
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
+                addNoti(2);
                 alert('Sửa Thành Công')
                 window.location.reload();
             }
@@ -53,3 +56,47 @@ async function updateData() {
             }
         })
 }
+
+function addNoti(numb){
+    var $dataNoti = {};
+    if(numb === 1){
+        $dataNoti.Title = 'Đăng Tải Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã thêm 1 bài viết',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    else if(numb === 2){
+        $dataNoti.Title = 'Sửa Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã sửa 1 bài viết',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    else if(numb === 3){
+        $dataNoti.Title = 'Xóa Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 bài viết',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    fetch(WEB_API + "API/Management/Notification", {
+        method: 'POST',
+        body: JSON.stringify($dataNoti),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+    }).then(function (response) {
+        return response.json()
+    }) 
+}
+
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};

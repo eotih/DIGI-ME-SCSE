@@ -1,32 +1,7 @@
 const BASE_URL = "http://localhost:59360/";
-
-async function updateLocked(toggleVal, userID) {
-    let data = {
-        IDUser: userID,
-        StateName,
-    }
-    console.log(JSON.stringify(data))
-    fetch(BASE_URL + "/User/ThemTaiKhoan", {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
-        })
-}
+var getToken = parseJwt(localStorage.getItem("token"));
 async function getData(ID) {
-    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + ID)
+    fetch(BASE_URL + "API/User/GetByIdAccount?iduser=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -59,7 +34,7 @@ async function addData() {
         IDRole: $('#IDRole').val(),
         Sex: $('#Sex').val(),
     };
-    fetch(BASE_URL + "/User/ThemTaiKhoan", {
+    fetch(BASE_URL + "API/User/AddOrEditAccount", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -70,6 +45,7 @@ async function addData() {
     })
         .then(function (data) {
             if (data.Status === 'Success') {
+                addNoti(1);
                 alert('Thêm Thành Công')
                 window.location.reload();
             }
@@ -91,7 +67,7 @@ async function updateData() {
         IDRole: $('#IDRole').val(),
         Sex: $('#Sex').val(),
     };
-    fetch(BASE_URL + "/User/ThemTaiKhoan", {
+    fetch(BASE_URL + "API/User/AddOrEditAccount", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -102,6 +78,7 @@ async function updateData() {
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
+                addNoti(2);
                 alert('Sửa Thành Công')
                 window.location.reload();
             }
@@ -111,7 +88,7 @@ async function updateData() {
         })
 }
 async function deleteData(IDUser) {
-    fetch(BASE_URL + "/User/GetByIdTaiKhoan?iduser=" + IDUser)
+    fetch(BASE_URL + "API/User/GetByIdAccount?iduser=" + IDUser)
         .then(function (response) {
             return response.json();
         })
@@ -129,7 +106,7 @@ async function updateDelete() {
         IDUser: $('#ID').val(),
         IDState: $('#State').val(),
     };
-    fetch(BASE_URL + "/User/EditState", {
+    fetch(BASE_URL + "API/User/EditStateAccount", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -140,6 +117,7 @@ async function updateDelete() {
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
+                addNoti(3);
                 alert('Xoá Thành Công')
                 window.location.reload();
             }
@@ -176,11 +154,53 @@ function clearTextBox() {
     $('#add').show();
     $('#edit').hide();
 }
+function addNoti(numb){
+    var $dataNoti = {};
+    if(numb === 1){
+        $dataNoti.Title = 'Đăng Tải Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã thêm 1 tài khoản',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html'
+    }
+    else if(numb === 2){
+        $dataNoti.Title = 'Sửa Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã sửa 1 tài khoản',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html'
+    }
+    else if(numb === 3){
+        $dataNoti.Title = 'Xóa Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 tài khoản',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html'
+    }
+    fetch(BASE_URL + "API/Management/Notification", {
+        method: 'POST',
+        body: JSON.stringify($dataNoti),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+    }).then(function (response) {
+        return response.json()
+    }) 
+}
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
 
 (function ($) {
     'use strict';
     $(function () {
-        fetch(BASE_URL + "User/XemDanhSachTaiKhoan")
+        fetch(BASE_URL + "API/User/ShowAllAccount")
             .then(function (response) {
                 return response.json();
             })

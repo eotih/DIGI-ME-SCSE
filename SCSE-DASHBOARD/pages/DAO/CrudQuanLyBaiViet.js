@@ -1,4 +1,5 @@
 const WEB_API = "http://localhost:59360/";
+var getToken = parseJwt(localStorage.getItem("token"));
 function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
@@ -7,7 +8,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiViet")
+        fetch(WEB_API + "API/Management/ShowAllPost")
             .then(function (response) {
                 return response.json();
             })
@@ -58,12 +59,11 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiVietEN")
+        fetch(WEB_API + "API/Management/ShowAllPostEN")
             .then(function (response) {
                 return response.json();
             })
             .then(function (response) {
-                
                 var deletedEN = response.filter(v => v.IDState === 4)
                 $('#deleteCountEN').text(deletedEN.length);
                 var result = response.filter(v => v.IDState !== 4)
@@ -151,7 +151,7 @@ async function deleteTamThoi(){
         IDPost: $('#IDPost').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(WEB_API + "/Management/EditStatePost", {
+    fetch(WEB_API + "API/Management/EditStatePost", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -162,6 +162,7 @@ async function deleteTamThoi(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
+                addNoti(3);
                 alert('Cập nhật Thành Công')
                 window.location.reload();
             }
@@ -175,7 +176,7 @@ async function deleteTamThoiEN(){
         IDPostEN: $('#IDPostEN').val(),
         IDState: $('#IDStateEN').val(),
     };
-    fetch(WEB_API + "/Management/EditStatePostEN", {
+    fetch(WEB_API + "API/Management/EditStatePostEN", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -186,6 +187,7 @@ async function deleteTamThoiEN(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
+                addNoti(3);
                 alert('Cập nhật Thành Công')
                 window.location.reload();
             }
@@ -194,3 +196,46 @@ async function deleteTamThoiEN(){
             }
         })
 }
+
+function addNoti(numb){
+    var $dataNoti = {};
+    if(numb === 1){
+        $dataNoti.Title = 'Đăng Tải Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã thêm 1 bài viết',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    else if(numb === 2){
+        $dataNoti.Title = 'Sửa Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã sửa 1 bài viết',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    else if(numb === 3){
+        $dataNoti.Title = 'Xóa Bài Viết',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 bài viết',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    fetch(WEB_API + "API/Management/Notification", {
+        method: 'POST',
+        body: JSON.stringify($dataNoti),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+    }).then(function (response) {
+        return response.json()
+    }) 
+}
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};

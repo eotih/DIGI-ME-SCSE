@@ -7,7 +7,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiViet")
+        fetch(WEB_API + "API/Management/ShowAllPost")
             .then(function (response) {
                 return response.json();
             })
@@ -53,7 +53,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/XemDanhSachBaiVietEN")
+        fetch(WEB_API + "API/Management/ShowAllPostEN")
             .then(function (response) {
                 return response.json();
             })
@@ -114,7 +114,7 @@ async function updateRestore() {
         IDPost: $('#IDPost').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(WEB_API + "/Management/EditStatePost", {
+    fetch(WEB_API + "API/Management/EditStatePost", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -138,7 +138,7 @@ async function updateRestoreEN() {
         IDPostEN: $('#IDPostEN').val(),
         IDState: $('#IDStateEN').val(),
     };
-    fetch(WEB_API + "/Management/EditStatePostEN", {
+    fetch(WEB_API + "API/Management/EditStatePostEN", {
         method: 'POST',
         body: JSON.stringify(dulieu),
         headers: {
@@ -159,7 +159,7 @@ async function updateRestoreEN() {
 }
 async function deleteData(IDPost) {
     if (confirm('Bạn có muốn xoá tài khoản?')) {
-        fetch(WEB_API + "Management/XoaBaiViet?ID=" + IDPost, {
+        fetch(WEB_API + "API/Management/XoaBaiViet?ID=" + IDPost, {
             method: "DELETE",
         })
         .then(function (response) {
@@ -180,7 +180,7 @@ async function deleteData(IDPost) {
 }
 async function deleteDataEN(IDPostEN) {
     if (confirm('Are you sure you want to delete?')) {
-        fetch(WEB_API + "Management/XoaBaiVietEN?ID=" + IDPostEN, {
+        fetch(WEB_API + "API/Management/XoaBaiVietEN?ID=" + IDPostEN, {
             method: "DELETE",
         })
         .then(function (response) {
