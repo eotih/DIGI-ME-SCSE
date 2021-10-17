@@ -234,27 +234,27 @@ function clearTextBox() {
 function addNoti(numb){
     var $dataNoti = {};
     if(numb === 1){
-        $dataNoti.Title = 'Đăng Tải Bài Viết',
+        $dataNoti.Title = 'Cập nhật tài khoản',
         $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
         $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã thêm 1 tài khoản',
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html'
     }
     else if(numb === 2){
-        $dataNoti.Title = 'Sửa Bài Viết',
+        $dataNoti.Title = 'Sửa thông tin tài khoản',
         $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
         $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã sửa 1 tài khoản',
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html'
     }
     else if(numb === 3){
-        $dataNoti.Title = 'Xóa Bài Viết',
+        $dataNoti.Title = 'Xóa Tài khoản',
         $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
         $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 tài khoản',
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html'
     }
-    fetch(WEB_API + "API/Management/Notification", {
+    fetch(WEB_API + "Management/Notification", {
         method: 'POST',
         body: JSON.stringify($dataNoti),
         headers: {
