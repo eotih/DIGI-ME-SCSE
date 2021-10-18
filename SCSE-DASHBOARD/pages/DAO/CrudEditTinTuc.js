@@ -5,7 +5,7 @@ window.addEventListener('load', getData)
 async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
     const slugResult = urlParams.get('Slug');
-    fetch(WEB_API + "Management/GetBySlugNewsVN?slug=" + slugResult)
+    fetch(WEB_API + "Management/GetByIdNewsVN?ID=" + slugResult)
         .then(function (response) {
             return response.json();
         })
