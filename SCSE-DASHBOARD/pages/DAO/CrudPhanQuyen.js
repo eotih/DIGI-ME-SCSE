@@ -14,24 +14,9 @@ if (GetToken.nameid[2] === "Mod") {
 }
 switch (Role) {
     case 2:
-        if (current === "http://127.0.0.1:5502/pages/Admin/ToChuc/index.html"
-            || current === "http://127.0.0.1:5502/pages/Admin/BaiDang/Index.html") {
-            window.location.href = "http://127.0.0.1:5502/index.html"
-        }
-        break;
-    case 3:
-        if (current === "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html"
-            || current === "http://127.0.0.1:5502/pages/ThongTinCaNhan/index.html") {
-
-        }
-        else {
-            window.location.href = "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html"
-        }
-        break;
-}
-switch (Role) {
-    case 2:
         if (current === "http://127.0.0.1:5502/pages/Admin/ToChuc/BanGiamDoc.html"
+        || current === "http://127.0.0.1:5502/pages/Admin/Bank/Index.html"
+        || current === "http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html"
         ) {
             window.location.href = "http://127.0.0.1:5502/index.html"
         }
