@@ -1,4 +1,5 @@
 const WEB_API = "http://localhost:59360/API/";
+var GetToken = parseJwt(localStorage.getItem("token"));
 // ------------------------ TIẾNG VIỆT ------------------------ //
 
 async function addPost() {
@@ -7,7 +8,7 @@ async function addPost() {
         Details: $('#summernote').summernote('code'),
         IDField: $('#theloai').val(),
         Image: $('#hinhanh').val(),
-        Author: $('#tacgia').val(),
+        Author: GetToken.nameid[3],
     };
     fetch(WEB_API + "Management/AddOrEditNewsVN", {
         method: 'POST',
@@ -58,7 +59,7 @@ async function addPostEN() {
         Title: $('#Title').val(),
         Details: $('#ENGPOST').summernote('code'),
         Image: $('#img').val(),
-        Author: $('#Author').val(),
+        Author: GetToken.nameid[3],
     };
     fetch(WEB_API + "Management/AddNewsEN", {
         method: 'POST',
@@ -79,3 +80,12 @@ async function addPostEN() {
             }
         })
 }
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};

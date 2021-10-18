@@ -1,4 +1,6 @@
 const WEB_API = "http://localhost:59360/API/";
+
+var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', getData)
 async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -8,7 +10,7 @@ async function getData() {
             return response.json();
         })
         .then(function (response) {
-            let { IDNews, IdField, Title, Slug, Image, Author, IDState, Details } = response;
+            let { IDNews, IdField, Title, Slug, Image, IDState, Details } = response;
             $('#IDNews').val(IDNews),
                 $('#IdField').val(IdField),
                 $('#IDState').val(IDState),
@@ -16,7 +18,6 @@ async function getData() {
                 $('#Slug').val(Slug),
                 $('#summernote').summernote('code', Details),
                 document.getElementById('img').src = Image;
-            $('#Author').val(Author)
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -30,7 +31,7 @@ async function updateData() {
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
         Image: document.getElementById('img').src,
-        Author: $('#Author').val(),
+        Author: GetToken.nameid[3],
     }
     fetch(WEB_API + "Management/AddOrEditNewsVN", {
         method: 'POST',
@@ -51,3 +52,12 @@ async function updateData() {
             }
         })
 }
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
