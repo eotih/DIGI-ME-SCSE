@@ -30,6 +30,15 @@ function convertDate(input) {
                     if (IDState === 4) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
+                    if (IDCat === 1) {
+                        IDCat = 'Dự án'
+                    }
+                    if (IDCat === 2) {
+                        IDCat = 'Hợp tác nghiên cứu'
+                    }
+                    if (IDCat === 3) {
+                        IDCat = 'Hoạt động thiện nguyện'
+                    }
                     return `<tr>
                     <td>${IDPost}</td>
                     <td>${IDCat}</td>
@@ -79,6 +88,15 @@ function convertDate(input) {
                     }
                     if (IDState === 4) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
+                    }
+                    if (IDCat === 1) {
+                        IDCat = 'Dự án'
+                    }
+                    if (IDCat === 2) {
+                        IDCat = 'Hợp tác nghiên cứu'
+                    }
+                    if (IDCat === 3) {
+                        IDCat = 'Hoạt động thiện nguyện'
                     }
                     return `<tr>
                     <td>${IDPostEN}</td>

@@ -27,6 +27,18 @@ function convertDate(input) {
                     if (IDState === 4) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
+                    if (IdField === 1) {
+                        IdField = 'Giới và bình đăng giới'
+                    }
+                    if (IdField === 2) {
+                        IdField = 'Biến đổi khí hậu môi trường'
+                    }
+                    if (IdField === 3) {
+                        IdField = 'Thực tập sinh'
+                    }
+                    if (IdField === 4) {
+                        IdField = 'Nghiên cứu Đào tạo'
+                    }
                     return `<tr>
                     <td>${IDNews}</td>
                     <td>${IdField}</td>
@@ -73,6 +85,18 @@ function convertDate(input) {
                     }
                     if (IDState === 4) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
+                    }
+                    if (IdField === 1) {
+                        IdField = 'Giới và bình đăng giới'
+                    }
+                    if (IdField === 2) {
+                        IdField = 'Biến đổi khí hậu môi trường'
+                    }
+                    if (IdField === 3) {
+                        IdField = 'Thực tập sinh'
+                    }
+                    if (IdField === 4) {
+                        IdField = 'Nghiên cứu Đào tạo'
                     }
                     return `<tr>
                     <td>${IDNewsEN}</td>
