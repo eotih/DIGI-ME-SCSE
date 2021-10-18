@@ -54,7 +54,6 @@ function selectFullName() {
             return response.json();
         })
         .then(function (response) {
-            console.table(response)
             var Category = document.createElement("option");
             Category.innerHTML = "Vui lòng chọn";
             Category.value = 0;
@@ -87,14 +86,13 @@ async function getData(ID) {
 }
 async function getDataImg(FullName) {
     var data = FullName;
-    fetch(WEB_API + "Interface/GetByIdimgPortfolios?FullName=" + FullName)
+    fetch(WEB_API + "Interface/GetByFullNameImgPortfolios?FullName=" + FullName)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             var img = [];
             var result = response.filter(object => {
-                console.log(object)
                 img.push(object.ID);
                 img.push(object.IDImg);
                 img.push(object.ImagePortfolio);
@@ -118,7 +116,6 @@ async function addData() {
     var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
-        IDImg: $('#IDImg').val(),
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
@@ -145,11 +142,9 @@ async function updateData() {
     var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
-        IDImg: $('#IDImg').val(),
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
-    console.table(data)
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
         body: JSON.stringify(data),

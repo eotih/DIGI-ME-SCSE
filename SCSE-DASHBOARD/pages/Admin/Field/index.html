@@ -35,8 +35,7 @@
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css" />
     <!-- endinject -->
     <link rel="shortcut icon" href="../../../images/favicon.png" />
-    <script type="text/javascript" src="../../DAO/CrudTheLoai.js"></script>
-    <script type="text/javascript" src="../../DAO/Notification.js"></script>
+    
   </head>
 
   <body>
@@ -279,30 +278,22 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link count-indicator"
-                id="countDropdown"
-                href="#"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <i class="icon-bell"></i>
-                  <span class="count"></span>
+              <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="icon-bell"></i>
+                <span class="count"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                aria-labelledby="countDropdown">
+                <a class="dropdown-item py-3">
+                  <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
+                  <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                  aria-labelledby="countDropdown">
-                  <a class="dropdown-item py-3">
-                    <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
-                    <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <div id="tnoti"></div>
-                  
-                </div>
-              </li>
+                <div class="dropdown-divider"></div>
+                <div id="tnoti"></div>
+                
+              </div>
+            </li>
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
               <a
                 class="nav-link"
@@ -708,7 +699,7 @@
                 <span class="menu-title">Quản lý tài khoản</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="../../Admin/Trang-Thai/">
                 <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
                 <span class="menu-title">Quản lý trạng thái</span>
@@ -792,7 +783,7 @@
                           <thead>
                             <tr>
                               <th>ID #</th>
-                              <th>Tên thể loại</th>
+                              <th>Tên Trạng Thái</th>
                               <th>Hành động</th>
                             </tr>
                           </thead>
@@ -816,8 +807,8 @@
                                         <input type="text" class="form-control" id="IDCat" placeholder="ID" disabled>
                                       </div>
                                     <div class="form-group">
-                                      <label for="FullName">Tên thể loại</label>
-                                      <input type="text" class="form-control" id="CategoryName" placeholder="Tên thể loại">
+                                      <label for="StateName">Tên trạng thái</label>
+                                      <input type="text" class="form-control" id="StateName" placeholder="Tên trạng thái">
                                     </div>
                                   </form>
                             </div>
@@ -889,6 +880,7 @@
     <script src="../../../js/modal-demo.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
+    <script type="text/javascript" src="../../DAO/CrudField.js"></script>
     <!-- End custom js for this page-->
   </body>
 </html>

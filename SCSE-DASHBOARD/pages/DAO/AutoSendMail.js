@@ -28,6 +28,7 @@ function getQuantityPendingVolunteers() {
             sendEmail(data)
         })
 }
+<<<<<<< HEAD
 function getQuantityContactPending() {
     fetch(WEB_API + "Interface/ViewAllContact")
         .then(function (response) {
@@ -43,10 +44,13 @@ function getQuantityContactPending() {
         })
 }
 function sendEmail(dulieu) {
+=======
+function sendEmail(data) {
+>>>>>>> 7fea3f5b61db7cb708ed36d0827c16501ec6a9bd
     let data = {
         To: 'eotihvn@gmail.com,hieult18@uef.edu.vn',
-        Subject: `${dulieu.Subject}`,
-        Body: `Hi anh Giang, </br> Hiện tại đang có <b> ${dulieu.Count} - ${dulieu.Name}</b> đang chờ duyệt. 
+        Subject: `${data.Subject}`,
+        Body: `Hi anh Giang, </br> Hiện tại đang có <b> ${data.Count} - ${data.Name}</b> đang chờ duyệt. 
         <a href="https://github.com/eotih/DIGI-ME-SCSE/issues"> Xem ngay </a>`
     }
     fetch(WEB_API + "send-email", {

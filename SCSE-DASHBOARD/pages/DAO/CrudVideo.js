@@ -64,7 +64,7 @@ function getImage(input) {
 }
 
 function addData() {
-    let dulieu = {
+    let data = {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
         Image: getImage(splitLink($('#LinkYTB').val())),
@@ -73,7 +73,7 @@ function addData() {
     };
     fetch(WEB_API + "Interface/AddOrEditVideo", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
         },

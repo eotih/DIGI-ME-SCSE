@@ -506,7 +506,7 @@
                         <div class="col-md-12 col-xl-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Thêm bài viết</h4>
+                                    <h4 class="card-title">Thêm tin tức</h4>
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#VN"
@@ -550,9 +550,10 @@
                                                             <label for="theloai">Chọn thể loại</label>
                                                             <select class="form-select" id="theloai">
                                                                 <option value="0">Vui lòng chọn</option>
-                                                                <option value="1">Dự án</option>
-                                                                <option value="2">Hợp tác nghiên cứu</option>
-                                                                <option value="3">Hoạt động thiện nguyện</option>
+                                                                <option value="1">Giới và bình đăng giới</option>
+                                                                <option value="2">Biến đổi khí hậu môi trường</option>
+                                                                <option value="3">Thực tập sinh</option>
+                                                                <option value="4">Nghiên cứu Đào tạo</option>
                                                             </select>
                                                         </div>
 
@@ -597,9 +598,10 @@
                                                             <label for="Phone">Category</label>
                                                             <select class="form-select" id="Category">
                                                                 <option value="0">Vui lòng chọn</option>
-                                                                <option value="1">Dự án</option>
-                                                                <option value="2">Hợp tác nghiên cứu</option>
-                                                                <option value="3">Hoạt động thiện nguyện</option>
+                                                                <option value="1">Giới và bình đăng giới</option>
+                                                                <option value="2">Biến đổi khí hậu môi trường</option>
+                                                                <option value="3">Thực tập sinh</option>
+                                                                <option value="4">Nghiên cứu Đào tạo</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
@@ -681,8 +683,7 @@
     <script src="../../../js/settings.js"></script>
     <script src="../../../js/todolist.js"></script>
     <!-- endinject -->
-    <script type="text/javascript" src="../../DAO/CrudBaiViet.js"></script>
-    <script type="text/javascript" src="../../DAO/Notification.js"></script>
+    <script type="text/javascript" src="../../DAO/CrudPostTinTuc.js"></script>
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
     <script>
@@ -695,7 +696,7 @@
             reader.onloadend = () => {
                 base64 = reader.result;
                 $('#img').val(base64);
-
+                document.getElementById('img').src = base64;
             };
             reader.readAsDataURL(file);
         });
@@ -706,7 +707,7 @@
             reader.onloadend = () => {
                 base64 = reader.result;
                 $('#hinhanh').val(base64);
-
+                document.getElementById('hinhanh').src = base64;
             };
             reader.readAsDataURL(file);
         });

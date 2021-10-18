@@ -52,11 +52,11 @@ const WEB_API = "http://localhost:59360/API/";
             })
     });
 })(jQuery);
-function Delete(ID){
+function Delete(ID) {
     $('#ID2').val(ID);
     $('#State').val("4");
     $('#Delete').modal('show');
-  }
+}
 
 async function getData(ID) {
     fetch(WEB_API + "Management/GetByIdVolunteer?id=" + ID)
@@ -135,14 +135,14 @@ async function updateData() {
         })
 }
 async function deleteData() {
-    var dulieu = {
+    var data = {
         ID: $('#ID2').val(),
         IDState: $('#State').val(),
     };
-    console.log(dulieu)
+    console.log(data)
     fetch(WEB_API + "/Management/EditState", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },

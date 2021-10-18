@@ -1,16 +1,15 @@
 const WEB_API = "http://localhost:59360/API/";
-var getToken = parseJwt(localStorage.getItem("token"));
 // ------------------------ TIẾNG VIỆT ------------------------ //
 
 async function addPost() {
     var data = {
         Title: $('#tieude').val(),
         Details: $('#summernote').summernote('code'),
-        IDCat: $('#theloai').val(),
+        IDField: $('#theloai').val(),
         Image: $('#hinhanh').val(),
         Author: $('#tacgia').val(),
     };
-    fetch(WEB_API + "Management/AddOrEditPost", {
+    fetch(WEB_API + "Management/AddOrEditNewsVN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -21,7 +20,6 @@ async function addPost() {
     })
         .then(function (data) {
             if (data.Status === 'Success') {
-                addNoti(1);
                 alert('Thêm Thành Công')
                 window.location.reload();
             }
@@ -34,7 +32,7 @@ async function addPost() {
 
 window.addEventListener('load', getData)
 function getData() {
-    fetch(WEB_API + "Management/ShowAllPostENNeedPost")
+    fetch(WEB_API + "Management/ListNewsNotVersionEN")
         .then(function (response) {
             return response.json();
         })
@@ -55,14 +53,14 @@ function getData() {
 
 async function addPostEN() {
     var data = {
-        IDPostEN: $('#PostVN').val(),
-        IDCat: $('#Category').val(),
+        IDNewsEN: $('#PostVN').val(),
+        IDField: $('#Category').val(),
         Title: $('#Title').val(),
         Details: $('#ENGPOST').summernote('code'),
         Image: $('#img').val(),
         Author: $('#Author').val(),
     };
-    fetch(WEB_API + "Management/AddPostEN", {
+    fetch(WEB_API + "Management/AddNewsEN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -74,7 +72,6 @@ async function addPostEN() {
         .then(function (data) {
             if (data.Status === 'Success') {
                 alert('Thêm Thành Công')
-                addNoti(1);
                 window.location.reload();
             }
             else {
@@ -82,31 +79,3 @@ async function addPostEN() {
             }
         })
 }
-async function addNoti(numb){
-    var $dataNoti = {};
-    if(numb === 1){
-        $dataNoti.Title = 'Đăng Tải Bài Viết',
-        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
-        $dataNoti.Decription = 'Người dùng '+getToken.nameid[3]+' đã thêm 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
-    }
-    fetch(WEB_API + "Management/Notification", {
-        method: 'POST',
-        body: JSON.stringify($dataNoti),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-        },
-    }).then(function (response) {
-        return response.json()
-    }) 
-}
-function parseJwt(token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
-};

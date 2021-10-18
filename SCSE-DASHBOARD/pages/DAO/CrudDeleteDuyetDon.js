@@ -64,13 +64,13 @@ async function getData(ID) {
     $('#edit').show();
 }
 async function restoreData(ID) {
-    var dulieu = {
+    var data = {
         ID: $('#ID2').val(),
         IDState: $('#State').val(),
     };
     fetch(WEB_API + "Management/EditState", {
         method: 'POST',
-        body: JSON.stringify(dulieu),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },

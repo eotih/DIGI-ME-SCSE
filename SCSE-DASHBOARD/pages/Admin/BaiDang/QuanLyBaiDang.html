@@ -139,7 +139,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
+            <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()" data-bs-toggle="dropdown"
               aria-expanded="false">
               <i class="icon-bell"></i>
               <span class="count"></span>
@@ -147,37 +147,12 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
               aria-labelledby="countDropdown">
               <a class="dropdown-item py-3">
-                <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                <span class="badge badge-pill badge-primary float-right">View all</span>
+                <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
+                <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../../../images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../../../images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="../../../images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                  <p class="fw-light small-text mb-0"> The meeting is cancelled </p>
-                </div>
-              </a>
+              <div id="tnoti"></div>
+              
             </div>
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -566,10 +541,10 @@
                                 <div class="form-group" id="showform">
                                   <label for="IDState">Chọn trạng thái duyệt</label>
                                   <select type="text" class="form-control" id="IDState" placeholder="IDCat">
-                                      <option value="1">Pending</option>
-                                      <option value="2">Approved</option>
-                                      <option value="3">NotApproved</option>
-                                      <option value="4">Deleted</option>
+                                    <option value="1">Pending</option>
+                                    <option value="2">Approved</option>
+                                    <option value="3">NotApproved</option>
+                                    <option value="4">Deleted</option>
                                   </select>
                                 </div>
                               </form>
@@ -633,10 +608,10 @@
                                 <div class="form-group" id="showformEN">
                                   <label for="IDState">Select State</label>
                                   <select type="text" class="form-control" id="IDStateEN" placeholder="IDCat">
-                                      <option value="1">Pending</option>
-                                      <option value="2">Approved</option>
-                                      <option value="3">NotApproved</option>
-                                      <option value="4">Deleted</option>
+                                    <option value="1">Pending</option>
+                                    <option value="2">Approved</option>
+                                    <option value="3">NotApproved</option>
+                                    <option value="4">Deleted</option>
                                   </select>
                                 </div>
                               </form>
@@ -693,6 +668,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="../../DAO/CrudQuanLyBaiViet.js"></script>
+  <script src="../../DAO/Notification.js"></script>
   <!-- End custom js for this page-->
 </body>
 
