@@ -1,7 +1,6 @@
 const WEB_API = "http://localhost:59360/API/";
 var getToken = parseJwt(localStorage.getItem("token"));
 // ------------------------ TIẾNG VIỆT ------------------------ //
-
 async function addPost() {
     var data = {
         Title: $('#tieude').val(),

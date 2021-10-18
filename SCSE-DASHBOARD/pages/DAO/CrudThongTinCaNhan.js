@@ -1,9 +1,8 @@
-const WEB_API = "http://localhost:59360/API/";
-
+const Myancut = "http://localhost:59360/API/";
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 async function loadData() {
-    fetch(WEB_API + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
+    fetch(Myancut + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
@@ -11,6 +10,8 @@ async function loadData() {
             const { Username, Password, Image, FullName, Email, Phone, IDRole, Sex } = response;
             document.getElementById('avatar').src = Image;
             document.getElementById('img').src =Image;
+            $('#NameUser').text(FullName);
+            $('#NameUser1').text(FullName);
             $('#Full-Name').text(FullName);
             $('#FullName').val(FullName);
             $('#user-name').text(Username);
@@ -38,7 +39,7 @@ async function loadData() {
         })
 }
 async function getData(){
-    fetch(WEB_API + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
+    fetch(Myancut + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
@@ -62,7 +63,7 @@ async function updateData() {
 
     const Passwords = $('#OldPassword').val();
     if (hash === Passwords){
-        var data = {
+        var data1 = {
             IDUser: GetToken.nameid[6],
             Image: document.getElementById('img').src,
             FullName: $('#FullName').val(),
@@ -70,17 +71,17 @@ async function updateData() {
             Phone: $('#Phone').val(),
             Sex: $('#Sex').val(),
         };
-        fetch(WEB_API + "User/EditPersonalInformation", {
+        fetch(Myancut + "User/EditPersonalInformation", {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(data1),
             headers: {
                 "Content-Type": "application/json; charset=UTF-8"
             },
         }).then(function (response) {
             return response.json()
         })
-            .then(function (data) {
-                if (data.Status === 'Updated') {
+            .then(function (data1) {
+                if (data1.Status === 'Updated') {
                     alert('Sửa Thành Công')
                     window.location.reload();
                 }
@@ -104,26 +105,26 @@ function changePassword(){
     console.log(newpassword);
     const Passwords = $('#Old_Password').val();
     if (hash === Passwords && newpassword == repassword) {
-        var data = {
+        var data1 = {
             IDUser: GetToken.nameid[6],
             Password: $('#PasswordNew').val(),
         };
-        fetch(WEB_API + "User/EditPasswordAccount", {
+        fetch(Myancut + "User/EditPasswordAccount", {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(data1),
             headers: {
                 "Content-Type": "application/json; charset=UTF-8"
             },
         }).then(function (response) {
             return response.json()
         })
-            .then(function (data) {
-                if (data.Status === 'Updated') {
+            .then(function (data1) {
+                if (data1.Status === 'Updated') {
                     alert('Sửa Thành Công')
                     window.location.reload();
                 }
                 else {
-                    alert('Data not update')
+                    alert('data1 not update')
                 }
             })
     }
