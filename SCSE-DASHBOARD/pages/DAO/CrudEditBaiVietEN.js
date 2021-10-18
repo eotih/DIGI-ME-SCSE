@@ -46,7 +46,7 @@ async function updateData() {
         .then(function (data) {
             if (data.Status === 'Updated') {
                 alert('Sửa Thành Công')
-                window.location.reload();
+                window.location.href = "http://127.0.0.1:5502/pages/Admin/BaiDang/QuanLyBaiDang.html"
             }
             else {
                 alert('Data not update')
