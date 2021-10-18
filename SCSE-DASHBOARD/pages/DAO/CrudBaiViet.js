@@ -8,7 +8,7 @@ async function addPost() {
         Details: $('#summernote').summernote('code'),
         IDCat: $('#theloai').val(),
         Image: $('#hinhanh').val(),
-        Author: $('#tacgia').val(),
+        Author: getToken.nameid[3],
     };
     fetch(WEB_API + "Management/AddOrEditPost", {
         method: 'POST',
@@ -60,7 +60,7 @@ async function addPostEN() {
         Title: $('#Title').val(),
         Details: $('#ENGPOST').summernote('code'),
         Image: $('#img').val(),
-        Author: $('#Author').val(),
+        Author: getToken.nameid[3],
     };
     fetch(WEB_API + "Management/AddPostEN", {
         method: 'POST',
