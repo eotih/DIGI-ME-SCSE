@@ -66,7 +66,7 @@ function getBaseUrl() {
 async function addData() {
     var $data = {
         Name: $('#Name').val(),
-        Image: $('#Img').val(),
+        Image: document.getElementById("Image").src,
         Field: $('#Field').val(),
         Phone: $('#Phone').val(),
         Email: $('#Email').val(),
@@ -96,7 +96,7 @@ async function updateData() {
     var $data = {
         ID: $('#ID').val(),
         Name: $('#Name').val(),
-        Image: $('#Img').val(),
+        Image: document.getElementById("Image").src,
         Field: $('#Field').val(),
         Phone: $('#Phone').val(),
         Email: $('#Email').val(),
