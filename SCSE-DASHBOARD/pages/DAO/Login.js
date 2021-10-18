@@ -1,7 +1,8 @@
+const WEB_API = "https://api.scse-vietnam.org/API/";
 function loginAdmin() {
     var Username = $('#Username').val();
     var Password = $('#Password').val();
-    fetch("http://localhost:59360/API/User/Login", {
+    fetch(WEB_API + "User/Login", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

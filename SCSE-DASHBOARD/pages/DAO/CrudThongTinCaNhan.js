@@ -1,8 +1,8 @@
-const Myancut = "http://localhost:59360/API/";
+const API_USER = "https://api.scse-vietnam.org/API/";
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 async function loadData() {
-    fetch(Myancut + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
+    fetch(API_USER + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
@@ -39,7 +39,7 @@ async function loadData() {
         })
 }
 async function getData(){
-    fetch(Myancut + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
+    fetch(API_USER + "User/GetByIdAccount?iduser=" + GetToken.nameid[6])
         .then(function (response) {
             return response.json();
         })
@@ -71,7 +71,7 @@ async function updateData() {
             Phone: $('#Phone').val(),
             Sex: $('#Sex').val(),
         };
-        fetch(Myancut + "User/EditPersonalInformation", {
+        fetch(API_USER + "User/EditPersonalInformation", {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {
@@ -109,7 +109,7 @@ function changePassword(){
             IDUser: GetToken.nameid[6],
             Password: $('#PasswordNew').val(),
         };
-        fetch(Myancut + "User/EditPasswordAccount", {
+        fetch(API_USER + "User/EditPasswordAccount", {
             method: 'POST',
             body: JSON.stringify(data1),
             headers: {

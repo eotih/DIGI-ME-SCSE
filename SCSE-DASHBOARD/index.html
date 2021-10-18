@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>CMS - SCSE</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -21,7 +21,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="images/LogoSCSE_Favicon.png" />
 </head>
 
 <body>
@@ -124,7 +124,7 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" id="avataruser" style="width:40px;height: 40px;" alt="Profile image">
-                <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
+                <p class="mb-1 mt-3 font-weight-semibold" id="Name-User"></p>
                 <p class="fw-light text-muted mb-0" id="MailUser"></p>
               </div>
               <a class="dropdown-item" href="pages/ThongTinCaNhan/index.html"><i
@@ -241,6 +241,12 @@
               <span class="menu-title">Quản lý thể loại </span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/Admin/Field/index.html">
+              <i class="menu-icon mdi mdi-format-list-bulleted"></i>
+              <span class="menu-title">Quản lý lĩnh vực</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">Quản lý thư viện</li>
           <li class="nav-item">
             <a class="nav-link" href="pages/Admin/ThuVien/ThuVien.html">
@@ -260,8 +266,15 @@
               <span class="menu-title">Thư viện Video</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Duyệt đơn</li>
+          <li class="nav-item nav-category">Chức năng khác</li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="pages/Admin/Contact/Index.html" aria-expanded="false"
+              aria-controls="form-elements">
+              <i class="menu-icon mdi mdi-phone"></i>
+              <span class="menu-title">Thông tin liên hệ</span>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html" aria-expanded="false"
               aria-controls="form-elements">
@@ -364,11 +377,7 @@
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
-                  href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
-                BootstrapDash.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights
-                reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">© 2020 SCSE. All rights reserved. Serviced by SCSE</span>
             </div>
           </footer>
           <!-- partial -->
@@ -400,7 +409,6 @@
     <script src="js/Chart.roundedBarCharts.js"></script>
     <script type="text/javascript" src="./pages/DAO/Login_Check.js"></script>
     <script type="text/javascript" src="./pages/DAO/CrudPhanQuyen.js"></script>
-    <script src="./pages/DAO/AutoSendMail.js"></script>
     <script src="./pages/DAO/Notification.js"></script>
     <script src="./pages/DAO/GetThongTinUser.js"></script>
     <!-- End custom js for this page-->

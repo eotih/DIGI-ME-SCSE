@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/API/";
+const WEB_API = "https://api.scse-vietnam.org/API/";
 
 window.addEventListener('load', loadData)
 window.addEventListener('load', selectFullName)

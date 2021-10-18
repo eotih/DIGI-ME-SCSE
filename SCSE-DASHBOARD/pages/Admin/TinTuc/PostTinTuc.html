@@ -14,7 +14,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin2 </title>
+    <title>CMS - Đăng tin tức</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../vendors/feather/feather.css">
     <link rel="stylesheet" href="../../../vendors/mdi/css/materialdesignicons.min.css">
@@ -29,12 +29,12 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../../../images/favicon.png" />
+    <link rel="shortcut icon" href="../../../images/LogoSCSE_Favicon.png" />
 </head>
 
 <body>
     <div class="container-scroller">
-        <!-- partial:../../../partials/_navbar.html -->
+        <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <div class="me-3">
@@ -45,20 +45,15 @@
                 </div>
                 <div>
                     <a class="navbar-brand brand-logo" href="../../../index.html">
-                        <img src="../../../images/logo.svg" alt="logo" />
+                        <img src="../../../images/LogoSCSE_Horizontal_Vietnamese.png" alt="logo" />
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="../../../index.html">
-                        <img src="../../../images/logo-mini.svg" alt="logo" />
+                        <img src="../../../images/LogoSCSE_Favicon.png" alt="logo" />
                     </a>
                 </div>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-top">
-                <ul class="navbar-nav">
-                    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
-                        <h3 class="welcome-sub-text">Your performance summary this week </h3>
-                    </li>
-                </ul>
+                
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown"
@@ -153,45 +148,35 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()" data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                          <i class="icon-bell"></i>
-                          <span class="count"></span>
+                        <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="icon-bell"></i>
+                            <span class="count"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                          aria-labelledby="countDropdown">
-                          <a class="dropdown-item py-3">
-                            <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
-                            <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
-                          </a>
-                          <div class="dropdown-divider"></div>
-                          <div id="tnoti"></div>
-                          
+                            aria-labelledby="countDropdown">
+                            <a class="dropdown-item py-3">
+                                <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
+                                <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div id="tnoti"></div>
+
                         </div>
-                      </li>
+                    </li>
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="../../../images/faces/face8.jpg"
-                                alt="Profile image"> </a>
+                            <img class="img-xs rounded-circle" id="imguser" alt="Profile image"> </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="../../../images/faces/face8.jpg"
+                                <img class="img-md rounded-circle" id="avataruser" style="width:40px;height: 40px;"
                                     alt="Profile image">
-                                <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                                <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                                <p class="mb-1 mt-3 font-weight-semibold" id="Name-User"></p>
+                                <p class="fw-light text-muted mb-0" id="MailUser"></p>
                             </div>
-                            <a class="dropdown-item"><i
+                            <a class="dropdown-item" href="../../../pages/ThongTinCaNhan/index.html"><i
                                     class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
                                 Profile <span class="badge badge-pill badge-danger">1</span></a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-                                Messages</a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-                                Activity</a>
-                            <a class="dropdown-item"><i
-                                    class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
-                                FAQ</a>
                             <a class="dropdown-item"><i
                                     class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
                         </div>
@@ -406,7 +391,7 @@
                   </li>
                   <li class="nav-item nav-category">Cấu hình Tổ chức</li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/ToChuc/Ban-Giam-Doc.html">
+                    <a class="nav-link" href="../../../pages/Admin/ToChuc/Ban-Giam-Doc.html">
                       <i class="menu-icon mdi mdi-briefcase"></i>
                       <span class="menu-title">Ban giám đốc</span>
                     </a>
@@ -418,87 +403,100 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/Bank/index.html">
+                    <a class="nav-link" href="../../../pages/Admin/Bank/Index.html">
                       <i class="menu-icon mdi mdi-bank"></i>
                       <span class="menu-title">Thông tin ngân hàng</span>
                     </a>
                   </li>
                   <li class="nav-item nav-category">Quản lý thành viên</li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/QuanLyTaiKhoan.html">
+                    <a class="nav-link" href="../../../pages/Admin/QuanLyTaiKhoan.html">
                       <i class="menu-icon mdi mdi-key-variant"></i>
                       <span class="menu-title">Quản lý tài khoản</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/Trang-Thai/">
+                    <a class="nav-link" href="../../../pages/Admin/Trang-Thai/">
                       <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
                       <span class="menu-title">Quản lý trạng thái</span>
                     </a>
                   </li>
                   <li class="nav-item nav-category">Đăng bài</li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/BaiDang/Index.html">
+                    <a class="nav-link" href="../../../pages/Admin/BaiDang/Index.html">
                       <i class="menu-icon mdi mdi-format-align-left"></i>
                       <span class="menu-title">Đăng bài</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/TinTuc/PostTinTuc.html">
+                    <a class="nav-link" href="../../../pages/Admin/TinTuc/PostTinTuc.html">
                       <i class="menu-icon mdi mdi-format-float-left"></i>
                       <span class="menu-title">Đăng tin tức</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/BaiDang/QuanLyBaiDang.html" aria-expanded="false"
+                    <a class="nav-link" href="../../../pages/Admin/BaiDang/QuanLyBaiDang.html" aria-expanded="false"
                       aria-controls="form-elements">
                       <i class="menu-icon mdi mdi-file-document-box"></i>
                       <span class="menu-title">Quản lý bài viết</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/TinTuc/Index.html" aria-expanded="false"
+                    <a class="nav-link" href="../../../pages/Admin/TinTuc/Index.html" aria-expanded="false"
                       aria-controls="form-elements">
                       <i class="menu-icon mdi mdi-newspaper"></i>
                       <span class="menu-title">Quản lý tin tức</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/TheLoai/Index.html">
+                    <a class="nav-link" href="../../../pages/Admin/TheLoai/Index.html">
                       <i class="menu-icon mdi mdi-file-multiple"></i>
                       <span class="menu-title">Quản lý thể loại </span>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../pages/Admin/Field/index.html">
+                      <i class="menu-icon mdi mdi-format-list-bulleted"></i>
+                      <span class="menu-title">Quản lý lĩnh vực</span>
+                    </a>
+                  </li>
                   <li class="nav-item nav-category">Quản lý thư viện</li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/ThuVien/ThuVien.html">
+                    <a class="nav-link" href="../../../pages/Admin/ThuVien/ThuVien.html">
                       <i class="menu-icon mdi mdi-folder-multiple-image"></i>
                       <span class="menu-title">Thư viện hình ảnh</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/TaiLieu/QuanLyTaiLieu.html">
+                    <a class="nav-link" href="../../../pages/Admin/TaiLieu/QuanLyTaiLieu.html">
                       <i class="menu-icon mdi mdi-note-text"></i>
                       <span class="menu-title">Thư viện tài liệu</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/ThuVien/VideoGallery.html">
+                    <a class="nav-link" href="../../../pages/Admin/ThuVien/VideoGallery.html">
                       <i class="menu-icon mdi mdi-movie"></i>
                       <span class="menu-title">Thư viện Video</span>
                     </a>
                   </li>
-                  <li class="nav-item nav-category">Duyệt đơn</li>
+                  <li class="nav-item nav-category">Chức năng khác</li>
         
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html" aria-expanded="false"
+                    <a class="nav-link" href="../../../pages/Admin/Contact/Index.html" aria-expanded="false"
+                      aria-controls="form-elements">
+                      <i class="menu-icon mdi mdi-phone"></i>
+                      <span class="menu-title">Thông tin liên hệ</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html" aria-expanded="false"
                       aria-controls="form-elements">
                       <i class="menu-icon mdi mdi-account-plus"></i>
                       <span class="menu-title">Duyệt đơn TNV</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../Admin/DoiTac/DanhSachDoiTac.html" aria-expanded="false"
+                    <a class="nav-link" href="../../../pages/Admin/DoiTac/DanhSachDoiTac.html" aria-expanded="false"
                       aria-controls="form-elements">
                       <i class="menu-icon mdi mdi-human-male-female"></i>
                       <span class="menu-title">Danh sách đối tác</span>
@@ -524,19 +522,16 @@
                                         <li class="nav-item">
                                             <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#VN"
                                                 role="tab" aria-controls="VN" aria-selected="true">
-                                                <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2560px-Flag_of_Vietnam.svg.png"
-                                                style="width: 20px; height: 15px"
-                                                alt=""> Tiếng Việt
-                                                </a>
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2560px-Flag_of_Vietnam.svg.png"
+                                                    style="width: 20px; height: 15px" alt=""> Tiếng Việt
+                                            </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#ENG"
                                                 role="tab" aria-controls="ENG" aria-selected="false"> <img
-                                                src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
-                                                style="width: 20px; height: 15px"
-                                                alt=""> Tiếng Anh 
-                                                </a>
+                                                    src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
+                                                    style="width: 20px; height: 15px" alt=""> Tiếng Anh
+                                            </a>
                                         </li>
                                     </ul>
                                     <div class="tab-content">
@@ -686,7 +681,11 @@
     <script src="../../../js/settings.js"></script>
     <script src="../../../js/todolist.js"></script>
     <!-- endinject -->
+    <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
+    <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
+    <script type="text/javascript" src="../../DAO/CrudPhanQuyen.js"></script>
     <script type="text/javascript" src="../../DAO/CrudPostTinTuc.js"></script>
+    <script type="text/javascript" src="../../DAO/Notification.js"></script>
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
     <script>

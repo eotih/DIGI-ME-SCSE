@@ -1,4 +1,4 @@
-const API_GetUser = "http://localhost:59360/API/";
+const API_GetUser = "https://api.scse-vietnam.org/API/";
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 async function loadData() {
@@ -11,6 +11,7 @@ async function loadData() {
             document.getElementById('imguser').src =Image;
             document.getElementById('avataruser').src = Image;
             $('#NameUser').text(FullName);
+            $('#Name-User').text(FullName);
             $('#user-name').text(Username);
             switch (IDRole) {
                 case 1:

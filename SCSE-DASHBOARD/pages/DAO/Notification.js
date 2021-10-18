@@ -1,5 +1,7 @@
+const NOTI_API = "https://api.scse-vietnam.org/API/";
+
 function notifyMe() {
-    fetch("http://localhost:59360/API/Management/ListNotification?status="+"Chưa Xem")
+    fetch(NOTI_API + "Management/ListNotification?status="+"Chưa Xem")
       .then(function (response) {
         return response.json();
       }).then(function (response) {
@@ -23,32 +25,12 @@ function notifyMe() {
                   })
                   $('#tnoti').html(html);
       })
-    //Let's check if the browser supports notifications
-    if (!("Notification" in window)) {
-      alert("This browser does not support desktop notification");
-    }
-  
-    // Let's check whether notification permissions have already been granted
-    else if (Notification.permission === "granted") {
-      // If it's okay let's create a notification
-      var notification = new Notification("Xin Chào 500 anh em đang xem stream!");
-    }
-  
-    // Otherwise, we need to ask the user for permission
-    else if (Notification.permission !== "denied") {
-      Notification.requestPermission().then(function (permission) {
-        // If the user accepts, let's create a notification
-        if (permission === "granted") {
-          var notification = new Notification("Hi there!");
-        }
-      });
-    }
   }
   async function EditStatus(ID){
     var $dataNoti = {};
         $dataNoti.ID = ID,
         $dataNoti.Status = 'Đã Xem',
-    fetch("http://localhost:59360/API/Management/Notification", {
+    fetch(NOTI_API + "Management/Notification", {
         method: 'POST',
         body: JSON.stringify($dataNoti),
         headers: {
