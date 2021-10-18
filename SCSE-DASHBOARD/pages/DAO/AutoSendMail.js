@@ -28,7 +28,25 @@ function getQuantityPendingVolunteers() {
             sendEmail(data)
         })
 }
+<<<<<<< HEAD
+function getQuantityContactPending() {
+    fetch(WEB_API + "Interface/ViewAllContact")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            let data = {
+                Subject: 'THÔNG BÁO CÓ LIÊN HỆ MỚI',
+                Name: 'LIÊN HỆ MỚI',
+                Count: response.length
+            }
+            sendEmail(data)
+        })
+}
+function sendEmail(dulieu) {
+=======
 function sendEmail(data) {
+>>>>>>> 7fea3f5b61db7cb708ed36d0827c16501ec6a9bd
     let data = {
         To: 'eotihvn@gmail.com,hieult18@uef.edu.vn',
         Subject: `${data.Subject}`,

@@ -7,7 +7,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/ShowAllPost")
+        fetch(WEB_API + "Management/ShowAllNewsVN")
             .then(function (response) {
                 return response.json();
             })
@@ -17,7 +17,7 @@ function convertDate(input) {
                 $('#deleteCount').text(deleted.length);
                 var result = response.filter(v => v.IDState !== 4)
                 var html = result.map(function (response) {
-                    let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
+                    let { IDNews, IdField, Title, Slug, Image, Author, IDState } = response;
                     if (IDState === 1) {
                         IDState = '<div class="badge badge-opacity-warning">Pending</div>'
                     }
@@ -31,15 +31,15 @@ function convertDate(input) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
                     return `<tr>
-                    <td>${IDPost}</td>
-                    <td>${IDCat}</td>
+                    <td>${IDNews}</td>
+                    <td>${IdField}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><button onclick="return approveData(${IDPost})" class="btn btn-success">Duyệt bài</button>
+                    <td><button onclick="return approveData(${IDNews})" class="btn btn-success">Duyệt bài</button>
                     <a href="./Edit.html?Slug=${Slug}"" class="btn btn-outline-primary">View</a>
-                    <button onclick="return deleteData(${IDPost})" class="btn btn-outline-danger">Xoá</button></td>
+                    <button onclick="return deleteData(${IDNews})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbody').html(html);
@@ -58,7 +58,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/ShowAllPostEN")
+        fetch(WEB_API + "Management/ShowAllNewsEN")
             .then(function (response) {
                 return response.json();
             })
@@ -67,7 +67,7 @@ function convertDate(input) {
                 $('#deleteCountEN').text(deletedEN.length);
                 var result = response.filter(v => v.IDState !== 4)
                 var html = result.map(function (response) {
-                    let { IDPostEN, IDCat, Title, SlugEN, Image, Author, IDState } = response;
+                    let { IDNewsEN, IdField, Title, SlugEN, Image, Author, IDState } = response;
                     if (IDState === 1) {
                         IDState = '<div class="badge badge-opacity-warning">Pending</div>'
                     }
@@ -81,15 +81,15 @@ function convertDate(input) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
                     return `<tr>
-                    <td>${IDPostEN}</td>
-                    <td>${IDCat}</td>
+                    <td>${IDNewsEN}</td>
+                    <td>${IdField}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><button onclick="return approveDataEN(${IDPostEN})" class="btn btn-success">Approve</button>
+                    <td><button onclick="return approveDataEN(${IDNewsEN})" class="btn btn-success">Approve</button>
                     <a href="./EditEN.html?Slug=${SlugEN}" class="btn btn-outline-primary">View</a>
-                    <button onclick="return deleteDataEN(${IDPostEN})" class="btn btn-outline-danger">Xoá</button></td>
+                    <button onclick="return deleteDataEN(${IDNewsEN})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbodyENG').html(html);
@@ -104,9 +104,8 @@ function convertDate(input) {
             })
     });
 })(jQuery);
-
 function deleteData(ID){
-    $('#IDPost').val(ID);
+    $('#IDNews').val(ID);
     $('#IDState').val("4");
     $('#exampleModal-2').modal('show');
     $('#showform').hide();
@@ -116,7 +115,7 @@ function deleteData(ID){
     $('#deleteVN').show();
 }
 function deleteDataEN(ID){
-    $('#IDPostEN').val(ID);
+    $('#IDNewsEN').val(ID);
     $('#IDStateEN').val("4");
     $('#exampleModal').modal('show');
     $('#showformEN').hide();
@@ -126,7 +125,7 @@ function deleteDataEN(ID){
     $('#deleteEN').show();
 }
 function approveData(ID){
-    $('#IDPost').val(ID);
+    $('#IDNews').val(ID);
     $('#IDState').val("");
     $('#exampleModal-2').modal('show');
     $('#showform').show();
@@ -136,7 +135,7 @@ function approveData(ID){
     $('#deleteVN').hide();
 }
 function approveDataEN(ID){
-    $('#IDPostEN').val(ID);
+    $('#IDNewsEN').val(ID);
     $('#IDStateEN').val("");
     $('#exampleModal').modal('show');
     $('#showformEN').show();
@@ -147,10 +146,10 @@ function approveDataEN(ID){
 }
 async function updateState(){
     var data = {
-        IDPost: $('#IDPost').val(),
+        IDNews: $('#IDNews').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(WEB_API + "Management/EditStatePost", {
+    fetch(WEB_API + "Management/EditStateNewsVN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -161,7 +160,6 @@ async function updateState(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                addNoti(3);
                 alert('Cập nhật Thành Công')
                 window.location.reload();
             }
@@ -172,10 +170,10 @@ async function updateState(){
 }
 async function updateStateEN(){
     var data = {
-        IDPostEN: $('#IDPostEN').val(),
+        IDNewsEN: $('#IDNewsEN').val(),
         IDState: $('#IDStateEN').val(),
     };
-    fetch(WEB_API + "Management/EditStatePostEN", {
+    fetch(WEB_API + "Management/ShowAllNewsEN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -186,7 +184,6 @@ async function updateStateEN(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                addNoti(3);
                 alert('Cập nhật Thành Công')
                 window.location.reload();
             }
@@ -195,46 +192,3 @@ async function updateStateEN(){
             }
         })
 }
-
-function addNoti(numb){
-    var $dataNoti = {};
-    if(numb === 1){
-        $dataNoti.Title = 'Đăng Tải Bài Viết',
-        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã thêm 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
-    }
-    else if(numb === 2){
-        $dataNoti.Title = 'Sửa Bài Viết',
-        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã sửa 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
-    }
-    else if(numb === 3){
-        $dataNoti.Title = 'Xóa Bài Viết',
-        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
-    }
-    fetch(WEB_API + "Management/Notification", {
-        method: 'POST',
-        body: JSON.stringify($dataNoti),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-        },
-    }).then(function (response) {
-        return response.json()
-    }) 
-}
-function parseJwt(token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
-};

@@ -417,10 +417,23 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="../../Admin/TinTuc/PostTinTuc.html">
+              <i class="menu-icon mdi mdi-format-float-left"></i>
+              <span class="menu-title">Đăng tin tức</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="../../Admin/BaiDang/QuanLyBaiDang.html" aria-expanded="false"
               aria-controls="form-elements">
               <i class="menu-icon mdi mdi-file-document-box"></i>
               <span class="menu-title">Quản lý bài viết</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../Admin/TinTuc/Index.html" aria-expanded="false"
+              aria-controls="form-elements">
+              <i class="menu-icon mdi mdi-newspaper"></i>
+              <span class="menu-title">Quản lý tin tức</span>
             </a>
           </li>
           <li class="nav-item">
@@ -477,8 +490,8 @@
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Portfolio</button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" onclick="clearTextBox2();">Add New Pictures</button><br /><br />
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" onclick="clearTextBox2();">Add New Pictures</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2" onclick="clearTextBox();">Add New Portfolio</button><br /><br />
               <h4 class="card-title">Quản lý Ban giám đốc</h4>
               <div class="row">
                 <div class="col-12">
@@ -488,7 +501,6 @@
                         <tr>
                           <th>ID #</th>
                           <th>Họ và tên</th>
-                          <th>IDImg</th>
                           <th>Ảnh</th>
                           <th>Vị trí</th>
                           <th>Thông tin</th>
@@ -520,16 +532,17 @@
                                 <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
                               </div>
                               <div class="form-group">
-                                <label for="IDImg">IDImg</label>
-                                <input type="text" class="form-control" id="IDImg" placeholder="IDImg">
-                              </div>
+                                <label for="SelectFullName">Chọn hình ảnh</label>
+                                <select class="form-select" id="SelectFullName">
+                                </select>
+                            </div>
                               <div class="form-group">
                                 <label for="Position">Vị trí</label>
                                 <input type="text" class="form-control" id="Position" placeholder="Position">
                               </div>
                               <div class="form-group">
                                 <label for="Details">Thông tin</label>
-                                <input type="text" class="form-control" id="Details" placeholder="Details">
+                                <textarea style="height:300px" type="text" class="form-control" id="Details" placeholder="Details"></textarea>
                               </div>
                             </form>
                           </div>
@@ -554,8 +567,8 @@
                           <div class="modal-body">
                             <form class="forms-sample">
                               <div class="form-group">
-                                <label for="IDImg1">IDImg</label>
-                                <input type="text" class="form-control" id="IDImgadd" placeholder="IDImg1">
+                                <label for="FullNameImg">Họ và tên</label>
+                                <input type="text" class="form-control" id="FullNameImg" placeholder="Họ và tên">
                               </div>
                               <div class="form-group">
                                 <label for="Avatar">Thêm<h5><b>3 ẢNH</b></h5></label>

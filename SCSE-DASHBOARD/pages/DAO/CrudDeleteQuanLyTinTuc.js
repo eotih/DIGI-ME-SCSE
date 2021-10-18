@@ -7,14 +7,14 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/ShowAllPost")
+        fetch(WEB_API + "Management/ShowAllNewsVN")
             .then(function (response) {
                 return response.json();
             })
             .then(function (response) {
                 var result = response.filter(v => v.IDState === 4)
                 var html = result.map(function (response) {
-                    let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
+                    let { IDNews, IdField, Title, Slug, Image, Author, IDState } = response;
                     if (IDState === 1) {
                         IDState = '<div class="badge badge-opacity-warning">Pending</div>'
                     }
@@ -28,13 +28,13 @@ function convertDate(input) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
                     return `<tr>
-                    <td>${IDPost}</td>
-                    <td>${IDCat}</td>
+                    <td>${IDNews}</td>
+                    <td>${IdField}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><button onclick="return restoreData(${(IDPost)})" class="btn btn-success">Khôi phục</button> <button onclick="return deleteData(${IDPost})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return restoreData(${(IDNews)})" class="btn btn-success">Khôi phục</button> <button onclick="return deleteData(${IDNews})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbody').html(html);
@@ -53,7 +53,7 @@ function convertDate(input) {
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "Management/ShowAllPostEN")
+        fetch(WEB_API + "Management/ShowAllNewsEN")
             .then(function (response) {
                 return response.json();
             })
@@ -61,7 +61,7 @@ function convertDate(input) {
 
                 var result = response.filter(v => v.IDState === 4)
                 var html = result.map(function (response) {
-                    let { IDPostEN, IDCat, Title, SlugEN, Image, Author, IDState } = response;
+                    let { IDNewsEN, IdField, Title, SlugEN, Image, Author, IDState } = response;
                     if (IDState === 1) {
                         IDState = '<div class="badge badge-opacity-warning">Pending</div>'
                     }
@@ -75,13 +75,13 @@ function convertDate(input) {
                         IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
                     }
                     return `<tr>
-                    <td>${IDPostEN}</td>
-                    <td>${IDCat}</td>
+                    <td>${IDNewsEN}</td>
+                    <td>${IdField}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
                     <td>${IDState}</td>
-                    <td><a onclick="return restoreDataEN(${(IDPostEN)})" class="btn btn-success">Restore</a> <button onclick="return deleteDataEN(${IDPostEN})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><a onclick="return restoreDataEN(${(IDNewsEN)})" class="btn btn-success">Restore</a> <button onclick="return deleteDataEN(${IDNewsEN})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
                 $('#tbodyENG').html(html);
@@ -98,23 +98,23 @@ function convertDate(input) {
 })(jQuery);
 
 function restoreData(ID) {
-    $('#IDPost').val(ID);
+    $('#IDNews').val(ID);
     $('#IDState').val("1");
     $('#exampleModal-2').modal('show');
     $('#edit').show();
 }
 function restoreDataEN(ID) {
-    $('#IDPostEN').val(ID);
+    $('#IDNewsEN').val(ID);
     $('#IDStateEN').val("1");
     $('#exampleModal').modal('show');
     $('#edit').show();
 }
 async function updateRestore() {
     var data = {
-        IDPost: $('#IDPost').val(),
+        IDNews: $('#IDNews').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(WEB_API + "Management/EditStatePost", {
+    fetch(WEB_API + "Management/EditStateNewsVN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -135,10 +135,10 @@ async function updateRestore() {
 }
 async function updateRestoreEN() {
     var data = {
-        IDPostEN: $('#IDPostEN').val(),
+        IDNewsEN: $('#IDNewsEN').val(),
         IDState: $('#IDStateEN').val(),
     };
-    fetch(WEB_API + "Management/EditStatePostEN", {
+    fetch(WEB_API + "Management/EditStateNewsEN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -157,9 +157,9 @@ async function updateRestoreEN() {
             }
         })
 }
-async function deleteData(IDPost) {
-    if (confirm('Bạn có muốn xoá bài viết?')) {
-        fetch(WEB_API + "Management/DeletePost?ID=" + IDPost, {
+async function deleteData(IDNews) {
+    if (confirm('Bạn có muốn xoá tin tức này?')) {
+        fetch(WEB_API + "Management/DeleteNewsVN?ID=" + IDNews, {
             method: "DELETE",
         })
         .then(function (response) {
@@ -178,9 +178,9 @@ async function deleteData(IDPost) {
 
     }
 }
-async function deleteDataEN(IDPostEN) {
+async function deleteDataEN(IDNewsEN) {
     if (confirm('Are you sure you want to delete?')) {
-        fetch(WEB_API + "Management/DeletePostEN?ID=" + IDPostEN, {
+        fetch(WEB_API + "Management/DeleteNewsEN?ID=" + IDNewsEN, {
             method: "DELETE",
         })
         .then(function (response) {

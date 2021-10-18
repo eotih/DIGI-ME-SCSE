@@ -487,118 +487,136 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-            <div class="card">
-              <div class="card-body" id="dtBasicExample">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2"
-                  onclick="clearTextBox();">Add New Form</button>
-                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="DeleteDuyetdon.html">Trash
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="deleteCount">
-                      </span>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Quản lý bài đăng</h4>
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#VN" role="tab" aria-controls="VN"
+                    aria-selected="true">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2560px-Flag_of_Vietnam.svg.png"
+                      style="width: 20px; height: 15px" alt=""> Tiếng Việt
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#ENG" role="tab" aria-controls="ENG"
+                    aria-selected="false"> <img
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
+                      style="width: 20px; height: 15px" alt=""> Tiếng Anh
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="profile-tab">
+                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="Index.html">Quay lại
                   </a><br /><br />
-                <h4 class="card-title">Quản lý tình nguyện viên</h4>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="table-responsive">
-                      <table id="dataTable" class="table">
-                        <thead>
-                          <tr>
-                            <th>ID #</th>
-                            <th>Tên</th>
-                            <th>Họ</th>
-                            <th>Ngày sinh</th>
-                            <th>Số điện thoại</th>
-                            <th>Email</th>
-                            <th>Địa chỉ</th>
-                            <th>Chủ đề</th>
-                            <th>Nội dung</th>
-                            <th>Trạng thái</th>
-                            <th>Hành động</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tbody"></tbody>
-                      </table>
-                    </div>
-                    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="form-group">
-                                <label for="ID">ID</label>
-                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
-                              </div>
-                              <div class="form-group">
-                                <label for="FirstName">Tên</label>
-                                <input type="text" class="form-control" id="FirstName" placeholder="Tên">
-                              </div>
-                              <div class="form-group">
-                                <label for="LastName">Họ</label>
-                                <input type="text" class="form-control" id="LastName" placeholder="Họ">
-                              </div>
-                              <div class="form-group">
-                                <label for="DOB">Ngày Sinh</label>
-                                <input type="date" value="" class="form-control" id="DOB" placeholder="Ngày Sinh">
-                              </div>
-                              <div class="form-group">
-                                <label for="Phone">Số điện thoại</label>
-                                <input type="text" class="form-control" id="Phone" placeholder="Số điện thoại">
-                              </div>
-                              <div class="form-group">
-                                <label for="Email">Email</label>
-                                <input type="email" class="form-control" id="Email" placeholder="Email">
-                              </div>
-                              <div class="form-group">
-                                <label for="Address">Địa chỉ</label>
-                                <input type="text" class="form-control" id="Address" placeholder="Địa chỉ">
-                              </div>
-                              <div class="form-group">
-                                <label for="Project">Chủ đề</label>
-                                <input type="text" class="form-control" id="Project" placeholder="Chủ đề">
-                              </div>
-                              <div class="form-group">
-                                <label for="Purpose">Nội dung</label>
-                                <input type="text" class="form-control" id="Purpose" placeholder="Nội dung">
-                              </div>
-                              <label for="IDState">Trạng thái</label>
-                              <select type="text" class="form-control" id="IDState" placeholder="Trạng thái">
-                                <option value="1">Pending</option>
-                                <option value="2">Approved</option>
-                                <option value="3">NotApproved</option>
-                                <option value="4">Deleted</option>
-                              </select>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                            <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table id="dataTable" class="table">
+                          <thead>
+                            <tr>
+                              <th>IDNews #</th>
+                              <th>IdField</th>
+                              <th>Title</th>
+                              <th>Image</th>
+                              <th>Author</th>
+                              <th>State</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody"></tbody>
+                        </table>
+                      </div>
+                      <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form class="forms-sample">
+                                <div class="form-group">
+                                  <h4>Bạn có thực sự muốn Khôi phục?</h4>
+                                </div>
+                                <div class="form-group" hidden>
+                                  <label for="IDNews">ID</label>
+                                  <input type="text" class="form-control" id="IDNews" placeholder="IDNews" disabled>
+                                </div>
+                                <div class="form-group" hidden>
+                                  <label for="IDState">IDState</label>
+                                  <input type="text" class="form-control" id="IDState" placeholder="IdField">
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" id="edit" onclick="updateRestore();"
+                                class="btn btn-success">Khôi phục</button>
+                              <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="modal fade" id="Delete" tabindex="-1" role="dialog" aria-labelledby="Delete"
-                      aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Are you sure you want to delete this</h5>
-                                  <input hidden type="text" class="form-control" id="ID2">
-                                  <input hidden type="text" class="form-control" id="State">
-                                  <button type="button" onclick="deleteData()" class="btn btn-success">Delete</button>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="ENG" role="tabpanel" aria-labelledby="profile-tab">
+                  <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="Index.html">Return
+                    
+                  </a><br /><br />
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table id="dataTableENG" class="table">
+                          <thead>
+                            <tr>
+                              <th>IDNews #</th>
+                              <th>IdField</th>
+                              <th>Title</th>
+                              <th>Image</th>
+                              <th>Author</th>
+                              <th>State</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbodyENG"></tbody>
+                        </table>
+                      </div>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form class="forms-sample">
+                                <div class="form-group">
+                                  <h4>Are you sure you want to restore?</h4>
                                 </div>
-                              </div>
-                            </form>
+                                <div class="form-group" hidden>
+                                  <label for="IDNews">ID</label>
+                                  <input type="text" class="form-control" id="IDNewsEN" placeholder="IDNews" disabled>
+                                </div>
+                                <div class="form-group"hidden>
+                                  <label for="IDState">IDState</label>
+                                  <input type="text" class="form-control" id="IDStateEN" placeholder="IdField">
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" id="edit" onclick="updateRestoreEN();"
+                                class="btn btn-success">Restore</button>
+                              <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -630,9 +648,11 @@
   <!-- plugins:js -->
   <script src="../../../vendors/js/vendor.bundle.base.js"></script>
   <script src="../../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <!-- End plugin js for this page -->
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
   <script src="../../../vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="../../../js/off-canvas.js"></script>
   <script src="../../../js/hoverable-collapse.js"></script>
@@ -641,8 +661,7 @@
   <script src="../../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../DAO/CrudDuyetDon.js"></script>
-  <script src="../../DAO/Notification.js"></script>
+  <script src="../../DAO/CrudDeleteQuanLyTinTuc.js"></script>
   <!-- End custom js for this page-->
 </body>
 

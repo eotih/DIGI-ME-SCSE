@@ -16,18 +16,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin2 </title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../../vendors/feather/feather.css">
     <link rel="stylesheet" href="../../../vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="../../../vendors/typicons/typicons.css">
     <link rel="stylesheet" href="../../../vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../../vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../TaiLieu/buttoncopy.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
-    <!-- <script type="text/javascript" src="../TaiLieu/CrudTaiLieu.js"></script> -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
@@ -156,22 +153,22 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()" data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                          <i class="icon-bell"></i>
-                          <span class="count"></span>
+                        <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="icon-bell"></i>
+                            <span class="count"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                          aria-labelledby="countDropdown">
-                          <a class="dropdown-item py-3">
-                            <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
-                            <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
-                          </a>
-                          <div class="dropdown-divider"></div>
-                          <div id="tnoti"></div>
-                          
+                            aria-labelledby="countDropdown">
+                            <a class="dropdown-item py-3">
+                                <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
+                                <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div id="tnoti"></div>
+
                         </div>
-                      </li>
+                    </li>
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="img-xs rounded-circle" src="../../../images/faces/face8.jpg"
@@ -522,7 +519,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Thêm bài viết</h4>
+                                    <h4 class="card-title">Sửa tin tức</h4>
                                     <div class="row">
                                         <div class="col-lg-8">
                                             <form class="forms-sample">
@@ -530,6 +527,8 @@
                                                     <label for="Title">Tiêu đề</label>
                                                     <input type="text" class="form-control" id="Title"
                                                         placeholder="Nhập tiêu đề bài viết">
+                                                    <input type="text" class="form-control" id="IDNews" hidden="true">
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Title">Nội dung</label>
@@ -541,60 +540,32 @@
                                         <div class="col-lg-4">
                                             <form class="forms-sample">
                                                 <div class="form-group">
-                                                    <label for="sel2">Tên File</label>
-                                                    <select class="form-select" id="abc" onclick="getbyID(value)"></select>
+                                                    <label for="Phone">Chọn thể loại</label>
+                                                    <select class="form-select" id="Category">
+                                                        <option value="1">Giới và bình đăng giới</option>
+                                                        <option value="2">Biến đổi khí hậu môi trường</option>
+                                                        <option value="3">Thực tập sinh</option>
+                                                        <option value="4">Nghiên cứu Đào tạo</option>
+                                                    </select>
                                                 </div>
-                                                <label for="inputlg">Link PDF</label>
-                                                <div class="form-group1">
-                                                    <input type="text" class="form-control" id="xyz" type="text">
-                                                    </input>
-                                                    <button type="button"  onclick="myFunction()">
-                                                        <i style="font-size:24px" class="fa">&#xf0c5;</i>
-                                                    </button>
+
+                                                <div class="form-group">
+                                                    <label for="Name">Thêm hình ảnh</label>
+                                                    <input type="file" name="" id="fileId">
+                                                    <img id="img" style="width: 200px; height:300px">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Phone">Công khai hay không</label>
+                                                    <select class="form-control" id="State">
+                                                        <option value="2">Có</option>
+                                                        <option value="3">Không</option>
+                                                    </select>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" id="edit" onclick="addData();"
-                                                        class="btn btn-success">Thêm bài viết</button>
+                                                    <button type="button" id="edit" onclick="updateData();"
+                                                        class="btn btn-success">Sửa bài viết</button>
                                                 </div>
                                             </form>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal-2" onclick="loadData();">Add New
-                                                Employee</button><br /><br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="forms-sample">
-                                                    <table id="order-listing" class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ID #</th>
-                                                                <th>Name</th>
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbody" name="tbody" class="tbody">
-                                                        </tbody>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-light"
-                                                    data-dismiss="modal">Hủy</button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -620,15 +591,7 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>>
-    <script>
-        $('#summernote').summernote({
-            placeholder: 'Hello Bootstrap 4',
-            tabsize: 2,
-            height: 500,
-            lang: 'vi-VN'
-        });
 
-    </script>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="../../../vendors/js/vendor.bundle.base.js"></script>
@@ -646,43 +609,22 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
-    <!-- End custom js for this page-->
+    <script type="text/javascript" src="../../DAO/CrudEditTinTuc.js"></script>
+    <script>
+        const fileInput = document.querySelector('input[id="fileId"]');
+        // listen for the change event so we can capture the file
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                base64 = reader.result;
+                $('#img').val(base64);
+                document.getElementById('img').src = base64;
+            };
+            reader.readAsDataURL(file);
+        });
+
+    </script>
 </body>
 
 </html>
-<script>
-    window.addEventListener('load', getData())
-    function getData() {
-        fetch("http://localhost:59360/api/XemDanhSachTaiLieu")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (response) {
-                var abc = document.createElement("option");
-                abc.innerHTML = "Vui lòng chọn";
-                abc.value = 0;
-                document.getElementById("abc").appendChild(abc);
-                for (var i = 0; i < response.length; i++) {
-                    var ele = document.createElement("option");
-                    ele.value = response[i].ID;
-                    ele.innerHTML = response[i].NamePDF;
-                    document.getElementById("abc").appendChild(ele);
-                }
-            })
-    }
-    function getbyID(ID) {
-        fetch("http://localhost:59360/api/GetByIDTaiLieu?id=" + ID)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (response) {
-                document.getElementById("xyz").value = response.Iframe;
-            })
-    }
-    function myFunction() {
-        var copyText = document.getElementById("xyz");
-        copyText.select();
-        navigator.clipboard.writeText(copyText.value);
-        alert("Copied the text: " + copyText.value);
-    }
-</script>

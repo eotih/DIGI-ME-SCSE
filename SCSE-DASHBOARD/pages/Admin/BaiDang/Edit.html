@@ -25,8 +25,6 @@
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
-    <script type="text/javascript" src="../../DAO/CrudEditBaiViet.js"></script>
-    <script type="text/javascript" src="../../DAO/Notification.js"></script>
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
@@ -446,10 +444,23 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="../../Admin/TinTuc/PostTinTuc.html">
+                      <i class="menu-icon mdi mdi-format-float-left"></i>
+                      <span class="menu-title">Đăng tin tức</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="../../Admin/BaiDang/QuanLyBaiDang.html" aria-expanded="false"
                       aria-controls="form-elements">
                       <i class="menu-icon mdi mdi-file-document-box"></i>
                       <span class="menu-title">Quản lý bài viết</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../Admin/TinTuc/Index.html" aria-expanded="false"
+                      aria-controls="form-elements">
+                      <i class="menu-icon mdi mdi-newspaper"></i>
+                      <span class="menu-title">Quản lý tin tức</span>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -543,11 +554,6 @@
                                                     <img id="img" style="width: 200px; height:300px">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="Author">Tác giả</label>
-                                                    <input type="text" class="form-control" id="Author"
-                                                        placeholder="Tác giả">
-                                                </div>
-                                                <div class="form-group">
                                                     <label for="Phone">Công khai hay không</label>
                                                     <select class="form-control" id="State">
                                                         <option value="2">Có</option>
@@ -602,6 +608,8 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
+    <script type="text/javascript" src="../../DAO/CrudEditBaiViet.js"></script>
+    <script type="text/javascript" src="../../DAO/Notification.js"></script>
     <script>
         const fileInput = document.querySelector('input[id="fileId"]');
         // listen for the change event so we can capture the file

@@ -1,6 +1,7 @@
 const WEB_API = "http://localhost:59360/API/";
 
 window.addEventListener('load', loadData)
+window.addEventListener('load', selectFullName)
 async function loadData() {
     fetch(WEB_API + "Interface/ShowAllPorfolio")
         .then(function (response) {
@@ -8,24 +9,63 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                let { ID, FullName, IDImg, Hinhanh, Position, Details } = response;
+                let { ID, FullName, Hinhanh, Position, Details } = response;
                 const Hinh = Hinhanh.filter(v => v.ImagePortfolio)
-                let img = [];
                 const HinhA = Hinh.map(function (response) {
-                    img.push(response.ImagePortfolio)
+                    return response.ImagePortfolio
                 })
                 return `<tr>
                     <td>${ID}</td>
                     <td>${FullName}</td>
-                    <td>${IDImg}</td>
-                    <td><img src='${img[0]}'/><img src='${img[1]}'/><img src='${img[2]}'/></td>
+                    <td><img src='${HinhA[0]}'/><img src='${HinhA[1]}'/><img src='${HinhA[2]}'/></td>
                     <td>${Position}</td>
-                    <td>${Details}</td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button> <button onclick="return getDataImg(${IDImg})" class="btn btn-outline-primary">View Img</button> <button onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td>${Details.slice(0, 200)}</td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">View Img</button> <button onclick="return deletePortfolio(${ID})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
             })
             $('#tbody').html(html);
         })
+}
+function deletePortfolio(Id) {
+    if (confirm('Bạn có muốn xoá tài khoản?')) {
+
+        fetch(WEB_API + "Interface/DeletePortfolio?id=" + Id, {
+            method: "DELETE",
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                if (data.Status === 'Delete') {
+                    alert('Xoá thành công')
+                    window.location.reload();
+                }
+                else {
+                    alert('Data not deleted')
+                }
+            })
+    } else {
+
+    }
+}
+function selectFullName() {
+    fetch(WEB_API + "Interface/ImageForPortfolio")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            var Category = document.createElement("option");
+            Category.innerHTML = "Vui lòng chọn";
+            Category.value = 0;
+            document.getElementById("SelectFullName").appendChild(Category);
+            for (var i = 0; i < response.length; i++) {
+                var ele = document.createElement("option");
+                ele.value = response[i].FullName;
+                ele.innerHTML = response[i].FullName;
+                document.getElementById("SelectFullName").appendChild(ele);
+            }
+        })
+
 }
 async function getData(ID) {
     fetch(WEB_API + "Interface/GetByIdPortfolios?id=" + ID)
@@ -33,27 +73,26 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            let { ID, FullName, IDImg, Position, Details } = response;
+            let { ID, FullName, Position, Details } = response;
             $('#ID').val(ID);
             $('#FullName').val(FullName);
-            $('#IDImg').val(IDImg);
             $('#Position').val(Position);
             $('#Details').val(Details);
         })
     $('#exampleModal-2').modal('show');
+    $('#SelectFullName').hide();
     $('#add').hide();
     $('#edit').show();
 }
-async function getDataImg(IDImg) {
-    var data =IDImg;
-    fetch(WEB_API + "/Api/Interface/GetbyIdimgPortfolios?IDimg=" + IDImg)
+async function getDataImg(FullName) {
+    var data = FullName;
+    fetch(WEB_API + "Interface/GetByFullNameImgPortfolios?FullName=" + FullName)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             var img = [];
             var result = response.filter(object => {
-                console.log(object)
                 img.push(object.ID);
                 img.push(object.IDImg);
                 img.push(object.ImagePortfolio);
@@ -77,7 +116,6 @@ async function addData() {
     var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
-        IDImg: $('#IDImg').val(),
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
@@ -93,7 +131,7 @@ async function addData() {
         .then(function (data) {
             if (data.Status === 'Success') {
                 alert('Thêm Thành Công')
-                clearTextBox2();
+                window.location.reload();
             }
             else {
                 alert('Data not insert')
@@ -104,11 +142,9 @@ async function updateData() {
     var data = {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
-        IDImg: $('#IDImg').val(),
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
-    console.table(data)
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
         body: JSON.stringify(data),
@@ -205,10 +241,10 @@ async function updateImg3() {
 }
 function addDataImg(base64) {
     let data = {
-        IDImg: $('#IDImgadd').val(),
+        FullName: $('#FullNameImg').val(),
         ImagePortfolio: base64
     };
-    fetch(WEB_API + "Interface/EditImagePortfolios", {
+    fetch(WEB_API + "Interface/AddOrEditImagePortfolios", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

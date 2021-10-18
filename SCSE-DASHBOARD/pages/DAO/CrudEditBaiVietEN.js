@@ -18,7 +18,6 @@ async function getData() {
                 $('#Slug').val(Slug),
                 $('#summernote').summernote('code', Details),
                 document.getElementById('img').src = Image;
-            $('#Author').val(Author)
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -33,7 +32,7 @@ async function updateData() {
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
         Image: document.getElementById('img').src,
-        Author: $('#Author').val(),
+        Author: getToken.nameid[3],
     }
     console.log(data)
     fetch(WEB_API + "Management/EditPostEN", {
