@@ -309,41 +309,29 @@
                   <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                     <div class="row">
                       <div class="col-lg">
-                        <h1>Số bài đăng theo lĩnh vực lĩnh hoạt động</h1>
+                        <h1>Số bài đăng theo lĩnh vực hoạt động</h1>
                         <div class="statistics-details d-flex align-items-center justify-content-between mt-5">
                           <div>
                             <h2>Giới và bình đẳng Giới</h2>
-                            <h3 class="rate-percentage text-center">10 bài</h3>
+                            <h3 class="rate-percentage text-center" id="GBDG">bài</h3>
                           </div>
                           <div>
-                            <h2 class="statistics-title">Khí hậu và môi trường</h2>
-                            <h3 class="rate-percentage">10 bài</h3>
+                            <h2>Khí hậu và môi trường</h2>
+                            <h3 class="rate-percentage text-center" id="KHMT">bài</h3>
                           </div>
                           <div>
-                            <p class="statistics-title">New Sessions</p>
-                            <h3 class="rate-percentage">68.8</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                            <h2>Thực tập sinh</h2>
+                            <h3 class="rate-percentage text-center" id="TTS">bài</h3>
                           </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
-                            <h3 class="rate-percentage">2m:35s</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">New Sessions</p>
-                            <h3 class="rate-percentage">68.8</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
-                          </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
-                            <h3 class="rate-percentage">2m:35s</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                          <div>
+                            <h2>Nghiên cứu Đào tạo</h2>
+                            <h3 class="rate-percentage text-center" id="NCDT">bài</h3>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-4">
+                      <div class="col-lg-3">
                         <div class="card card-rounded">
                           <div class="card-body">
                             <h3 class="mdi mdi-file"> <b>Bài đăng</b></h3>
@@ -351,7 +339,15 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-lg-3">
+                        <div class="card card-rounded">
+                          <div class="card-body">
+                            <h3 class="mdi mdi-format-float-left"> <b>Tin tức</b></h3>
+                            <P>có N bài đang chờ duyệt.</P>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
                         <div class="card card-rounded">
                           <div class="card-body">
                             <h3 class="mdi mdi-account-multiple"> <b>Tình nguyện viên</b></h3>
@@ -359,7 +355,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-lg-3">
                         <div class="card card-rounded">
                           <div class="card-body">
                             <h3 class="mdi mdi-account-circle"> <b>Tài khoản</b></h3>
@@ -407,6 +403,7 @@
     <!-- Custom js for this page-->
     <script src="js/dashboard.js"></script>
     <script src="js/Chart.roundedBarCharts.js"></script>
+    <script type="text/javascript" src="./pages/DAO/CrudTrangChinh.js"></script>
     <script type="text/javascript" src="./pages/DAO/Login_Check.js"></script>
     <script type="text/javascript" src="./pages/DAO/CrudPhanQuyen.js"></script>
     <script src="./pages/DAO/Notification.js"></script>
