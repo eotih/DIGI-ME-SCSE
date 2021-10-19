@@ -21,6 +21,7 @@ async function addPost() {
     })
         .then(function (data) {
             if (data.Status === 'Success') {
+                addNoti(1);
                 alert('Thêm Thành Công')
                 window.location.reload();
             }
@@ -72,6 +73,7 @@ async function addPostEN() {
     })
         .then(function (data) {
             if (data.Status === 'Success') {
+                addNoti(1);
                 alert('Thêm Thành Công')
                 window.location.reload();
             }
@@ -79,6 +81,39 @@ async function addPostEN() {
                 alert('Data not insert')
             }
         })
+}
+function addNoti(numb){
+    var $dataNoti = {};
+    if(numb === 1){
+        $dataNoti.Title = 'Tin tức mới',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã đăng tải 1 tin tức mới',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    else if(numb === 2){
+        $dataNoti.Title = 'Chỉnh sửa tin tức',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã chỉnh sửa 1 bài đăng',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    else if(numb === 3){
+        $dataNoti.Title = 'Xóa tin tức',
+        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 tin tức',
+        $dataNoti.Status = 'Chưa Xem',
+        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+    }
+    fetch(WEB_API + "Management/Notification", {
+        method: 'POST',
+        body: JSON.stringify($dataNoti),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+    }).then(function (response) {
+        return response.json()
+    }) 
 }
 function parseJwt(token) {
     var base64Url = token.split('.')[1];
