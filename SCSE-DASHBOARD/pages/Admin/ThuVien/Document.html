@@ -222,7 +222,6 @@
               </a>
               <div class="dropdown-divider"></div>
               <div id="tnoti"></div>
-              
             </div>
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -631,45 +630,6 @@
                         </tbody>
                       </table>
                     </div>
-                    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModal-2">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="form-group">
-                                <label for="IDPost">ID</label>
-                                <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
-                              </div>
-                              <div class="form-group">
-                                <label for="Title">Title</label>
-                                <input type="email" class="form-control" id="Title" placeholder="Title">
-                              </div>
-                              <div class="form-group">
-                                <label for="Details">Details</label>
-                                <input type="text" class="form-control" id="Details" placeholder="Details">
-                              </div>
-                              <div class="form-group">
-                                <label for="CreatedByDate">CreatedByDate</label>
-                                <input type="text" class="form-control" id="CreatedByDate" placeholder="CreatedByDate">
-                              </div>
-
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                            <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -729,7 +689,7 @@
 
       e.preventDefault();
       $.ajax({
-        url: 'http://localhost:59360/api/UploadFile',
+        url: 'https://api.scse-vietnam.org/API/UploadFile',
         data: data,
         processData: false,
         contentType: false,

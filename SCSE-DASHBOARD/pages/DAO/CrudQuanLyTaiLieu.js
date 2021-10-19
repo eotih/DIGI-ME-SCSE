@@ -1,35 +1,34 @@
-const WEB_API = "https://api.scse-vietnam.org/API/";
-
-// đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
+const url = "https://api.scse-vietnam.org/API/";
 window.addEventListener('load', loadData)
 async function loadData() {
-    fetch(WEB_API + "ShowAllDocument")
+    fetch(url + "Interface/ListDocument")
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, NamePDF, Iframe } = response;
+                const { ID, Title, Slug,Details } = response;
                 // Sẽ return ra hàm tbody
                 return `<tr>
                 <td>${ID}</td>
-                <td>${NamePDF}</td>
+                <td>${Title}</td>
+                <td>${Slug}</td>
+                <td>${Details}</td>
                 <td>
                 <button onclick="deleteData(${ID})" class="btn btn-outline-primary">Delete</button></td>
                 </tr>`;
             })
             // đây là hàm trả ra tbody
-            $('.tbody').html(html);
+            $('#tbody').html(html);
         })
 }
-
 async function addData() {
     var data = {
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
 
     };
-    fetch(WEB_API + "Interface/AddOrEditDocument", {
+    fetch(url + "Interface/AddOrEditDocument", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -49,7 +48,7 @@ async function addData() {
         })
 }
 async function getData(Slug) {
-    fetch(WEB_API + "Interface/GetBySlugDocument?slug=" + Slug)
+    fetch(url + "Interface/GetBySlugDocument?slug=" + Slug)
         .then(function (response) {
             return response.json();
         })
@@ -74,7 +73,7 @@ async function updateData() {
         Title: $('#Title').val(),
         Details: $('#Details').val(),
     };
-    fetch(WEB_API + "Interface/AddOrEditDocument", {
+    fetch(url + "Interface/AddOrEditDocument", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -106,7 +105,7 @@ function getBaseWEB_API() {
 }
 
 async function deleteData(ID) {
-    fetch(WEB_API + "DeleteFile?id=" + ID, {
+    fetch(url + "Interface/DeleteDocument?id=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()
@@ -136,3 +135,4 @@ function clearTextBox() {
     $('#add').show();
     $('#edit').hide();
 }
+
