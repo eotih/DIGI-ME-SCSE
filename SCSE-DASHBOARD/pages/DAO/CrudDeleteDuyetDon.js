@@ -2,7 +2,7 @@ const WEB_API = "https://api.scse-vietnam.org/API/";
 (function ($) {
     'use strict';
     $(function () {
-        fetch(WEB_API + "/Management/XemDanhSachDangKy")
+        fetch(WEB_API + "Management/ShowAllVolunteers")
             .then(function (response) {
                 return response.json();
             })

@@ -115,7 +115,7 @@ async function updateData() {
         ID: $('#ID').val(),
         IDState: $('#IDState').val(),
     };
-    fetch(WEB_API + "Management/RegisterVolunteer", {
+    fetch(WEB_API + "Management/EditState", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
