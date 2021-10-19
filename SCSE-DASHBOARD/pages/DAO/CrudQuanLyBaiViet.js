@@ -1,4 +1,5 @@
 const WEB_API = "https://api.scse-vietnam.org/API/";
+var getToken = parseJwt(localStorage.getItem("token"));
 function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
