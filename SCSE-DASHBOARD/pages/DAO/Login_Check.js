@@ -29,14 +29,14 @@ function loadData() {
                     || getToken.nameid[5] !== Email
                     || getToken.nameid[0] !== IDState.toString()) {
                     localStorage.removeItem("token");
-                    window.location.href = "http://127.0.0.1:5502/login.html"
+                    window.location.href = "https://cms.scse-vietnam.org/login.html"
                 }
             })
     }
     catch (e) {
         alert("Vui lòng đăng nhập")
         localStorage.removeItem("token");
-        window.location.href = "http://127.0.0.1:5502/login.html"
+        window.location.href = "https://cms.scse-vietnam.org/login.html"
     }
 }
 
@@ -51,6 +51,6 @@ function parseJwt(token) {
     }
     catch (e) {
         localStorage.removeItem("token");
-        window.location.href = "http://127.0.0.1:5502/login.html"
+        window.location.href = "https://cms.scse-vietnam.org/login.html"
     }
 };
