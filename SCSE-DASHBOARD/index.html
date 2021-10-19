@@ -309,7 +309,7 @@
                   <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                     <div class="row">
                       <div class="col-lg">
-                        <h1>Số bài đăng theo lĩnh vực hoạt động</h1>
+                        <h1>Số bài đăng <b>Tiếng Việt</b> theo lĩnh vực hoạt động</h1>
                         <div class="statistics-details d-flex align-items-center justify-content-between mt-5">
                           <div>
                             <h2>Giới và bình đẳng Giới</h2>
@@ -331,35 +331,74 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-3">
-                        <div class="card card-rounded">
-                          <div class="card-body">
-                            <h3 class="mdi mdi-file"> <b>Bài đăng</b></h3>
-                            <P>có N bài đang chờ duyệt.</P>
+                      <div class="col-lg">
+                        <h1>Số bài đăng <b>Tiếng Anh</b> theo lĩnh vực hoạt động</h1>
+                        <div class="statistics-details d-flex align-items-center justify-content-between mt-5">
+                          <div>
+                            <h2>Giới và bình đẳng Giới</h2>
+                            <h3 class="rate-percentage text-center" id="GBDGEN">bài</h3>
+                          </div>
+                          <div>
+                            <h2>Khí hậu và môi trường</h2>
+                            <h3 class="rate-percentage text-center" id="KHMTEN">bài</h3>
+                          </div>
+                          <div>
+                            <h2>Thực tập sinh</h2>
+                            <h3 class="rate-percentage text-center" id="TTSEN">bài</h3>
+                          </div>
+                          <div>
+                            <h2>Nghiên cứu Đào tạo</h2>
+                            <h3 class="rate-percentage text-center" id="NCDTEN">bài</h3>
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-3">
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-4 mb-2">
                         <div class="card card-rounded">
                           <div class="card-body">
-                            <h3 class="mdi mdi-format-float-left"> <b>Tin tức</b></h3>
-                            <P>có N bài đang chờ duyệt.</P>
+                            <h3 class="mdi mdi-file"> <b>Bài đăng tiếng việt</b></h3>
+                            <P class="h5 pt-2" id="BaiDangVNPending"></P>
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-lg-4 mb-2">
+                        <div class="card card-rounded">
+                          <div class="card-body">
+                            <h3 class="mdi mdi-file"> <b>Bài đăng tiếng anh</b></h3>
+                            <P class="h5 pt-2" id="BaiDangENPending"></P>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 mb-2">
                         <div class="card card-rounded">
                           <div class="card-body">
                             <h3 class="mdi mdi-account-multiple"> <b>Tình nguyện viên</b></h3>
-                            <P>có N tình nguyện viên đang chờ duyệt.</P>
+                            <P class="h5 pt-2" id="TNVPending"></P>
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-3">
+                      <div class="col-lg-4 mb-2">
+                        <div class="card card-rounded">
+                          <div class="card-body">
+                            <h3 class="mdi mdi-format-float-left"> <b>Tin tức tiếng việt</b></h3>
+                            <P class="h5 pt-2" id="TinTucVNPending"></P>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 mb-2">
+                        <div class="card card-rounded">
+                          <div class="card-body">
+                            <h3 class="mdi mdi-format-float-left"> <b>Tin tức tiếng anh</b></h3>
+                            <P class="h5 pt-2" id="TinTucENPending"></P>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 mb-2">
                         <div class="card card-rounded">
                           <div class="card-body">
                             <h3 class="mdi mdi-account-circle"> <b>Tài khoản</b></h3>
-                            <P>có N tài khoản đang chờ duyệt.</P>
+                            <P class="h5 pt-2" id="TaiKhoanPending"></P>
                           </div>
                         </div>
                       </div>

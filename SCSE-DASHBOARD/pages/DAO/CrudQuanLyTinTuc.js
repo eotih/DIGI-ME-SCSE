@@ -197,7 +197,7 @@ async function updateStateEN(){
         IDNewsEN: $('#IDNewsEN').val(),
         IDState: $('#IDStateEN').val(),
     };
-    fetch(WEB_API + "Management/ShowAllNewsEN", {
+    fetch(WEB_API + "Management/EditStateNewsEN", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
