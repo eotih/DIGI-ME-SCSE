@@ -13,8 +13,6 @@ async function loadData() {
                 return `<tr>
                         <td>${IDCat}</td>
                         <td>${CategoryName}</td>DDD
-                        <td><button onclick="return getData(${IDCat})" class="btn btn-outline-primary">View</button>
-                        <button onclick="return deleteData(${IDCat})" class="btn btn-outline-primary">Delete</button><td>
                         </tr>`;
             })
             // đây là hàm trả ra tbody

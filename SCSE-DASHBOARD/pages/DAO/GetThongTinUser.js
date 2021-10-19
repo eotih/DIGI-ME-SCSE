@@ -8,7 +8,7 @@ async function loadData() {
         })
         .then(function (response) {
             const { Username, Password, Image, FullName, Email, Phone, IDRole, Sex } = response;
-            document.getElementById('imguser').src =Image;
+            document.getElementById('imguser').src = Image;
             document.getElementById('avataruser').src = Image;
             $('#NameUser').text(FullName);
             $('#Name-User').text(FullName);
@@ -30,8 +30,12 @@ async function loadData() {
             $('#Sexs').text(Sex);
             $('#Phones').text(Phone);
             $('#MailUser').text(Email);
-           
+
         })
+}
+function logOut() {
+    localStorage.removeItem("token");
+    window.location.reload();
 }
 function parseJwt(token) {
     var base64Url = token.split('.')[1];

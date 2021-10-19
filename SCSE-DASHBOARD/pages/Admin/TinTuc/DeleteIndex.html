@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-top">
-        
+
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown d-none d-lg-block">
             <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#"
@@ -162,7 +162,7 @@
               <a class="dropdown-item" href="../../../pages/ThongTinCaNhan/index.html"><i
                   class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
                 Profile <span class="badge badge-pill badge-danger">1</span></a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              <a class="dropdown-item" onclick="logOut();"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
             </div>
           </li>
         </ul>
@@ -385,17 +385,30 @@
               <span class="menu-title">Thông tin ngân hàng</span>
             </a>
           </li>
-          <li class="nav-item nav-category">Quản lý thành viên</li>
+          <li class="nav-item nav-category">Quy chuẩn</li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../pages/Admin/QuanLyTaiKhoan.html">
-              <i class="menu-icon mdi mdi-key-variant"></i>
-              <span class="menu-title">Quản lý tài khoản</span>
+            <a class="nav-link" href="../../../pages/Admin/TheLoai/Index.html">
+              <i class="menu-icon mdi mdi-file-multiple"></i>
+              <span class="menu-title">Quản lý thể loại </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../../pages/Admin/Field/index.html">
+              <i class="menu-icon mdi mdi-format-list-bulleted"></i>
+              <span class="menu-title">Quản lý lĩnh vực</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../../../pages/Admin/Trang-Thai/">
               <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
               <span class="menu-title">Quản lý trạng thái</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Quản lý thành viên</li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../../pages/Admin/QuanLyTaiKhoan.html">
+              <i class="menu-icon mdi mdi-key-variant"></i>
+              <span class="menu-title">Quản lý tài khoản</span>
             </a>
           </li>
           <li class="nav-item nav-category">Đăng bài</li>
@@ -425,18 +438,6 @@
               <span class="menu-title">Quản lý tin tức</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../../pages/Admin/TheLoai/Index.html">
-              <i class="menu-icon mdi mdi-file-multiple"></i>
-              <span class="menu-title">Quản lý thể loại </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../../pages/Admin/Field/index.html">
-              <i class="menu-icon mdi mdi-format-list-bulleted"></i>
-              <span class="menu-title">Quản lý lĩnh vực</span>
-            </a>
-          </li>
           <li class="nav-item nav-category">Quản lý thư viện</li>
           <li class="nav-item">
             <a class="nav-link" href="../../../pages/Admin/ThuVien/ThuVien.html">
@@ -445,7 +446,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../pages/Admin/TaiLieu/QuanLyTaiLieu.html">
+            <a class="nav-link" href="../../../pages/Admin/TaiLieu/IndexDocument.html">
               <i class="menu-icon mdi mdi-note-text"></i>
               <span class="menu-title">Thư viện tài liệu</span>
             </a>
@@ -466,8 +467,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html" aria-expanded="false"
-              aria-controls="form-elements">
+            <a class="nav-link" href="../../../pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html"
+              aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Duyệt đơn TNV</span>
             </a>
@@ -480,7 +481,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" href="" aria-expanded="false" aria-controls="form-elements" onclick="logOut();">
               <i class="menu-icon mdi mdi-logout"></i>
               <span class="menu-title">Đăng xuất</span>
             </a>
@@ -558,8 +559,8 @@
                               </form>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" id="edit" onclick="updateRestore();"
-                                class="btn btn-success">Khôi phục</button>
+                              <button type="button" id="edit" onclick="updateRestore();" class="btn btn-success">Khôi
+                                phục</button>
                               <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                             </div>
                           </div>
@@ -570,7 +571,7 @@
                 </div>
                 <div class="tab-pane fade" id="ENG" role="tabpanel" aria-labelledby="profile-tab">
                   <a type="button" class="btn btn-outline-primary position-relative ms-auto" href="Index.html">Return
-                    
+
                   </a><br /><br />
                   <div class="row">
                     <div class="col-12">
@@ -609,7 +610,7 @@
                                   <label for="IDNews">ID</label>
                                   <input type="text" class="form-control" id="IDNewsEN" placeholder="IDNews" disabled>
                                 </div>
-                                <div class="form-group"hidden>
+                                <div class="form-group" hidden>
                                   <label for="IDState">IDState</label>
                                   <input type="text" class="form-control" id="IDStateEN" placeholder="IdField">
                                 </div>
