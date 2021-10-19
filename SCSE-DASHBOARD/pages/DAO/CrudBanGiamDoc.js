@@ -244,7 +244,7 @@ function addDataImg(base64) {
         FullName: $('#FullNameImg').val(),
         ImagePortfolio: base64
     };
-    fetch(WEB_API + "Interface/AddOrEditImagePortfolios", {
+    fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

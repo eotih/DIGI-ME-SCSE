@@ -98,9 +98,9 @@ async function updateData() {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
-        Image: $('#Image').val()
+        Image: base64
     };
-    fetch(WEB_API + "api/UploadImage", {
+    fetch(WEB_API + "Interface/AddOrEditPhotoGallery", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
