@@ -10,7 +10,7 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 
-    <script src="./FormTiengViet.js"></script>
+    <script src="../BaiDang/FormTiengViet.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -160,7 +160,7 @@
                           aria-labelledby="countDropdown">
                           <a class="dropdown-item py-3">
                             <p class="mb-0 font-weight-medium float-left" id="Moi"></p>
-                            <span class="badge badge-pill badge-primary float-right" id="Moi">View all</span>
+                            <span class="badge badge-pill badge-primary float-right" id="Moi" onclick="ClearNoti()">Clear all</span>
                           </a>
                           <div class="dropdown-divider"></div>
                           <div id="tnoti"></div>
@@ -647,6 +647,7 @@
     <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
     <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
     <script type="text/javascript" src="../../DAO/Notification.js"></script>
+    <script type="text/javascript" src="../../DAO/CrudTaiLieu.js"></script>
     <!-- End custom js for this page-->
 </body>
 
@@ -654,7 +655,7 @@
 <script>
     window.addEventListener('load', getData())
     function getData() {
-        fetch("http://localhost:59360/api/XemDanhSachTaiLieu")
+        fetch("https://api.scse-vietnam.org/API/ShowAllDocument")
             .then(function (response) {
                 return response.json();
             })
@@ -672,7 +673,7 @@
             })
     }
     function getbyID(ID) {
-        fetch("http://localhost:59360/api/GetByIDTaiLieu?id=" + ID)
+        fetch("https://api.scse-vietnam.org/API/GetByIDDocument?id=" + ID)
             .then(function (response) {
                 return response.json();
             })
