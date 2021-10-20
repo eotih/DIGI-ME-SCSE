@@ -45,7 +45,7 @@ async function updateData() {
             if (data.Status === 'Updated') {
                 addNoti(2);
                 alert('Sửa Thành Công')
-                window.location.href = "http://127.0.0.1:5502/pages/Admin/BaiDang/QuanLyBaiDang.html"
+                window.location.href = "https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html"
             }
             else {
                 alert('Data not update')

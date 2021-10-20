@@ -1,5 +1,5 @@
 const NOTI_API = "https://api.scse-vietnam.org/API/";
-window.addEventListener('load', myFunction)
+
 function notifyMe() {
   fetch(NOTI_API + "Management/ListNotification?status=" + "Chưa Xem")
     .then(function (response) {
@@ -7,7 +7,6 @@ function notifyMe() {
     }).then(function (response) {
       if (response.length > 0) {
         document.getElementById("Moi").innerText = "Bạn có " + response.length + " thông báo mới";
-        document.getElementById("Toast").innerText = "Bạn có " + response.length + " thông báo mới";
       }
       else {
         document.getElementById("Moi").innerText = "Bạn không có thông báo mới";
@@ -52,10 +51,4 @@ async function ClearNoti() {
         EditStatus(response.ID)
       })
     })
-}
-function myFunction() {
-  notifyMe()
-  var x = document.getElementById("Toast");
-  x.className = "show";
-  setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }

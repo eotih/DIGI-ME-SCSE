@@ -25,7 +25,7 @@ function loginAdmin() {
                     }
                     else {
                         alert('Đăng nhập thành công !!!');
-                        window.location.href = "../QuanLy/DangBai/Index.html"
+                        window.location.href = "../pages/Admin/BaiDang/Index.html"
                     }
                 }
                 else {

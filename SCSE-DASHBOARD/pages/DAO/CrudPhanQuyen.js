@@ -14,20 +14,25 @@ if (GetToken.nameid[2] === "Mod") {
 }
 switch (Role) {
     case 2:
-        if (current === "http://127.0.0.1:5502/pages/Admin/ToChuc/BanGiamDoc.html"
-        || current === "http://127.0.0.1:5502/pages/Admin/Bank/Index.html"
-        || current === "http://127.0.0.1:5502/pages/Admin/QuanLyTaiKhoan.html"
+        if (current === "https://cms.scse-vietnam.org/pages/Admin/ToChuc/Ban-Giam-Doc.html"
+        || current === "https://cms.scse-vietnam.org/pages/Admin/Bank/Index.html"
+        || current === "https://cms.scse-vietnam.org/pages/Admin/Bank/"
+        || current === "https://cms.scse-vietnam.org/pages/Admin/Banner/Banner.html"
+        || current === "https://cms.scse-vietnam.org/pages/Admin/QuanLyTaiKhoan.html"
         ) {
-            window.location.href = "http://127.0.0.1:5502/index.html"
+            window.location.href = "https://cms.scse-vietnam.org/index.html"
         }
         break;
     case 3:
-        if (current === "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html"
-            || current === "http://127.0.0.1:5502/pages/ThongTinCaNhan/index.html") {
+        if (current === "https://cms.scse-vietnam.org/pages/Admin/BaiDang/Index.html"
+            || current === "https://cms.scse-vietnam.org/pages/Admin/BaiDang/"
+            || current === "https://cms.scse-vietnam.org/pages/ThongTinCaNhan/index.html"
+            || current === "https://cms.scse-vietnam.org/pages/ThongTinCaNhan/"
+        ) {
 
         }
         else {
-            window.location.href = "http://127.0.0.1:5502/pages/QuanLy/DangBai/Index.html"
+            window.location.href = "https://cms.scse-vietnam.org/pages/Admin/BaiDang/Index.html"
         }
         break;
 }
