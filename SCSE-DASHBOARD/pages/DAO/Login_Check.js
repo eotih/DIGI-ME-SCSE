@@ -24,7 +24,7 @@ function loadData() {
                 try {
                     if (getToken.nameid[6] === IDUser.toString()
                         && getToken.nameid[1] === Username
-                        && Roles !== IDRole
+                        && Roles === IDRole
                         && getToken.nameid[3] === FullName
                         && getToken.nameid[4] === Password
                         && getToken.nameid[5] === Email
