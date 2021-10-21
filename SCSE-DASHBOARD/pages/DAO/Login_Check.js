@@ -21,13 +21,22 @@ function loadData() {
                 if (getToken.nameid[2] === "Mod") {
                     Roles = 3;
                 }
-                if (getToken.nameid[6] !== IDUser.toString()
-                    || getToken.nameid[1] !== Username
-                    || Roles !== IDRole
-                    || getToken.nameid[3] !== FullName
-                    || getToken.nameid[4] !== Password
-                    || getToken.nameid[5] !== Email
-                    || getToken.nameid[0] !== IDState.toString()) {
+                try {
+                    if (getToken.nameid[6] === IDUser.toString()
+                        && getToken.nameid[1] === Username
+                        && Roles !== IDRole
+                        && getToken.nameid[3] === FullName
+                        && getToken.nameid[4] === Password
+                        && getToken.nameid[5] === Email
+                        && getToken.nameid[0] === IDState.toString()) {
+                    }
+                    else {
+                        localStorage.removeItem("token");
+                        window.location.href = "https://cms.scse-vietnam.org/login.html"
+                    }
+                }
+                catch (e) {
+                    alert("Vui lòng đăng nhập")
                     localStorage.removeItem("token");
                     window.location.href = "https://cms.scse-vietnam.org/login.html"
                 }
