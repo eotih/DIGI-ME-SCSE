@@ -10,30 +10,30 @@ function loadData() {
                 return response.json();
             })
             .then(function (response) {
-                const { IDUser, Username, Password, FullName, Email, IDState, IDRole } = response;
-                var Roles = "";
-                if (getToken.nameid[2] === "Admin") {
-                    Roles = 1;
-                }
-                if (getToken.nameid[2] === "Supporter") {
-                    Roles = 2;
-                }
-                if (getToken.nameid[2] === "Mod") {
-                    Roles = 3;
-                }
                 try {
-                    if (getToken.nameid[6] === IDUser.toString()
-                        && getToken.nameid[1] === Username
-                        && Roles === IDRole
-                        && getToken.nameid[3] === FullName
-                        && getToken.nameid[4] === Password
-                        && getToken.nameid[5] === Email
-                        && getToken.nameid[0] === IDState.toString()) {
+                    const { IDUser, Username, Password, FullName, Email, IDState, IDRole } = response;
+                    var Roles = "";
+                    if (getToken.nameid[2] === "Admin") {
+                        Roles = 1;
                     }
-                    else {
-                        localStorage.removeItem("token");
-                        window.location.href = "https://cms.scse-vietnam.org/login.html"
+                    if (getToken.nameid[2] === "Supporter") {
+                        Roles = 2;
                     }
+                    if (getToken.nameid[2] === "Mod") {
+                        Roles = 3;
+                    }
+                        if (getToken.nameid[6] === IDUser.toString()
+                            && getToken.nameid[1] === Username
+                            && Roles === IDRole
+                            && getToken.nameid[3] === FullName
+                            && getToken.nameid[4] === Password
+                            && getToken.nameid[5] === Email
+                            && getToken.nameid[0] === IDState.toString()) {
+                        }
+                        else {
+                            localStorage.removeItem("token");
+                            window.location.href = "https://cms.scse-vietnam.org/login.html"
+                        }
                 }
                 catch (e) {
                     alert("Vui lòng đăng nhập")
