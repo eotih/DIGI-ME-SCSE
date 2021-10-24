@@ -93,8 +93,6 @@ async function updateData() {
         ID: $('#ID').val(),
         Name: $('#Name').val(),
         Image: $('#Img').val(),
-        CreatedByUser: $('#CreatedByUser').val(),
-        CreatedByDate: $('#CreatedByDate').val(),
         UpdateByUser: $('#UpdateByUser').val(),
         UpdatedByDate: $('#UpdatedByDate').val(),
     };
