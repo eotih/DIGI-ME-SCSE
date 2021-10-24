@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "https://api.scse-vietnam.org/API/";
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 function convertDate(input) {
@@ -6,7 +6,7 @@ function convertDate(input) {
     return result.toLocaleDateString()
 }
 async function loadData() {
-    fetch(WEB_API + "Api/Interface/ListBanner")
+    fetch(WEB_API + "Interface/ListBanner")
         .then(function (response) {
             return response.json();
         })
@@ -31,7 +31,7 @@ async function loadData() {
         })
 }
 async function getData(ID) {
-    fetch(WEB_API + "Api/Interface/GetByIdBanner?ID=" + ID)
+    fetch(WEB_API + "Interface/GetByIdBanner?ID=" + ID)
         .then(function (response) {
             return response.json();
         })
@@ -98,7 +98,7 @@ async function updateData() {
         UpdateByUser: $('#UpdateByUser').val(),
         UpdatedByDate: $('#UpdatedByDate').val(),
     };
-    fetch(WEB_API + "Api/Interface/AddOrEditBanner", {
+    fetch(WEB_API + "Interface/AddOrEditBanner", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
@@ -119,7 +119,7 @@ async function updateData() {
 }
 
 async function deleteData(ID) {
-    fetch(WEB_API + "Api/Interface/DeleteBanner?ID=" + ID, {
+    fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
         return response.json()
