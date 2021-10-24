@@ -85,10 +85,10 @@ async function addNoti(numb){
     var $dataNoti = {};
     if(numb === 1){
         $dataNoti.Title = 'Đăng Tải Bài Viết',
-        $dataNoti.Image = 'http://127.0.0.1:5500/images/faces/dangbai.jpg',
+        $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
         $dataNoti.Decription = 'Người dùng '+getToken.nameid[3]+' đã thêm 1 bài viết',
         $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'http://127.0.0.1:5500/pages/Admin/BaiDang/QuanLyBaiDang.html'
+        $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
     fetch(WEB_API + "Management/Notification", {
         method: 'POST',
