@@ -69,7 +69,7 @@ async function addData() {
         UpdateByUser: $('#UpdateByUser').val(),
         UpdatedByDate: $('#UpdatedByDate').val(),
     };
-    fetch(WEB_API + "Api/Interface/AddOrEditBanner", {
+    fetch(WEB_API + "Interface/AddOrEditBanner", {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {

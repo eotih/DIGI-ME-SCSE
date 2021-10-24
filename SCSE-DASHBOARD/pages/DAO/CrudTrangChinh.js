@@ -2,6 +2,7 @@ const URL_API = "https://api.scse-vietnam.org/API/";
 
 window.addEventListener('load', loadData)
 function loadData() {
+    getLength('Management/ShowAllPost' || 'Management/ShowAllVolunteers')
     loadTinTuc();
     loadPost();
     loadTinTucEN();
@@ -13,6 +14,14 @@ function loadData() {
     loadBaiDangEN();
     loadTaiKhoan();
 }
+const getLength = async (input) => {
+    const res = await fetch(URL_API + input)
+    const json = await res.json();
+    nhanDuLieu(json)
+}
+function nhanDuLieu(dulieu){
+    return dulieu
+}
 async function loadTinTuc(){
     fetch(URL_API + "Management/ShowAllNewsVN")
     .then(function (response) {
@@ -21,12 +30,12 @@ async function loadTinTuc(){
     .then(function (response) {
         var result = response.filter(v => v.IDState === 2)
         var GBDG = result.filter(v => v.IdField === 1)
-        $('#GBDG').text(GBDG.length + ' bài');
         var KHMT = result.filter(v => v.IdField === 2)
-        $('#KHMT').text(KHMT.length + ' bài');
         var TTS = result.filter(v => v.IdField === 3)
-        $('#TTS').text(TTS.length + ' bài');
         var NCDT = result.filter(v => v.IdField === 4)
+        $('#GBDG').text(GBDG.length + ' bài');
+        $('#KHMT').text(KHMT.length + ' bài');
+        $('#TTS').text(TTS.length + ' bài');
         $('#NCDT').text(NCDT.length + ' bài');
     })
 }
@@ -53,12 +62,12 @@ async function loadTinTucEN(){
     .then(function (response) {
         var result = response.filter(v => v.IDState === 2)
         var GBDG = result.filter(v => v.IdField === 1)
-        $('#GBDGEN').text(GBDG.length + ' bài');
         var KHMT = result.filter(v => v.IdField === 2)
-        $('#KHMTEN').text(KHMT.length + ' bài');
         var TTS = result.filter(v => v.IdField === 3)
-        $('#TTSEN').text(TTS.length + ' bài');
         var NCDT = result.filter(v => v.IdField === 4)
+        $('#GBDGEN').text(GBDG.length + ' bài');
+        $('#KHMTEN').text(KHMT.length + ' bài');
+        $('#TTSEN').text(TTS.length + ' bài');
         $('#NCDTEN').text(NCDT.length + ' bài');
     })
 }
