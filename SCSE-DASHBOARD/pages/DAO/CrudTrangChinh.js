@@ -3,7 +3,9 @@ const URL_API = "https://api.scse-vietnam.org/API/";
 window.addEventListener('load', loadData)
 function loadData() {
     loadTinTuc();
+    loadPost();
     loadTinTucEN();
+    loadPostEn();
     loadAllTinTucVN();
     loadAllTinTucEN();
     loadTNV();
@@ -28,6 +30,21 @@ async function loadTinTuc(){
         $('#NCDT').text(NCDT.length + ' bài');
     })
 }
+async function loadPost(){
+    fetch(URL_API + "Management/ShowAllPost")
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (response) {
+        var result = response.filter(v => v.IDState === 2)
+        var DA = result.filter(v => v.IDCat === 1)
+        $('#DA').text(DA.length + ' bài');
+        var HTNC = result.filter(v => v.IDCat === 2)
+        $('#HTNC').text(HTNC.length + ' bài');
+        var HDTN = result.filter(v => v.IDCat === 3)
+        $('#HDTN').text(HDTN.length + ' bài');
+    })
+}
 async function loadTinTucEN(){
     fetch(URL_API + "Management/ShowAllNewsEN")
     .then(function (response) {
@@ -43,6 +60,21 @@ async function loadTinTucEN(){
         $('#TTSEN').text(TTS.length + ' bài');
         var NCDT = result.filter(v => v.IdField === 4)
         $('#NCDTEN').text(NCDT.length + ' bài');
+    })
+}
+async function loadPostEn(){
+    fetch(URL_API + "Management/ShowAllPostEN")
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (response) {
+        var result = response.filter(v => v.IDState === 2)
+        var DA = result.filter(v => v.IDCat === 1)
+        $('#DAEN').text(DA.length + ' bài');
+        var HTNC = result.filter(v => v.IDCat === 2)
+        $('#HTNCEN').text(HTNC.length + ' bài');
+        var HDTN = result.filter(v => v.IDCat === 3)
+        $('#HDTNEN').text(HDTN.length + ' bài');
     })
 }
 async function loadBaiDangVN(){
