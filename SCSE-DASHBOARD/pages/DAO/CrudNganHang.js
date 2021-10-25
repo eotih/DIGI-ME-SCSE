@@ -13,13 +13,13 @@ const WEB_API = "https://api.scse-vietnam.org/API/";
                     return `<tr>
                     <td>
                     <div class="d-flex">
-                          <img style="height:100px;width:100px" src='${ImageQR}'/>
+                          <img style="height:300px;width:300px" src='${ImageQR}'/>
                           <h4>${BankName}</h4>
                     </div>
                     </td>
                     <td>
-                    <button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
-                    <button onclick="return deleteData(${ID})" class="btn btn-outline-danger">delete</button>
+                    <button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button>
+                    <button onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xóa</button>
                     </td>
                     </tr>`;
                 })

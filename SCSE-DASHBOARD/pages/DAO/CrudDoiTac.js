@@ -19,8 +19,8 @@ async function loadData() {
                         <td>${Email}</td>
                         <td>${Address}</td>
                         <td>${Link}</td>
-                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">View</a>
-                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Delete</a></td>
+                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</a>
+                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xóa</a></td>
                         </tr>`;
             })
             // đây là hàm trả ra tbody

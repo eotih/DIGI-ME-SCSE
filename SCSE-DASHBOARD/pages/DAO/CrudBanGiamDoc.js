@@ -20,7 +20,7 @@ async function loadData() {
                     <td><img src='${HinhA[0]}'/><img src='${HinhA[1]}'/><img src='${HinhA[2]}'/></td>
                     <td>${Position}</td>
                     <td>${Details.slice(0, 200)}</td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">View Img</button> <button onclick="return deletePortfolio(${ID})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio(${ID})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
             })
             $('#tbody').html(html);

@@ -46,44 +46,7 @@
             <div class="navbar-menu-wrapper d-flex align-items-top">
 
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown d-none d-lg-block">
-                        <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown"
-                            href="#" data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                            aria-labelledby="messageDropdown">
-                            <a class="dropdown-item py-3">
-                                <p class="mb-0 font-weight-medium float-left">Select category</p>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle
-                                    </p>
-                                    <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                                    <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular
-                                        projects</p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
-                                    <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
-                                    <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+                    
                     <li class="nav-item d-none d-lg-block">
                         <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
                             <span class="input-group-addon input-group-prepend border-right">
@@ -92,52 +55,7 @@
                             <input type="text" class="form-control">
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <form class="search-form" action="#">
-                            <i class="icon-search"></i>
-                            <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-                        </form>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="notificationDropdown" href="#"
-                            data-bs-toggle="dropdown">
-                            <i class="icon-mail icon-lg"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                            aria-labelledby="notificationDropdown">
-                            <a class="dropdown-item py-3 border-bottom">
-                                <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-                                <span class="badge badge-pill badge-primary float-right">View all</span>
-                            </a>
-                            <a class="dropdown-item preview-item py-3">
-                                <div class="preview-thumbnail">
-                                    <i class="mdi mdi-alert m-auto text-primary"></i>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
-                                    <p class="fw-light small-text mb-0"> Just now </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item py-3">
-                                <div class="preview-thumbnail">
-                                    <i class="mdi mdi-settings m-auto text-primary"></i>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
-                                    <p class="fw-light small-text mb-0"> Private message </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item py-3">
-                                <div class="preview-thumbnail">
-                                    <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
-                                    <p class="fw-light small-text mb-0"> 2 days ago </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -510,10 +428,10 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body" id="dtBasicExample">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#exampleModal-2" onclick="clearTextBox();">Add New Bank</button> <br>
-                                <br>
                                 <h4 class="card-title">Quản lý Ngân hàng</h4>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal-2" onclick="clearTextBox();">Thêm ngân hàng</button> <br>
+                                <br>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
@@ -541,7 +459,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <form class="forms-sample">
-                                                            <div class="form-group">
+                                                            <div class="form-group" hidden>
                                                                 <label for="ID">ID</label>
                                                                 <input type="text" class="form-control" id="ID"
                                                                     placeholder="ID" disabled>
@@ -578,15 +496,10 @@
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
-                                href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
-                            BootstrapDash.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All
-                            rights
-                            reserved.</span>
-                    </div>
-                </footer>
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">© 2020 SCSE. All rights reserved. Serviced by SCSE</span>
+            </div>
+          </footer>
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
