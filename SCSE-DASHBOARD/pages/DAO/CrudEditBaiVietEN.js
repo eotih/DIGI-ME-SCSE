@@ -12,7 +12,7 @@ async function getData() {
         .then(function (response) {
             let { IDPostEN, IDCat, Title, Slug, Image, Author, IDState, Details } = response;
             $('#IDPost').val(IDPostEN),
-                $('#IDCat').val(IDCat),
+                $('#Category').val(Category),
                 $('#IDState').val(IDState),
                 $('#Title').val(Title),
                 $('#Slug').val(Slug),
