@@ -1,4 +1,14 @@
 const WEB_API = "https://api.scse-vietnam.org/API/";
+const getTaoken = parseJwt(localStorage.getItem("token"));
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 function convertDate(input) {
@@ -62,10 +72,7 @@ async function addData() {
     var $data = {
         Name: $('#Name').val(),
         Image: $('#Img').val(),
-        CreatedByUser: $('#CreatedByUser').val(),
-        CreatedByDate: $('#CreatedByDate').val(),
-        UpdateByUser: $('#UpdateByUser').val(),
-        UpdatedByDate: $('#UpdatedByDate').val(),
+        CreatedByUser: getTaoken.nameid[3],
     };
     fetch(WEB_API + "Interface/AddOrEditBanner", {
         method: 'POST',
@@ -117,7 +124,7 @@ async function updateData() {
 }
 
 async function deleteData(ID) {
-    if (confirm('Bạn có muốn xoá tài khoản?')) {
+    if (confirm('Bạn có muốn xoá không?')) {
     fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
