@@ -484,11 +484,6 @@
                     aria-selected="true"> Bài đăng
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#ENG" role="tab" aria-controls="ENG"
-                    aria-selected="false"> Đăng tài liệu
-                  </a>
-                </li>
               </ul>
               <div class="tab-content">
                 <h4 class="card-title">Quản lý bài đăng tài liệu</h4>
@@ -509,29 +504,6 @@
                             </tr>
                           </thead>
                           <tbody id="tbody"></tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="ENG" role="tabpanel" aria-labelledby="profile-tab">
-                  <form id="uploaad_file" enctype="">
-                    <input type="file" name="file" id="file">
-                    <input type="submit" value="upload">
-                  </form>
-                  <div class="row">
-                    <div class="col-12  ">
-                      <div class="table-responsive">
-                        <table id="order-listing" class="table">
-                          <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Name PDF</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody id="tbody" name="tbody" class="tbody">
-                          </tbody>
                         </table>
                       </div>
                     </div>
@@ -559,15 +531,7 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>>
-  <script>
-    $('#summernote').summernote({
-      placeholder: 'Hello Bootstrap 4',
-      tabsize: 2,
-      height: 500,
-      lang: 'vi-VN'
-    });
-
-  </script>
+ 
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../../vendors/js/vendor.bundle.base.js"></script>
@@ -591,30 +555,6 @@
   <script type="text/javascript" src="../../DAO/Notification.js"></script>
   <script type="text/javascript" src="../../DAO/CrudQuanLyTaiLieu.js"></script>
   <!-- End custom js for this page-->
-  <script type="text/javascript">
-    $(function () {
-      $('#uploaad_file').on('submit', function (e) {
-        var data = new FormData(this);
-  
-        e.preventDefault();
-        $.ajax({
-          url: 'https://api.scse-vietnam.org/API/UploadFile',
-          data: data,
-          processData: false,
-          contentType: false,
-          type: 'POST',
-          success: function () {
-            alert("Upload File Thành Công")
-            window.location.reload();
-          },
-          error: function () {
-            alert("Upload File Thất Bại")
-          }
-        })
-        return false;
-      })
-    })
-  </script>
 </body>
 
 </html>

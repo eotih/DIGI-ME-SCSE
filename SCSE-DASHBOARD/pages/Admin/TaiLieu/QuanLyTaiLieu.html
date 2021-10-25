@@ -457,31 +457,9 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <form class="forms-sample">
-                                                <div class="form-group">
-                                                    <label for="sel2">Tên File</label>
-                                                    <select class="form-select" id="abc"
-                                                        onclick="getbyID(value)"></select>
-                                                </div>
-                                                <label for="inputlg">Link PDF</label>
-                                                <div class="form-group1">
-                                                    <input type="text" class="form-control" id="xyz" type="text">
-                                                    </input>
-                                                    <button type="button" onclick="myFunction()">
-                                                        <i style="font-size:24px" class="fa">&#xf0c5;</i>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" id="edit" onclick="addData();"
-                                                        class="btn btn-success">Thêm bài viết</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal-2" onclick="loadData();">Add New
-                                                Employee</button><br /><br />
+                                        <div class="modal-footer">
+                                            <button type="button" id="edit" onclick="addData();"
+                                                class="btn btn-success">Thêm bài viết</button>
                                         </div>
                                     </div>
                                 </div>
@@ -565,44 +543,8 @@
     <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
     <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
     <script type="text/javascript" src="../../DAO/Notification.js"></script>
-    <script type="text/javascript" src="../../DAO/CrudTaiLieu.js"></script>
+    <script type="text/javascript" src="../../DAO/CrudQuanLyTaiLieu.js"></script>
     <!-- End custom js for this page-->
 </body>
 
 </html>
-<script>
-    window.addEventListener('load', getData())
-    function getData() {
-        fetch("https://api.scse-vietnam.org/API/ShowAllDocument")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (response) {
-                var abc = document.createElement("option");
-                abc.innerHTML = "Vui lòng chọn";
-                abc.value = 0;
-                document.getElementById("abc").appendChild(abc);
-                for (var i = 0; i < response.length; i++) {
-                    var ele = document.createElement("option");
-                    ele.value = response[i].ID;
-                    ele.innerHTML = response[i].NamePDF;
-                    document.getElementById("abc").appendChild(ele);
-                }
-            })
-    }
-    function getbyID(ID) {
-        fetch("https://api.scse-vietnam.org/API/GetByIDDocument?id=" + ID)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (response) {
-                document.getElementById("xyz").value = response.Iframe;
-            })
-    }
-    function myFunction() {
-        var copyText = document.getElementById("xyz");
-        copyText.select();
-        navigator.clipboard.writeText(copyText.value);
-        alert("Copied the text: " + copyText.value);
-    }
-</script>
