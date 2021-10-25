@@ -185,7 +185,7 @@ async function updateState(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                notify(3)
+                addNoti(3)
                 alert('Cập nhật Thành Công')
                 window.location.reload();
             }
@@ -210,7 +210,7 @@ async function updateStateEN(){
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
-                notify(3)
+                addNoti(3)
                 alert('Cập nhật Thành Công')
                 window.location.reload();
             }
