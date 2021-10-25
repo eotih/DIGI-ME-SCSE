@@ -35,7 +35,7 @@ async function loadData() {
             })
             // đây là hàm trả ra tbody
             $('#tbody').html(html);
-            
+
         })
 }
 async function getData(ID) {
@@ -48,10 +48,6 @@ async function getData(ID) {
             $('#ID').val(ID),
                 document.getElementById("Image").src = Image;
             $('#Name').val(Name);
-            $('#CreatedByUser').val(CreatedByUser);
-            $('#CreatedByDate').val(CreatedByDate);
-            $('#UpdateByUser').val(UpdateByUser);
-            $('#UpdatedByDate').val(UpdatedByDate);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -98,10 +94,7 @@ async function updateData() {
         ID: $('#ID').val(),
         Name: $('#Name').val(),
         Image: $('#Img').val(),
-        CreatedByUser: $('#CreatedByUser').val(),
-        CreatedByDate: $('#CreatedByDate').val(),
-        UpdateByUser: $('#UpdateByUser').val(),
-        UpdatedByDate: $('#UpdatedByDate').val(),
+        UpdateByUser: getTaoken.nameid[3],
     };
     fetch(WEB_API + "Interface/AddOrEditBanner", {
         method: 'POST',
@@ -125,20 +118,20 @@ async function updateData() {
 
 async function deleteData(ID) {
     if (confirm('Bạn có muốn xoá không?')) {
-    fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
-        method: 'DELETE',
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Delete') {
-                alert('Xoá thành công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not delete')
-            }
+        fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
+            method: 'DELETE',
+        }).then(function (response) {
+            return response.json()
         })
+            .then(function (data) {
+                if (data.Status === 'Delete') {
+                    alert('Xoá thành công')
+                    window.location.reload();
+                }
+                else {
+                    alert('Data not delete')
+                }
+            })
     }
 }
 function clearTextBox() {
