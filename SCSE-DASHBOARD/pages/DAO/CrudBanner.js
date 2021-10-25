@@ -17,12 +17,10 @@ async function loadData() {
                         <td>${ID}</td>
                         <td>${Name}</td>DDD
                         <td><img src="${Image}"/></td>
-                        <td>${CreatedByUser}</td>
                         <td>${convertDate(CreatedByDate)}</td>
-                        <td>${UpdateByUser}</td>
                         <td>${convertDate(UpdatedByDate)}</td>
-                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">View</a>
-                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Delete</a></td>
+                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</a>
+                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xóa</a></td>
                         </tr>`;
             })
             // đây là hàm trả ra tbody
@@ -93,6 +91,8 @@ async function updateData() {
         ID: $('#ID').val(),
         Name: $('#Name').val(),
         Image: $('#Img').val(),
+        CreatedByUser: $('#CreatedByUser').val(),
+        CreatedByDate: $('#CreatedByDate').val(),
         UpdateByUser: $('#UpdateByUser').val(),
         UpdatedByDate: $('#UpdatedByDate').val(),
     };
@@ -117,6 +117,7 @@ async function updateData() {
 }
 
 async function deleteData(ID) {
+    if (confirm('Bạn có muốn xoá tài khoản?')) {
     fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
         method: 'DELETE',
     }).then(function (response) {
@@ -131,6 +132,7 @@ async function deleteData(ID) {
                 alert('Data not delete')
             }
         })
+    }
 }
 function clearTextBox() {
     $('#ID').val("");

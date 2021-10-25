@@ -30,8 +30,8 @@ async function loadData() {
                     <td>${LinkYTB}</td>
                     <td>${convertDate(CreatedByDate)}</td>
                     <td>${convertDate(UpdateByDate)}</td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button>
-                    <button onclick="return showDeletePopUp(${ID})" class="btn btn-outline-danger">Delete</button></td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button>
+                    <button onclick="return showDeletePopUp(${ID})" class="btn btn-outline-danger">Xóa</button></td>
                     </tr>`;
             })
             // đây là hàm trả ra tbody
