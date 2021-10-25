@@ -457,9 +457,27 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" id="edit" onclick="addData();"
-                                                class="btn btn-success">Thêm bài viết</button>
+                                        <div class="col-lg-4">
+                                            <form class="forms-sample">
+                                                <div class="form-group">
+                                                    <label for="sel2">Tên File</label>
+                                                    <input type="text" class="form-control" id="input" type="text">
+                                                    <button type="button" id="edit" onclick="getIframe();"
+                                                        class="btn btn-success">Get Link</button>
+                                                </div>
+                                                <label for="inputlg">Link PDF</label>
+                                                <div class="form-group1">
+                                                    <input type="text" class="form-control" id="linkpdf" type="text">
+                                                    </input>
+                                                    <button type="button" onclick="myFunction()">
+                                                        <i style="font-size:24px" class="fa">&#xf0c5;</i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" id="edit" onclick="addData();"
+                                                        class="btn btn-success">Thêm bài viết</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -481,7 +499,6 @@
                                                             <tr>
                                                                 <th>ID #</th>
                                                                 <th>Name</th>
-
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbody" name="tbody" class="tbody">
@@ -546,5 +563,18 @@
     <script type="text/javascript" src="../../DAO/CrudQuanLyTaiLieu.js"></script>
     <!-- End custom js for this page-->
 </body>
-
 </html>
+<script type="text/javascript">
+    function getIframe(){
+        const input = $('#input').val()
+        const abc = input.replace('view','')
+        const priview = '<iframe src="'+ abc + 'preview"></iframe>'
+        $('#linkpdf').val(priview);
+    }
+     function myFunction() {
+        var copyText = document.getElementById("linkpdf");
+        copyText.select();
+        navigator.clipboard.writeText(copyText.value);
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
