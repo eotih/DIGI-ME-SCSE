@@ -45,8 +45,8 @@ var getToken = parseJwt(localStorage.getItem("token"));
                         </div>
                     </td>
                     <td>${StateName}</td>
-                    <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">View</button>
-                    <button onclick="return getDataPass(${IDUser})" class="btn btn-outline-warning">Reset Password</button>
+                    <td><button onclick="return getData(${IDUser})" class="btn btn-outline-primary">Xem chi tiết</button>
+                    <button onclick="return getDataPass(${IDUser})" class="btn btn-outline-warning">Đổi mật khẩu</button>
                     <button onclick="return deleteData(${IDUser})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })

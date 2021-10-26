@@ -51,7 +51,7 @@ function convertDate(input) {
                     <td>${Author}</td>
                     <td>${IDState}</td>
                     <td><button onclick="return approveData(${IDNews})" class="btn btn-success">Duyệt bài</button>
-                    <a href="./Edit.html?Slug=${IDNews}"" class="btn btn-outline-primary">View</a>
+                    <a href="./Edit.html?Slug=${IDNews}"" class="btn btn-outline-primary">Xem chi tiết</a>
                     <button onclick="return deleteData(${IDNews})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })
@@ -113,7 +113,7 @@ function convertDate(input) {
                     <td>${Author}</td>
                     <td>${IDState}</td>
                     <td><button onclick="return approveDataEN(${IDNewsEN})" class="btn btn-success">Approve</button>
-                    <a href="./EditEN.html?Slug=${IDNewsEN}" class="btn btn-outline-primary">View</a>
+                    <a href="./EditEN.html?Slug=${IDNewsEN}" class="btn btn-outline-primary">Xem chi tiết</a>
                     <button onclick="return deleteDataEN(${IDNewsEN})" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 })

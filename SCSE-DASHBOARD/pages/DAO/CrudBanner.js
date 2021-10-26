@@ -1,4 +1,14 @@
 const WEB_API = "https://api.scse-vietnam.org/API/";
+const getTaoken = parseJwt(localStorage.getItem("token"));
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 function convertDate(input) {
@@ -17,17 +27,15 @@ async function loadData() {
                         <td>${ID}</td>
                         <td>${Name}</td>DDD
                         <td><img src="${Image}"/></td>
-                        <td>${CreatedByUser}</td>
                         <td>${convertDate(CreatedByDate)}</td>
-                        <td>${UpdateByUser}</td>
                         <td>${convertDate(UpdatedByDate)}</td>
-                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">View</a>
-                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Delete</a></td>
+                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</a>
+                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xóa</a></td>
                         </tr>`;
             })
             // đây là hàm trả ra tbody
             $('#tbody').html(html);
-            
+
         })
 }
 async function getData(ID) {
@@ -40,10 +48,6 @@ async function getData(ID) {
             $('#ID').val(ID),
                 document.getElementById("Image").src = Image;
             $('#Name').val(Name);
-            $('#CreatedByUser').val(CreatedByUser);
-            $('#CreatedByDate').val(CreatedByDate);
-            $('#UpdateByUser').val(UpdateByUser);
-            $('#UpdatedByDate').val(UpdatedByDate);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -64,10 +68,7 @@ async function addData() {
     var $data = {
         Name: $('#Name').val(),
         Image: $('#Img').val(),
-        CreatedByUser: $('#CreatedByUser').val(),
-        CreatedByDate: $('#CreatedByDate').val(),
-        UpdateByUser: $('#UpdateByUser').val(),
-        UpdatedByDate: $('#UpdatedByDate').val(),
+        CreatedByUser: getTaoken.nameid[3],
     };
     fetch(WEB_API + "Interface/AddOrEditBanner", {
         method: 'POST',
@@ -93,8 +94,7 @@ async function updateData() {
         ID: $('#ID').val(),
         Name: $('#Name').val(),
         Image: $('#Img').val(),
-        UpdateByUser: $('#UpdateByUser').val(),
-        UpdatedByDate: $('#UpdatedByDate').val(),
+        UpdateByUser: getTaoken.nameid[3],
     };
     fetch(WEB_API + "Interface/AddOrEditBanner", {
         method: 'POST',
@@ -117,20 +117,22 @@ async function updateData() {
 }
 
 async function deleteData(ID) {
-    fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
-        method: 'DELETE',
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Delete') {
-                alert('Xoá thành công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not delete')
-            }
+    if (confirm('Bạn có muốn xoá không?')) {
+        fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
+            method: 'DELETE',
+        }).then(function (response) {
+            return response.json()
         })
+            .then(function (data) {
+                if (data.Status === 'Delete') {
+                    alert('Xoá thành công')
+                    window.location.reload();
+                }
+                else {
+                    alert('Data not delete')
+                }
+            })
+    }
 }
 function clearTextBox() {
     $('#ID').val("");
