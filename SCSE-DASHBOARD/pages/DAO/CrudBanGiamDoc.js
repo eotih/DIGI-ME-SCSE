@@ -130,7 +130,6 @@ async function addData() {
     })
     .then(function (data) {
         if (data.Status === 'Success') {
-            AlertAdd();
             alert('Thêm Thành Công')
             window.location.reload();
         }
@@ -138,6 +137,7 @@ async function addData() {
             alert('Data not insert')
         }
     })
+    AlertAdd();
 }
 async function updateData() {
     var data = {
@@ -170,7 +170,6 @@ async function updateData() {
         .then(function (data) {
             if (data.Status === 'Updated') {
                 alert('Sửa Thành Công')
-                window.location.reload();
             }
             else {
                 alert('Data not update')
@@ -267,16 +266,9 @@ function addDataImg(base64) {
         return response.json()
     })
         .then(function (data) {
-            if (data.Status === 'Success') {
-                alert('Thêm Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not insert')
-            }
         })
 }
-function AlertAdd() {
+function AlertAdd(file) {
     var file = document.querySelector('#getFile')['files'];
     for (let i = 0; i < file.length; i++) {
         (function (file) {
