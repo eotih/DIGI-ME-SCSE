@@ -110,28 +110,7 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../../partials/_settings-panel.html -->
-            <div class="theme-setting-wrapper">
-                <div id="settings-trigger"><i class="ti-settings"></i></div>
-                <div id="theme-settings" class="settings-panel">
-                    <i class="settings-close ti-close"></i>
-                    <p class="settings-heading">SIDEBAR SKINS</p>
-                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-                        <div class="img-ss rounded-circle bg-light border me-3"></div>Light
-                    </div>
-                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                        <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
-                    </div>
-                    <p class="settings-heading mt-2">HEADER SKINS</p>
-                    <div class="color-tiles mx-0 px-4">
-                        <div class="tiles success"></div>
-                        <div class="tiles warning"></div>
-                        <div class="tiles danger"></div>
-                        <div class="tiles info"></div>
-                        <div class="tiles dark"></div>
-                        <div class="tiles default"></div>
-                    </div>
-                </div>
-            </div>
+            
             <div id="right-sidebar" class="settings-panel">
                 <i class="settings-close ti-close"></i>
                 <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -302,135 +281,103 @@
             <!-- partial:../../../partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../index.html">
-                            <i class="mdi mdi-apps menu-icon"></i>
-                            <span class="menu-title">Trang chủ</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Cấu hình Tổ chức</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/ToChuc/Ban-Giam-Doc.html">
-                            <i class="menu-icon mdi mdi-briefcase"></i>
-                            <span class="menu-title">Ban giám đốc</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/Banner/Banner.html">
-                            <i class="menu-icon mdi mdi-panorama"></i>
-                            <span class="menu-title">Banner</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/Bank/Index.html">
-                            <i class="menu-icon mdi mdi-bank"></i>
-                            <span class="menu-title">Thông tin ngân hàng</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Quy chuẩn</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/TheLoai/Index.html">
-                            <i class="menu-icon mdi mdi-file-multiple"></i>
-                            <span class="menu-title">Quản lý thể loại </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/Field/index.html">
-                            <i class="menu-icon mdi mdi-format-list-bulleted"></i>
-                            <span class="menu-title">Quản lý lĩnh vực</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/Trang-Thai/">
-                            <i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>
-                            <span class="menu-title">Quản lý trạng thái</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Quản lý thành viên</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/QuanLyTaiKhoan.html">
-                            <i class="menu-icon mdi mdi-key-variant"></i>
-                            <span class="menu-title">Quản lý tài khoản</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Đăng bài</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/BaiDang/Index.html">
-                            <i class="menu-icon mdi mdi-format-align-left"></i>
-                            <span class="menu-title">Đăng bài</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/TinTuc/PostTinTuc.html">
-                            <i class="menu-icon mdi mdi-format-float-left"></i>
-                            <span class="menu-title">Đăng tin tức</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/BaiDang/QuanLyBaiDang.html" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-file-document-box"></i>
-                            <span class="menu-title">Quản lý bài viết</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/TinTuc/Index.html" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-newspaper"></i>
-                            <span class="menu-title">Quản lý tin tức</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Quản lý thư viện</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/ThuVien/ThuVien.html">
-                            <i class="menu-icon mdi mdi-folder-multiple-image"></i>
-                            <span class="menu-title">Thư viện hình ảnh</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/TaiLieu/IndexDocument.html">
-                            <i class="menu-icon mdi mdi-note-text"></i>
-                            <span class="menu-title">Thư viện tài liệu</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/ThuVien/VideoGallery.html">
-                            <i class="menu-icon mdi mdi-movie"></i>
-                            <span class="menu-title">Thư viện Video</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Chức năng khác</li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/Contact/Index.html" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-phone"></i>
-                            <span class="menu-title">Thông tin liên hệ</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html"
-                            aria-expanded="false" aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-account-plus"></i>
-                            <span class="menu-title">Duyệt đơn TNV</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../pages/Admin/DoiTac/DanhSachDoiTac.html" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="menu-icon mdi mdi-human-male-female"></i>
-                            <span class="menu-title">Danh sách đối tác</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="form-elements"
-                            onclick="logOut();">
-                            <i class="menu-icon mdi mdi-logout"></i>
-                            <span class="menu-title">Đăng xuất</span>
-                        </a>
-                    </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../../../index.html">
+                      <i class="mdi mdi-apps menu-icon" style="color:#DE4439"></i>
+                      <span class="menu-title">Trang chủ</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#organization" aria-expanded="false" aria-controls="ui-basic">
+                      <i class="menu-icon mdi mdi-floor-plan" style="color:#1A94D0"></i>
+                      <span class="menu-title">Cấu hình Tổ chức</span>
+                      <i class="menu-arrow"></i> 
+                    </a>
+                    <div class="collapse" id="organization">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ToChuc/Ban-Giam-Doc.html"><i class="menu-icon mdi mdi-briefcase"></i>Ban giám đốc</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Banner/Banner.html"><i class="menu-icon mdi mdi-panorama"></i>Banner</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Bank/Bank.html"><i class="menu-icon mdi mdi-bank"></i>Thông tin ngân hàng</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/QuanLyTaiKhoan.html"><i class="menu-icon mdi mdi-key-variant"></i>Quản lý tài khoản</a></li>                
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#Standard" aria-expanded="false" aria-controls="form-elements">
+                      <i class="menu-icon mdi mdi-microsoft" style="color: 	#00CC00"></i>
+                      <span class="menu-title">Quy chuẩn</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="Standard">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/TheLoai/TheLoai.html"><i class="menu-icon mdi mdi-file-multiple"></i>Quản lý thể loại</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Field/Field.html"><i class="menu-icon mdi mdi-format-line-weight"></i>Quản lý lĩnh vực</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Trang-Thai/Trangthai.html"><i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>Quản lý trạng thái</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#activate" aria-expanded="false" aria-controls="editors">
+                      <i class="menu-icon mdi mdi-newspaper"  style="color: #FCD500"></i>
+                      <span class="menu-title">Hoạt Động</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="activate">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/BaiDang/Baiviet.html"><i class="menu-icon mdi mdi-format-align-left"></i>Đăng bài viết</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/BaiDang/QuanLyBaiDang.html"><i class="menu-icon mdi mdi-file-document-box"></i>Quản lý bài viết</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
+                      <i class="menu-icon mdi mdi-new-box" style="color:#1A94D0"></i>
+                      <span class="menu-title">Tin tức</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="news">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/TinTuc/PostTinTuc.html"><i class="menu-icon mdi mdi-format-align-left"></i>Đăng bài tin tức</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/TinTuc/Quanlytintuc.html"><i class="menu-icon mdi mdi-newspaper"></i>Quản lý bài tin tức</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#library" aria-expanded="false" aria-controls="tables">
+                      <i class="menu-icon mdi mdi-library" style="color:#DE4439"></i>
+                      <span class="menu-title">Thư viện</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="library">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/TaiLieu/IndexDocument.html"><i class="menu-icon mdi mdi-note-text"></i>Thư viện tài liệu</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThuVien/VideoGallery.html"><i class="menu-icon mdi mdi-movie"></i>Thư viện Video</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThuVien/ThuVien.html"><i class="menu-icon mdi mdi-folder-multiple-image"></i>Thư viện hình ảnh</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#other" aria-expanded="false" aria-controls="icons">
+                      <i class="menu-icon mdi mdi-layers-outline" style="color:#00CC00"></i>
+                      <span class="menu-title">Chức năng khác</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="other">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Contact/Contact.html"><i class="menu-icon mdi mdi-phone"></i>Thông tin liên hệ</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html"><i class="menu-icon mdi mdi-account-plus"></i>Duyệt đơn TNV</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/DoiTac/DanhSachDoiTac.html"><i class="menu-icon mdi mdi-human-male-female"></i>Danh sách đối tác</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="" aria-expanded="false" aria-controls="form-elements" onclick="logOut();">
+                      <i class="menu-icon mdi mdi-logout"></i>
+                      <span class="menu-title">Đăng xuất</span>
+                    </a>
+                  </li>
                 </ul>
-            </nav>
+              </nav>
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">

@@ -45,7 +45,7 @@ function getData() {
             document.getElementById("PostVN").appendChild(Category);
             for (var i = 0; i < response.length; i++) {
                 var ele = document.createElement("option");
-                ele.value = response[i].IDPost;
+                ele.value = response[i].IDNews;
                 ele.innerHTML = response[i].Title;
                 document.getElementById("PostVN").appendChild(ele);
             }
