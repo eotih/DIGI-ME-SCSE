@@ -430,7 +430,14 @@
               <div class="card-body">
                 <h4 class="card-title">Quản lý thư viện hình ảnh</h4>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2"
-                  onclick="clearTextBox();">Thêm hình ảnh</button><br /><br />
+                  onclick="clearTextBox();">Thêm hình ảnh</button>
+                    <button class="btn btn-primary" data-bs-toggle="collapse" href="#button">
+                      <span class="menu-title">Xóa hình ảnh</span>
+                    </button>
+                    <div class="collapse" id="button">
+                      <select type="text" class="form-control"></select>
+                      <button type="button" class="btn btn-danger float-right">Xóa</button>
+                    </div>
                 <div class="row">
                   <div class="col-12">
                     <div class="table-responsive">
