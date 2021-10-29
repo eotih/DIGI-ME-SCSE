@@ -117,7 +117,7 @@ async function addData() {
         ID: $('#ID').val(),
         FullName: $('#FullName').val(),
         Position: $('#Position').val(),
-        Details: $('#Details').val(),
+        Details: $('#summernote').summernote('code'),
     };
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
@@ -128,15 +128,15 @@ async function addData() {
     }).then(function (response) {
         return response.json()
     })
-        .then(function (data) {
-            if (data.Status === 'Success') {
-                alert('Thêm Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not insert')
-            }
-        })
+    .then(function (data) {
+        if (data.Status === 'Success') {
+            alert('Thêm Thành Công')
+            window.location.reload();
+        }
+        else {
+            alert('Data not insert')
+        }
+    })
 }
 async function updateData() {
     var data = {
@@ -145,6 +145,18 @@ async function updateData() {
         Position: $('#Position').val(),
         Details: $('#Details').val(),
     };
+    var file = document.querySelector('input[type=file]')['files'];
+    for (let i = 0; i < file.length; i++) {
+        (function (file) {
+            let name = file.name
+            var reader = new FileReader();
+            reader.onload = function () {
+                var text = reader.result;
+                addDataImg(text)
+            }
+            reader.readAsDataURL(file);
+        })(file[i]);
+    }
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
         body: JSON.stringify(data),

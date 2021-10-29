@@ -10,24 +10,21 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 
-    <script src="../BaiDang/FormTiengViet.js"></script>
+    <script src="./FormTiengViet.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CMS -Quản lý tài liệu</title>
+    <title>CMS - Thêm thành viên</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../../vendors/feather/feather.css">
     <link rel="stylesheet" href="../../../vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="../../../vendors/typicons/typicons.css">
     <link rel="stylesheet" href="../../../vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="../../../vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../TaiLieu/buttoncopy.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
-    <!-- <script type="text/javascript" src="../TaiLieu/CrudTaiLieu.js"></script> -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../css/vertical-layout-light/style.css">
@@ -385,92 +382,73 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-md-12 col-xl-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Thêm bài viết</h4>
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <form class="forms-sample">
-                                                <div class="form-group">
-                                                    <label for="Title">Tiêu đề</label>
-                                                    <input type="text" class="form-control" id="Title"
-                                                        placeholder="Nhập tiêu đề bài viết">
+                                    <h4 class="card-title">Thêm thành viên khác</h4>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="VN" role="tabpanel"
+                                            aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <form class="forms-sample">
+                                                        <div class="form-group" hidden>
+                                                            <label for="ID">ID</label>
+                                                                <input type="text" class="form-control" id="ID1" placeholder="ID" disable>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="FullName">Họ và tên</label>
+                                                            <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
+                                                          </div>
+                                                        <div class="form-group">
+                                                            <label for="Position">Vị trí</label>
+                                                            <input type="text" class="form-control" id="Position" placeholder="Position">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="noidung">Thông tin</label>
+                                                            <textarea type="text" class="form-control"
+                                                                id="summernote"></textarea>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="Title">Nội dung</label>
-                                                    <textarea type="text" class="form-control"
-                                                        id="summernote"></textarea>
+                                                <div class="col-lg-4">
+                                                    <form class="forms-sample">
+                                                        <div class="form-group">
+                                                            <label for="FullNameImg">Họ và tên</label>
+                                                            <input type="text" class="form-control" id="FullNameImg" placeholder="Họ và tên">
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="Avatar">Thêm<h5><b>3 ẢNH</b></h5></label>
+                                                            <input type="file" id="getFile" multiple>
+                                                            <img src="" id="imgadd" style="width: 300px;">
+                                                          </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" id="edit" onclick="addData();"
+                                                                class="btn btn-success">Thêm thành viên</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <form class="forms-sample">
-                                                <div class="form-group">
-                                                    <label for="sel2">Tên File</label>
-                                                    <input type="text" class="form-control" id="input" type="text">
-                                                    <button type="button" id="edit" onclick="getIframe();"
-                                                        class="btn btn-success">Get Link</button>
-                                                </div>
-                                                <label for="inputlg">Link PDF</label>
-                                                <div class="form-group1">
-                                                    <input type="text" class="form-control" id="linkpdf" type="text">
-                                                    </input>
-                                                    <button type="button" onclick="myFunction()">
-                                                        <i style="font-size:24px" class="fa">&#xf0c5;</i>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" id="edit" onclick="addData();"
-                                                        class="btn btn-success">Thêm bài viết</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="forms-sample">
-                                                    <table id="order-listing" class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ID #</th>
-                                                                <th>Name</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbody" name="tbody" class="tbody">
-                                                        </tbody>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-light"
-                                                    data-dismiss="modal">Hủy</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
                 <!-- content-wrapper ends -->
-                <!-- partial:../../../partials/_footer.html -->
+                <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">© 2020 SCSE. All rights reserved. Serviced by SCSE</span>
-            </div>
-          </footer>
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a
+                                href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from
+                            BootstrapDash.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All
+                            rights reserved.</span>
+                    </div>
+                </footer>
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
@@ -479,6 +457,12 @@
     </div>>
     <script>
         $('#summernote').summernote({
+            placeholder: 'Hello Bootstrap 4',
+            tabsize: 2,
+            height: 500,
+            lang: 'vi-VN'
+        });
+        $('#ENGPOST').summernote({
             placeholder: 'Hello Bootstrap 4',
             tabsize: 2,
             height: 500,
@@ -501,27 +485,40 @@
     <script src="../../../js/settings.js"></script>
     <script src="../../../js/todolist.js"></script>
     <!-- endinject -->
-    <!-- Custom js for this page-->
-    <script src="../../../js/profile-demo.js"></script>
-    <script type="text/javascript" src="../../DAO/CrudPhanQuyen.js"></script>
     <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
+    <script type="text/javascript" src="../../DAO/CrudPhanQuyen.js"></script>
     <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
     <script type="text/javascript" src="../../DAO/Notification.js"></script>
-    <script type="text/javascript" src="../../DAO/CrudQuanLyTaiLieu.js"></script>
-    <!-- End custom js for this page-->
+    <script type="text/javascript" src="../../DAO/CrudBanGiamDoc.js"></script>
+    <!-- Custom js for this page-->
+    <script src="../../../js/profile-demo.js"></script>
+    <script>
+        const fileInput = document.querySelector('input[id="fileId"]');
+        const fileInputENG = document.querySelector('input[id="fileIdENG"]');
+
+        fileInputENG.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                base64 = reader.result;
+                $('#img').val(base64);
+
+            };
+            reader.readAsDataURL(file);
+        });
+        // listen for the change event so we can capture the file
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                base64 = reader.result;
+                $('#hinhanh').val(base64);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+    </script>
 </body>
+
 </html>
-<script type="text/javascript">
-    function getIframe(){
-        const input = $('#input').val()
-        const replace = input.replace('view','')
-        const priview = '<iframe src="'+ replace + 'preview"></iframe>'
-        $('#linkpdf').val(priview);
-    }
-     function myFunction() {
-        var copyText = document.getElementById("linkpdf");
-        copyText.select();
-        navigator.clipboard.writeText(copyText.value);
-        alert("Copied the text: " + copyText.value);
-    }
-</script>
