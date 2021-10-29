@@ -157,3 +157,6 @@ function clearTextBox() {
     $('#add').show();
     $('#edit').hide();
 }
+function deleteData() {
+    $('#exampleModal').modal('show');
+}
