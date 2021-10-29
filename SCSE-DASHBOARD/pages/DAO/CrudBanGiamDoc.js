@@ -3,7 +3,7 @@ const WEB_API = "https://api.scse-vietnam.org/API/";
 window.addEventListener('load', loadData)
 window.addEventListener('load', selectFullName)
 async function loadData() {
-    fetch(WEB_API + "Interface/ShowAllPorfolio")
+    fetch(WEB_API + "Interface/ShowAllPortfolio")
         .then(function (response) {
             return response.json();
         })
