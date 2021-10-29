@@ -10,7 +10,6 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 
-    <script src="./FormTiengViet.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -413,10 +412,6 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <form class="forms-sample">
-                                                        <div class="form-group">
-                                                            <label for="FullNameImg">Họ và tên</label>
-                                                            <input type="text" class="form-control" id="FullNameImg" placeholder="Họ và tên">
-                                                          </div>
                                                           <div class="form-group">
                                                             <label for="Avatar">Thêm<h5><b>3 ẢNH</b></h5></label>
                                                             <input type="file" id="getFile" multiple>
@@ -457,13 +452,11 @@
     </div>>
     <script>
         $('#summernote').summernote({
-            placeholder: 'Hello Bootstrap 4',
             tabsize: 2,
             height: 500,
             lang: 'vi-VN'
         });
         $('#ENGPOST').summernote({
-            placeholder: 'Hello Bootstrap 4',
             tabsize: 2,
             height: 500,
             lang: 'vi-VN'
@@ -493,19 +486,8 @@
     <!-- Custom js for this page-->
     <script src="../../../js/profile-demo.js"></script>
     <script>
-        const fileInput = document.querySelector('input[id="fileId"]');
-        const fileInputENG = document.querySelector('input[id="fileIdENG"]');
+        const fileInput = document.querySelector('input[id="getFile"]');
 
-        fileInputENG.addEventListener("change", (e) => {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                base64 = reader.result;
-                $('#img').val(base64);
-
-            };
-            reader.readAsDataURL(file);
-        });
         // listen for the change event so we can capture the file
         fileInput.addEventListener("change", (e) => {
             const file = e.target.files[0];
@@ -513,7 +495,6 @@
             reader.onloadend = () => {
                 base64 = reader.result;
                 $('#hinhanh').val(base64);
-
             };
             reader.readAsDataURL(file);
         });

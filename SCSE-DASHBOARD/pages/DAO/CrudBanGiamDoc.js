@@ -130,6 +130,7 @@ async function addData() {
     })
     .then(function (data) {
         if (data.Status === 'Success') {
+            AlertAdd();
             alert('Thêm Thành Công')
             window.location.reload();
         }
@@ -253,7 +254,7 @@ async function updateImg3() {
 }
 function addDataImg(base64) {
     let data = {
-        FullName: $('#FullNameImg').val(),
+        FullName: $('#FullName').val(),
         ImagePortfolio: base64
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
@@ -276,7 +277,7 @@ function addDataImg(base64) {
         })
 }
 function AlertAdd() {
-    var file = document.querySelector('input[type=file]')['files'];
+    var file = document.querySelector('#getFile')['files'];
     for (let i = 0; i < file.length; i++) {
         (function (file) {
             let name = file.name
@@ -287,6 +288,7 @@ function AlertAdd() {
             }
             reader.readAsDataURL(file);
         })(file[i]);
+    
     }
 }
 function clearTextBox() {
