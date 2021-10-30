@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../vendors/css/vendor.bundle.base.css" />
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <!-- End plugin css for this page -->
   <link rel="stylesheet" href="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
   <!-- inject:css -->
@@ -44,9 +44,9 @@
         </div>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-top">
-        
+
         <ul class="navbar-nav ms-auto">
-          
+
           <li class="nav-item d-none d-lg-block">
             <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
               <span class="input-group-addon input-group-prepend border-right">
@@ -55,7 +55,7 @@
               <input type="text" class="form-control" />
             </div>
           </li>
-         
+
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator" id="countDropdown" onclick="notifyMe()" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -85,7 +85,8 @@
               <a class="dropdown-item" href="../../../pages/ThongTinCaNhan/index.html"><i
                   class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
                 Profile <span class="badge badge-pill badge-danger">1</span></a>
-              <a class="dropdown-item" onclick="logOut();"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              <a class="dropdown-item" onclick="logOut();"><i
+                  class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
             </div>
           </li>
         </ul>
@@ -101,7 +102,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:../../../partials/_settings-panel.html -->
-      
+
       <div id="right-sidebar" class="settings-panel">
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -310,44 +311,56 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#organization" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#organization" aria-expanded="false"
+              aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-floor-plan" style="color:#1A94D0"></i>
               <span class="menu-title">Cấu hình Tổ chức</span>
-              <i class="menu-arrow"></i> 
+              <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="organization">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ToChuc/Ban-Giam-Doc.html"><i class="menu-icon mdi mdi-briefcase"></i>Ban giám đốc</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Banner/Banner.html"><i class="menu-icon mdi mdi-panorama"></i>Banner</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Bank/Bank.html"><i class="menu-icon mdi mdi-bank"></i>Thông tin ngân hàng</a></li>
-                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/QuanLyTaiKhoan.html"><i class="menu-icon mdi mdi-key-variant"></i>Quản lý tài khoản</a></li>                
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ToChuc/Ban-Giam-Doc.html"><i
+                      class="menu-icon mdi mdi-briefcase"></i>Ban giám đốc</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Banner/Banner.html"><i
+                      class="menu-icon mdi mdi-panorama"></i>Banner</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Bank/Bank.html"><i
+                      class="menu-icon mdi mdi-bank"></i>Thông tin ngân hàng</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/QuanLyTaiKhoan.html"><i
+                      class="menu-icon mdi mdi-key-variant"></i>Quản lý tài khoản</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#Standard" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#Standard" aria-expanded="false"
+              aria-controls="form-elements">
               <i class="menu-icon mdi mdi-microsoft" style="color: 	#00CC00"></i>
               <span class="menu-title">Quy chuẩn</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="Standard">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/TheLoai/TheLoai.html"><i class="menu-icon mdi mdi-file-multiple"></i>Quản lý thể loại</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Field/Field.html"><i class="menu-icon mdi mdi-format-line-weight"></i>Quản lý lĩnh vực</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Trang-Thai/Trangthai.html"><i class="menu-icon mdi mdi-checkbox-multiple-marked"></i>Quản lý trạng thái</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/TheLoai/TheLoai.html"><i
+                      class="menu-icon mdi mdi-file-multiple"></i>Quản lý thể loại</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Field/Field.html"><i
+                      class="menu-icon mdi mdi-format-line-weight"></i>Quản lý lĩnh vực</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Trang-Thai/Trangthai.html"><i
+                      class="menu-icon mdi mdi-checkbox-multiple-marked"></i>Quản lý trạng thái</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#activate" aria-expanded="false" aria-controls="editors">
-              <i class="menu-icon mdi mdi-newspaper"  style="color: #FCD500"></i>
+            <a class="nav-link" data-bs-toggle="collapse" href="#activate" aria-expanded="false"
+              aria-controls="editors">
+              <i class="menu-icon mdi mdi-newspaper" style="color: #FCD500"></i>
               <span class="menu-title">Hoạt Động</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="activate">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/BaiDang/Baiviet.html"><i class="menu-icon mdi mdi-format-align-left"></i>Đăng bài viết</a></li>
-                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/BaiDang/QuanLyBaiDang.html"><i class="menu-icon mdi mdi-file-document-box"></i>Quản lý bài viết</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/BaiDang/Baiviet.html"><i
+                      class="menu-icon mdi mdi-format-align-left"></i>Đăng bài viết</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/BaiDang/QuanLyBaiDang.html"><i
+                      class="menu-icon mdi mdi-file-document-box"></i>Quản lý bài viết</a></li>
               </ul>
             </div>
           </li>
@@ -359,8 +372,10 @@
             </a>
             <div class="collapse" id="news">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/TinTuc/PostTinTuc.html"><i class="menu-icon mdi mdi-format-align-left"></i>Đăng bài tin tức</a></li>
-                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/TinTuc/Quanlytintuc.html"><i class="menu-icon mdi mdi-newspaper"></i>Quản lý bài tin tức</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/TinTuc/PostTinTuc.html"><i
+                      class="menu-icon mdi mdi-format-align-left"></i>Đăng bài tin tức</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../pages/Admin/TinTuc/Quanlytintuc.html"><i
+                      class="menu-icon mdi mdi-newspaper"></i>Quản lý bài tin tức</a></li>
               </ul>
             </div>
           </li>
@@ -372,9 +387,12 @@
             </a>
             <div class="collapse" id="library">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/TaiLieu/IndexDocument.html"><i class="menu-icon mdi mdi-note-text"></i>Thư viện tài liệu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThuVien/VideoGallery.html"><i class="menu-icon mdi mdi-movie"></i>Thư viện Video</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThuVien/ThuVien.html"><i class="menu-icon mdi mdi-folder-multiple-image"></i>Thư viện hình ảnh</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/TaiLieu/IndexDocument.html"><i
+                      class="menu-icon mdi mdi-note-text"></i>Thư viện tài liệu</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThuVien/VideoGallery.html"><i
+                      class="menu-icon mdi mdi-movie"></i>Thư viện Video</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThuVien/ThuVien.html"><i
+                      class="menu-icon mdi mdi-folder-multiple-image"></i>Thư viện hình ảnh</a></li>
               </ul>
             </div>
           </li>
@@ -386,9 +404,13 @@
             </a>
             <div class="collapse" id="other">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Contact/Contact.html"><i class="menu-icon mdi mdi-phone"></i>Thông tin liên hệ</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html"><i class="menu-icon mdi mdi-account-plus"></i>Duyệt đơn TNV</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/DoiTac/DanhSachDoiTac.html"><i class="menu-icon mdi mdi-human-male-female"></i>Danh sách đối tác</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/Contact/Contact.html"><i
+                      class="menu-icon mdi mdi-phone"></i>Thông tin liên hệ</a></li>
+                <li class="nav-item"> <a class="nav-link"
+                    href="../../../pages/Admin/ThongTinTrang/DuyetDonTinhNguyenVien.html"><i
+                      class="menu-icon mdi mdi-account-plus"></i>Duyệt đơn TNV</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../../pages/Admin/DoiTac/DanhSachDoiTac.html"><i
+                      class="menu-icon mdi mdi-human-male-female"></i>Danh sách đối tác</a></li>
               </ul>
             </div>
           </li>
@@ -408,26 +430,30 @@
               <div class="card-body">
                 <h4 class="card-title">Quản lý thư viện hình ảnh</h4>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2"
-                  onclick="clearTextBox();">Thêm hình ảnh</button><br /><br />
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="table-responsive">
-                        <table id="dataTable" class="table">
-                          <thead>
-                            <tr>
-                              <th>ID #</th>
-                              <th>Tiêu đề</th>
-                              <th>Thể loại</th>
-                              <th>Ảnh</th>
-                              <th>Hành động</th>
-                            </tr>
-                          </thead>
-                          <tbody id="tbody">
-                          </tbody>
-                        </table>
-                      </div>
+                  onclick="clearTextBox();">Thêm hình ảnh</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                  onclick="deleteData();">
+                  Xóa album
+                </button>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="table-responsive">
+                      <table id="dataTable" class="table">
+                        <thead>
+                          <tr>
+                            <th>ID #</th>
+                            <th>Tiêu đề</th>
+                            <th>Thể loại</th>
+                            <th>Ảnh</th>
+                            <th>Hành động</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                      </table>
                     </div>
                   </div>
+                </div>
                 <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
                   aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                   <div class="modal-dialog" role="document">
@@ -473,6 +499,32 @@
                     </div>
                   </div>
                 </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xóa hình ảnh</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="forms-sample">
+                          <div class="form-group">
+                            <label for="Title">Title</label>
+                            <select type="text" class="form-control" id="dropdown">
+                            </select>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" onclick="deleteNow()">Xóa</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -486,18 +538,8 @@
                 d-sm-flex
                 justify-content-center justify-content-sm-between
               ">
-        <span class="
-                  text-muted text-center text-sm-left
-                  d-block d-sm-inline-block
-                ">Premium
-          <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a>
-          from BootstrapDash.</span>
-        <span class="
-                  float-none float-sm-right
-                  d-block
-                  mt-1 mt-sm-0
-                  text-center
-                ">Copyright © 2021. All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">© 2020 SCSE. All rights
+          reserved. Serviced by SCSE</span>
       </div>
     </footer>
     <!-- partial -->
@@ -514,10 +556,10 @@
   <!-- Plugin js for this page -->
   <script src="../../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- End plugin js for this page -->
-    <!-- Plugin js for this page-->
-    <script src="../../../vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <!-- End plugin js for this page-->
+  <!-- Plugin js for this page-->
+  <script src="../../../vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="../../../js/off-canvas.js"></script>
   <script src="../../../js/hoverable-collapse.js"></script>

@@ -1,7 +1,50 @@
 const WEB_API = "https://api.scse-vietnam.org/API/";
 //đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
-
+window.addEventListener('load', loadTitleToDropdown)
+function unique(arr) {
+    var newArr = []
+    for (var i = 0; i < arr.length; i++) {
+        if (newArr.indexOf(arr[i]) === -1) {
+            newArr.push(arr[i])
+        }
+    }
+    return newArr
+}
+async function loadTitleToDropdown() {
+    fetch(WEB_API + "Interface/ListPhoto")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            const map = response.map(x => x.Title);
+            const getOne = unique(map)
+            for (var i = 0; i < getOne.length; i++) {
+                $('#dropdown').append(`<option id="abc" value="${getOne[i]}">${getOne[i]}</option>`)
+            }
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+}
+function deleteNow() {
+    const title = $('#dropdown').val()
+    fetch(WEB_API + "Interface/DeletePhotosByTitle?title=" + title, {
+        method: "DELETE",
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            if (data.Status === 'Delete') {
+                alert('Xoá thành công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not deleted')
+            }
+        })
+}
 async function loadData() {
     fetch(WEB_API + "Interface/ListPhoto")
         .then(function (response) {
@@ -147,6 +190,7 @@ async function autoUpdate(baseString) {
         })
 
 }
+
 function clearTextBox() {
     $('#ID').val("");
     $('#IDCat').val("");
@@ -156,4 +200,7 @@ function clearTextBox() {
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();
+}
+function deleteData() {
+    $('#exampleModal').modal('show');
 }
