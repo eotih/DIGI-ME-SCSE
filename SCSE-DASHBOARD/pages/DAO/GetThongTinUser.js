@@ -46,3 +46,6 @@ function parseJwt(token) {
 
     return JSON.parse(jsonPayload);
 };
+function Close(){
+    $('.modal').modal('hide');
+}
