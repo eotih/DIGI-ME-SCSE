@@ -515,7 +515,7 @@
     function getIframe(){
         const input = $('#input').val()
         const replace = input.replace('view','')
-        const priview = '<iframe src="'+ replace + 'preview"></iframe>'
+        const priview = '<iframe style="width:800px;height:600px;" src="'+ replace + 'preview "></iframe>'
         $('#linkpdf').val(priview);
     }
      function myFunction() {

@@ -111,7 +111,7 @@ async function deleteData(ID) {
         return response.json()
     })
         .then(function (data) {
-            if (data.Status === 'Success') {
+            if (data.Status === 'Delete') {
                 alert('Xoá thành công')
                 window.location.reload();
             }
