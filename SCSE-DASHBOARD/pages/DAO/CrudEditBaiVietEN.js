@@ -77,7 +77,7 @@ function addNoti(numb){
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
-    fetch(BASE_URL + "Management/Notification", {
+    fetch(WEB_API + "Management/Notification", {
         method: 'POST',
         body: JSON.stringify($dataNoti),
         headers: {
