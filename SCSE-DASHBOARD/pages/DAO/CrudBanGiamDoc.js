@@ -162,6 +162,7 @@ async function updateData() {
         .then(function (data) {
             if (data.Status === 'Updated') {
                 alert('Sửa Thành Công')
+                window.location.reload();
             }
             else {
                 alert('Data not update')
