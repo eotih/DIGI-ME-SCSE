@@ -1,7 +1,6 @@
 const WEB_API = "https://api.scse-vietnam.org/API/";
 
 window.addEventListener('load', loadData)
-window.addEventListener('load', selectFullName)
 async function loadData() {
     fetch(WEB_API + "Interface/ShowAllPortfolio")
         .then(function (response) {
@@ -20,7 +19,7 @@ async function loadData() {
                     <td>${FullName}</td>
                     <td><img src='${HinhA[0]}'/><img src='${HinhA[1]}'/><img src='${HinhA[2]}'/></td>
                     <td>${Position}</td>
-                    <td>${Details.slice(0, 200)}</td>
+                    <td>${Details.slice(0, 100)}</td>
                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio('${FullName}')" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
                 }
@@ -61,25 +60,6 @@ function deletePortfolio(Id) {
 
     }
 }
-function selectFullName() {
-    fetch(WEB_API + "Interface/ImageForPortfolio")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (response) {
-            var Category = document.createElement("option");
-            Category.innerHTML = "Vui lòng chọn";
-            Category.value = 0;
-            document.getElementById("SelectFullName").appendChild(Category);
-            for (var i = 0; i < response.length; i++) {
-                var ele = document.createElement("option");
-                ele.value = response[i].FullName;
-                ele.innerHTML = response[i].FullName;
-                document.getElementById("SelectFullName").appendChild(ele);
-            }
-        })
-
-}
 async function getData(ID) {
     fetch(WEB_API + "Interface/GetByIdPortfolios?id=" + ID)
         .then(function (response) {
@@ -98,7 +78,6 @@ async function getData(ID) {
     $('#edit').show();
 }
 async function getDataImg(FullName) {
-    var data = FullName;
     fetch(WEB_API + "Interface/GetByFullNameImgPortfolios?FullName=" + FullName)
         .then(function (response) {
             return response.json();
@@ -112,13 +91,13 @@ async function getDataImg(FullName) {
             })
             let { IDImg, ImagePortfolio } = response;
             $('#ID1').val(img[0]);
-            $('#IDImg1').val(data);
+            $('#IDImg1').val(FullName);
             document.getElementById("img1").src = img[2];
             $('#ID2').val(img[3]);
-            $('#IDImg2').val(data);
+            $('#IDImg2').val(FullName);
             document.getElementById("img2").src = img[5];
             $('#ID3').val(img[6]);
-            $('#IDImg3').val(data);
+            $('#IDImg3').val(FullName);
             document.getElementById("img3").src = img[8];
         })
     $('#exampleModal').modal('show');
@@ -188,9 +167,6 @@ async function updateData() {
                 alert('Data not update')
             }
         })
-}
-async function updateImg() {
-    window.location.reload();
 }
 async function updateImg1() {
     var data = {
@@ -279,6 +255,7 @@ function addDataImg(base64) {
         return response.json()
     })
         .then(function (data) {
+            
         })
 }
 function AlertAdd(file) {
