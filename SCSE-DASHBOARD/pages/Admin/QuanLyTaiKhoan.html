@@ -393,7 +393,7 @@
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" onclick="Close();">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
@@ -456,7 +456,7 @@
                         <div class="modal-footer">
                           <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
                           <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal" onclick="Close();">Hủy</button>
                         </div>
                       </div>
                     </div>
@@ -466,9 +466,9 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
+                          <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn đổi mật khẩu?</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" onclick="Close();">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
@@ -490,7 +490,7 @@
                         <div class="modal-footer">
                           <button type="button" id="edit" onclick="resetPassword();"
                             class="btn btn-success">Reset</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal" onclick="Close();">Hủy</button>
                         </div>
                       </div>
                     </div>
@@ -502,7 +502,7 @@
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel-2">Bạn có thực sự muốn xoá?</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" onclick="Close();">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
@@ -527,7 +527,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" id="edit" onclick="updateDelete();" class="btn btn-success">Xoá</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal" onclick="Close();">Hủy</button>
                         </div>
                       </div>
                     </div>
