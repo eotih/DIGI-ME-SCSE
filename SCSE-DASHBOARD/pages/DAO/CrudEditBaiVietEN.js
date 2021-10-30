@@ -34,7 +34,6 @@ async function updateData() {
         Image: document.getElementById('img').src,
         Author: getToken.nameid[3],
     }
-    console.log(data)
     fetch(WEB_API + "Management/EditPostEN", {
         method: 'POST',
         body: JSON.stringify(data),

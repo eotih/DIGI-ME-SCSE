@@ -3,7 +3,7 @@ const WEB_API = "https://api.scse-vietnam.org/API/";
 window.addEventListener('load', loadData)
 window.addEventListener('load', selectFullName)
 async function loadData() {
-    fetch(WEB_API + "Interface/ShowAllPorfolio")
+    fetch(WEB_API + "Interface/ShowAllPortfolio")
         .then(function (response) {
             return response.json();
         })
@@ -14,22 +14,35 @@ async function loadData() {
                 const HinhA = Hinh.map(function (response) {
                     return response.ImagePortfolio
                 })
+                if(Position === "Phó Giám Đốc" || Position === "Giám Đốc"){
                 return `<tr>
                     <td>${ID}</td>
                     <td>${FullName}</td>
                     <td><img src='${HinhA[0]}'/><img src='${HinhA[1]}'/><img src='${HinhA[2]}'/></td>
                     <td>${Position}</td>
                     <td>${Details.slice(0, 200)}</td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio(${ID})" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio('${FullName}')" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
+                }
+                else{
+                    return `<tr>
+                    <td>${ID}</td>
+                    <td>${FullName}</td>
+                    <td><img src='${HinhA[0]}'/><img src='${HinhA[1]}'/><img src='${HinhA[2]}'/></td>
+                    <td>${Position}</td>
+                    <td>${Details.slice(0, 200)}</td>
+                    <td><a href="./EditBGD.html?Slug=${ID}" class="btn btn-outline-primary">Xem chi tiết</a> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio('${FullName}')" class="btn btn-outline-danger">Xoá</button></td>
+                    </tr>`;
+                }
             })
             $('#tbody').html(html);
         })
 }
+
 function deletePortfolio(Id) {
     if (confirm('Bạn có muốn xoá tài khoản?')) {
 
-        fetch(WEB_API + "Interface/DeletePortfolio?id=" + Id, {
+        fetch(WEB_API + "Interface/DeletePortfolio?fullname=" + Id, {
             method: "DELETE",
         })
             .then(function (response) {
@@ -128,15 +141,15 @@ async function addData() {
     }).then(function (response) {
         return response.json()
     })
-    .then(function (data) {
-        if (data.Status === 'Success') {
-            alert('Thêm Thành Công')
-            window.location.reload();
-        }
-        else {
-            alert('Data not insert')
-        }
-    })
+        .then(function (data) {
+            if (data.Status === 'Success') {
+                alert('Thêm Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not insert')
+            }
+        })
     AlertAdd();
 }
 async function updateData() {
@@ -280,7 +293,7 @@ function AlertAdd(file) {
             }
             reader.readAsDataURL(file);
         })(file[i]);
-    
+
     }
 }
 function clearTextBox() {
