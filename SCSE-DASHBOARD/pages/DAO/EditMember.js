@@ -40,6 +40,7 @@ async function updateOtherMember() {
         .then(function (data) {
             if (data.Status === 'Updated') {
                 alert('Sửa Thành Công')
+                window.location.href = "./Ban-Giam-Doc.html"
             }
             else {
                 alert('Data not update')
