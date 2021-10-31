@@ -13,7 +13,6 @@ async function loadData() {
                 <td>${ID}</td>
                 <td>${Title}</td>
                 <td>${Slug}</td>
-                <td>${Details}</td>
                 <td>
                 <button onclick="deleteData(${ID})" class="btn btn-outline-primary">Delete</button></td>
                 </tr>`;

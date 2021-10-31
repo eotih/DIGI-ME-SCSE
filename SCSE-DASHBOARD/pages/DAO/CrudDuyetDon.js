@@ -28,7 +28,7 @@ const WEB_API = "https://api.scse-vietnam.org/API/";
                     <td>${ID}</td>
                     <td>${FirstName}</td>
                     <td>${LastName}</td>
-                    <td>${DOB}</td>
+                    <td>${convertDate(DOB)}</td>
                     <td>${Phone}</td>
                     <td>${Email}</td>
                     <td>${Address}</td>
@@ -57,7 +57,10 @@ function Delete(ID) {
     $('#State').val("4");
     $('#Delete').modal('show');
 }
-
+function convertDate(input) {
+    var result = new Date(input)
+    return result.toLocaleDateString()
+}
 async function getData(ID) {
     fetch(WEB_API + "Management/GetByIdVolunteer?id=" + ID)
         .then(function (response) {
