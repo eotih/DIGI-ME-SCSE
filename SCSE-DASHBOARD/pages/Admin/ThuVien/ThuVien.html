@@ -305,11 +305,11 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-                    <a class="nav-link" href="../../../index.html">
-                      <i class="mdi mdi-apps menu-icon" style="color:#DE4439"></i>
-                      <span class="menu-title">Trang chủ</span>
-                    </a>
-                  </li>
+            <a class="nav-link" href="../../../index.html">
+              <i class="mdi mdi-apps menu-icon" style="color:#DE4439"></i>
+              <span class="menu-title">Trang chủ</span>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link collapsed" data-bs-toggle="collapse" href="#organization" aria-expanded="false"
               aria-controls="ui-basic">
@@ -443,6 +443,7 @@
                           <tr>
                             <th>ID #</th>
                             <th>Tiêu đề</th>
+                            <th>Tiêu đề tiếng Anh</th>
                             <th>Thể loại</th>
                             <th>Ảnh</th>
                             <th>Hành động</th>
@@ -475,11 +476,26 @@
                             <input type="text" class="form-control" id="Title" placeholder="Title">
                           </div>
                           <div class="form-group">
+                            <label for="TitleEN">Title tiếng Anh</label>
+                            <input type="text" class="form-control" id="TitleEN" placeholder="Title tiếng Anh">
+                          </div>
+                          <div class="form-group">
                             <label for="IDCat">Category</label>
-                            <select type="text" class="form-control" id="IDCat" placeholder="IDCat">
+                            <select class="form-select" id="IDCat">
+                              <option value="0">Vui lòng chọn</option>
                               <option value="1">Tin tức</option>
                               <option value="2">Dự án</option>
                               <option value="3">Hợp tác nghiên cứu</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="theloai">Chọn lĩnh vực</label>
+                            <select class="form-select" id="linhvuc">
+                              <option value="0">Vui lòng chọn</option>
+                              <option value="1">Giới và bình đăng giới</option>
+                              <option value="2">Biến đổi khí hậu môi trường</option>
+                              <option value="3">Thực tập sinh</option>
+                              <option value="4">Nghiên cứu và đào tạo</option>
                             </select>
                           </div>
                           <div class="form-group">

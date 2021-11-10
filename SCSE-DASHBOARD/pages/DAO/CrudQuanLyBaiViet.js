@@ -4,7 +4,45 @@ function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
 }
-
+function convertState(input) {
+    if (input === "1") {
+        return '<div class="badge badge-opacity-warning">Pending</div>'
+    }
+    else if (input === "2") {
+        return '<div class="badge badge-opacity-success">Approved</div>'
+    }
+    else if (input === "3") {
+        return '<div class="badge badge-opacity-danger">NotApproved</div>'
+    }
+    else if (input === "4") {
+        return '<div class="badge badge-opacity-danger">Deleted</div>'
+    }
+}
+function convertCategory(category) {
+    if (category === "1") {
+        return 'Dự án'
+    }
+    else if (category === "2") {
+        return 'Hợp tác nghiên cứu'
+    }
+    else if (category === "3") {
+        return 'Hoạt động thiện nguyện'
+    }
+}
+function convertField(field) {
+    if (field === "1") {
+        return 'Giới và bình đẳng giới'
+    }
+    else if (field === "2") {
+        return 'Biến đổi khí hậu môi trường'
+    }
+    else if (field === "3") {
+        return 'Thực tập sinh'
+    }
+    else if (field === "4") {
+        return 'Nghiên cứu và đào tạo'
+    }
+}
 (function ($) {
     'use strict';
     $(function () {
@@ -13,40 +51,20 @@ function convertDate(input) {
                 return response.json();
             })
             .then(function (response) {
-                
+
                 var deleted = response.filter(v => v.IDState === 4)
                 $('#deleteCount').text(deleted.length);
                 var result = response.filter(v => v.IDState !== 4)
                 var html = result.map(function (response) {
-                    let { IDPost, IDCat, Title, Slug, Image, Author, IDState } = response;
-                    if (IDState === 1) {
-                        IDState = '<div class="badge badge-opacity-warning">Pending</div>'
-                    }
-                    if (IDState === 2) {
-                        IDState = '<div class="badge badge-opacity-success">Approved</div>'
-                    }
-                    if (IDState === 3) {
-                        IDState = '<div class="badge badge-opacity-danger">NotApproved</div>'
-                    }
-                    if (IDState === 4) {
-                        IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
-                    }
-                    if (IDCat === 1) {
-                        IDCat = 'Dự án'
-                    }
-                    if (IDCat === 2) {
-                        IDCat = 'Hợp tác nghiên cứu'
-                    }
-                    if (IDCat === 3) {
-                        IDCat = 'Hoạt động thiện nguyện'
-                    }
+                    const { IDPost, IDCat, IDField, Title, Slug, Image, Author, IDState } = response;
                     return `<tr>
                     <td>${IDPost}</td>
-                    <td>${IDCat}</td>
+                    <td>${convertCategory(IDCat)}</td>
+                    <td>${convertCategory(IDField)}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
-                    <td>${IDState}</td>
+                    <td>${convertState(IDState)}</td>
                     <td><button onclick="return approveData(${IDPost})" class="btn btn-success">Duyệt bài</button>
                     <a href="./Edit.html?Slug=${IDPost}"" class="btn btn-outline-primary">Xem chi tiết</a>
                     <button onclick="return deleteData(${IDPost})" class="btn btn-outline-danger">Xoá</button></td>
@@ -77,35 +95,15 @@ function convertDate(input) {
                 $('#deleteCountEN').text(deletedEN.length);
                 var result = response.filter(v => v.IDState !== 4)
                 var html = result.map(function (response) {
-                    let { IDPostEN, IDCat, Title, SlugEN, Image, Author, IDState } = response;
-                    if (IDState === 1) {
-                        IDState = '<div class="badge badge-opacity-warning">Pending</div>'
-                    }
-                    if (IDState === 2) {
-                        IDState = '<div class="badge badge-opacity-success">Approved</div>'
-                    }
-                    if (IDState === 3) {
-                        IDState = '<div class="badge badge-opacity-danger">NotApproved</div>'
-                    }
-                    if (IDState === 4) {
-                        IDState = '<div class="badge badge-opacity-danger">Deleted</div>'
-                    }
-                    if (IDCat === 1) {
-                        IDCat = 'Dự án'
-                    }
-                    if (IDCat === 2) {
-                        IDCat = 'Hợp tác nghiên cứu'
-                    }
-                    if (IDCat === 3) {
-                        IDCat = 'Hoạt động thiện nguyện'
-                    }
+                    let { IDPostEN, IDCat, IDField, Title, SlugEN, Image, Author, IDState } = response;
                     return `<tr>
                     <td>${IDPostEN}</td>
-                    <td>${IDCat}</td>
+                    <td>${convertCategory(IDCat)}</td>
+                    <td>${convertCategory(IDField)}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
-                    <td>${IDState}</td>
+                    <td>${convertState(IDState)}</td>
                     <td><button onclick="return approveDataEN(${IDPostEN})" class="btn btn-success">Approve</button>
                     <a href="./EditEN.html?Slug=${IDPostEN}" class="btn btn-outline-primary">Xem chi tiết</a>
                     <button onclick="return deleteDataEN(${IDPostEN})" class="btn btn-outline-danger">Xoá</button></td>
@@ -124,7 +122,7 @@ function convertDate(input) {
     });
 })(jQuery);
 
-function deleteData(ID){
+function deleteData(ID) {
     $('#IDPost').val(ID);
     $('#IDState').val("4");
     $('#exampleModal-2').modal('show');
@@ -134,7 +132,7 @@ function deleteData(ID){
     $('#approveVN').hide();
     $('#deleteVN').show();
 }
-function deleteDataEN(ID){
+function deleteDataEN(ID) {
     $('#IDPostEN').val(ID);
     $('#IDStateEN').val("4");
     $('#exampleModal').modal('show');
@@ -144,7 +142,7 @@ function deleteDataEN(ID){
     $('#approveEN').hide();
     $('#deleteEN').show();
 }
-function approveData(ID){
+function approveData(ID) {
     $('#IDPost').val(ID);
     $('#IDState').val("");
     $('#exampleModal-2').modal('show');
@@ -154,7 +152,7 @@ function approveData(ID){
     $('#approveVN').show();
     $('#deleteVN').hide();
 }
-function approveDataEN(ID){
+function approveDataEN(ID) {
     $('#IDPostEN').val(ID);
     $('#IDStateEN').val("");
     $('#exampleModal').modal('show');
@@ -164,7 +162,7 @@ function approveDataEN(ID){
     $('#approveEN').show();
     $('#deleteEN').hide();
 }
-async function updateState(){
+async function updateState() {
     var data = {
         IDPost: $('#IDPost').val(),
         IDState: $('#IDState').val(),
@@ -189,7 +187,7 @@ async function updateState(){
             }
         })
 }
-async function updateStateEN(){
+async function updateStateEN() {
     var data = {
         IDPostEN: $('#IDPostEN').val(),
         IDState: $('#IDStateEN').val(),
@@ -215,28 +213,28 @@ async function updateStateEN(){
         })
 }
 
-function addNoti(numb){
+function addNoti(numb) {
     var $dataNoti = {};
-    if(numb === 1){
+    if (numb === 1) {
         $dataNoti.Title = 'Đăng Tải Bài Viết',
-        $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã thêm 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
+            $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
+            $dataNoti.Decription = 'Người dùng ' + getToken.nameid[3] + ' đã thêm 1 bài viết',
+            $dataNoti.Status = 'Chưa Xem',
+            $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
-    else if(numb === 2){
+    else if (numb === 2) {
         $dataNoti.Title = 'Sửa Bài Viết',
-        $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã sửa 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
+            $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
+            $dataNoti.Decription = 'Người dùng ' + getToken.nameid[3] + ' đã sửa 1 bài viết',
+            $dataNoti.Status = 'Chưa Xem',
+            $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
-    else if(numb === 3){
+    else if (numb === 3) {
         $dataNoti.Title = 'Xóa Bài Viết',
-        $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
+            $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
+            $dataNoti.Decription = 'Người dùng ' + getToken.nameid[3] + ' đã xóa 1 bài viết',
+            $dataNoti.Status = 'Chưa Xem',
+            $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
     fetch(WEB_API + "Management/Notification", {
         method: 'POST',
@@ -246,7 +244,7 @@ function addNoti(numb){
         },
     }).then(function (response) {
         return response.json()
-    }) 
+    })
 }
 function parseJwt(token) {
     var base64Url = token.split('.')[1];

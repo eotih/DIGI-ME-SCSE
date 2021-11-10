@@ -10,9 +10,10 @@ async function getData() {
             return response.json();
         })
         .then(function (response) {
-            let { IDPostEN, IDCat, Title, Slug, Image, Author, IDState, Details } = response;
+            let { IDPostEN, IDCat, Title,IDField, Slug, Image, Author, IDState, Details } = response;
             $('#IDPost').val(IDPostEN),
                 $('#Category').val(Category),
+                $('#field').val(IDField),
                 $('#IDState').val(IDState),
                 $('#Title').val(Title),
                 $('#Slug').val(Slug),
@@ -28,6 +29,7 @@ async function updateData() {
     var data = {
         IDPostEN: $('#IDPost').val(),
         IDCat: $('#Category').val(),
+        IDField: $('#field').val(),
         IDState: $('#State').val(),
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),

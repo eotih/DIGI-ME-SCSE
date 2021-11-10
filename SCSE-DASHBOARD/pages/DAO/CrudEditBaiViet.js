@@ -9,9 +9,10 @@ async function getData() {
             return response.json();
         })
         .then(function (response) {
-            let { IDPost, IDCat, Title, Slug, Image, IDState, Details } = response;
+            let { IDPost, IDCat, Title, IDField, Slug, Image, IDState, Details } = response;
             $('#IDPost').val(IDPost),
                 $('#Category').val(IDCat),
+                $('#linhvuc').val(IDField),
                 $('#IDState').val(IDState),
                 $('#Title').val(Title),
                 $('#Slug').val(Slug),
@@ -26,6 +27,7 @@ async function updateData() {
     var $data = {
         IDPost: $('#IDPost').val(),
         IDCat: $('#Category').val(),
+        IDField: $('#linhvuc').val(),
         IDState: $('#State').val(),
         Title: $('#Title').val(),
         Details: $('#summernote').summernote('code'),
@@ -53,28 +55,28 @@ async function updateData() {
         })
 }
 
-function addNoti(numb){
+function addNoti(numb) {
     var $dataNoti = {};
-    if(numb === 1){
+    if (numb === 1) {
         $dataNoti.Title = 'Đăng Tải Bài Viết',
-        $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã thêm 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
+            $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
+            $dataNoti.Decription = 'Người dùng ' + getToken.nameid[3] + ' đã thêm 1 bài viết',
+            $dataNoti.Status = 'Chưa Xem',
+            $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
-    else if(numb === 2){
+    else if (numb === 2) {
         $dataNoti.Title = 'Sửa Bài Viết',
-        $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã sửa 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
+            $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
+            $dataNoti.Decription = 'Người dùng ' + getToken.nameid[3] + ' đã sửa 1 bài viết',
+            $dataNoti.Status = 'Chưa Xem',
+            $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
-    else if(numb === 3){
+    else if (numb === 3) {
         $dataNoti.Title = 'Xóa Bài Viết',
-        $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 bài viết',
-        $dataNoti.Status = 'Chưa Xem',
-        $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
+            $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
+            $dataNoti.Decription = 'Người dùng ' + getToken.nameid[3] + ' đã xóa 1 bài viết',
+            $dataNoti.Status = 'Chưa Xem',
+            $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
     fetch(WEB_API + "Management/Notification", {
         method: 'POST',
@@ -84,7 +86,7 @@ function addNoti(numb){
         },
     }).then(function (response) {
         return response.json()
-    }) 
+    })
 }
 
 function parseJwt(token) {

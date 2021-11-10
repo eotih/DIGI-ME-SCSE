@@ -2,6 +2,31 @@ const WEB_API = "https://api.scse-vietnam.org/API/";
 //đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 window.addEventListener('load', loadTitleToDropdown)
+function convertCategory(category) {
+    if (category === "1") {
+        return 'Dự án'
+    }
+    else if (category === "2") {
+        return 'Hợp tác nghiên cứu'
+    }
+    else if (category === "3") {
+        return 'Hoạt động thiện nguyện'
+    }
+}
+function convertField(field) {
+    if (field === "1") {
+        return 'Giới và bình đẳng giới'
+    }
+    else if (field === "2") {
+        return 'Biến đổi khí hậu môi trường'
+    }
+    else if (field === "3") {
+        return 'Thực tập sinh'
+    }
+    else if (field === "4") {
+        return 'Nghiên cứu và đào tạo'
+    }
+}
 function unique(arr) {
     var newArr = []
     for (var i = 0; i < arr.length; i++) {
@@ -52,21 +77,14 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                let { ID, Title, IDCat, Image, Slug } = response;
-                if (IDCat === 1) {
-                    IDCat = "Tin tức";
-                }
-                if (IDCat === 2) {
-                    IDCat = "Dự án";
-                }
-                if (IDCat === 3) {
-                    IDCat = "Hợp tác nghiên cứu";
-                }
+                let { ID, Title, TitleEN, IDField, IDCat, Image, Slug } = response;
                 // Sẽ return ra hàm tbody
                 return `<tr>
                     <td>${ID}</td>
-                    <td>${Title}</td>
-                    <td>${IDCat}</td>
+                    <td>${Title.slice(0, 50)}</td>
+                    <td>${TitleEN.slice(0, 50)}</td>
+                    <td>${convertCategory(IDCat)}</td>
+                    <td>${convertField(IDField)}</td>
                     <td><img src='${Image}'></td>
                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button></td>
                     </tr>`;
@@ -87,11 +105,13 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            const { ID, Title, IDCat, Image } = response;
+            const { ID, Title, IDField, TitleEN, IDCat, Image } = response;
             $('#ID').val(ID),
-                document.getElementById("Image1").src = Image;
+            document.getElementById("Image1").src = Image;
             $('#Title').val(Title);
+            $('#TitleEN').val(TitleEN);
             $('#IDCat').val(IDCat);
+            $('#IDField').val(IDField);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -100,7 +120,9 @@ async function getData(ID) {
 function addData(base64) {
     let data = {
         IDCat: $('#IDCat').val(),
+        IDField: $('#linhvuc').val(),
         Title: $('#Title').val(),
+        TitleEN: $('#TitleEN').val(),
         Image: base64
     };
     fetch(WEB_API + "Interface/AddOrEditPhotoGallery", {
@@ -140,6 +162,8 @@ async function updateData() {
     var data = {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
+        TitleEN: $('#TitleEN').val(),
+        IDField: $('#linhvuc').val(),
         Title: $('#Title').val(),
         Image: base64
     };
@@ -166,7 +190,9 @@ async function autoUpdate(baseString) {
     var $data = {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
+        IDField: $('#linhvuc').val(),
         Title: $('#Title').val(),
+        TitleEN: $('#TitleEN').val(),
         Slug: $('#Slug').val(),
         Image: baseString
     }
@@ -194,6 +220,7 @@ async function autoUpdate(baseString) {
 function clearTextBox() {
     $('#ID').val("");
     $('#IDCat').val("");
+    $('#IDField').val("");
     $('#Title').val("");
     $('#Slug').val("");
     $('#Image').val("");

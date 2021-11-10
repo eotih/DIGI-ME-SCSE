@@ -6,6 +6,7 @@ async function addPost() {
         Title: $('#tieude').val(),
         Details: $('#summernote').summernote('code'),
         IDCat: $('#theloai').val(),
+        IDField: $('#linhvuc').val(),
         Image: $('#hinhanh').val(),
         Author: getToken.nameid[3],
     };
@@ -56,6 +57,7 @@ async function addPostEN() {
     var data = {
         IDPostEN: $('#PostVN').val(),
         IDCat: $('#Category').val(),
+        IDField: $('#field').val(),
         Title: $('#Title').val(),
         Details: $('#ENGPOST').summernote('code'),
         Image: $('#img').val(),

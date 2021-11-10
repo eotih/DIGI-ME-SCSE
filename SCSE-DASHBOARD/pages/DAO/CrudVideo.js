@@ -4,6 +4,31 @@ function convertDate(input) {
     var result = new Date(input)
     return result.toLocaleDateString()
 }
+function convertCategory(category) {
+    if (category === "1") {
+        return 'Dự án'
+    }
+    else if (category === "2") {
+        return 'Hợp tác nghiên cứu'
+    }
+    else if (category === "3") {
+        return 'Hoạt động thiện nguyện'
+    }
+}
+function convertField(field) {
+    if (field === "1") {
+        return 'Giới và bình đẳng giới'
+    }
+    else if (field === "2") {
+        return 'Biến đổi khí hậu môi trường'
+    }
+    else if (field === "3") {
+        return 'Thực tập sinh'
+    }
+    else if (field === "4") {
+        return 'Nghiên cứu và đào tạo'
+    }
+}
 async function loadData() {
     fetch(WEB_API + "Interface/ShowAllVideo")
         .then(function (response) {
@@ -11,25 +36,18 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                let { ID, Title, IDCat, Image, UpdateByDate, CreatedByDate, LinkYTB } = response;
-                if (IDCat === 1) {
-                    IDCat = "Tin tức";
-                }
-                if (IDCat === 2) {
-                    IDCat = "Dự án";
-                }
-                if (IDCat === 3) {
-                    IDCat = "Hợp tác nghiên cứu";
-                }
+                let { ID, Title, TitleEN, Description, DescriptionEN, IDCat, IDField, Image, LinkYTB } = response;
                 // Sẽ return ra hàm tbody
                 return `<tr>
                     <td>${ID}</td>
-                    <td>${IDCat}</td>
+                    <td>${convertCategory(IDCat)}</td>
+                    <td>${convertField(IDField)}</td>
                     <td>${Title}</td>
+                    <td>${TitleEN}</td>
+                    <td>${Description}</td>
+                    <td>${DescriptionEN}</td>
                     <td><img src='${Image}'></td>
                     <td>${LinkYTB}</td>
-                    <td>${convertDate(CreatedByDate)}</td>
-                    <td>${convertDate(UpdateByDate)}</td>
                     <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button>
                     <button onclick="return showDeletePopUp(${ID})" class="btn btn-outline-danger">Xóa</button></td>
                     </tr>`;
@@ -67,6 +85,9 @@ function addData() {
     let data = {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
+        TitleEN: $('#TitleEN').val(),
+        Description: $('#Description').val(),
+        DescriptionEN: $('#DescriptionEN').val(),
         Image: getImage(splitLink($('#LinkYTB').val())),
         LinkYTB: $('#LinkYTB').val(),
         VideoID: splitLink($('#LinkYTB').val())
@@ -96,9 +117,13 @@ function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            let { ID, Title, IDCat, LinkYTB, Image } = response;
+            let { ID, Title, IDCat, TitleEN, DescriptionEN, Description, LinkYTB, Image } = response;
             $('#ID').val(ID),
-                $('#Title').val(Title);
+            $('#Title').val(Title);
+            $('#Title').val(Title);
+            $('#TitleEN').val(TitleEN);
+            $('#Description').val(Description);
+            $('#DescriptionEN').val(DescriptionEN);
             $('#LinkYTB').val(LinkYTB);
             $('#IDCat').val(IDCat);
         })
@@ -112,11 +137,13 @@ function updateData() {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
+        TitleEN: $('#TitleEN').val(),
+        Description: $('#Description').val(),
+        DescriptionEN: $('#DescriptionEN').val(),
         Image: getImage(splitLink($('#LinkYTB').val())),
         LinkYTB: $('#LinkYTB').val(),
         VideoID: splitLink($('#LinkYTB').val())
     };
-    console.log(data)
     fetch(WEB_API + "Interface/AddOrEditVideo", {
         method: 'POST',
         body: JSON.stringify(data),
