@@ -357,6 +357,13 @@ function AlertAdd(file) {
     }
 }
 function clearTextBox() {
+    $('#ID').val("");
+    $('#Name').val("");
+    $('#Position').val("");
+    $('#PositionEN').val("");
+    $('#getFile').val("");
+    $('#Details').val("");
+    $('#DetailsEN').val("");
     $('#ModalChoose').modal('show');
     $('#add').show();
     $('#edit').hide();
