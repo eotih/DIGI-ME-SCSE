@@ -450,13 +450,22 @@
               <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#VN" role="tab" aria-controls="VN"
-                    aria-selected="true"> Bài đăng
+                    aria-selected="true">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/2560px-Flag_of_Vietnam.svg.png"
+                      style="width: 20px; height: 15px" alt=""> Tiếng Việt
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#ENG" role="tab" aria-controls="ENG"
+                    aria-selected="false"> <img
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
+                      style="width: 20px; height: 15px" alt=""> Tiếng Anh
                   </a>
                 </li>
               </ul>
               <div class="tab-content">
-                <h4 class="card-title">Quản lý bài đăng tài liệu</h4>
-                <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="profile-tab">
                   <a type="button" class="btn btn-primary position-relative ms-auto" href="QuanLyTaiLieu.html">Thêm tài liệu
                   </a><br /><br />
                   <div class="row">
@@ -474,8 +483,53 @@
                           <tbody id="tbody"></tbody>
                         </table>
                       </div>
+                      <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" onclick="Close();">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form class="forms-sample">
+                                <div class="form-group">
+                                  <h4 id="HeaderDelete">Bạn có thực sự muốn xoá?</h4>
+                                  <h4 id="HeaderApprove">Bạn có thực sự muốn duyệt bài này?</h4>
+                                </div>
+                                <div class="form-group" hidden>
+                                  <label for="IDPost">ID</label>
+                                  <input type="text" class="form-control" id="IDPost" placeholder="IDPost" disabled>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="ENG" role="tabpanel" aria-labelledby="profile-tab">
+                  <a type="button" class="btn btn-primary position-relative ms-auto" href="QuanLyTaiLieu.html">Thêm tài liệu
+                  </a><br /><br />
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table id="dataTableENG" class="table">
+                          <thead>
+                            <tr>
+                              <th>ID #</th>
+                              <th>Title</th>
+                              <th>Slug</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbodyENG"></tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
