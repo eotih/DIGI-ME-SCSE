@@ -1,4 +1,4 @@
-const URL_API = "https://api.scse-vietnam.org/API/";
+const URL_API = "http://localhost:59360/API/";
 
 window.addEventListener('load', loadData)
 async function loadData() {

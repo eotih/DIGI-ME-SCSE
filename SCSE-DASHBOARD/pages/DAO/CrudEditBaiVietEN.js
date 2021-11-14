@@ -1,4 +1,4 @@
-const WEB_API = "https://api.scse-vietnam.org/API/";
+const WEB_API = "http://localhost:59360/API/";
 var getToken = parseJwt(localStorage.getItem("token"));
 
 window.addEventListener('load', getData)

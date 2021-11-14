@@ -1,4 +1,4 @@
-const url = "https://api.scse-vietnam.org/API/";
+const url = "http://localhost:59360/API/";
 window.addEventListener('load', loadData)
 async function loadData() {
     fetch(url + "Interface/ListDocument")

@@ -1,4 +1,4 @@
-const WEB_API = "https://api.scse-vietnam.org/API/";
+const WEB_API = "http://localhost:59360/API/";
 
 window.addEventListener('load', loadData)
 async function loadData() {
@@ -57,7 +57,6 @@ function deletePortfolio(Id) {
                 }
             })
     } else {
-
     }
 }
 async function getData(ID) {
@@ -104,6 +103,37 @@ async function getDataImg(FullName) {
     $('#add1').hide();
     $('#edit1').show();
 }
+
+// Thêm Ban Giám Đốc
+async function addDataBGD() {
+    var data = {
+        ID: $('#ID').val(),
+        FullName: $('#FullName').val(),
+        Position: $('#Position').val(),
+        Details: $('#DetailsBGD').val(),
+    };
+    fetch(WEB_API + "Interface/AddOrEditPortfolios", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Success') {
+                alert('Thêm Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not insert')
+            }
+        })
+    AlertAdd();
+}
+
+// Thêm thành viên step1
 async function addData() {
     var data = {
         ID: $('#ID').val(),
@@ -131,6 +161,35 @@ async function addData() {
         })
     AlertAdd();
 }
+
+//Thêm thành viên step2 
+async function addPortfolioEN() {
+    var data = {
+        ID: $('#ID').val(),
+        FullName: $('#FullName').val(),
+        Position: $('#PositionEN').val(),
+        Details: $('#DetailsEN').val(),
+    };
+    fetch(WEB_API + "Interface/AddOrEditPortfolios", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Updated') {
+                alert('Sửa Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not update')
+            }
+        })
+}
+
 async function updateData() {
     var data = {
         ID: $('#ID').val(),
@@ -169,6 +228,7 @@ async function updateData() {
             }
         })
 }
+
 async function updateImg1() {
     var data = {
         ID: $('#ID1').val(),
@@ -193,6 +253,7 @@ async function updateImg1() {
             }
         })
 }
+
 async function updateImg2() {
     var data = {
         ID: $('#ID2').val(),
@@ -241,6 +302,7 @@ async function updateImg3() {
             }
         })
 }
+
 function addDataImg(base64) {
     let data = {
         FullName: $('#FullName').val(),
@@ -256,7 +318,7 @@ function addDataImg(base64) {
         return response.json()
     })
         .then(function (data) {
-            
+
         })
 }
 function AlertAdd(file) {
@@ -305,3 +367,7 @@ function clearTextBox2() {
     $('#files').val("");
     $('#Modal').modal('show');
 }
+
+
+  
+ 
