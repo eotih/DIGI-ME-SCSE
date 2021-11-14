@@ -224,6 +224,22 @@ async function deleteData(ID) {
             }
         })
 }
+async function deleteData(IDEN) {
+    fetch(url + "Interface/DeleteDocumentEN?id=" + IDEN, {
+        method: 'DELETE',
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Delete') {
+                alert('Xoá thành công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not delete')
+            }
+        })
+}
 function clearTextBox() {
     $('#IDPost').val("");
     $('#IDCat').val("");
