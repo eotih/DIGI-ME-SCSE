@@ -72,8 +72,7 @@ async function getData(ID) {
             $('#Position').val(Position);
             $('#Details').val(Details);
         })
-    $('#exampleModal-2').modal('show');
-    $('#SelectFullName').hide();
+    $('#ModalAddPortfolio').modal('show');
     $('#add').hide();
     $('#edit').show();
 }
@@ -301,6 +300,7 @@ function clearTextBox() {
     $('#edit').hide();
 }
 function clearTextBox1() {
+    $('#ModalChoose').modal('hide');
     $('#ModalAddPortfolio').modal('show');
     $('#add').show();
     $('#edit').hide();
