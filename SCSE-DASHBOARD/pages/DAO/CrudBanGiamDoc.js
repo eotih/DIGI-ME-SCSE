@@ -66,12 +66,14 @@ async function getData(ID) {
         })
         .then(function (response) {
             let { ID, FullName, Position, Details } = response;
-            $('#ID').val(ID);
-            $('#FullName').val(FullName);
+            $('#ID1').val(ID);
+            $('#Name').val(FullName);
             $('#Position').val(Position);
+            $('#PositionEN').val(Position);
             $('#Details').val(Details);
+            $('#DetailsEN').val(Details);
         })
-    $('#exampleModal-2').modal('show');
+    $('#ModalAddPortfolio').modal('show');
     $('#SelectFullName').hide();
     $('#add').hide();
     $('#edit').show();
@@ -353,11 +355,6 @@ function AlertAdd(file) {
     }
 }
 function clearTextBox() {
-    $('#ID').val("");
-    $('#FullName').val("");
-    $('#IDImg').val("");
-    $('#Position').val("");
-    $('#Details').val("");
     $('#ModalChoose').modal('show');
     $('#add').show();
     $('#edit').hide();
@@ -374,5 +371,5 @@ function clearTextBox2() {
 }
 
 
-  
- 
+
+

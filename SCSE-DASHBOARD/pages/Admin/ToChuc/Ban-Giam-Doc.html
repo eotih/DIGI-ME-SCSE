@@ -387,13 +387,8 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Quản lý Ban giám đốc</h4>
-<<<<<<< HEAD
-              <a href="../ToChuc/Thembanthanhvien.html"> <button type="button" class="btn btn-primary">Thêm thành
-                  viên</button><br /><br /></a>
-=======
               <button type="button" onclick="clearTextBox()" class="btn btn-primary">Thêm thành
                 viên</button><br /><br />
->>>>>>> 14f9f0797b15c9b4ef8a25cd65d263ed0abf1a1f
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
@@ -433,69 +428,68 @@
                         </div>
                       </div>
                     </div>
-
-                    <div class="modal fade bd-example-modal-lg" id="ModalAddPortfolio" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel-2">Thêm Ban Giám Đốc</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                              onclick="Close();">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="forms-sample">
-                              <div class="form-group" hidden>
-                                <label for="ID">ID</label>
-                                <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
-                              </div>
-                              <div class="form-group">
-                                <label for="Name">Họ và tên</label>
-                                <input type="text" class="form-control" id="Name" placeholder="Name">
-                              </div>
-                              <div class="row">
-                                <div class="col-md">
-                                  <div class="form-group">
-                                    <label for="Position">Chức vụ</label>
-                                    <input type="text" class="form-control" id="Position" placeholder="Position">
-                                  </div>
-                                </div>
-                                <div class="col-md">
-                                  <div class="form-group">
-                                    <label for="Position">Position (Bản tiếng anh)</label>
-                                    <input type="text" class="form-control" id="Position" placeholder="Position">
-                                  </div>
+                  </div>
+                  <div class="modal fade bd-example-modal-lg" id="ModalAddPortfolio" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel-2">Thêm Ban Giám Đốc</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            onclick="Close();">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="forms-sample">
+                            <div class="form-group" hidden>
+                              <label for="ID">ID</label>
+                              <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="Name">Họ và tên</label>
+                              <input type="text" class="form-control" id="Name" placeholder="Name">
+                            </div>
+                            <div class="row">
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="Position">Chức vụ</label>
+                                  <input type="text" class="form-control" id="Position" placeholder="Position">
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label for="Avatar">Thêm ảnh</label>
-                                <input type="file" name="Avatar" id="avatar">
-                                <img src="" id="img1" style="width: 300px;">
-                              </div>
-                              <div class="row">
-                                <div class="col-md">
-                                  <div class="form-group">
-                                    <label for="Details">Thông tin</label>
-                                    <input type="text" class="form-control" id="Details" placeholder="Details">
-                                  </div>
-                                </div>
-                                <div class="col-md">
-                                  <div class="form-group">
-                                    <label for="Details">Details (Bản tiếng anh)</label>
-                                    <input type="text" class="form-control" id="Details" placeholder="Details">
-                                  </div>
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="Position">Position (Bản tiếng anh)</label>
+                                  <input type="text" class="form-control" id="PositionEN" placeholder="Position">
                                 </div>
                               </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" id="edit1" onclick="updateImg();"
-                              class="btn btn-success">Update</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal"
-                              onclick="Close();">Hủy</button>
-                          </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="Avatar">Thêm ảnh</label>
+                              <input type="file" name="Avatar" id="avatar">
+                              <img src="" id="img1" style="width: 300px;">
+                            </div>
+                            <div class="row">
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="Details">Thông tin</label>
+                                  <input type="text" class="form-control" id="Details" placeholder="Details">
+                                </div>
+                              </div>
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="Details">Details (Bản tiếng anh)</label>
+                                  <input type="text" class="form-control" id="DetailsEN" placeholder="Details">
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="edit1" onclick="updateImg();"
+                            class="btn btn-success">Update</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal"
+                            onclick="Close();">Hủy</button>
                         </div>
                       </div>
                     </div>
