@@ -74,7 +74,6 @@ async function getData(ID) {
             $('#DetailsEN').val(Details);
         })
     $('#ModalAddPortfolio').modal('show');
-    $('#SelectFullName').hide();
     $('#add').hide();
     $('#edit').show();
 }
@@ -110,9 +109,11 @@ async function getDataImg(FullName) {
 async function addDataBGD() {
     var data = {
         ID: $('#ID').val(),
-        FullName: $('#FullName').val(),
+        FullName: $('#Name').val(),
         Position: $('#Position').val(),
-        Details: $('#DetailsBGD').val(),
+        PositionEN: $('#PositionEN').val(),
+        Details: $('#Details').val(),
+        DetailsEN: $('#DetailsEN').val(),
     };
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
@@ -307,7 +308,7 @@ async function updateImg3() {
 
 function addDataImg(base64) {
     let data = {
-        FullName: $('#FullName').val(),
+        FullName: $('#Name').val(),
         ImagePortfolio: base64
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
@@ -325,6 +326,7 @@ function addDataImg(base64) {
 }
 function AlertAdd(file) {
     var file = document.querySelector('#getFile')['files'];
+    console.log(file.length)
     if (file.length < 3) {
         for (let i = 0; i < file.length; i++) {
             (function (file) {
@@ -360,6 +362,7 @@ function clearTextBox() {
     $('#edit').hide();
 }
 function clearTextBox1() {
+    $('#ModalChoose').modal('hide');
     $('#ModalAddPortfolio').modal('show');
     $('#add').show();
     $('#edit').hide();

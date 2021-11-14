@@ -407,28 +407,6 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="modal fade" id="ModalChoose" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Chọn chức năng thêm</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="forms-sample">
-                            <div class="d-flex justify-content-center">
-                              <button type="button" onclick="clearTextBox1();" class="btn btn-success btn-lg mx-1">Thêm
-                                Ban Giám Đốc</button>
-                              <button type="button" class="btn btn-success btn-lg mx-1" data-dismiss="modal">Thêm Thành
-                                Viên</button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div class="modal fade bd-example-modal-lg" id="ModalAddPortfolio" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
@@ -444,7 +422,7 @@
                           <form class="forms-sample">
                             <div class="form-group" hidden>
                               <label for="ID">ID</label>
-                              <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
+                              <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
                             </div>
                             <div class="form-group">
                               <label for="Name">Họ và tên</label>
@@ -466,7 +444,7 @@
                             </div>
                             <div class="form-group">
                               <label for="Avatar">Thêm ảnh</label>
-                              <input type="file" name="Avatar" id="avatar">
+                              <input type="file" id="getFile" multiple>
                               <img src="" id="img1" style="width: 300px;">
                             </div>
                             <div class="row">
@@ -486,10 +464,32 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" id="edit1" onclick="updateImg();"
+                          <button type="button" id="edit1" onclick="addDataBGD();"
                             class="btn btn-success">Update</button>
                           <button type="button" class="btn btn-light" data-dismiss="modal"
                             onclick="Close();">Hủy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="ModalChoose" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel-2">Chọn chức năng thêm</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="forms-sample">
+                            <div class="d-flex justify-content-center">
+                              <button type="button" onclick="clearTextBox1();" class="btn btn-success btn-lg mx-1">Thêm
+                                Ban Giám Đốc</button>
+                              <button type="button" class="btn btn-success btn-lg mx-1" data-dismiss="modal">Thêm Thành
+                                Viên</button>
+                          </form>
                         </div>
                       </div>
                     </div>
