@@ -387,8 +387,13 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Quản lý Ban giám đốc</h4>
+<<<<<<< HEAD
               <a href="../ToChuc/Thembanthanhvien.html"> <button type="button" class="btn btn-primary">Thêm thành
                   viên</button><br /><br /></a>
+=======
+              <button type="button" onclick="clearTextBox()" class="btn btn-primary">Thêm thành
+                viên</button><br /><br />
+>>>>>>> 14f9f0797b15c9b4ef8a25cd65d263ed0abf1a1f
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
@@ -407,154 +412,90 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                  <div class="modal fade" id="ModalChoose" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                          <h5 class="modal-title" id="exampleModalLabel-2">Chọn chức năng thêm</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
                           <form class="forms-sample">
-                            <div class="form-group" hidden>
-                              <label for="IDUser">ID</label>
-                              <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
-                            </div>
-                            <div class="form-group">
-                              <label for="FullName">Họ và tên</label>
-                              <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
-                            </div>
-                            <div class="form-group">
-                              <label for="SelectFullName">Chọn hình ảnh</label>
-                              <select class="form-select" id="SelectFullName">
-                              </select>
-                            </div>
-                            <div class="form-group">
-                              <label for="Position">Vị trí</label>
-                              <input type="text" class="form-control" id="Position" placeholder="Position">
-                            </div>
-                            <div class="form-group">
-                              <label for="Details">Thông tin</label>
-                              <textarea style="height:300px" type="text" class="form-control" id="Details"
-                                placeholder="Details"></textarea>
-                            </div>
+                            <div class="d-flex justify-content-center">
+                              <button type="button" onclick="clearTextBox1();" class="btn btn-success btn-lg mx-1">Thêm
+                                Ban Giám Đốc</button>
+                              <button type="button" class="btn btn-success btn-lg mx-1" data-dismiss="modal">Thêm Thành
+                                Viên</button>
                           </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
-                          <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Thêm ảnh đại diện</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="forms-sample">
-                            <div class="form-group">
-                              <label for="FullNameImg">Họ và tên</label>
-                              <input type="text" class="form-control" id="FullNameImg" placeholder="Họ và tên">
-                            </div>
-                            <div class="form-group">
-                              <label for="Avatar">Thêm<h5><b>3 ẢNH</b></h5></label>
-                              <input type="file" id="getFile" multiple>
-                              <img src="" id="imgadd" style="width: 300px;">
-                            </div>
-                            <div class="form-group">
-                              <input type="file" id="getFile" hiden>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" id="edit1" onclick="AlertAdd();" class="btn btn-success">Thêm</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Chỉnh sửa ảnh</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                            onclick="Close();">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="forms-sample">
-                            <div class="form-group" hidden>
-                              <label for="ID">ID</label>
-                              <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
-                            </div>
-                            <div class="form-group">
-                              <label for="IDImg1">Họ và tên</label>
-                              <input type="text" class="form-control" id="IDImg1" placeholder="IDImg1" disabled>
-                            </div>
-                            <div class="form-group">
-                              <label for="Avatar">Thêm ảnh</label>
-                              <input type="file" name="Avatar" id="avatar">
-                              <img src="" id="img1" style="width: 300px;">
-                            </div>
-                            <div class="form-group">
-                              <button type="button" id="edit" onclick="updateImg1();"
-                                class="btn btn-success">Sửa</button>
-                            </div>
-                            <div class="form-group" hidden>
-                              <label for="ID">ID</label>
-                              <input type="text" class="form-control" id="ID2" placeholder="ID" disabled>
-                            </div>
-                            <div class="form-group">
-                              <label for="IDImg1">Họ và tên</label>
-                              <input type="text" class="form-control" id="IDImg2" placeholder="IDImg1" disabled>
-                            </div>
-                            <div class="form-group">
-                              <label for="Avatar">Thêm ảnh</label>
-                              <input type="file" name="Avatar" id="avatar1">
-                              <img src="" id="img2" style="width: 300px;">
-                            </div>
-                            <div class="form-group">
-                              <button type="button" id="edit" onclick="updateImg2();"
-                                class="btn btn-success">Sửa</button>
-                            </div>
-                            <div class="form-group" hidden>
-                              <label for="ID">ID</label>
-                              <input type="text" class="form-control" id="ID3" placeholder="ID" disabled>
-                            </div>
-                            <div class="form-group">
-                              <label for="IDImg1">Họ và tên</label>
-                              <input type="text" class="form-control" id="IDImg3" placeholder="IDImg1" disabled>
-                            </div>
-                            <div class="form-group">
-                              <label for="Avatar">Thêm ảnh</label>
-                              <input type="file" name="Avatar" id="avatar2">
-                              <img src="" id="img3" style="width: 300px;">
-                            </div>
-                            <div class="form-group">
-                              <button type="button" id="edit" onclick="updateImg3();"
-                                class="btn btn-success">Sửa</button>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" id="edit1" onclick="updateImg();"
-                            class="btn btn-success">Update</button>
-                          <button type="button" class="btn btn-light" data-dismiss="modal"
-                            onclick="Close();">Hủy</button>
+
+                    <div class="modal fade bd-example-modal-lg" id="ModalAddPortfolio" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel-2">Thêm Ban Giám Đốc</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                              onclick="Close();">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form class="forms-sample">
+                              <div class="form-group" hidden>
+                                <label for="ID">ID</label>
+                                <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
+                              </div>
+                              <div class="form-group">
+                                <label for="Name">Họ và tên</label>
+                                <input type="text" class="form-control" id="Name" placeholder="Name">
+                              </div>
+                              <div class="row">
+                                <div class="col-md">
+                                  <div class="form-group">
+                                    <label for="Position">Chức vụ</label>
+                                    <input type="text" class="form-control" id="Position" placeholder="Position">
+                                  </div>
+                                </div>
+                                <div class="col-md">
+                                  <div class="form-group">
+                                    <label for="Position">Position (Bản tiếng anh)</label>
+                                    <input type="text" class="form-control" id="Position" placeholder="Position">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="Avatar">Thêm ảnh</label>
+                                <input type="file" name="Avatar" id="avatar">
+                                <img src="" id="img1" style="width: 300px;">
+                              </div>
+                              <div class="row">
+                                <div class="col-md">
+                                  <div class="form-group">
+                                    <label for="Details">Thông tin</label>
+                                    <input type="text" class="form-control" id="Details" placeholder="Details">
+                                  </div>
+                                </div>
+                                <div class="col-md">
+                                  <div class="form-group">
+                                    <label for="Details">Details (Bản tiếng anh)</label>
+                                    <input type="text" class="form-control" id="Details" placeholder="Details">
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" id="edit1" onclick="updateImg();"
+                              class="btn btn-success">Update</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal"
+                              onclick="Close();">Hủy</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -563,88 +504,79 @@
               </div>
             </div>
           </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">© 2020 SCSE. All rights reserved.
+                Serviced by SCSE</span>
+            </div>
+          </footer>
+          <!-- partial -->
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">© 2020 SCSE. All rights reserved.
-              Serviced by SCSE</span>
-          </div>
-        </footer>
-        <!-- partial -->
+        <!-- main-panel ends -->
       </div>
-      <!-- main-panel ends -->
+      <!-- page-body-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="../../../vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="../../../js/off-canvas.js"></script>
-  <script src="../../../js/hoverable-collapse.js"></script>
-  <script src="../../../js/template.js"></script>
-  <script src="../../../js/settings.js"></script>
-  <script src="../../../js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="../../DAO/GetThongTinUser.js"></script>
-  <script src="../../DAO/Login_Check.js"></script>
-  <script src="../../DAO/CrudPhanQuyen.js"></script>
-  <script src="../../DAO/CrudBanGiamDoc.js"></script>
-  <script src="../../DAO/Notification.js"></script>
-  <!-- End custom js for this page-->
-  <script>
-    const fileInput = document.querySelector('input[id="avatar"]');
-    // listen for the change event so we can capture the file
-    fileInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        base64 = reader.result;
-        $('#img1').val(base64);
-        document.getElementById('img1').src = base64;
-      };
-      reader.readAsDataURL(file);
-    });
-    const fileInput1 = document.querySelector('input[id="avatar1"]');
-    fileInput1.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        base64 = reader.result;
-        $('#img2').val(base64);
-        document.getElementById('img2').src = base64;
-      };
-      reader.readAsDataURL(file);
-    });
-    const fileInput2 = document.querySelector('input[id="avatar2"]');
-    fileInput2.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        base64 = reader.result;
-        $('#img3').val(base64);
-        document.getElementById('img3').src = base64;
-      };
-      reader.readAsDataURL(file);
-    });
-
-    $(document).ready(function () {
-      window.onclick = function (event) {
-        if (event.target.id == "exampleModal-2") {
-          $("#exampleModal-2").modal('hide');
-        }
-      }
-    });
-  </script>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../../vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <script src="../../../vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="../../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../../js/off-canvas.js"></script>
+    <script src="../../../js/hoverable-collapse.js"></script>
+    <script src="../../../js/template.js"></script>
+    <script src="../../../js/settings.js"></script>
+    <script src="../../../js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../DAO/GetThongTinUser.js"></script>
+    <script src="../../DAO/Login_Check.js"></script>
+    <script src="../../DAO/CrudPhanQuyen.js"></script>
+    <script src="../../DAO/CrudBanGiamDoc.js"></script>
+    <script src="../../DAO/Notification.js"></script>
+    <!-- End custom js for this page-->
+    <script>
+      const fileInput = document.querySelector('input[id="avatar"]');
+      // listen for the change event so we can capture the file
+      fileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          base64 = reader.result;
+          $('#img1').val(base64);
+          document.getElementById('img1').src = base64;
+        };
+        reader.readAsDataURL(file);
+      });
+      const fileInput1 = document.querySelector('input[id="avatar1"]');
+      fileInput1.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          base64 = reader.result;
+          $('#img2').val(base64);
+          document.getElementById('img2').src = base64;
+        };
+        reader.readAsDataURL(file);
+      });
+      const fileInput2 = document.querySelector('input[id="avatar2"]');
+      fileInput2.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          base64 = reader.result;
+          $('#img3').val(base64);
+          document.getElementById('img3').src = base64;
+        };
+        reader.readAsDataURL(file);
+      });
+    </script>
 </body>
 
 </html>

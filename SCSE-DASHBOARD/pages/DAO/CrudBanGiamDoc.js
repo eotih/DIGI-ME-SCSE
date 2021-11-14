@@ -358,7 +358,12 @@ function clearTextBox() {
     $('#IDImg').val("");
     $('#Position').val("");
     $('#Details').val("");
-    $('#exampleModal-2').modal('show');
+    $('#ModalChoose').modal('show');
+    $('#add').show();
+    $('#edit').hide();
+}
+function clearTextBox1() {
+    $('#ModalAddPortfolio').modal('show');
     $('#add').show();
     $('#edit').hide();
 }
