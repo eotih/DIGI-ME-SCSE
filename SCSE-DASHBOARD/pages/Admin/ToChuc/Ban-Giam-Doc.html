@@ -446,6 +446,8 @@
                               <label for="Avatar">Thêm ảnh</label>
                               <input type="file" id="getFile" multiple>
                               <img src="" id="img1" style="width: 300px;">
+                              <img src="" id="img2" style="width: 300px;">
+                              <img src="" id="img3" style="width: 300px;">
                             </div>
                             <div class="row">
                               <div class="col-md">
@@ -536,7 +538,7 @@
     <script src="../../DAO/Notification.js"></script>
     <!-- End custom js for this page-->
     <script>
-      const fileInput = document.querySelector('input[id="avatar"]');
+      const fileInput = document.querySelector('input[id="getFile"]');
       // listen for the change event so we can capture the file
       fileInput.addEventListener("change", (e) => {
         const file = e.target.files[0];
@@ -548,9 +550,9 @@
         };
         reader.readAsDataURL(file);
       });
-      const fileInput1 = document.querySelector('input[id="avatar1"]');
+      const fileInput1 = document.querySelector('input[id="getFile"]');
       fileInput1.addEventListener("change", (e) => {
-        const file = e.target.files[0];
+        const file = e.target.files[1];
         const reader = new FileReader();
         reader.onloadend = () => {
           base64 = reader.result;
@@ -559,9 +561,9 @@
         };
         reader.readAsDataURL(file);
       });
-      const fileInput2 = document.querySelector('input[id="avatar2"]');
+      const fileInput2 = document.querySelector('input[id="getFile"]');
       fileInput2.addEventListener("change", (e) => {
-        const file = e.target.files[0];
+        const file = e.target.files[2];
         const reader = new FileReader();
         reader.onloadend = () => {
           base64 = reader.result;
