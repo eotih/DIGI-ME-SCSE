@@ -251,7 +251,8 @@
                     <div class="modal-dialog modal-lg" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel-2">Thêm Ban Giám Đốc</h5>
+                          <h5 class="modal-title" id="labelHeader">Thêm Ban Giám Đốc</h5>
+                          <h5 class="modal-title" id="labelHeaderEdit">Sửa Ban Giám Đốc</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                             onclick="Close();">
                             <span aria-hidden="true">&times;</span>
@@ -281,12 +282,12 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" id="fileimg">
                               <label for="Avatar">Thêm ảnh</label>
                               <input type="file" id="getFile" multiple>
-                              <img src="" id="img1" style="width: 300px;">
-                              <img src="" id="img2" style="width: 300px;">
-                              <img src="" id="img3" style="width: 300px;">
+                              <img src="" id="img1" style="width: 100px;">
+                              <img src="" id="img2" style="width: 100px;">
+                              <img src="" id="img3" style="width: 100px;">
                             </div>
                             <div class="row">
                               <div class="col-md">
@@ -305,7 +306,83 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" id="edit1" onclick="addDataBGD();"
+                          <button type="button" id="add1" onclick="addDataBGD();" class="btn btn-success">Add</button>
+                          <button type="button" id="edit1" onclick="editDataBGD();"
+                            class="btn btn-success">Update</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal"
+                            onclick="Close();">Hủy</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="ModalEditImg" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel-2">Chỉnh sửa ảnh</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            onclick="Close();">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="forms-sample">
+                            <div class="form-group" hidden>
+                              <label for="ID">ID</label>
+                              <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="IDImg1">Họ và tên</label>
+                              <input type="text" class="form-control" id="IDImg1" placeholder="IDImg1" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="Avatar">Thêm ảnh</label>
+                              <input type="file" name="Avatar" id="avatar">
+                              <img src="" id="imgEdit1" style="width: 300px;">
+                            </div>
+                            <div class="form-group">
+                              <button type="button" id="edit" onclick="updateImg1();"
+                                class="btn btn-success">Sửa</button>
+                            </div>
+                            <div class="form-group" hidden>
+                              <label for="ID">ID</label>
+                              <input type="text" class="form-control" id="ID2" placeholder="ID" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="IDImg1">Họ và tên</label>
+                              <input type="text" class="form-control" id="IDImg2" placeholder="IDImg1" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="Avatar">Thêm ảnh</label>
+                              <input type="file" name="Avatar" id="avatar1">
+                              <img src="" id="imgEdit2" style="width: 300px;">
+                            </div>
+                            <div class="form-group">
+                              <button type="button" id="edit" onclick="updateImg2();"
+                                class="btn btn-success">Sửa</button>
+                            </div>
+                            <div class="form-group" hidden>
+                              <label for="ID">ID</label>
+                              <input type="text" class="form-control" id="ID3" placeholder="ID" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="IDImg1">Họ và tên</label>
+                              <input type="text" class="form-control" id="IDImg3" placeholder="IDImg1" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label for="Avatar">Thêm ảnh</label>
+                              <input type="file" name="Avatar" id="avatar2">
+                              <img src="" id="imgEdit3" style="width: 300px;">
+                            </div>
+                            <div class="form-group">
+                              <button type="button" id="edit" onclick="updateImg3();"
+                                class="btn btn-success">Sửa</button>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="edit1" onclick="updateImg();"
                             class="btn btn-success">Update</button>
                           <button type="button" class="btn btn-light" data-dismiss="modal"
                             onclick="Close();">Hủy</button>
@@ -408,6 +485,39 @@
           base64 = reader.result;
           $('#img3').val(base64);
           document.getElementById('img3').src = base64;
+        };
+        reader.readAsDataURL(file);
+      });
+      const fileInputEdit = document.querySelector('input[id="avatar"]');
+      fileInputEdit.addEventListener("change", (e) => {
+        const file = e.target.files[1];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          base64 = reader.result;
+          $('#imgEdit1').val(base64);
+          document.getElementById('imgEdit1').src = base64;
+        };
+        reader.readAsDataURL(file);
+      });
+      const fileInputEdit1 = document.querySelector('input[id="avatar1"]');
+      fileInputEdit1.addEventListener("change", (e) => {
+        const file = e.target.files[1];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          base64 = reader.result;
+          $('#imgEdit2').val(base64);
+          document.getElementById('imgEdit2').src = base64;
+        };
+        reader.readAsDataURL(file);
+      });
+      const fileInputEdit2 = document.querySelector('input[id="avatar2"]');
+      fileInputEdit2.addEventListener("change", (e) => {
+        const file = e.target.files[1];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          base64 = reader.result;
+          $('#imgEdit3').val(base64);
+          document.getElementById('imgEdit3').src = base64;
         };
         reader.readAsDataURL(file);
       });

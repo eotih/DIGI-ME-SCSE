@@ -65,17 +65,20 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            let { ID, FullName, Position, Details } = response;
+            let { ID, FullName, Position,PositionEN, Details,DetailsEN } = response;
             $('#ID1').val(ID);
             $('#Name').val(FullName);
             $('#Position').val(Position);
-            $('#PositionEN').val(Position);
+            $('#PositionEN').val(PositionEN);
             $('#Details').val(Details);
-            $('#DetailsEN').val(Details);
+            $('#DetailsEN').val(DetailsEN);
         })
     $('#ModalAddPortfolio').modal('show');
-    $('#add').hide();
-    $('#edit').show();
+    $('#labelHeader').hide();
+    $('#labelHeaderEdit').show();
+    $('#fileimg').hide();
+    $('#add1').hide();
+    $('#edit1').show();
 }
 async function getDataImg(FullName) {
     fetch(WEB_API + "Interface/GetByFullNameImgPortfolios?FullName=" + FullName)
@@ -86,27 +89,28 @@ async function getDataImg(FullName) {
             var img = [];
             var result = response.filter(object => {
                 img.push(object.ID);
-                img.push(object.IDImg);
+                img.push(object.FullName);
                 img.push(object.ImagePortfolio);
             })
-            let { IDImg, ImagePortfolio } = response;
+            console.log(img)
             $('#ID1').val(img[0]);
             $('#IDImg1').val(FullName);
-            document.getElementById("img1").src = img[2];
+            document.getElementById("imgEdit1").src = img[2];
             $('#ID2').val(img[3]);
             $('#IDImg2').val(FullName);
-            document.getElementById("img2").src = img[5];
+            document.getElementById("imgEdit2").src = img[5];
             $('#ID3').val(img[6]);
             $('#IDImg3').val(FullName);
-            document.getElementById("img3").src = img[8];
+            document.getElementById("imgEdit3").src = img[8];
         })
-    $('#exampleModal').modal('show');
+    $('#ModalEditImg').modal('show');
     $('#add1').hide();
     $('#edit1').show();
 }
 
 // Thêm Ban Giám Đốc
 async function addDataBGD() {
+    
     var data = {
         ID: $('#ID').val(),
         FullName: $('#Name').val(),
@@ -371,8 +375,11 @@ function clearTextBox() {
 function clearTextBox1() {
     $('#ModalChoose').modal('hide');
     $('#ModalAddPortfolio').modal('show');
-    $('#add').show();
-    $('#edit').hide();
+    $('#labelHeader').show();
+    $('#labelHeaderEdit').hide();
+    $('#fileimg').show();
+    $('#add1').show();
+    $('#edit1').hide();
 }
 function clearTextBox2() {
     $('#IDImgadd').val("");
