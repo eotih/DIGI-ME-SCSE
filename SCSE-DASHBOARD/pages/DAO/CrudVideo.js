@@ -5,27 +5,27 @@ function convertDate(input) {
     return result.toLocaleDateString()
 }
 function convertCategory(category) {
-    if (category === "1") {
+    if (category === 1) {
         return 'Dự án'
     }
-    else if (category === "2") {
+    else if (category === 2) {
         return 'Hợp tác nghiên cứu'
     }
-    else if (category === "3") {
+    else if (category === 3) {
         return 'Hoạt động thiện nguyện'
     }
 }
 function convertField(field) {
-    if (field === "1") {
+    if (field === 1) {
         return 'Giới và bình đẳng giới'
     }
-    else if (field === "2") {
+    else if (field === 2) {
         return 'Biến đổi khí hậu môi trường'
     }
-    else if (field === "3") {
+    else if (field === 3) {
         return 'Thực tập sinh'
     }
-    else if (field === "4") {
+    else if (field === 4) {
         return 'Nghiên cứu và đào tạo'
     }
 }
@@ -36,7 +36,7 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                let { ID, Title, TitleEN, Description, DescriptionEN, IDCat, IDField, Image, LinkYTB } = response;
+                const { ID, Title, TitleEN, Description, DescriptionEN, IDCat, IDField, Image, LinkYTB } = response;
                 // Sẽ return ra hàm tbody
                 return `<tr>
                     <td>${ID}</td>
