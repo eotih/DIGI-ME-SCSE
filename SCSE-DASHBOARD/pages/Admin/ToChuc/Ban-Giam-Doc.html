@@ -405,8 +405,10 @@
                             <div class="d-flex justify-content-center">
                               <button type="button" onclick="clearTextBox1();" class="btn btn-success btn-lg mx-1">Thêm
                                 Ban Giám Đốc</button>
-                              <button type="button" class="btn btn-success btn-lg mx-1" data-dismiss="modal">Thêm Thành
-                                Viên</button>
+                              <a href="../ToChuc/Thembanthanhvien.html"><button type="button"
+                                  class="btn btn-success btn-lg mx-1" data-dismiss="modal">Thêm Thành
+                                  Viên</button></a>
+                            </div>
                           </form>
                         </div>
                       </div>
@@ -490,7 +492,7 @@
       });
       const fileInputEdit = document.querySelector('input[id="avatar"]');
       fileInputEdit.addEventListener("change", (e) => {
-        const file = e.target.files[1];
+        const file = e.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
           base64 = reader.result;
@@ -501,7 +503,7 @@
       });
       const fileInputEdit1 = document.querySelector('input[id="avatar1"]');
       fileInputEdit1.addEventListener("change", (e) => {
-        const file = e.target.files[1];
+        const file = e.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
           base64 = reader.result;
@@ -512,7 +514,7 @@
       });
       const fileInputEdit2 = document.querySelector('input[id="avatar2"]');
       fileInputEdit2.addEventListener("change", (e) => {
-        const file = e.target.files[1];
+        const file = e.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
           base64 = reader.result;
