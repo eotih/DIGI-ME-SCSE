@@ -224,14 +224,25 @@
                                                 <div class="form-group">
                                                     <label for="FullName">Tên Thành Viên</label>
                                                     <input type="text" class="form-control" id="FullName"
-                                                        placeholder="Nhập tiêu đề bài viết">
+                                                        placeholder="Nhập tên thành viên">
                                                     <input type="text" class="form-control" id="ID" hidden="true">
 
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="Title">Mô Tả</label>
-                                                    <textarea type="text" class="form-control"
-                                                        id="summernote"></textarea>
+                                                <div class="row">
+                                                  <div class="col-md">
+                                                    <div class="form-group">
+                                                        <label for="Title">Mô Tả</label>
+                                                        <textarea type="text" class="form-control"
+                                                            id="summernote"></textarea>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md">
+                                                    <div class="form-group">
+                                                        <label for="Title">Details</label>
+                                                        <textarea type="text" class="form-control"
+                                                            id="summernoteEN"></textarea>
+                                                    </div>
+                                                  </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -240,7 +251,7 @@
                                                 <div class="form-group">
                                                     <label for="Position">Chức Vụ</label>
                                                     <input type="text" class="form-control" id="Position"
-                                                        placeholder="Nhập tiêu đề bài viết">
+                                                        placeholder="Nhập chức vụ">
                                                 </div>
 
                                                 
@@ -293,6 +304,19 @@
     <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
     <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
     <script type="text/javascript" src="../../DAO/Notification.js"></script>
+    <script>
+      $('#summernote').summernote({
+        tabsize: 2,
+        height: 500,
+        lang: 'vi-VN'
+      });
+      $('#summernoteEN').summernote({
+        tabsize: 2,
+        height: 500,
+        lang: 'en-EN'
+      });
+  
+    </script>
 </body>
 
 </html>
