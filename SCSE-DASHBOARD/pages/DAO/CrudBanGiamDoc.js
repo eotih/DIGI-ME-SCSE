@@ -65,7 +65,8 @@ async function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            let { ID, FullName, Position,PositionEN, Details,DetailsEN } = response;
+            let { ID, FullName, Position, PositionEN, Details, DetailsEN } = response;
+            console.log(FullName)
             $('#ID1').val(ID);
             $('#Name').val(FullName);
             $('#Position').val(Position);
@@ -110,7 +111,6 @@ async function getDataImg(FullName) {
 
 // Thêm Ban Giám Đốc
 async function addDataBGD() {
-    
     var data = {
         ID: $('#ID').val(),
         FullName: $('#Name').val(),
@@ -144,9 +144,11 @@ async function addDataBGD() {
 async function addData() {
     var data = {
         ID: $('#ID').val(),
-        FullName: $('#FullName').val(),
+        FullName: $('#Name').val(),
         Position: $('#Position').val(),
         Details: $('#summernote').summernote('code'),
+        PositionEN: $('#PositionEN').val(),
+        DetailsEN: $('#ENGPOST').summernote('code'),
     };
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
@@ -160,41 +162,13 @@ async function addData() {
         .then(function (data) {
             if (data.Status === 'Success') {
                 alert('Thêm Thành Công')
-                window.location.reload();
+                // window.location.reload();
             }
             else {
                 alert('Data not insert')
             }
         })
     AlertAdd();
-}
-
-//Thêm thành viên step2 
-async function addPortfolioEN() {
-    var data = {
-        ID: $('#ID').val(),
-        FullName: $('#FullName').val(),
-        Position: $('#PositionEN').val(),
-        Details: $('#DetailsEN').val(),
-    };
-    fetch(WEB_API + "Interface/AddOrEditPortfolios", {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
-        })
 }
 
 async function updateData() {
@@ -237,14 +211,14 @@ async function updateData() {
 }
 
 async function updateImg1() {
-    var data = {
+    var dataimg = {
         ID: $('#ID1').val(),
         IDImg: $('#IDImg1').val(),
-        ImagePortfolio: document.getElementById('img1').src,
+        ImagePortfolio: document.getElementById('imgEdit1').src,
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: JSON.stringify(dataimg),
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
@@ -253,6 +227,7 @@ async function updateImg1() {
     })
         .then(function (data) {
             if (data.Status === 'Updated') {
+                console.log(dataimg)
                 alert('Sửa Thành Công')
             }
             else {
@@ -265,7 +240,7 @@ async function updateImg2() {
     var data = {
         ID: $('#ID2').val(),
         IDImg: $('#IDImg2').val(),
-        ImagePortfolio: document.getElementById('img2').src,
+        ImagePortfolio: document.getElementById('imgEdit2').src,
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
@@ -289,7 +264,7 @@ async function updateImg3() {
     var data = {
         ID: $('#ID3').val(),
         IDImg: $('#IDImg3').val(),
-        ImagePortfolio: document.getElementById('img3').src,
+        ImagePortfolio: document.getElementById('imgEdit3').src,
     };
     fetch(WEB_API + "Interface/EditImagePortfolios", {
         method: 'POST',
@@ -311,6 +286,7 @@ async function updateImg3() {
 }
 
 function addDataImg(base64) {
+    console.log(base64)
     let data = {
         FullName: $('#Name').val(),
         ImagePortfolio: base64
@@ -329,6 +305,7 @@ function addDataImg(base64) {
         })
 }
 function AlertAdd(file) {
+    console.log("Có vào đây")
     var file = document.querySelector('#getFile')['files'];
     console.log(file.length)
     if (file.length < 3) {

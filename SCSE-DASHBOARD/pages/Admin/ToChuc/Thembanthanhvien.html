@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="../../../vendors/typicons/typicons.css">
   <link rel="stylesheet" href="../../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="styleAdd.css">
+
   <!-- endinject -->
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="../../../vendors/jquery-bar-rating/css-stars.css">
@@ -30,85 +32,6 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="../../../images/LogoSCSE_Favicon.png" />
 </head>
-<style>
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    background-color: #f1f1f1;
-  }
-
-  #regForm {
-    background-color: #ffffff;
-    margin: 100px auto;
-    font-family: Raleway;
-    padding: 40px;
-    width: 70%;
-    min-width: 300px;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
-  }
-
-  /* Mark input boxes that gets an error on validation: */
-  input.invalid {
-    background-color: #ffdddd;
-  }
-
-  /* Hide all steps by default: */
-  .tab {
-    display: none;
-  }
-
-  button {
-    background-color: #04AA6D;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
-    cursor: pointer;
-  }
-
-  button:hover {
-    opacity: 0.8;
-  }
-
-  #prevBtn {
-    background-color: #bbbbbb;
-  }
-
-  /* Make circles that indicate the steps of the form: */
-  .step {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbbbbb;
-    border: none;
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.5;
-  }
-
-  .step.active {
-    opacity: 1;
-  }
-
-  /* Mark the steps that are finished and valid: */
-  .step.finish {
-    background-color: #04AA6D;
-  }
-</style>
 
 <body>
   <div class="container-scroller">
@@ -318,7 +241,6 @@
                     <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="home-tab">
                       <div class="row">
                         <div class="col-lg-8">
-<<<<<<< HEAD
                           <form class="forms-sample" id="formStep">
                             <div class="form-group" hidden>
                               <label for="ID">ID</label>
@@ -327,7 +249,7 @@
                             <div class="tab">
                               <div class="form-group">
                                 <label for="FullName">Họ và tên</label>
-                                <input type="text" class="form-control text" id="FullName" placeholder="Họ Tên">
+                                <input type="text" class="form-control text" id="Name" placeholder="Họ Tên">
                               </div>
                               <div class="form-group">
                                 <label for="Position">Vị trí</label>
@@ -340,55 +262,17 @@
                             </div>
                             <div class="tab">
                               <div class="form-group">
-                                <label for="Position">Vị trí</label>
-                                <input type="text" class="form-control" id="Position" placeholder="Position">
+                                <label for="Position">Vị trí EN</label>
+                                <input type="text" class="form-control" id="PositionEN" placeholder="Position">
                               </div>
                               <div class="form-group">
-                                <label for="noidung">Thông tin</label>
+                                <label for="noidung">Thông tin EN</label>
                                 <textarea type="text" class="form-control" id="ENGPOST"></textarea>
                               </div>
                             </div>
                             <div style="text-align:center;margin-top:40px;">
                               <span class="step"></span>
                               <span class="step"></span>
-=======
-                          <form class="forms-sample">
-                            <div class="form-group" hidden>
-                              <label for="ID">ID</label>
-                              <input type="text" class="form-control" id="ID1" placeholder="ID" disable>
-                            </div>
-                            <div class="form-group">
-                              <label for="FullName">Họ và tên</label>
-                              <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
-                            </div>
-                            <div class="row">
-                              <div class="col-md">
-                                <div class="form-group">
-                                  <label for="Position">Chức vụ</label>
-                                  <input type="text" class="form-control" id="Position" placeholder="Position">
-                                </div>
-                              </div>
-                              <div class="col-md">
-                                <div class="form-group">
-                                  <label for="Position">Position (Bản tiếng anh)</label>
-                                  <input type="text" class="form-control" id="PositionEN" placeholder="Position">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md">
-                                <div class="form-group">
-                                  <label for="noidung">Thông tin</label>
-                                  <textarea type="text" class="form-control" id="summernote"></textarea>
-                                </div>
-                              </div>
-                              <div class="col-md">
-                                <div class="form-group">
-                                  <label for="noidungEN">Details (bản tiếng anh)</label>
-                                  <textarea type="text" class="form-control" id="summernoteEN"></textarea>
-                                </div>
-                              </div>
->>>>>>> a66ad0a1e9d10c3da3a6ddc948bb95498018227e
                             </div>
                           </form>
                         </div>
@@ -399,7 +283,6 @@
                               <input type="file" id="getFile" multiple>
                               <img src="" id="imgadd" style="width: 300px;">
                             </div>
-<<<<<<< HEAD
                             <!-- <div class="modal-footer">
                               <button type="button" id="edit" onclick="addData();" class="btn btn-success">Thêm thành
                                 viên</button>
@@ -407,13 +290,6 @@
                           </form>
                           <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                           <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-=======
-                            <div class="modal-footer">
-                              <button type="button" id="edit" onclick="addData();" class="btn btn-success">Thêm thành
-                                viên</button>
-                            </div>
-                          </form>
->>>>>>> a66ad0a1e9d10c3da3a6ddc948bb95498018227e
                         </div>
                       </div>
                     </div>
@@ -445,7 +321,6 @@
       height: 500,
       lang: 'vi-VN'
     });
-<<<<<<< HEAD
     $('#ENGPOST').summernote({
       tabsize: 2,
       height: 500,
@@ -524,15 +399,12 @@
       var x, y, i, valid = true;
       x = document.getElementsByClassName("tab");
       y = x[currentTab].getElementsByClassName("form-control text");
-      console.log(y)
       for (i = 0; i < y.length; i++) {
         if (y[i].value == "") {
-          console.log(y[i].value);
           y[i].className += " invalid";
           valid = false;
         }
       }
-      // If the valid status is true, mark the step as finished and valid:
       if (valid) {
         document.getElementsByClassName("step")[currentTab].className += " finish";
       }
@@ -546,51 +418,6 @@
       }
       x[n].className += " active";
     }
-=======
-    $('#summernoteEN').summernote({
-      tabsize: 2,
-      height: 500,
-      lang: 'en-EN'
-    });
-
-  </script>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="../../../vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="../../../js/off-canvas.js"></script>
-  <script src="../../../js/hoverable-collapse.js"></script>
-  <script src="../../../js/template.js"></script>
-  <script src="../../../js/settings.js"></script>
-  <script src="../../../js/todolist.js"></script>
-  <!-- endinject -->
-  <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
-  <script type="text/javascript" src="../../DAO/CrudPhanQuyen.js"></script>
-  <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
-  <script type="text/javascript" src="../../DAO/Notification.js"></script>
-  <script type="text/javascript" src="../../DAO/CrudBanGiamDoc.js"></script>
-  <!-- Custom js for this page-->
-  <script src="../../../js/profile-demo.js"></script>
-  <script>
-    const fileInput = document.querySelector('input[id="getFile"]');
-
-    // listen for the change event so we can capture the file
-    fileInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        base64 = reader.result;
-        $('#hinhanh').val(base64);
-      };
-      reader.readAsDataURL(file);
-    });
-
->>>>>>> a66ad0a1e9d10c3da3a6ddc948bb95498018227e
   </script>
 </body>
 

@@ -9,12 +9,13 @@ async function getDataEditMember() {
             return response.json();
         })
         .then(function (response) {
-            let { ID, FullName, Position, Details, DetailsEN} = response;
+            let { ID, FullName, Position, PositionEN, Details, DetailsEN } = response;
             $('#ID').val(ID),
-                $('#FullName').val(FullName),
+                $('#Name').val(FullName),
                 $('#Position').val(Position),
+                $('#PositionEN').val(PositionEN),
                 $('#summernote').summernote('code', Details)
-                $('#summernoteEN').summernote('code', DetailsEN)
+            $('#ENGPOST').summernote('code', DetailsEN)
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -24,9 +25,11 @@ async function getDataEditMember() {
 async function updateOtherMember() {
     var data = {
         ID: $('#ID').val(),
-        FullName: $('#FullName').val(),
+        FullName: $('#Name').val(),
         Position: $('#Position').val(),
         Details: $('#summernote').val(),
+        PositionEN: $('#PositionEN').val(),
+        DetailsEN: $('#ENGPOST').val(),
     };
     debugger;
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
