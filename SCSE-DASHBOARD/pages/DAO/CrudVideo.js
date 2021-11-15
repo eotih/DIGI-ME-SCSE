@@ -82,6 +82,7 @@ function getImage(input) {
 }
 
 function addData() {
+    //check validationForm
     let data = {
         IDCat: $('#IDCat').val(),
         Title: $('#Title').val(),
@@ -119,7 +120,7 @@ function getData(ID) {
         .then(function (response) {
             let { ID, Title, IDCat, TitleEN, DescriptionEN, Description, LinkYTB, Image } = response;
             $('#ID').val(ID),
-            $('#Title').val(Title);
+                $('#Title').val(Title);
             $('#Title').val(Title);
             $('#TitleEN').val(TitleEN);
             $('#Description').val(Description);
@@ -188,4 +189,53 @@ function clearTextBox() {
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();
+}
+function validateFormOnChange() {
+    $('#IDCat').click(function () {
+        if ($('#IDCat').val() === '') {
+            $('#IDCat').css('border-color', 'red');
+        }
+        else {
+            $('#IDCat').removeClass('border-color');
+        }
+    });
+    $('#Title').click(function () {
+        if ($('#Title').val() == '') {
+            $('#Title').css('border-color', 'red');
+        }
+        else {
+            $('#Title').removeAttr('border-color');
+        }
+    });
+    $('#TitleEN').click(function () {
+        if ($('#TitleEN').val() === '') {
+            $('#TitleEN').css('border-color', 'red');
+        }
+        else {
+            $('#TitleEN').removeClass('border-color');
+        }
+    });
+    $('#Description').click(function () {
+        if ($('#Description').val() === '') {
+            $('#Description').css('border-color', 'red');
+        }
+        else {
+            $('#Description').removeClass('border-color');
+        }
+    });
+    $('#DescriptionEN').click(function () {
+        if ($('#DescriptionEN').val() === '') {
+            $('#DescriptionEN').css('border-color', 'red');
+        }
+        else {
+            $('#DescriptionEN').removeClass('border-color');
+        }
+    });
+    $('#LinkYTB').click(function () {
+        if ($('#LinkYTB').val() == '') {
+            $('#LinkYTB').css('border-color', 'red');
+        } else {
+            $('#LinkYTB').removeClass('border-color');
+        }
+    });
 }

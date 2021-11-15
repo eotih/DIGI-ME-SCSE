@@ -284,29 +284,26 @@
                             </div>
                             <div class="form-group" id="fileimg">
                               <label for="Avatar">Thêm ảnh</label>
-                              <input type="file" id="getFile" multiple>
-                              <img src="" id="img1" style="width: 100px;">
-                              <img src="" id="img2" style="width: 100px;">
-                              <img src="" id="img3" style="width: 100px;">
+                              <input type="file" id="getFilePortfolio" multiple accept="image/jpeg, image/png">
                             </div>
                             <div class="row">
                               <div class="col-md">
                                 <div class="form-group">
                                   <label for="Details">Thông tin</label>
-                                  <input type="text" class="form-control" id="Details" placeholder="Details">
+                                  <textarea style="height: 100px" class="form-control" id="Details" placeholder="Details"></textarea>
                                 </div>
                               </div>
                               <div class="col-md">
                                 <div class="form-group">
                                   <label for="Details">Details (Bản tiếng anh)</label>
-                                  <input type="text" class="form-control" id="DetailsEN" placeholder="Details">
+                                  <textarea style="height: 100px" class="form-control" id="DetailsEN" placeholder="Details"></textarea>
                                 </div>
                               </div>
                             </div>
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" id="add1" onclick="addDataBGD();" class="btn btn-success">Add</button>
+                          <button type="button" id="add1" onclick="addPortfolio();" class="btn btn-success">Thêm</button>
                           <button type="button" id="edit1" onclick="editDataBGD();"
                             class="btn btn-success">Update</button>
                           <button type="button" class="btn btn-light" data-dismiss="modal"
@@ -403,7 +400,7 @@
                         <div class="modal-body">
                           <form class="forms-sample">
                             <div class="d-flex justify-content-center">
-                              <button type="button" onclick="clearTextBox1();" class="btn btn-success btn-lg mx-1">Thêm
+                              <button type="button" onclick="openModalAddPortfolio();" class="btn btn-success btn-lg mx-1">Thêm
                                 Ban Giám Đốc</button>
                               <a href="../ToChuc/Thembanthanhvien.html"><button type="button"
                                   class="btn btn-success btn-lg mx-1" data-dismiss="modal">Thêm Thành
@@ -456,40 +453,7 @@
     <script src="../../DAO/Notification.js"></script>
     <!-- End custom js for this page-->
     <script>
-      const fileInput = document.querySelector('input[id="getFile"]');
-      // listen for the change event so we can capture the file
-      fileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          base64 = reader.result;
-          $('#img1').val(base64);
-          document.getElementById('img1').src = base64;
-        };
-        reader.readAsDataURL(file);
-      });
-      const fileInput1 = document.querySelector('input[id="getFile"]');
-      fileInput1.addEventListener("change", (e) => {
-        const file = e.target.files[1];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          base64 = reader.result;
-          $('#img2').val(base64);
-          document.getElementById('img2').src = base64;
-        };
-        reader.readAsDataURL(file);
-      });
-      const fileInput2 = document.querySelector('input[id="getFile"]');
-      fileInput2.addEventListener("change", (e) => {
-        const file = e.target.files[2];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          base64 = reader.result;
-          $('#img3').val(base64);
-          document.getElementById('img3').src = base64;
-        };
-        reader.readAsDataURL(file);
-      });
+      
       const fileInputEdit = document.querySelector('input[id="avatar"]');
       fileInputEdit.addEventListener("change", (e) => {
         const file = e.target.files[0];
