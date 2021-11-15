@@ -318,6 +318,7 @@
                     <div class="tab-pane fade show active" id="VN" role="tabpanel" aria-labelledby="home-tab">
                       <div class="row">
                         <div class="col-lg-8">
+<<<<<<< HEAD
                           <form class="forms-sample" id="formStep">
                             <div class="form-group" hidden>
                               <label for="ID">ID</label>
@@ -350,6 +351,44 @@
                             <div style="text-align:center;margin-top:40px;">
                               <span class="step"></span>
                               <span class="step"></span>
+=======
+                          <form class="forms-sample">
+                            <div class="form-group" hidden>
+                              <label for="ID">ID</label>
+                              <input type="text" class="form-control" id="ID1" placeholder="ID" disable>
+                            </div>
+                            <div class="form-group">
+                              <label for="FullName">Họ và tên</label>
+                              <input type="text" class="form-control" id="FullName" placeholder="Họ Tên">
+                            </div>
+                            <div class="row">
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="Position">Chức vụ</label>
+                                  <input type="text" class="form-control" id="Position" placeholder="Position">
+                                </div>
+                              </div>
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="Position">Position (Bản tiếng anh)</label>
+                                  <input type="text" class="form-control" id="PositionEN" placeholder="Position">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="noidung">Thông tin</label>
+                                  <textarea type="text" class="form-control" id="summernote"></textarea>
+                                </div>
+                              </div>
+                              <div class="col-md">
+                                <div class="form-group">
+                                  <label for="noidungEN">Details (bản tiếng anh)</label>
+                                  <textarea type="text" class="form-control" id="summernoteEN"></textarea>
+                                </div>
+                              </div>
+>>>>>>> a66ad0a1e9d10c3da3a6ddc948bb95498018227e
                             </div>
                           </form>
                         </div>
@@ -360,6 +399,7 @@
                               <input type="file" id="getFile" multiple>
                               <img src="" id="imgadd" style="width: 300px;">
                             </div>
+<<<<<<< HEAD
                             <!-- <div class="modal-footer">
                               <button type="button" id="edit" onclick="addData();" class="btn btn-success">Thêm thành
                                 viên</button>
@@ -367,6 +407,13 @@
                           </form>
                           <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                           <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+=======
+                            <div class="modal-footer">
+                              <button type="button" id="edit" onclick="addData();" class="btn btn-success">Thêm thành
+                                viên</button>
+                            </div>
+                          </form>
+>>>>>>> a66ad0a1e9d10c3da3a6ddc948bb95498018227e
                         </div>
                       </div>
                     </div>
@@ -398,6 +445,7 @@
       height: 500,
       lang: 'vi-VN'
     });
+<<<<<<< HEAD
     $('#ENGPOST').summernote({
       tabsize: 2,
       height: 500,
@@ -498,6 +546,51 @@
       }
       x[n].className += " active";
     }
+=======
+    $('#summernoteEN').summernote({
+      tabsize: 2,
+      height: 500,
+      lang: 'en-EN'
+    });
+
+  </script>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="../../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="../../../vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="../../../js/off-canvas.js"></script>
+  <script src="../../../js/hoverable-collapse.js"></script>
+  <script src="../../../js/template.js"></script>
+  <script src="../../../js/settings.js"></script>
+  <script src="../../../js/todolist.js"></script>
+  <!-- endinject -->
+  <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
+  <script type="text/javascript" src="../../DAO/CrudPhanQuyen.js"></script>
+  <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
+  <script type="text/javascript" src="../../DAO/Notification.js"></script>
+  <script type="text/javascript" src="../../DAO/CrudBanGiamDoc.js"></script>
+  <!-- Custom js for this page-->
+  <script src="../../../js/profile-demo.js"></script>
+  <script>
+    const fileInput = document.querySelector('input[id="getFile"]');
+
+    // listen for the change event so we can capture the file
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        base64 = reader.result;
+        $('#hinhanh').val(base64);
+      };
+      reader.readAsDataURL(file);
+    });
+
+>>>>>>> a66ad0a1e9d10c3da3a6ddc948bb95498018227e
   </script>
 </body>
 

@@ -9,11 +9,12 @@ async function getDataEditMember() {
             return response.json();
         })
         .then(function (response) {
-            let { ID, FullName, Position, Details} = response;
+            let { ID, FullName, Position, Details, DetailsEN} = response;
             $('#ID').val(ID),
                 $('#FullName').val(FullName),
                 $('#Position').val(Position),
                 $('#summernote').summernote('code', Details)
+                $('#summernoteEN').summernote('code', DetailsEN)
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
