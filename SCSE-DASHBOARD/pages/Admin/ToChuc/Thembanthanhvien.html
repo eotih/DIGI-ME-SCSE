@@ -79,7 +79,6 @@
               </a>
               <div class="dropdown-divider"></div>
               <div id="tnoti"></div>
-
             </div>
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -280,8 +279,8 @@
                           <form class="forms-sample">
                             <div class="form-group">
                               <label for="Avatar">Thêm<h5><b>3 ẢNH</b></h5></label>
-                              <input type="file" id="getFile" multiple>
-                              <img src="" id="imgadd" style="width: 300px;">
+                              <input type="file" id="getFilePortfolio" multiple>
+                              <img src="" id="fileimg" style="width: 300px;">
                             </div>
                             <!-- <div class="modal-footer">
                               <button type="button" id="edit" onclick="addData();" class="btn btn-success">Thêm thành
@@ -351,18 +350,6 @@
   <!-- Custom js for this page-->
   <script src="../../../js/profile-demo.js"></script>
   <script>
-    const fileInput = document.querySelector('input[id="getFile"]');
-
-    // listen for the change event so we can capture the file
-    fileInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        base64 = reader.result;
-        $('#hinhanh').val(base64);
-      };
-      reader.readAsDataURL(file);
-    });
 
     var currentTab = 0;
     showTab(currentTab);
@@ -389,7 +376,7 @@
       x[currentTab].style.display = "none";
       currentTab = currentTab + n;
       if (currentTab >= x.length) {
-        addData();
+        addPortfolioMember();
         return false;
       }
       showTab(currentTab);

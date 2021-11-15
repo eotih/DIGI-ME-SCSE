@@ -16,7 +16,7 @@ async function loadData() {
                 <td><img src='${Image1}'/><img src='${Image2}'/><img src='${Image3}'/></td>
                 <td>${Position}</td>
                 <td>${Details.slice(0, 100)}</td>
-                <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio('${FullName}')" class="btn btn-outline-danger">Xoá</button></td>
+                <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</button> <button onclick="return getDataImg('${ID}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio('${FullName}')" class="btn btn-outline-danger">Xoá</button></td>
                 </tr>`;
             }
             else {
@@ -26,7 +26,7 @@ async function loadData() {
                 <td><img src='${Image1}'/><img src='${Image2}'/><img src='${Image3}'/></td>
                 <td>${Position}</td>
                 <td>${Details.slice(0, 300)}</td>
-                <td><a href="./EditBGD.html?Slug=${ID}" class="btn btn-outline-primary">Xem chi tiết</a> <button onclick="return getDataImg('${FullName}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio('${FullName}')" class="btn btn-outline-danger">Xoá</button></td>
+                <td><a href="./EditBGD.html?Slug=${ID}" class="btn btn-outline-primary">Xem chi tiết</a> <button onclick="return getDataImg('${ID}')" class="btn btn-outline-primary">Sửa hình ảnh</button> <button onclick="return deletePortfolio('${FullName}')" class="btn btn-outline-danger">Xoá</button></td>
                 </tr>`;
             }
         })
@@ -52,6 +52,53 @@ function deletePortfolio(FullName) {
             })
     }
 }
+
+async function getDataImg(id) {
+    fetch(WEB_API + "Interface/GetByIdPortfolios?id=" + id)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            console.log(response)
+            $('#ID1').val(response.ID);
+            document.getElementById("imgEdit1").src = response.Image1;
+            $('#ID2').val(response.ID);
+            document.getElementById("imgEdit2").src = response.Image2;
+            $('#ID3').val(response.ID);
+            document.getElementById("imgEdit3").src = response.Image3;
+        })
+    $('#ModalEditImg').modal('show');
+    $('#add1').hide();
+    $('#edit1').show();
+}
+
+async function updateImg(numb) {
+    var dataimg = {
+        ID: $('#ID1').val(),
+        Image1: document.getElementById('imgEdit1').src,
+        Image2: document.getElementById('imgEdit2').src,
+        Image3: document.getElementById('imgEdit3').src,
+    };
+    fetch(WEB_API + "Interface/EditImagePortfolios", {
+        method: 'POST',
+        body: JSON.stringify(dataimg),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Updated') {
+                alert('Sửa Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not update')
+            }
+        })
+}
+
 function clearTextBox() {
     $('#ID').val("");
     $('#Name').val("");
@@ -120,6 +167,37 @@ function addPortfolio() {
         PositionEN: $('#PositionEN').val(),
         Details: $('#Details').val(),
         DetailsEN: $('#DetailsEN').val(),
+        Image1: $('#Image0').val(),
+        Image2: $('#Image1').val(),
+        Image3: $('#Image2').val(),
+    };
+    fetch(WEB_API + "Interface/AddOrEditPortfolios", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+        },
+    }).then(function (response) {
+        return response.json()
+    })
+        .then(function (data) {
+            if (data.Status === 'Success') {
+                alert('Thêm Thành Công')
+                window.location.reload();
+            }
+            else {
+                alert('Data not insert')
+            }
+        })
+}
+// Thêm Thành Viên
+function addPortfolioMember() {
+    const data = {
+        FullName: $('#Name').val(),
+        Position: $('#Position').val(),
+        PositionEN: $('#PositionEN').val(),
+        Details: $('#summernote').summernote('code'),
+        DetailsEN: $('#ENGPOST').summernote('code'),
         Image1: $('#Image0').val(),
         Image2: $('#Image1').val(),
         Image3: $('#Image2').val(),
