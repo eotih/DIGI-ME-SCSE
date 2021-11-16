@@ -286,7 +286,8 @@
                               <div class="col-md">
                                 <div class="form-group">
                                   <label for="Position">Position (Bản tiếng anh)</label>
-                                  <input type="text" class="form-control" id="PositionEN" placeholder="Position" required>
+                                  <input type="text" class="form-control" id="PositionEN" placeholder="Position"
+                                    required>
                                   <div class="invalid-feedback">
                                     Làm ơn nhập chức vụ.
                                   </div>
@@ -295,34 +296,34 @@
                             </div>
                             <div class="form-group" id="fileimg">
                               <label for="Avatar">Thêm ảnh</label>
-                              <input type="file" id="getFile" multiple>
-                              <img src="" id="img1" style="width: 100px;">
-                              <img src="" id="img2" style="width: 100px;">
-                              <img src="" id="img3" style="width: 100px;">
+                              <input type="file" id="getFilePortfolio" multiple accept="image/jpeg, image/png">
                             </div>
                             <div class="row">
                               <div class="col-md">
                                 <div class="form-group">
                                   <label for="Details">Thông tin</label>
-                                  <input type="text" class="form-control" id="Details" placeholder="Details" required>
-                                  <div class="invalid-feedback">
-                                    Làm ơn nhập thông tin.
-                                  </div>
+                                  <textarea style="height: 100px" class="form-control" id="Details"
+                                    placeholder="Details"required></textarea>
+                                    <div class="invalid-feedback">
+                                      Làm ơn nhập thông tin.
+                                    </div>
                                 </div>
                               </div>
                               <div class="col-md">
                                 <div class="form-group">
                                   <label for="Details">Details (Bản tiếng anh)</label>
-                                  <input type="text" class="form-control" id="DetailsEN" placeholder="Details" required>
-                                  <div class="invalid-feedback">
-                                    Làm ơn nhập thông tin.
-                                  </div>
+                                  <textarea style="height: 100px" class="form-control" id="DetailsEN"
+                                    placeholder="Details"required></textarea>
+                                    <div class="invalid-feedback">
+                                      Làm ơn nhập thông tin.
+                                    </div>
                                 </div>
                               </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" id="add1" onclick="addDataBGD();" class="btn btn-success">Add</button>
+                          <button type="submit" id="add1" onclick="addPortfolio();"
+                            class="btn btn-success">Thêm</button>
                           <button type="button" id="edit1" onclick="editDataBGD();"
                             class="btn btn-success">Update</button>
                           <button type="button" class="btn btn-light" data-dismiss="modal"
@@ -350,7 +351,6 @@
                               <input type="text" class="form-control" id="ID1" placeholder="ID" disabled>
                             </div>
                             <div class="form-group">
-                              <label for="IDImg1">Họ và tên</label>
                               <input type="text" class="form-control" id="IDImg1" placeholder="IDImg1" disabled>
                             </div>
                             <div class="form-group">
@@ -359,7 +359,7 @@
                               <img src="" id="imgEdit1" style="width: 300px;">
                             </div>
                             <div class="form-group">
-                              <button type="button" id="edit" onclick="updateImg1();"
+                              <button type="button" id="edit" onclick="updateImg();"
                                 class="btn btn-success">Sửa</button>
                             </div>
                             <div class="form-group" hidden>
@@ -367,8 +367,7 @@
                               <input type="text" class="form-control" id="ID2" placeholder="ID" disabled>
                             </div>
                             <div class="form-group">
-                              <label for="IDImg1">Họ và tên</label>
-                              <input type="text" class="form-control" id="IDImg2" placeholder="IDImg1" disabled>
+                              <input type="text" class="form-control" id="IDImg2" placeholder="IDImg2" disabled>
                             </div>
                             <div class="form-group">
                               <label for="Avatar">Thêm ảnh</label>
@@ -376,7 +375,7 @@
                               <img src="" id="imgEdit2" style="width: 300px;">
                             </div>
                             <div class="form-group">
-                              <button type="button" id="edit" onclick="updateImg2();"
+                              <button type="button" id="edit" onclick="updateImg();"
                                 class="btn btn-success">Sửa</button>
                             </div>
                             <div class="form-group" hidden>
@@ -384,8 +383,7 @@
                               <input type="text" class="form-control" id="ID3" placeholder="ID" disabled>
                             </div>
                             <div class="form-group">
-                              <label for="IDImg1">Họ và tên</label>
-                              <input type="text" class="form-control" id="IDImg3" placeholder="IDImg1" disabled>
+                              <input type="text" class="form-control" id="IDImg3" placeholder="IDImg3" disabled>
                             </div>
                             <div class="form-group">
                               <label for="Avatar">Thêm ảnh</label>
@@ -393,7 +391,7 @@
                               <img src="" id="imgEdit3" style="width: 300px;">
                             </div>
                             <div class="form-group">
-                              <button type="button" id="edit" onclick="updateImg3();"
+                              <button type="button" id="edit" onclick="updateImg();"
                                 class="btn btn-success">Sửa</button>
                             </div>
                           </form>
@@ -420,7 +418,8 @@
                         <div class="modal-body">
                           <form class="forms-sample">
                             <div class="d-flex justify-content-center">
-                              <button type="button" onclick="clearTextBox1();" class="btn btn-success btn-lg mx-1">Thêm
+                              <button type="button" onclick="openModalAddPortfolio();"
+                                class="btn btn-success btn-lg mx-1">Thêm
                                 Ban Giám Đốc</button>
                               <a href="../ToChuc/Thembanthanhvien.html"><button type="button"
                                   class="btn btn-success btn-lg mx-1" data-dismiss="modal">Thêm Thành
@@ -473,40 +472,7 @@
     <script src="../../DAO/Notification.js"></script>
     <!-- End custom js for this page-->
     <script>
-      const fileInput = document.querySelector('input[id="getFile"]');
-      // listen for the change event so we can capture the file
-      fileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          base64 = reader.result;
-          $('#img1').val(base64);
-          document.getElementById('img1').src = base64;
-        };
-        reader.readAsDataURL(file);
-      });
-      const fileInput1 = document.querySelector('input[id="getFile"]');
-      fileInput1.addEventListener("change", (e) => {
-        const file = e.target.files[1];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          base64 = reader.result;
-          $('#img2').val(base64);
-          document.getElementById('img2').src = base64;
-        };
-        reader.readAsDataURL(file);
-      });
-      const fileInput2 = document.querySelector('input[id="getFile"]');
-      fileInput2.addEventListener("change", (e) => {
-        const file = e.target.files[2];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          base64 = reader.result;
-          $('#img3').val(base64);
-          document.getElementById('img3').src = base64;
-        };
-        reader.readAsDataURL(file);
-      });
+
       const fileInputEdit = document.querySelector('input[id="avatar"]');
       fileInputEdit.addEventListener("change", (e) => {
         const file = e.target.files[0];

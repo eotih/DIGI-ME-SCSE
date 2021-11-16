@@ -22,21 +22,21 @@ async function getDataEditMember() {
     $('#edit').show();
 }
 
-async function updateOtherMember() {
-    var data = {
+function editDataMember() {
+    const data = {
         ID: $('#ID').val(),
         FullName: $('#Name').val(),
         Position: $('#Position').val(),
-        Details: $('#summernote').val(),
         PositionEN: $('#PositionEN').val(),
-        DetailsEN: $('#ENGPOST').val(),
+        Details: $('#summernote').summernote('code'),
+        DetailsEN: $('#ENGPOST').summernote('code'),
     };
-    debugger;
+    console.log(data);
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8",
         },
     }).then(function (response) {
         return response.json()
@@ -44,10 +44,10 @@ async function updateOtherMember() {
         .then(function (data) {
             if (data.Status === 'Updated') {
                 alert('Sửa Thành Công')
-                window.location.href = "./Ban-Giam-Doc.html"
+                window.location.reload();
             }
             else {
-                alert('Data not update')
+                alert('Data not insert')
             }
         })
 }
