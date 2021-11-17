@@ -139,7 +139,7 @@ function updateData() {
     let data = {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
-        IDField: $('#theloai').val(),
+        IDField: $('#IDField').val(),
         Title: $('#Title').val(),
         TitleEN: $('#TitleEN').val(),
         Description: $('#Description').val(),
@@ -186,6 +186,7 @@ function deleteData() {
 }
 function clearTextBox() {
     $('#ID').val("");
+    $('#IDField').val("");
     $('#IDCat').val("");
     $('#Title').val("");
     $('#LinkYTB').val("");
@@ -200,6 +201,14 @@ function validateFormOnChange() {
         }
         else {
             $('#IDCat').removeClass('border-color');
+        }
+    });
+    $('#IDField').click(function () {
+        if ($('#IDField').val() === '') {
+            $('#IDField').css('border-color', 'red');
+        }
+        else {
+            $('#IDField').removeClass('border-color');
         }
     });
     $('#Title').click(function () {
