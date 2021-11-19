@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/API/";
+const WEB_API = "http://localhost:59360/";
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 

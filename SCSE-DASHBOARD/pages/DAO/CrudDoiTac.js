@@ -1,6 +1,7 @@
-const WEB_API = "http://localhost:59360/API/";
+const WEB_API = "http://localhost:59360/";
 // đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
+window.addEventListener('load', loadDataPending)
 
 async function loadData() {
     fetch(WEB_API + "Interface/ListPartner")
@@ -8,23 +9,61 @@ async function loadData() {
             return response.json();
         })
         .then(function (response) {
-            var html = response.map(function (response) {
-                const { ID, Name, Image, Field, Phone, Email, Address, Link } = response
+            const filterData = response.filter(v => v.IDState ===2)
+            const data = filterData.map(function (response) {
+                const { ID, OrganizationName, Image, OrganizationProgrames,ContactPerson, Phone, Email, Address, Link,LinkFile, IDState } = response
+                const State = changeIdState(IDState);
                 return `<tr>
                         <td>${ID}</td>
-                        <td>${Name}</td>DDD
+                        <td>${OrganizationName}</td>
+                        <td>${ContactPerson}</td>
+                        <td>${OrganizationProgrames}</td>
                         <td><img src="${Image}"/></td>
-                        <td>${Field}</td>
                         <td>${Phone}</td>
                         <td>${Email}</td>
                         <td>${Address}</td>
                         <td>${Link}</td>
+                        <td><a href="${WEB_API}${LinkFile}">Xem</td>
+                        <td>${State}</td>
                         <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</a>
                         <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xóa</a></td>
                         </tr>`;
             })
             // đây là hàm trả ra tbody
-            $('#tbody').html(html);
+            $('#tbodyApproved').html(data);
+            $(document).ready(function () {
+                $('#dataTableApproved').DataTable({
+                    "order": [[0, "desc"]]
+                });
+            });
+        })
+}(jQuery);
+async function loadDataPending() {
+    fetch(WEB_API + "Interface/ListPartner")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            const filterData = response.filter(v => v.IDState ===1)
+            const data = filterData.map(function (response) {
+                const { ID, OrganizationName, Image, OrganizationProgrames,ContactPerson, Phone, Email, Address, Link,LinkFile, IDState } = response
+                const State = changeIdState(IDState);
+                return `<tr>
+                        <td>${ID}</td>
+                        <td>${OrganizationName}</td>
+                        <td>${ContactPerson}</td>
+                        <td>${OrganizationProgrames}</td>
+                        <td>${Phone}</td>
+                        <td>${Email}</td>
+                        <td>${Address}</td>
+                        <td><a href="${WEB_API}${LinkFile}">Xem</td>
+                        <td>${State}</td>
+                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</a>
+                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xóa</a></td>
+                        </tr>`;
+            })
+            // đây là hàm trả ra tbody
+            $('#tbodyPending').html(data);
             $(document).ready(function () {
                 $('#dataTable').DataTable({
                     "order": [[0, "desc"]]
@@ -32,21 +71,38 @@ async function loadData() {
             });
         })
 }(jQuery);
+const changeIdState = (id) => {
+    if (id === 1) {
+        return 'Pending'
+    }
+    if (id === 2) {
+        return 'Approved'
+    }
+    if (id === 3) {
+        return 'NotApproved'
+    }
+    if (id === 4) {
+        return 'Deleted'
+    }
+}
 async function getData(ID) {
     fetch(WEB_API + "Interface/GetByIdPartner?ID=" + ID)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
-            const { Image, Name, Field, Phone, Email, Address, Link } = response;
+            const { ID, OrganizationName, Image, OrganizationProgrames,ContactPerson, Phone, Email, Address, Link,LinkFile, IDState } = response
+            const State = changeIdState(IDState);
             $('#ID').val(ID),
                 document.getElementById("Image").src = Image;
-            $('#Name').val(Name);
-            $('#Field').val(Field);
+            $('#OrganizationName').val(OrganizationName);
+            $('#OrganizationProgrames').val(OrganizationProgrames);
+            $('#ContactPerson').val(ContactPerson);
             $('#Phone').val(Phone);
             $('#Email').val(Email);
             $('#Address').val(Address);
             $('#Link').val(Link);
+            $('#IDState').val(State);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -95,13 +151,15 @@ async function addData() {
 async function updateData() {
     var $data = {
         ID: $('#ID').val(),
-        Name: $('#Name').val(),
+        OrganizationName: $('#OrganizationName').val(),
         Image: document.getElementById("Image").src,
-        Field: $('#Field').val(),
+        OrganizationProgrames: $('#OrganizationProgrames').val(),
+        ContactPerson: $('#ContactPerson').val(),
         Phone: $('#Phone').val(),
         Email: $('#Email').val(),
         Address: $('#Address').val(),
         Link: $('#Link').val(),
+        IDState: $('#IDState').val(),
     };
     fetch(WEB_API + "Interface/AddOrEditPartner", {
         method: 'POST',

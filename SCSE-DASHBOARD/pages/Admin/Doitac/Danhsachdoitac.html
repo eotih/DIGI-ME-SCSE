@@ -213,24 +213,66 @@
 
                 <div class="row">
                   <div class="col-12">
-                    <div class="table-responsive">
-                      <table id="dataTable" class="table">
-                        <thead>
-                          <tr>
-                            <th>ID #</th>
-                            <th>Tên</th>
-                            <th>Hình</th>
-                            <th>Lĩnh vực</th>
-                            <th>Số điện thoại</th>
-                            <th>Email</th>
-                            <th>Địa chỉ</th>
-                            <th>Link</th>
-                            <th>Hành động</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tbody">
-                        </tbody>
-                      </table>
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#Pending" role="tab"
+                          aria-controls="VN" aria-selected="true">
+                          Pending
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Approved" role="tab"
+                          aria-controls="ENG" aria-selected="false">Approved
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane fade show active" id="Pending" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="table-responsive">
+                          <table id="dataTable" class="table">
+                            <thead>
+                              <tr>
+                                <th>ID #</th>
+                                <th>Tên tổ chức</th>
+                                <th>Tên người đại diện</th>
+                                <th>Lĩnh vực</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Địa chỉ</th>
+                                <th>Link file</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tbodyPending">
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="Approved" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="table-responsive">
+                          <table id="dataTableApproved" class="table">
+                            <thead>
+                              <tr>
+                                <th>ID #</th>
+                                <th>Tên tổ chức</th>
+                                <th>Tên người đại diện</th>
+                                <th>Lĩnh vực</th>
+                                <th>Hình ảnh</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Địa chỉ</th>
+                                <th>Link</th>
+                                <th>Link file</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tbodyApproved">
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
                     <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
                       aria-labelledby="exampleModalLabel-2" aria-hidden="true">
@@ -249,8 +291,12 @@
                                 <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
                               </div>
                               <div class="form-group">
-                                <label for="Name">Tên</label>
-                                <input type="text" class="form-control" id="Name" placeholder="Tên">
+                                <label for="Name">Tên Tổ Chức</label>
+                                <input type="text" class="form-control" id="OrganizationName" placeholder="Tên Tổ Chức">
+                              </div>
+                              <div class="form-group">
+                                <label for="Name">Tên Người Đại Diện</label>
+                                <input type="text" class="form-control" id="ContactPerson" placeholder="Tên Tổ Chức">
                               </div>
                               <div class="form-group">
                                 <label for="Image">Hình </label>
@@ -260,7 +306,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="Field">Lĩnh Vực Hoạt động</label>
-                                <input type="text" value="" class="form-control" id="Field"
+                                <input type="text" value="" class="form-control" id="OrganizationProgrames"
                                   placeholder="Lĩnh Vực Hoạt Động">
                               </div>
                               <div class="form-group">
@@ -279,12 +325,22 @@
                                 <label for="Link">Link</label>
                                 <input type="text" class="form-control" id="Link" placeholder="Link">
                               </div>
+                              <div class="form-group" id="showform">
+                                <label for="IDState">Chọn trạng thái duyệt</label>
+                                <select type="text" class="form-control" id="IDState" placeholder="IDCat">
+                                  <option value="1">Pending</option>
+                                  <option value="2">Approved</option>
+                                  <option value="3">NotApproved</option>
+                                  <option value="4">Deleted</option>
+                                </select>
+                              </div>
                             </form>
                           </div>
                           <div class="modal-footer">
                             <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
                             <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal" onclick="Close();">Hủy</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal"
+                              onclick="Close();">Hủy</button>
                           </div>
                         </div>
                       </div>
