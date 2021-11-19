@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/API/";
+const WEB_API = "http://localhost:59360/";
 window.addEventListener("load", loadData);
 const getPortfolio = async (url) => {
   return (await fetch(url)).json();

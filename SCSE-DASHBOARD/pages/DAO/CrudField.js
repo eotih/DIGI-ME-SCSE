@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/API/";
+const WEB_API = "http://localhost:59360/";
 window.addEventListener('load', loadData)
 async function loadData() {
     fetch(WEB_API + "Interface/ShowAllField")

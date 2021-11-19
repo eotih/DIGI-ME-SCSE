@@ -1,4 +1,4 @@
-const API_USER = "http://localhost:59360/API/";
+const API_USER = "http://localhost:59360/";
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 async function loadData() {

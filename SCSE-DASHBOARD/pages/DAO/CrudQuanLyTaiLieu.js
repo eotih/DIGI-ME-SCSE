@@ -1,4 +1,4 @@
-const url = "http://localhost:59360/API/";
+const url = "http://localhost:59360/";
 window.addEventListener('load', loadData)
 window.addEventListener('load', getListDocumentNotVersionEN)
 async function loadData() {

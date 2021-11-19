@@ -1,4 +1,4 @@
-const NOTI_API = "http://localhost:59360/API/";
+const NOTI_API = "http://localhost:59360/";
 
 function notifyMe() {
   fetch(NOTI_API + "Management/ListNotification?status=" + "Chưa Xem")

@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:59360/API/";
+const URL_API = "http://localhost:59360/";
 
 window.addEventListener('load', loadData)
 async function loadData() {

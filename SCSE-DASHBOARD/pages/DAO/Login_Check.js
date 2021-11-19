@@ -1,4 +1,4 @@
-// const CHECK = "http://localhost:59360/API/";
+// const CHECK = "http://localhost:59360/";
 
 // var getToken = parseJwt(localStorage.getItem("token"));
 

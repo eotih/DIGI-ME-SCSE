@@ -1,4 +1,4 @@
-// const WEB_API = "http://localhost:59360/API/";
+// const WEB_API = "http://localhost:59360/";
 // function loginAdmin() {
 //     var Username = $('#Username').val();
 //     var Password = $('#Password').val();
