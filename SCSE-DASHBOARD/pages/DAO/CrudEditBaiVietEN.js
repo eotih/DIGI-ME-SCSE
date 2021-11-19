@@ -35,7 +35,6 @@ async function getData() {
   $("#edit").show();
 }
 
-async function updateData() {
   var forms = document.querySelectorAll(".needs-validation");
 
   // Loop over them and prevent submission
@@ -83,7 +82,7 @@ async function updateData() {
       false
     );
   });
-}
+
 function addNoti(numb) {
   var $dataNoti = {};
   if (numb === 1) {

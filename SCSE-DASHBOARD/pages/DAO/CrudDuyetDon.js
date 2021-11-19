@@ -105,7 +105,6 @@ async function getData(ID) {
   $("#add").hide();
   $("#edit").show();
 }
-async function addData() {
   var forms = document.querySelectorAll(".needs-validation");
 
   // Loop over them and prevent submission
@@ -151,7 +150,7 @@ async function addData() {
       false
     );
   });
-}
+
 async function updateData() {
   var data = {
     ID: $("#ID").val(),
