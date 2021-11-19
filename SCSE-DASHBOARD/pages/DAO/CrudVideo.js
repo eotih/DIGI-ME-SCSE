@@ -85,6 +85,7 @@ function addData() {
     //check validationForm
     let data = {
         IDCat: $('#IDCat').val(),
+        IDField: $('#IDField').val(),
         Title: $('#Title').val(),
         TitleEN: $('#TitleEN').val(),
         Description: $('#Description').val(),
@@ -118,7 +119,7 @@ function getData(ID) {
             return response.json();
         })
         .then(function (response) {
-            let { ID, Title, IDCat, TitleEN, DescriptionEN, Description, LinkYTB, Image } = response;
+            let { ID,IDField, Title, IDCat, TitleEN, DescriptionEN, Description, LinkYTB, Image } = response;
             $('#ID').val(ID),
                 $('#Title').val(Title);
             $('#Title').val(Title);
@@ -127,6 +128,7 @@ function getData(ID) {
             $('#DescriptionEN').val(DescriptionEN);
             $('#LinkYTB').val(LinkYTB);
             $('#IDCat').val(IDCat);
+            $('#IDField').val(IDField);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
@@ -137,6 +139,7 @@ function updateData() {
     let data = {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
+        IDField: $('#IDField').val(),
         Title: $('#Title').val(),
         TitleEN: $('#TitleEN').val(),
         Description: $('#Description').val(),
@@ -183,6 +186,7 @@ function deleteData() {
 }
 function clearTextBox() {
     $('#ID').val("");
+    $('#IDField').val("");
     $('#IDCat').val("");
     $('#Title').val("");
     $('#LinkYTB').val("");
@@ -197,6 +201,14 @@ function validateFormOnChange() {
         }
         else {
             $('#IDCat').removeClass('border-color');
+        }
+    });
+    $('#IDField').click(function () {
+        if ($('#IDField').val() === '') {
+            $('#IDField').css('border-color', 'red');
+        }
+        else {
+            $('#IDField').removeClass('border-color');
         }
     });
     $('#Title').click(function () {
