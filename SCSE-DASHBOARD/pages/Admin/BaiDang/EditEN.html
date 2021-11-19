@@ -221,23 +221,21 @@
                                     <h4 class="card-title">Sửa bài viết</h4>
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <form class="forms-sample">
+                                            <form class="forms-sample needs-validation" novalidate>
                                                 <div class="form-group">
                                                     <label for="Title">Tiêu đề</label>
                                                     <input type="text" class="form-control" id="Title"
-                                                        placeholder="Nhập tiêu đề bài viết">
+                                                        placeholder="Nhập tiêu đề bài viết" required>
                                                     <input type="text" class="form-control" id="IDPost" hidden="true">
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Title">Nội dung</label>
                                                     <textarea type="text" class="form-control"
-                                                        id="summernote"></textarea>
+                                                        id="summernote" required></textarea>
                                                 </div>
-                                            </form>
                                         </div>
                                         <div class="col-lg-4">
-                                            <form class="forms-sample">
                                                 <div class="form-group">
                                                     <label for="Phone">Chọn thể loại</label>
                                                     <select class="form-select" id="Category">
@@ -258,7 +256,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Name">Thêm hình ảnh</label>
-                                                    <input type="file" name="" id="fileId">
+                                                    <input type="file" name="" id="fileId" required>
                                                     <img id="img" style="width: 200px; height:300px">
                                                 </div>
                                                 <div class="form-group">
@@ -269,7 +267,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" id="edit" onclick="updateData();"
+                                                    <button type="submit" id="edit" onclick="updateData();"
                                                         class="btn btn-success">Sửa bài viết</button>
                                                 </div>
 
