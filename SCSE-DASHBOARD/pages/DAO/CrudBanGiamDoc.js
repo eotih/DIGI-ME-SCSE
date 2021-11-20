@@ -42,6 +42,9 @@ function deletePortfolio(FullName) {
   if (confirm("Bạn có muốn xoá tài khoản?")) {
     fetch(WEB_API + "Interface/DeletePortfolio?fullname=" + FullName, {
       method: "DELETE",
+      headers: {
+        "Authorization": "Bearer "+localStorage.getItem('token'),
+      }
     })
       .then(function (response) {
         return response.json();
@@ -88,6 +91,7 @@ async function updateImg(numb) {
     body: JSON.stringify(dataimg),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {
@@ -161,58 +165,54 @@ fileInput.addEventListener("change", (e) => {
     fileInput.value = "";
   }
 });
-function addPortfolio() {
-  var forms = document.querySelectorAll(".needs-validation");
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          const data = {
-            FullName: $("#Name").val(),
-            Position: $("#Position").val(),
-            PositionEN: $("#PositionEN").val(),
-            Details: $("#Details").val(),
-            DetailsEN: $("#DetailsEN").val(),
-            Image1: $("#Image0").val(),
-            Image2: $("#Image1").val(),
-            Image3: $("#Image2").val(),
-          };
-          fetch(WEB_API + "Interface/AddOrEditPortfolios", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-              "Content-Type": "application/json; charset=UTF-8",
-              "Authorization": "Bearer "+localStorage.getItem('token'),
-            },
+var forms = document.querySelectorAll(".needs-validation");
+
+// Loop over them and prevent submission
+Array.prototype.slice.call(forms).forEach(function (form) {
+  form.addEventListener(
+    "submit",
+    function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        const data = {
+          FullName: $("#Name").val(),
+          Position: $("#Position").val(),
+          PositionEN: $("#PositionEN").val(),
+          Details: $("#Details").val(),
+          DetailsEN: $("#DetailsEN").val(),
+          Image1: $("#Image0").val(),
+          Image2: $("#Image1").val(),
+          Image3: $("#Image2").val(),
+        };
+        fetch(WEB_API + "Interface/AddOrEditPortfolios", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer "+localStorage.getItem('token'),
+          },
+        })
+          .then(function (response) {
+            return response.json();
           })
-            .then(function (response) {
-              return response.json();
-            })
-            .then(function (data) {
-              console.log(data);
-              if (data.Status === "Success") {
-                alert("Thêm Thành Công");
-                // window.location.reload();
-              } else {
-                alert("Data not insert");
-              }
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
-}
+          .then(function (data) {
+            if (data.Status === "Success") {
+              alert("Thêm Thành Công");
+              window.location.reload();
+            } else {
+              alert("Data not insert");
+            }
+          });
+      }
+      form.classList.add("was-validated");
+    },
+    false
+  );
+});
+
 // Thêm Thành Viên
 function addPortfolioMember() {
   const data = {
@@ -281,6 +281,7 @@ function editDataBGD() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {
