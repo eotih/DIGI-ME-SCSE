@@ -12,3 +12,22 @@ async function getNew(){
     Volunteers = await getAllData(URL_API + "ShowAllVolunteers");
     PendingAccount = await getAllData("https://api.scse-vietnam.org/API/User/ShowAllAccount")
 }
+// ApprovedTinTuc
+// ApprovedDuAn
+// ApprovedHDTN
+// ApprovedHTNC
+
+// PendingTinTuc
+// PendingDuAn
+// PendingHDTN
+// PendingHTNC
+
+// ApprovedTinTucEN
+// ApprovedDuAnEN
+// ApprovedHDTNEN
+// ApprovedHTNCEN
+
+// PendingTinTucEN
+// PendingDuAnEN
+// PendingHDTNEN
+// PendingHTNCEN
