@@ -27,6 +27,7 @@ switch (Role) {
         break;
     case 3:
         if (current === "https://cms.scse-vietnam.org/pages/Admin/BaiDang/Baiviet.html"
+            || current === "https://cms.scse-vietnam.org/pages/Admin/TinTuc/PostTinTuc.html"
             || current === "https://cms.scse-vietnam.org/pages/ThongTinCaNhan/Thongtincanhan.html"
         ) {
 
