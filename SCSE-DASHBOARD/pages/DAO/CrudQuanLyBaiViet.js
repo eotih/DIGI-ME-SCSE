@@ -5,16 +5,16 @@ function convertDate(input) {
     return result.toLocaleDateString()
 }
 function convertState(input) {
-    if (input === "1") {
+    if (input === 1) {
         return '<div class="badge badge-opacity-warning">Pending</div>'
     }
-    else if (input === "2") {
+    else if (input === 2) {
         return '<div class="badge badge-opacity-success">Approved</div>'
     }
-    else if (input === "3") {
+    else if (input === 3) {
         return '<div class="badge badge-opacity-danger">NotApproved</div>'
     }
-    else if (input === "4") {
+    else if (input === 4) {
         return '<div class="badge badge-opacity-danger">Deleted</div>'
     }
 }
@@ -30,6 +30,7 @@ function convertCategory(category) {
     }
 }
 function convertField(field) {
+    console.log(field)
     if (field === 1) {
         return 'Giới và bình đẳng giới'
     }
@@ -41,6 +42,9 @@ function convertField(field) {
     }
     else if (field === 4) {
         return 'Nghiên cứu và đào tạo'
+    }
+    else if (field === undefined) {
+        return ''
     }
 }
 (function ($) {
@@ -60,7 +64,7 @@ function convertField(field) {
                     return `<tr>
                     <td>${IDPost}</td>
                     <td>${convertCategory(IDCat)}</td>
-                    <td>${convertCategory(IDField)}</td>
+                    <td>${convertField(IDField)}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>
