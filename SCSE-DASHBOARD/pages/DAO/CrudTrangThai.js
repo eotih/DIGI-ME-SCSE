@@ -34,70 +34,74 @@ async function getData(IdState) {
     $('#add').hide();
     $('#edit').show();
 }
-async function addData() {
-    var $data = {
-        StateName: $('#StateName').val(),
-    };
-    fetch(WEB_API + "User/AddState", {
-        method: 'POST',
-        body: JSON.stringify($data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Success') {
-                alert('Thêm Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not insert')
-            }
-        })
-}
-async function updateData() {
-    var $data = {
-        Id: $('#Id').val(),
-        StateName: $('#StateName').val(),
-    };
-    fetch(WEB_API + "User/AddState", {
-        method: 'POST',
-        body: JSON.stringify($data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
-        })
-}
+// async function addData() {
+//     var $data = {
+//         StateName: $('#StateName').val(),
+//     };
+//     fetch(WEB_API + "User/AddState", {
+//         method: 'POST',
+//         body: JSON.stringify($data),
+//         headers: {
+//             "Content-Type": "application/json; charset=UTF-8",
+//         },
+//     }).then(function (response) {
+//         return response.json()
+//     })
+//         .then(function (data) {
+//             if (data.Status === 'Success') {
+//                 alert('Thêm Thành Công')
+//                 window.location.reload();
+//             }
+//             else {
+//                 alert('Data not insert')
+//             }
+//         })
+// }
+// async function updateData() {
+//     var $data = {
+//         Id: $('#Id').val(),
+//         StateName: $('#StateName').val(),
+//     };
+//     fetch(WEB_API + "User/AddState", {
+//         method: 'POST',
+//         body: JSON.stringify($data),
+//         headers: {
+//       "Content-Type": "application/json; charset=UTF-8",
+//       "Authorization": "Bearer "+localStorage.getItem('token'),
+//     },
+//     }).then(function (response) {
+//         return response.json()
+//     })
+//         .then(function (data) {
+//             if (data.Status === 'Updated') {
+//                 alert('Sửa Thành Công')
+//                 window.location.reload();
+//             }
+//             else {
+//                 alert('Data not update')
+//             }
+//         })
+// }
 
-async function deleteData(ID) {
-    fetch(WEB_API + "User/DeleteState?IDState=" + ID, {
-        method: 'DELETE',
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Delete') {
-                alert('Xoá thành công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not delete')
-            }
-        })
-}
+// async function deleteData(ID) {
+//     fetch(WEB_API + "User/DeleteState?IDState=" + ID, {
+//         method: "DELETE",
+//             headers: {
+//                 "Authorization": "Bearer " + localStorage.getItem('token'),
+//             }
+//     }).then(function (response) {
+//         return response.json()
+//     })
+//         .then(function (data) {
+//             if (data.Status === 'Delete') {
+//                 alert('Xoá thành công')
+//                 window.location.reload();
+//             }
+//             else {
+//                 alert('Data not delete')
+//             }
+//         })
+// }
 function clearTextBox() {
     $('#IDCat').val("");
     $('#CategoryName').val("");

@@ -82,46 +82,47 @@ function getBaseUrl() {
   };
   reader.readAsDataURL(file);
 }
-  var forms = document.querySelectorAll(".needs-validation");
+var forms = document.querySelectorAll(".needs-validation");
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          var $data = {
-            Name: $("#Name").val(),
-            Image: $("#Img").val(),
-            CreatedByUser: getTaoken.nameid[3],
-          };
-          fetch(WEB_API + "Interface/AddOrEditBanner", {
-            method: "POST",
-            body: JSON.stringify($data),
-            headers: {
-              "Content-Type": "application/json; charset=UTF-8",
-            },
+// Loop over them and prevent submission
+Array.prototype.slice.call(forms).forEach(function (form) {
+  form.addEventListener(
+    "submit",
+    function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        var $data = {
+          Name: $("#Name").val(),
+          Image: $("#Img").val(),
+          CreatedByUser: getTaoken.nameid[3],
+        };
+        fetch(WEB_API + "Interface/AddOrEditBanner", {
+          method: "POST",
+          body: JSON.stringify($data),
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer " + localStorage.getItem('token'),
+          },
+        })
+          .then(function (response) {
+            return response.json();
           })
-            .then(function (response) {
-              return response.json();
-            })
-            .then(function (data) {
-              if (data.Status === "Success") {
-                alert("Thêm Thành Công");
-                window.location.reload();
-              } else {
-                alert("Data not insert");
-              }
-            });
-        }
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
+          .then(function (data) {
+            if (data.Status === "Success") {
+              alert("Thêm Thành Công");
+              window.location.reload();
+            } else {
+              alert("Data not insert");
+            }
+          });
+      }
+      form.classList.add("was-validated");
+    },
+    false
+  );
+});
 
 async function updateData() {
   var $data = {
@@ -135,6 +136,7 @@ async function updateData() {
     body: JSON.stringify($data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer " + localStorage.getItem('token'),
     },
   })
     .then(function (response) {
@@ -154,6 +156,9 @@ async function deleteData(ID) {
   if (confirm("Bạn có muốn xoá không?")) {
     fetch(WEB_API + "Interface/DeleteBanner?ID=" + ID, {
       method: "DELETE",
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem('token'),
+      }
     })
       .then(function (response) {
         return response.json();

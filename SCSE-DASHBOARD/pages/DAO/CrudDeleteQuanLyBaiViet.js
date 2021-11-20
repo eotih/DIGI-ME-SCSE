@@ -123,8 +123,9 @@ async function updateRestore() {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
+    },
     }).then(function (response) {
         return response.json()
     })
@@ -147,8 +148,9 @@ async function updateRestoreEN() {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
+    },
     }).then(function (response) {
         return response.json()
     })
@@ -166,6 +168,10 @@ async function deleteData(IDPost) {
     if (confirm('Bạn có muốn xoá bài viết?')) {
         fetch(WEB_API + "Management/DeletePost?ID=" + IDPost, {
             method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token'),
+            }
+            
         })
             .then(function (response) {
                 return response.json();
@@ -187,6 +193,9 @@ async function deleteDataEN(IDPostEN) {
     if (confirm('Are you sure you want to delete?')) {
         fetch(WEB_API + "Management/DeletePostEN?ID=" + IDPostEN, {
             method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token'),
+            }
         })
             .then(function (response) {
                 return response.json();

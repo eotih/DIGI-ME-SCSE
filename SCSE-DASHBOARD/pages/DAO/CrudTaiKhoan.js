@@ -132,6 +132,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
           body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer "+localStorage.getItem('token'),
           },
         })
           .then(function (response) {
@@ -171,6 +172,7 @@ async function updateData() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {
@@ -199,6 +201,7 @@ async function resetPassword() {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
+        "Authorization": "Bearer "+localStorage.getItem('token'),
       },
     })
       .then(function (response) {
@@ -231,6 +234,7 @@ async function updateDelete() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {

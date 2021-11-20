@@ -71,8 +71,9 @@ async function getData(ID) {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-              "Content-Type": "application/json; charset=UTF-8",
-            },
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
+    },
           })
             .then(function (response) {
               return response.json();
@@ -122,6 +123,9 @@ async function deleteData(ID) {
   if (confirm("Bạn có muốn xoá ngân hàng?")) {
     fetch(WEB_API + "Interface/DeleteBankInfo?ID=" + ID, {
       method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token'),
+            }
     })
       .then(function (response) {
         return response.json();

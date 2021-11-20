@@ -37,8 +37,9 @@ async function updateData() {
         method: 'POST',
         body: JSON.stringify($data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
+    },
     }).then(function (response) {
         return response.json()
     })

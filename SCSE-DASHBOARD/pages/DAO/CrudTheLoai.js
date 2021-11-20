@@ -56,30 +56,31 @@ async function addData() {
             }
         })
 }
-async function updateData() {
-    var $data = {
-        IDCat: $('#IDCat').val(),
-        CategoryName: $('#CategoryName').val(),
-    };
-    fetch(WEB_API + "Api/Interface/AddOrEditCategory", {
-        method: 'POST',
-        body: JSON.stringify($data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Updated') {
-                alert('Sửa Thành Công')
-                window.location.reload();
-            }
-            else {
-                alert('Data not update')
-            }
-        })
-}
+// async function updateData() {
+//     var $data = {
+//         IDCat: $('#IDCat').val(),
+//         CategoryName: $('#CategoryName').val(),
+//     };
+//     fetch(WEB_API + "Api/Interface/AddOrEditCategory", {
+//         method: 'POST',
+//         body: JSON.stringify($data),
+//         headers: {
+//       "Content-Type": "application/json; charset=UTF-8",
+//       "Authorization": "Bearer "+localStorage.getItem('token'),
+//     },
+//     }).then(function (response) {
+//         return response.json()
+//     })
+//         .then(function (data) {
+//             if (data.Status === 'Updated') {
+//                 alert('Sửa Thành Công')
+//                 window.location.reload();
+//             }
+//             else {
+//                 alert('Data not update')
+//             }
+//         })
+// }
 function clearTextBox() {
     $('#IDCat').val("");
     $('#CategoryName').val("");
