@@ -187,7 +187,7 @@ async function updateData() {
     });
 }
 async function resetPassword() {
-    const Password = $('#PasswordReset').val()
+  const Password = $("#PasswordReset").val();
   if (Password === "") {
   } else {
     let data = {
