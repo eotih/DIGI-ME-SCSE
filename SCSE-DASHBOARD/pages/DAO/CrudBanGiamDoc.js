@@ -188,18 +188,23 @@ function addPortfolio() {
             body: JSON.stringify(data),
             headers: {
               "Content-Type": "application/json; charset=UTF-8",
+              "Authorization": "Bearer "+localStorage.getItem('token'),
             },
           })
             .then(function (response) {
               return response.json();
             })
             .then(function (data) {
+              console.log(data);
               if (data.Status === "Success") {
                 alert("Thêm Thành Công");
-                window.location.reload();
+                // window.location.reload();
               } else {
                 alert("Data not insert");
               }
+            })
+            .catch(function (error) {
+              console.log(error);
             });
         }
         form.classList.add("was-validated");
@@ -225,6 +230,7 @@ function addPortfolioMember() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {
