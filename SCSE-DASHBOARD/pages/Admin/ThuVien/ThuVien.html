@@ -231,7 +231,9 @@
               <div class="card-body">
                 <h4 class="card-title">Quản lý thư viện hình ảnh</h4>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2"
-                  onclick="clearTextBox();">Thêm hình ảnh</button>
+                  onclick="clearTextBox();">Thêm album ảnh</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-3"
+                  onclick="clearTextBox1();">Thêm hình ảnh vào album</button>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                   onclick="deleteData();">
                   Xóa album
@@ -246,6 +248,7 @@
                             <th>Tiêu đề</th>
                             <th>Tiêu đề tiếng Anh</th>
                             <th>Thể loại</th>
+                            <th>Lĩnh vực</th>
                             <th>Ảnh</th>
                             <th>Hành động</th>
                           </tr>
@@ -301,7 +304,68 @@
                           </div>
                           <div class="form-group">
                             <label for="Image">Image</label>
-                            <input type="file" id="getFile" multiple>
+                            <input type="file" id="getFile" multiple accept="image/jpeg, image/png">
+                            <input type="hidden" class="form-control" id="Image" placeholder="Image" disabled>
+                            <img id="Image1" height="150">
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" id="add" onclick="AlertAdd();" class="btn btn-success">Thêm</button>
+                        <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true" onclick="Close();">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="forms-sample">
+                          <div class="form-group" hidden>
+                            <label for="ID">ID</label>
+                            <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
+                          </div>
+                          <div class="form-group">
+                            <label for="Title">Title</label>
+                            <select type="text" class="form-control" id="Titleforalbum">
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="Title">Title Tiếng Anh</label>
+                            <select type="text" class="form-control" id="TitleENforalbum">
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="IDCat">Category</label>
+                            <select class="form-select" id="IDCat1">
+                              <option value="0">Vui lòng chọn</option>
+                              <option value="1">Tin tức</option>
+                              <option value="2">Dự án</option>
+                              <option value="3">Hợp tác nghiên cứu</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="theloai">Chọn lĩnh vực</label>
+                            <select class="form-select" id="linhvuc1">
+                              <option value="0">Vui lòng chọn</option>
+                              <option value="1">Giới và bình đăng giới</option>
+                              <option value="2">Biến đổi khí hậu môi trường</option>
+                              <option value="3">Thực tập sinh</option>
+                              <option value="4">Nghiên cứu và đào tạo</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="Image">Image</label>
+                            <input type="file" id="getFile2" multiple accept="image/jpeg, image/png">
                             <input type="hidden" class="form-control" id="Image" placeholder="Image" disabled>
                             <img id="Image1" height="150">
                           </div>
@@ -309,8 +373,8 @@
                         </form>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" id="add" onclick="AlertAdd();" class="btn btn-success">Thêm</button>
-                        <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
+                        <button type="button" id="add1" onclick="AlertAdd1();" class="btn btn-success">Thêm</button>
+                        <button type="button" id="edit1" onclick="updateData();" class="btn btn-success">Sửa</button>
                         <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                       </div>
                     </div>
