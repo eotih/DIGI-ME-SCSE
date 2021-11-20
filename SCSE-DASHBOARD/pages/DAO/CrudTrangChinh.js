@@ -4,29 +4,31 @@ let NewsVN, NewsEN, PostVN, PostEN, Volunteers, PendingAccount = [];
 const getAllData = async (url) => {
     return (await fetch(url)).json();
 }
+const n = " bài"
+const ns =" bài viết hiện đang chờ duyệt"
 async function getNew() {
     CountVI = await getAllData(URL_API + "Management/GetCountForHomeCMS");
     CountEN = await getAllData(URL_API + "Management/GetCountForHomeCMSEN");
-    $('#ApprovedTinTuc').text('Có ' + CountVI.CountNewsVnAll + ' bài')
-    $('#ApprovedDuAn').text('Có ' + CountVI.CountDuAn + ' bài')
-    $('#ApprovedHDTN').text('Có ' + CountVI.CountHDTNAll + ' bài')
-    $('#ApprovedHTNC').text('Có ' + CountVI.CountHTNCAll + ' bài')
-    $('#PendingTinTuc').text('Có ' + CountVI.CountNewsPending + ' bài')
-    $('#PendingDuAn').text('Có ' + CountVI.CountDuAnPending + ' bài')
-    $('#PendingHDTN').text('Có ' + CountVI.CountHDTNPending + ' bài')
-    $('#PendingHTNC').text('Có ' + CountVI.CountHTNCPending + ' bài')
-    $('#ApprovedTinTucEN').text('Có ' + CountEN.CountNewsEnAll + ' bài')
-    $('#ApprovedDuAnEN').text('Có ' + CountEN.CountDuAn + ' bài')
-    $('#ApprovedHDTNEN').text('Có ' + CountEN.CountHDTNAll + ' bài')
-    $('#ApprovedHTNCEN').text('Có ' + CountEN.CountHTNCAll + ' bài')
-    $('#PendingTinTucEN').text('Có ' + CountEN.CountNewsPending + ' bài')
-    $('#PendingDuAnEN').text('Có ' + CountEN.CountDuAnPending + ' bài')
-    $('#PendingHDTNEN').text('Có ' + CountEN.CountHDTNPending + ' bài')
-    $('#PendingHTNCEN').text('Có ' + CountEN.CountHTNCPending + ' bài')
-    $('#BaiDangVNPending').text('Có ' + Number(CountVI.CountDuAnPending + CountVI.CountHDTNPending + CountVI.CountHTNCPending) + ' bài viết hiện đang chờ duyệt')
-    $('#BaiDangENPending').text('Có ' + Number(CountEN.CountDuAnPending + CountEN.CountHDTNPending + CountEN.CountHTNCPending) + ' bài viết hiện đang chờ duyệt')
+    $('#ApprovedTinTuc').text('Có ' + CountVI.CountNewsVnAll + n)
+    $('#ApprovedDuAn').text('Có ' + CountVI.CountDuAn + n)
+    $('#ApprovedHDTN').text('Có ' + CountVI.CountHDTNAll + n)
+    $('#ApprovedHTNC').text('Có ' + CountVI.CountHTNCAll + n)
+    $('#PendingTinTuc').text('Có ' + CountVI.CountNewsPending + n)
+    $('#PendingDuAn').text('Có ' + CountVI.CountDuAnPending + n)
+    $('#PendingHDTN').text('Có ' + CountVI.CountHDTNPending + n)
+    $('#PendingHTNC').text('Có ' + CountVI.CountHTNCPending + n)
+    $('#ApprovedTinTucEN').text('Có ' + CountEN.CountNewsEnAll + n)
+    $('#ApprovedDuAnEN').text('Có ' + CountEN.CountDuAn + n)
+    $('#ApprovedHDTNEN').text('Có ' + CountEN.CountHDTNAll + n)
+    $('#ApprovedHTNCEN').text('Có ' + CountEN.CountHTNCAll + n)
+    $('#PendingTinTucEN').text('Có ' + CountEN.CountNewsPending + n)
+    $('#PendingDuAnEN').text('Có ' + CountEN.CountDuAnPending + n)
+    $('#PendingHDTNEN').text('Có ' + CountEN.CountHDTNPending + n)
+    $('#PendingHTNCEN').text('Có ' + CountEN.CountHTNCPending + n)
+    $('#BaiDangVNPending').text('Có ' + Number(CountVI.CountDuAnPending + CountVI.CountHDTNPending + CountVI.CountHTNCPending) + ns)
+    $('#BaiDangENPending').text('Có ' + Number(CountEN.CountDuAnPending + CountEN.CountHDTNPending + CountEN.CountHTNCPending) + ns)
     $('#TNVPending').text('Có ' + CountVI.CountVolunteerPending + ' tình nguyện viên chờ duyệt')
-    $('#TinTucVNPending').text('Có ' + CountVI.CountNewsPending + ' bài viết hiện đang chờ duyệt')
-    $('#TinTucENPending').text('Có ' + CountEN.CountNewsPending + ' bài viết hiện đang chờ duyệt')
+    $('#TinTucVNPending').text('Có ' + CountVI.CountNewsPending + ns)
+    $('#TinTucENPending').text('Có ' + CountEN.CountNewsPending + ns)
     $('#TaiKhoanPending').text('Có ' + CountVI.CountAccountPending + ' tài khoản đang chờ duyệt')
 }
