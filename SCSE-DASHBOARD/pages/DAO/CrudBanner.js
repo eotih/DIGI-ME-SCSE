@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "https://api.scse-vietnam.org/";
 const getTaoken = parseJwt(localStorage.getItem("token"));
 function parseJwt(token) {
   var base64Url = token.split(".")[1];

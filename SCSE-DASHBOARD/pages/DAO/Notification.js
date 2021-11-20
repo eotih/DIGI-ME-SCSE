@@ -1,4 +1,4 @@
-const NOTI_API = "http://localhost:59360/";
+const NOTI_API = "https://api.scse-vietnam.org/";
 
 function notifyMe() {
   fetch(NOTI_API + "Management/ListNotification?status=" + "Chưa Xem")

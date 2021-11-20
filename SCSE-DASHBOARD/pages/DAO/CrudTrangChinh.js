@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:59360/API/";
+const URL_API = "https://api.scse-vietnam.org/";
 window.addEventListener('load', getNew);
 let NewsVN, NewsEN, PostVN, PostEN, Volunteers, PendingAccount = [];
 const getAllData = async (url) => {

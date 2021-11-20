@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "https://api.scse-vietnam.org/";
 window.addEventListener('load', getDataEditMember)
 //EDIT THÀNH VIÊN KHÁC
 async function getDataEditMember() {

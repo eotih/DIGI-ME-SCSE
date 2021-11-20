@@ -1,4 +1,4 @@
-const API_USER = "http://localhost:59360/";
+const API_USER = "https://api.scse-vietnam.org/";
 var GetToken = parseJwt(localStorage.getItem("token"));
 window.addEventListener('load', loadData)
 async function loadData() {

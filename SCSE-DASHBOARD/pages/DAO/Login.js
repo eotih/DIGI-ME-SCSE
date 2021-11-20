@@ -1,4 +1,4 @@
-const WEB_API = "http://localhost:59360/";
+const WEB_API = "https://api.scse-vietnam.org/";
 function loginAdmin() {
     var Username = $('#Username').val();
     var Password = $('#Password').val();

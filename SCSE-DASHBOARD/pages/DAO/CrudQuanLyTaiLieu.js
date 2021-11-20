@@ -1,4 +1,4 @@
-const url = "http://localhost:59360/";
+const url = "https://api.scse-vietnam.org/";
 window.addEventListener('load', loadData)
 window.addEventListener('load', getListDocumentNotVersionEN)
 async function loadData() {
