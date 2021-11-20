@@ -42,6 +42,9 @@ function deletePortfolio(FullName) {
   if (confirm("Bạn có muốn xoá tài khoản?")) {
     fetch(WEB_API + "Interface/DeletePortfolio?fullname=" + FullName, {
       method: "DELETE",
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem('token'),
+      }
     })
       .then(function (response) {
         return response.json();
@@ -88,6 +91,7 @@ async function updateImg(numb) {
     body: JSON.stringify(dataimg),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer " + localStorage.getItem('token'),
     },
   })
     .then(function (response) {
@@ -188,6 +192,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
           body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer " + localStorage.getItem('token'),
           },
         })
           .then(function (response) {
@@ -225,6 +230,7 @@ function addPortfolioMember() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer " + localStorage.getItem('token'),
     },
   })
     .then(function (response) {
@@ -275,6 +281,7 @@ function editDataBGD() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer " + localStorage.getItem('token'),
     },
   })
     .then(function (response) {

@@ -130,8 +130,9 @@ async function getData(ID) {
             method: "POST",
             body: JSON.stringify($data),
             headers: {
-              "Content-Type": "application/json; charset=UTF-8",
-            },
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
+    },
           })
             .then(function (response) {
               return response.json();
@@ -161,6 +162,7 @@ async function updateData() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {
@@ -180,12 +182,12 @@ async function deleteData() {
     ID: $("#ID2").val(),
     IDState: $("#State").val(),
   };
-  console.log(data);
   fetch(WEB_API + "/Management/EditState", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {

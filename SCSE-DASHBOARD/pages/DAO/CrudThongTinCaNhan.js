@@ -124,7 +124,7 @@ function changePassword(){
                     window.location.reload();
                 }
                 else {
-                    alert('data1 not update')
+                    alert('data not update')
                 }
             })
     }

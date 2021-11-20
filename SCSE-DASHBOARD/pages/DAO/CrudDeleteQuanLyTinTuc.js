@@ -142,8 +142,9 @@ async function updateRestore() {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
+    },
     }).then(function (response) {
         return response.json()
     })
@@ -166,8 +167,9 @@ async function updateRestoreEN() {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        },
+      "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
+    },
     }).then(function (response) {
         return response.json()
     })
@@ -185,6 +187,9 @@ async function deleteData(IDNews) {
     if (confirm('Bạn có muốn xoá tin tức này?')) {
         fetch(WEB_API + "Management/DeleteNewsVN?ID=" + IDNews, {
             method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token'),
+            }
         })
         .then(function (response) {
             return response.json();
@@ -206,6 +211,9 @@ async function deleteDataEN(IDNewsEN) {
     if (confirm('Are you sure you want to delete?')) {
         fetch(WEB_API + "Management/DeleteNewsEN?ID=" + IDNewsEN, {
             method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('token'),
+            }
         })
         .then(function (response) {
             return response.json();

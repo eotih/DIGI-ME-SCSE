@@ -15,6 +15,7 @@ async function addPost() {
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer "+localStorage.getItem('token'),
         },
     }).then(function (response) {
         return response.json()
@@ -67,6 +68,7 @@ async function addPostEN() {
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer "+localStorage.getItem('token'),
         },
     }).then(function (response) {
         return response.json()
@@ -87,21 +89,21 @@ function addNoti(numb){
     if(numb === 1){
         $dataNoti.Title = 'Tin tức mới',
         $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã đăng tải 1 tin tức mới',
+        $dataNoti.Decription = 'Người dùng ' +GetToken.nameid[3]+' đã đăng tải 1 tin tức mới',
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
     else if(numb === 2){
         $dataNoti.Title = 'Chỉnh sửa tin tức',
         $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã chỉnh sửa 1 bài đăng',
+        $dataNoti.Decription = 'Người dùng ' +GetToken.nameid[3]+' đã chỉnh sửa 1 bài đăng',
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }
     else if(numb === 3){
         $dataNoti.Title = 'Xóa tin tức',
         $dataNoti.Image = 'https://cms.scse-vietnam.org/images/faces/LOA.jpg',
-        $dataNoti.Decription = 'Người dùng ' +getToken.nameid[3]+' đã xóa 1 tin tức',
+        $dataNoti.Decription = 'Người dùng ' +GetToken.nameid[3]+' đã xóa 1 tin tức',
         $dataNoti.Status = 'Chưa Xem',
         $dataNoti.Url = 'https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html'
     }

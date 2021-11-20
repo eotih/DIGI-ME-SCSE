@@ -9,7 +9,7 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, FullName,Subtitle,LastName, Phone, Email, Details, CreatedByDate } = response
+                const { ID, FullName, Subtitle, LastName, Phone, Email, Details, CreatedByDate } = response
                 return `<tr>
                         <td>${ID}</td>
                         <td>${FullName}</td>
@@ -29,7 +29,10 @@ async function loadData() {
 
 async function deleteData(ID) {
     fetch(WEB_API + "Interface/DeleteContact?ID=" + ID, {
-        method: 'DELETE',
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('token'),
+        }
     }).then(function (response) {
         return response.json()
     })

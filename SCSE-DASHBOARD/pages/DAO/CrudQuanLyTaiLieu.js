@@ -8,7 +8,7 @@ async function loadData() {
         })
         .then(function (response) {
             var html = response.map(function (response) {
-                const { ID, Title, Slug,Details } = response;
+                const { ID, Title, Slug, Details } = response;
                 // Sẽ return ra hàm tbody
                 return `<tr>
                 <td>${ID}</td>
@@ -31,7 +31,7 @@ async function loadData() {
             })
             .then(function (response) {
                 var html = response.map(function (response) {
-                    const { ID, Title, Slug,Details } = response;
+                    const { ID, Title, Slug, Details } = response;
                     return `<tr>
                     <td>${ID}</td>
                 <td>${Title}</td>
@@ -62,7 +62,7 @@ async function loadData() {
             })
             .then(function (response) {
                 var html = response.map(function (response) {
-                    const { IDEN, Title, SlugEN,Details } = response;
+                    const { IDEN, Title, SlugEN, Details } = response;
                     return `<tr>
                     <td>${IDEN}</td>
                 <td>${Title}</td>
@@ -112,6 +112,7 @@ async function addData() {
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer " + localStorage.getItem('token'),
         },
     }).then(function (response) {
         return response.json()
@@ -138,6 +139,7 @@ async function addDataEN() {
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer " + localStorage.getItem('token'),
         },
     }).then(function (response) {
         return response.json()
@@ -182,7 +184,8 @@ async function updateData() {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8",
+            "Authorization": "Bearer " + localStorage.getItem('token'),
         },
     }).then(function (response) {
         return response.json()
@@ -210,7 +213,10 @@ function getBaseWEB_API() {
 
 async function deleteData(ID) {
     fetch(url + "Interface/DeleteDocument?id=" + ID, {
-        method: 'DELETE',
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('token'),
+        }
     }).then(function (response) {
         return response.json()
     })
@@ -226,7 +232,10 @@ async function deleteData(ID) {
 }
 async function deleteData(IDEN) {
     fetch(url + "Interface/DeleteDocumentEN?id=" + IDEN, {
-        method: 'DELETE',
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('token'),
+        }
     }).then(function (response) {
         return response.json()
     })
