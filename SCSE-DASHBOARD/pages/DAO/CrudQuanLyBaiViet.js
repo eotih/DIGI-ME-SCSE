@@ -30,7 +30,6 @@ function convertCategory(category) {
     }
 }
 function convertField(field) {
-    console.log(field)
     if (field === 1) {
         return 'Giới và bình đẳng giới'
     }

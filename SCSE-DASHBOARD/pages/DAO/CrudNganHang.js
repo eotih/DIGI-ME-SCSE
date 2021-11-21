@@ -99,7 +99,6 @@ async function updateData(ID) {
     BankName: $("#Name").val(),
     ImageQR: $("#img").val(),
   };
-  console.log(data);
   fetch(WEB_API + "Interface/AddOrEditBankInfo", {
     method: "POST",
     body: JSON.stringify(data),

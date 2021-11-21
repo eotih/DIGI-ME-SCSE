@@ -99,10 +99,8 @@ function changePassword(){
     const repassword = $('#Re_PasswordNew').val();
     
     var hash = MD5(pass);
-    console.log(hash);
 
     const role = GetToken.nameid[2];
-    console.log(newpassword);
     const Passwords = $('#Old_Password').val();
     if (hash === Passwords && newpassword == repassword) {
         var data1 = {

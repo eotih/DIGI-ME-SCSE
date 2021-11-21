@@ -66,7 +66,6 @@ async function getDataImg(id) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
       $("#ID1").val(response.ID);
       document.getElementById("imgEdit1").src = response.Image1;
       $("#ID2").val(response.ID);
@@ -275,7 +274,6 @@ function editDataBGD() {
     Details: $("#Details").val(),
     DetailsEN: $("#DetailsEN").val(),
   };
-  console.log(data);
   fetch(WEB_API + "Interface/AddOrEditPortfolios", {
     method: "POST",
     body: JSON.stringify(data),

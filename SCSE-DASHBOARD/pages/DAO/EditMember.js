@@ -31,7 +31,6 @@ function editDataMember() {
         Details: $('#summernote').summernote('code'),
         DetailsEN: $('#ENGPOST').summernote('code'),
     };
-    console.log(data);
     fetch(WEB_API + "Interface/AddOrEditPortfolios", {
         method: 'POST',
         body: JSON.stringify(data),

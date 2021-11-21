@@ -8,7 +8,6 @@ async function loadData() {
         .then(function (response) {
             var html = response.map(function (response) {
                 let { IdField, FieldName } = response;
-                console.log(response)
                 return `<tr>
                 <td>${IdField}</td>
                 <td>${FieldName}</td>

@@ -51,7 +51,6 @@ async function loadTitleToDropdown() {
             }
         })
         .catch(function (error) {
-            console.log(error)
         })
 }
 async function loadTitleToAdd() {
@@ -70,7 +69,6 @@ async function loadTitleToAdd() {
             }
         })
         .catch(function (error) {
-            console.log(error)
         })
 }
 function deleteNow() {
@@ -199,7 +197,6 @@ function AlertAdd() {
     const fileInput = document.querySelector('input[id="getFile"]');
     const file =fileInput.files;
     for (let i = 0; i < file.length; i++) {
-        console.log(file[i]);
         (function (file) {
             let name = file.name
             var reader = new FileReader();

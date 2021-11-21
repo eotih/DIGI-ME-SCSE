@@ -47,7 +47,6 @@ async function ClearNoti() {
       return response.json();
     }).then(function (response) {
       response.map(function (response) {
-        console.log(response)
         EditStatus(response.ID)
       })
     })
