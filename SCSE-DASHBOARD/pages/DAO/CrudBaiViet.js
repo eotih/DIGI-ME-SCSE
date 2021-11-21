@@ -13,6 +13,7 @@ async function addPost() {
           event.preventDefault();
           event.stopPropagation();
         } else {
+          event.preventDefault();
           var data = {
             Title: $("#tieude").val(),
             Details: $("#summernote").summernote("code"),
