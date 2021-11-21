@@ -13,7 +13,7 @@ async function getData() {
             let { IDNewsEN, IdField, Title, Slug, Image, IDState, Details } = response;
             $('#IDNews').val(IDNewsEN),
                 $('#IdField').val(IdField),
-                $('#IDState').val(IDState),
+                $('#State').val(IDState),
                 $('#Title').val(Title),
                 $('#Slug').val(Slug),
                 $('#summernote').summernote('code', Details),

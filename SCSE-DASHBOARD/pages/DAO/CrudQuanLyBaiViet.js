@@ -42,7 +42,7 @@ function convertField(field) {
     else if (field === 4) {
         return 'Nghiên cứu và đào tạo'
     }
-    else if (field === undefined) {
+    else if (field === undefined || field === null) {
         return ''
     }
 }

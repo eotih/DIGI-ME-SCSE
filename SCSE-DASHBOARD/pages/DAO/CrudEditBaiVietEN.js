@@ -24,7 +24,7 @@ async function getData() {
       $("#IDPost").val(IDPostEN),
         $("#Category").val(Category),
         $("#field").val(IDField),
-        $("#IDState").val(IDState),
+        $("#State").val(IDState),
         $("#Title").val(Title),
         $("#Slug").val(Slug),
         $("#summernote").summernote("code", Details),
