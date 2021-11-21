@@ -42,8 +42,7 @@ async function loadData() {
                         <td><img src="${Image}"/></td>
                         <td>${convertDate(CreatedByDate)}</td>
                         <td>${convertDate(UpdatedByDate)}</td>
-                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</a>
-                        <a onclick="return deleteData(${ID})" class="btn btn-outline-danger">Xóa</a></td>
+                        <td><a onclick="return getData(${ID})" class="btn btn-outline-primary">Xem chi tiết</a></td>
                         </tr>`;
       });
       // đây là hàm trả ra tbody
