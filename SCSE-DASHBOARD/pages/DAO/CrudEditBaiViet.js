@@ -24,56 +24,55 @@ async function getData() {
   $("#add").hide();
   $("#edit").show();
 }
-  var forms = document.querySelectorAll(".needs-validation");
+var forms = document.querySelectorAll(".needs-validation");
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          event.preventDefault();
-          var $data = {
-            IDPost: $("#IDPost").val(),
-            IDCat: $("#Category").val(),
-            IDField: $("#linhvuc").val(),
-            IDState: $("#State").val(),
-            Title: $("#Title").val(),
-            Details: $("#summernote").summernote("code"),
-            Image: document.getElementById("img").src,
-            Author: getToken.nameid[3],
-          };
-          fetch(WEB_API + "Management/AddOrEditPost", {
-            method: "POST",
-            body: JSON.stringify($data),
-            headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-      "Authorization": "Bearer "+localStorage.getItem('token'),
-    },
+// Loop over them and prevent submission
+Array.prototype.slice.call(forms).forEach(function (form) {
+  form.addEventListener(
+    "submit",
+    function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        event.preventDefault();
+        var $data = {
+          IDPost: $("#IDPost").val(),
+          IDCat: $("#Category").val(),
+          IDField: $("#linhvuc").val(),
+          IDState: $("#State").val(),
+          Title: $("#Title").val(),
+          Details: $("#summernote").summernote("code"),
+          Image: document.getElementById("img").src,
+          Author: getToken.nameid[3],
+        };
+        fetch(WEB_API + "Management/AddOrEditPost", {
+          method: "POST",
+          body: JSON.stringify($data),
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        })
+          .then(function (response) {
+            return response.json();
           })
-            .then(function (response) {
-              return response.json();
-            })
-            .then(function (data) {
-              if (data.Status === "Updated") {
-                addNoti(2);
-                alert("Sửa Thành Công");
-                window.location.href =
-                  "https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html";
-              } else {
-                alert("Data not update");
-              }
-            });
-        }
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
-
+          .then(function (data) {
+            if (data.Status === "Updated") {
+              addNoti(2);
+              alert("Sửa Thành Công");
+              window.location.href =
+                "https://cms.scse-vietnam.org/pages/Admin/BaiDang/QuanLyBaiDang.html";
+            } else {
+              alert("Data not update");
+            }
+          });
+      }
+      form.classList.add("was-validated");
+    },
+    false
+  );
+});
 
 function addNoti(numb) {
   var $dataNoti = {};
