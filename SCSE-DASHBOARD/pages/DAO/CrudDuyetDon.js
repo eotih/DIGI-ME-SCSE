@@ -116,6 +116,7 @@ async function getData(ID) {
           event.preventDefault();
           event.stopPropagation();
         } else {
+          event.preventDefault();
           var $data = {
             FirstName: $("#FirstName").val(),
             LastName: $("#LastName").val(),

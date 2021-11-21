@@ -63,6 +63,7 @@ async function getData(ID) {
           event.preventDefault();
           event.stopPropagation();
         } else {
+          event.preventDefault();
           var data = {
             BankName: $("#Name").val(),
             ImageQR: $("#img").val(),

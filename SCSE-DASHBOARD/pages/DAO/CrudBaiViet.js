@@ -82,6 +82,7 @@ async function addPostEN() {
           event.preventDefault();
           event.stopPropagation();
         } else {
+          event.preventDefault();
           var data = {
             IDPostEN: $("#PostVN").val(),
             IDCat: $("#Category").val(),

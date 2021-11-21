@@ -176,6 +176,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
         event.preventDefault();
         event.stopPropagation();
       } else {
+        event.preventDefault();
         const data = {
           FullName: $("#Name").val(),
           Position: $("#Position").val(),

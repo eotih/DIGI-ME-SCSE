@@ -35,6 +35,7 @@ async function getData() {
           event.preventDefault();
           event.stopPropagation();
         } else {
+          event.preventDefault();
           var $data = {
             IDPost: $("#IDPost").val(),
             IDCat: $("#Category").val(),

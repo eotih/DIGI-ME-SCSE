@@ -93,6 +93,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
         event.preventDefault();
         event.stopPropagation();
       } else {
+        event.preventDefault();
         var $data = {
           Name: $("#Name").val(),
           Image: $("#Img").val(),

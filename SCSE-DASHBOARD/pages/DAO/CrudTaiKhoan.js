@@ -116,6 +116,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
         event.preventDefault();
         event.stopPropagation();
       } else {
+        event.preventDefault();
         var data = {
           Username: $("#UserName").val(),
           Password: $("#Password").val(),
