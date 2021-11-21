@@ -42,7 +42,7 @@ function convertField(field) {
     else if (field === 4) {
         return 'Nghiên cứu và đào tạo'
     }
-    else if (field === undefined || field === null) {
+    else if (field === undefined || field === null || field === 0) {
         return ''
     }
 }
@@ -102,7 +102,7 @@ function convertField(field) {
                     return `<tr>
                     <td>${IDPostEN}</td>
                     <td>${convertCategory(IDCat)}</td>
-                    <td>${convertCategory(IDField)}</td>
+                    <td>${convertField(IDField)}</td>
                     <td>${Title}</td>
                     <td><img src='${Image}'/></td>
                     <td>${Author}</td>

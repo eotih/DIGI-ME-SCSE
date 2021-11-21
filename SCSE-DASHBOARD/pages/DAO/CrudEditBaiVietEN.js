@@ -22,7 +22,7 @@ async function getData() {
         Details,
       } = response;
       $("#IDPost").val(IDPostEN),
-        $("#Category").val(Category),
+        $("#Category").val(IDCat),
         $("#field").val(IDField),
         $("#State").val(IDState),
         $("#Title").val(Title),
