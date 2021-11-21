@@ -257,7 +257,7 @@
                 </div>
                 <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
                   aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
+                  <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel-2">Thêm Video</h5>
@@ -266,57 +266,94 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form class="forms-sample">
+                        <form class="forms-sample needs-validation" novalidate>
                           <div class="form-group" hidden>
                             <label for="ID">ID</label>
-                            <input type="text" class="form-control" onchange="validateFormOnChange()" id="ID" placeholder="ID" disabled>
+                            <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
                           </div>
-                          <div class="form-group">
-                            <label for="Title">Title</label>
-                            <input type="text" class="form-control" onclick="validateFormOnChange()" id="Title" placeholder="Title">
+                          <div class="row">
+                            <div class="col-md">
+                              <div class="form-group">
+                                <label for="Title">Title</label>
+                                <input type="text" class="form-control" id="Title" placeholder="Title" required>
+                                <div class="invalid-feedback">
+                                  Vui lòng nhập title.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-group">
+                                <label for="TitleEN">TitleEN</label>
+                                <input type="text" class="form-control" id="TitleEN" placeholder="Tiếu đề tiếng Anh"
+                                  required>
+                                  <div class="invalid-feedback">
+                                    Vui lòng nhập title tiếng anh.
+                                  </div>
+                              </div>
+                            </div>
                           </div>
-                          <div class="form-group">
-                            <label for="TitleEN">TitleEN</label>
-                            <input type="text" class="form-control" onchange="validateFormOnChange()" id="TitleEN" placeholder="Tiếu đề tiếng Anh">
+                          <div class="row">
+                            <div class="col-md">
+                              <div class="form-group">
+                                <label for="LinkYTB">LinkYTB</label>
+                                <input type="text" class="form-control" id="LinkYTB" placeholder="LinkYTB" required>
+                                <div class="invalid-feedback">
+                                  Vui lòng nhập link YouTube.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-group">
+                                <label for="IDField">Chọn lĩnh vực</label>
+                                <select class="form-select" id="IDField">
+                                  <option value="0">Vui lòng chọn</option>
+                                  <option value="1">Giới và bình đăng giới</option>
+                                  <option value="2">Biến đổi khí hậu môi trường</option>
+                                  <option value="3">Thực tập sinh</option>
+                                  <option value="4">Nghiên cứu Đào tạo</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-group">
+                                <label for="IDCat">Category</label>
+                                <select class="form-select" id="IDCat" placeholder="IDCat">
+                                  <option value="1">Tin tức</option>
+                                  <option value="2">Dự án</option>
+                                  <option value="3">Hợp tác nghiên cứu</option>
+                                </select>
+                              </div>
+                            </div>
                           </div>
-                          <div class="form-group">
-                            <label for="LinkYTB">LinkYTB</label>
-                            <input type="text" class="form-control" onchange="validateFormOnChange()" id="LinkYTB" placeholder="LinkYTB">
+                          <div class="row">
+                            <div class="col-md">
+                              <div class="form-group">
+                                <label for="Description">Mô tả</label>
+                                <textarea style="height: 100px" class="form-control" type="text" id="Description"
+                                  placeholder="Mô tả " required></textarea>
+                                  <div class="invalid-feedback">
+                                    Vui lòng nhập mô tả.
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-md">
+                              <div class="form-group">
+                                <label for="DescriptionEN">Mô tả tiếng Anh</label>
+                                <textarea style="height: 100px" class="form-control" type="text" id="DescriptionEN"
+                                  placeholder="Mô tả tiếng Anh" required></textarea>
+                                  <div class="invalid-feedback">
+                                    Vui lòng nhập Description.
+                                  </div>
+                              </div>
+                            </div>
                           </div>
-                          <div class="form-group">
-                            <label for="Description">Mô tả</label>
-                            <textarea rows="5" cols="20" type="text" onchange="validateFormOnChange()" id="Description" placeholder="Mô tả "></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label for="DescriptionEN">Mô tả tiếng Anh</label>
-                            <textarea rows="5" cols="20" type="text" onchange="validateFormOnChange()" id="DescriptionEN" placeholder="Mô tả tiếng Anh"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label for="IDField">Chọn lĩnh vực</label>
-                            <select class="form-select" id="IDField">
-                                <option value="0">Vui lòng chọn</option>
-                                <option value="1">Giới và bình đăng giới</option>
-                                <option value="2">Biến đổi khí hậu môi trường</option>
-                                <option value="3">Thực tập sinh</option>
-                                <option value="4">Nghiên cứu Đào tạo</option>
-                            </select>
-                        </div>
-
-                          <div class="form-group">
-                            <label for="IDCat">Category</label>
-                            <select type="text" class="form-control" id="IDCat" placeholder="IDCat">
-                              <option value="1">Tin tức</option>
-                              <option value="2">Dự án</option>
-                              <option value="3">Hợp tác nghiên cứu</option>
-                            </select>
-                          </div>
-                        </form>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" id="add" onclick="addData();" class="btn btn-success">Thêm</button>
+                        <button type="submit" id="add" class="btn btn-success">Thêm</button>
                         <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
                         <button type="button" class="btn btn-light" data-dismiss="modal" onclick="Close();">Hủy</button>
                       </div>
+                      </form>
                     </div>
                   </div>
                 </div>
