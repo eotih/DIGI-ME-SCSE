@@ -1,4 +1,4 @@
-const WEB_API = "https://api.scse-vietnam.org/";
+const WEB_API = "http://localhost:59360/";
 //đây là hàm khi vào trang sẽ auto chạy hàm loadData đầu tiên
 window.addEventListener('load', loadData)
 window.addEventListener('load', loadTitleToDropdown)
@@ -93,7 +93,7 @@ function deleteNow() {
         })
 }
 async function loadData() {
-    fetch(WEB_API + "Interface/ListPhoto")
+    fetch(WEB_API + "Management/ListImageTitle")
         .then(function (response) {
             return response.json();
         })
@@ -106,8 +106,8 @@ async function loadData() {
                     <td>${TitleEN.slice(0, 50)}</td>
                     <td>${convertCategory(IDCat)}</td>
                     <td>${convertField(IDField)}</td>
-                    <td><img src='${Image}'></td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button><button onclick="return deletePhoto('${ID}')" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><img src='${WEB_API}/${Image}'></td>
+                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button><button onclick="return deletePhoto('${Title}')" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
             })
             // đây là hàm trả ra tbody
@@ -138,95 +138,44 @@ async function getData(ID) {
     $('#add').hide();
     $('#edit').show();
 }
-function addData(base64) {
-    let data = {
-        IDCat: $('#IDCat').val(),
-        IDField: $('#linhvuc').val(),
-        Title: $('#Title').val(),
-        TitleEN: $('#TitleEN').val(),
-        Image: base64
-    };
-    fetch(WEB_API + "Interface/AddOrEditPhotoGallery", {
+function uploadImgToAPI(files) {
+    var formData = new FormData();
+    formData.append('file', files);
+    formData.append('IDCat', $('#IDCat').val());
+    formData.append('IDField', $('#IDField').val());
+    formData.append('Title', $('#Title').val());
+    formData.append('TitleEN', $('#TitleEN').val());
+    fetch(WEB_API + "Interface/UploadAlbum", {
         method: 'POST',
-        body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8",
             "Authorization": "Bearer " + localStorage.getItem('token'),
         },
+        body: formData,
     }).then(function (response) {
+        window.location.reload();
         return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Success') {
-                window.location.reload();
-
-            }
-            else {
-                alert('Data not insert')
-            }
-        })
+    }
+    ).then(function (data) {
+        console.log(data);
+    }
+    ).catch(function (error) {
+        console.log(error);
+    }
+    );
 }
-function addData1(base64) {
-    let data = {
-        IDCat: $('#IDCat1').val(),
-        IDField: $('#linhvuc1').val(),
-        Title: $('#Titleforalbum').val(),
-        TitleEN: $('#TitleENforalbum').val(),
-        Image: base64
-    };
-    fetch(WEB_API + "Interface/AddOrEditPhotoGallery", {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-            "Authorization": "Bearer " + localStorage.getItem('token'),
-        },
-    }).then(function (response) {
-        return response.json()
-    })
-        .then(function (data) {
-            if (data.Status === 'Success') {
-                window.location.reload();
-            }
-            else {
-                alert('Data not insert')
-            }
-        })
-}
-function AlertAdd() {
+async function AlertAdd() {
     const fileInput = document.querySelector('input[id="getFile"]');
     const file =fileInput.files;
     for (let i = 0; i < file.length; i++) {
         (function (file) {
-            let name = file.name
-            var reader = new FileReader();
-            reader.onload = function () {
-                var text = reader.result;
-                addData(text)
-            }
-            reader.readAsDataURL(file);
+            uploadImgToAPI(file)
         })(file[i]);
     }
     alert("Thêm thành công")
 }
-function AlertAdd1() {
-    const fileInput = document.querySelector('input[id="getFile2"]');
-    const file =fileInput.files;
-    for (let i = 0; i < file.length; i++) {
-        (function (file) {
-            var reader = new FileReader();
-            reader.onload = function () {
-                var text = reader.result;
-                addData1(text)
-            }
-            reader.readAsDataURL(file);
-        })(file[i]);
-    }
-    alert("Thêm thành công")
-}
-function deletePhoto(ID) {
+function deletePhoto(Title) {
     if (confirm("Bạn có muốn xoá ảnh này?")) {
-        fetch(WEB_API + "Interface/DeletePhoto?id=" + ID, {
+        fetch(WEB_API + "Interface/DeletePhotosByTitle?title=" + Title, {
             method: "DELETE",
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('token'),
