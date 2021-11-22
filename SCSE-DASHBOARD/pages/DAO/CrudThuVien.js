@@ -107,7 +107,8 @@ async function loadData() {
                     <td>${convertCategory(IDCat)}</td>
                     <td>${convertField(IDField)}</td>
                     <td><img src='${WEB_API}/${Image}'></td>
-                    <td><button onclick="return getData(${ID})" class="btn btn-outline-primary">View</button><button onclick="return deletePhoto('${Title}')" class="btn btn-outline-danger">Xoá</button></td>
+                    <td><a href="./ChiTietThuVien.html?Slug=${Slug}"" class="btn btn-outline-primary">Xem chi tiết</a>
+                    <button onclick="return deletePhoto('${Title}')" class="btn btn-outline-danger">Xoá</button></td>
                     </tr>`;
             })
             // đây là hàm trả ra tbody
@@ -165,10 +166,12 @@ function uploadImgToAPI(files) {
 }
 async function AlertAdd() {
     const fileInput = document.querySelector('input[id="getFile"]');
-    const file =fileInput.files;
+    const file = fileInput.files;
     for (let i = 0; i < file.length; i++) {
         (function (file) {
-            uploadImgToAPI(file)
+            setTimeout(function () {
+                uploadImgToAPI(file)
+            }, 3000);
         })(file[i]);
     }
     alert("Thêm thành công")
@@ -199,7 +202,7 @@ async function updateData() {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
         TitleEN: $('#TitleEN').val(),
-        IDField: $('#linhvuc').val(),
+        IDField: $('#IDField').val(),
         Title: $('#Title').val(),
         Image: base64
     };
@@ -227,7 +230,7 @@ async function autoUpdate(baseString) {
     var $data = {
         ID: $('#ID').val(),
         IDCat: $('#IDCat').val(),
-        IDField: $('#linhvuc').val(),
+        IDField: $('#IDField').val(),
         Title: $('#Title').val(),
         TitleEN: $('#TitleEN').val(),
         Slug: $('#Slug').val(),
@@ -264,17 +267,6 @@ function clearTextBox() {
     $('#exampleModal-2').modal('show');
     $('#add').show();
     $('#edit').hide();
-}
-function clearTextBox1() {
-    $('#ID').val("");
-    $('#IDCat').val("");
-    $('#IDField').val("");
-    $('#Title').val("");
-    $('#Slug').val("");
-    $('#Image').val("");
-    $('#exampleModal-3').modal('show');
-    $('#add1').show();
-    $('#edit1').hide();
 }
 function deleteData() {
     $('#exampleModal').modal('show');

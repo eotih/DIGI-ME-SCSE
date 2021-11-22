@@ -231,8 +231,8 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Quản lý thư viện hình ảnh</h4>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2"
-                  onclick="clearTextBox();">Thêm album ảnh</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-3"
+                  onclick="getData1();">Thêm hình ảnh vào album</button>
                 <div class="row">
                   <div class="col-12">
                     <div class="table-responsive">
@@ -240,10 +240,10 @@
                         <thead>
                           <tr>
                             <th>ID #</th>
-                            <th>Tiêu đề</th>
+                            <!-- <th>Tiêu đề</th>
                             <th>Tiêu đề tiếng Anh</th>
                             <th>Thể loại</th>
-                            <th>Lĩnh vực</th>
+                            <th>Lĩnh vực</th> -->
                             <th>Ảnh</th>
                             <th>Hành động</th>
                           </tr>
@@ -254,9 +254,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog"
                   aria-labelledby="exampleModalLabel-2" aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel-2">Modal title</h5>
@@ -270,15 +270,15 @@
                             <label for="ID">ID</label>
                             <input type="text" class="form-control" id="ID" placeholder="ID" disabled>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group" hidden>
                             <label for="Title">Title</label>
                             <input type="text" class="form-control" id="Title" placeholder="Title">
                           </div>
-                          <div class="form-group">
+                          <div class="form-group" hidden>
                             <label for="TitleEN">Title tiếng Anh</label>
                             <input type="text" class="form-control" id="TitleEN" placeholder="Title tiếng Anh">
                           </div>
-                          <div class="form-group">
+                          <div class="form-group" hidden>
                             <label for="IDCat">Category</label>
                             <select class="form-select" id="IDCat">
                               <option value="0">Vui lòng chọn</option>
@@ -287,7 +287,7 @@
                               <option value="3">Hợp tác nghiên cứu</option>
                             </select>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group" hidden>
                             <label for="theloai">Chọn lĩnh vực</label>
                             <select class="form-select" id="IDField">
                               <option value="0">Vui lòng chọn</option>
@@ -308,8 +308,8 @@
                         </form>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" id="add" onclick="AlertAdd();" class="btn btn-success">Thêm</button>
-                        <button type="button" id="edit" onclick="updateData();" class="btn btn-success">Sửa</button>
+                        <button type="button" id="add1" onclick="AlertAdd();" class="btn btn-success">Thêm</button>
+                        <button type="button" id="edit1" onclick="updateData();" class="btn btn-success">Sửa</button>
                         <button type="button" class="btn btn-light" data-dismiss="modal">Hủy</button>
                       </div>
                     </div>
@@ -385,7 +385,7 @@
   <script src="../../../js/modal-demo.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script type="text/javascript" src="../../DAO/CrudThuVien.js"></script>
+  <script type="text/javascript" src="../../DAO/ChiTietThuVien.js"></script>
   <script type="text/javascript" src="../../DAO/CrudPhanQuyen.js"></script>
   <script type="text/javascript" src="../../DAO/GetThongTinUser.js"></script>
   <script type="text/javascript" src="../../DAO/Login_Check.js"></script>
