@@ -66,7 +66,7 @@ async function getData(ID) {
           event.preventDefault();
           var data = {
             BankName: $("#Name").val(),
-            ImageQR: $("#img").val(),
+            ImageQR: $("#avatar").val(),
           };
           fetch(WEB_API + "Interface/AddOrEditBankInfo", {
             method: "POST",
@@ -98,7 +98,7 @@ async function updateData(ID) {
   var data = {
     ID: $("#ID").val(),
     BankName: $("#Name").val(),
-    ImageQR: $("#img").val(),
+    ImageQR: $("#avatar").val(),
   };
   fetch(WEB_API + "Interface/AddOrEditBankInfo", {
     method: "POST",

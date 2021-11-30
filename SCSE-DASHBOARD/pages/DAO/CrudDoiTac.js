@@ -92,7 +92,6 @@ async function getData(ID) {
         })
         .then(function (response) {
             const { ID, OrganizationName, Image, OrganizationProgrames,ContactPerson, Phone, Email, Address, Link,LinkFile, IDState } = response
-            const State = changeIdState(IDState);
             $('#ID').val(ID),
                 document.getElementById("Image").src = Image;
             $('#OrganizationName').val(OrganizationName);
