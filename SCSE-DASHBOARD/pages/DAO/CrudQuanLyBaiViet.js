@@ -147,7 +147,7 @@ function deleteDataEN(ID) {
 }
 function approveData(ID) {
     $('#IDPost').val(ID);
-    $('#IDState').val("");
+    $('#IDState').val();
     $('#exampleModal-2').modal('show');
     $('#showform').show();
     $('#HeaderApprove').show();

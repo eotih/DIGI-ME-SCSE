@@ -102,7 +102,7 @@ async function getData(ID) {
             $('#Email').val(Email);
             $('#Address').val(Address);
             $('#Link').val(Link);
-            $('#IDState').val(State);
+            $('#IDState').val(IDState);
         })
     $('#exampleModal-2').modal('show');
     $('#add').hide();
