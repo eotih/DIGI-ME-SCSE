@@ -1,5 +1,6 @@
 const url = "https://api.scse-vietnam.org/";
 window.addEventListener('load', loadData)
+window.addEventListener('load', getListDocumentNotVersionEN)
 async function loadData() {
     fetch(url + "Interface/ListDocument")
         .then(function (response) {
