@@ -93,8 +93,7 @@ async function getData(ID) {
       false
     );
   });
-
-async function updateData(ID) {
+async function updateData() {
   var data = {
     ID: $("#ID").val(),
     BankName: $("#Name").val(),
@@ -105,6 +104,7 @@ async function updateData(ID) {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Authorization": "Bearer "+localStorage.getItem('token'),
     },
   })
     .then(function (response) {
@@ -140,6 +140,16 @@ async function deleteData(ID) {
       });
   } else {
   }
+}
+function getBaseUrl() {
+  var file = document.querySelector("input[type=file]")["files"][0];
+  var reader = new FileReader();
+  reader.onloadend = function () {
+    baseString = reader.result;
+    $("#avatar").val(baseString);
+    document.getElementById("img").src = baseString;
+  };
+  reader.readAsDataURL(file);
 }
 function clearTextBox() {
   $("#ID").val("");

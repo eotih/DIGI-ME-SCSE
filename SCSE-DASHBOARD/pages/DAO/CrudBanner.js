@@ -1,5 +1,5 @@
 const WEB_API = "https://api.scse-vietnam.org/";
-const getTaoken = parseJwt(localStorage.getItem("token"));
+const getToken = parseJwt(localStorage.getItem("token"));
 function parseJwt(token) {
   var base64Url = token.split(".")[1];
   var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -96,7 +96,7 @@ Array.prototype.slice.call(forms).forEach(function (form) {
         var $data = {
           Name: $("#Name").val(),
           Image: $("#Img").val(),
-          CreatedByUser: getTaoken.nameid[3],
+          CreatedByUser: getToken.nameid[3],
         };
         fetch(WEB_API + "Interface/AddOrEditBanner", {
           method: "POST",
@@ -129,7 +129,7 @@ async function updateData() {
     ID: $("#ID").val(),
     Name: $("#Name").val(),
     Image: $("#Img").val(),
-    UpdateByUser: getTaoken.nameid[3],
+    UpdateByUser: getToken.nameid[3],
   };
   fetch(WEB_API + "Interface/AddOrEditBanner", {
     method: "POST",

@@ -269,8 +269,9 @@
                               </div>
                               <div class="form-group">
                                 <label for="Avatar">Ảnh QR</label>
-                                <input type="file" name="Avatar" id="avatar" required>
-                                <img src="" id="img" style="width: 300px;">
+                                <input type="hidden" class="form-control" id="avatar" placeholder="Hình" disabled>
+                                <input type="file" onchange="getBaseUrl()" required>
+                                <img id="img" style="width: 300px;">
                               </div>
                           </div>
                           <div class="modal-footer">
@@ -324,21 +325,6 @@
   <script src="../../DAO/GetThongTinUser.js"></script>
   <script src="../../DAO/Notification.js"></script>
   <!-- End custom js for this page-->
-  <script>
-    const fileInput = document.querySelector('input[id="avatar"]');
-    // listen for the change event so we can capture the file
-    fileInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        base64 = reader.result;
-        $('#img').val(base64);
-        document.getElementById('img').src = base64;
-      };
-      reader.readAsDataURL(file);
-    });
-
-  </script>
 </body>
 
 </html>

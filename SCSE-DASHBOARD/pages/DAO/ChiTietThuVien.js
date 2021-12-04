@@ -87,17 +87,7 @@ function deletePhoto(ID) {
             });
     }
 }
-// function clearTextBox1() {
-//     $('#ID').val("");
-//     $('#IDCat').val("");
-//     $('#IDField').val("");
-//     $('#Title').val("");
-//     $('#Slug').val("");
-//     $('#Image').val("");
-//     $('#exampleModal-3').modal('show');
-//     $('#add1').show();
-//     $('#edit1').hide();
-// }
+
 async function getData1() {
     const urlParams = new URLSearchParams(window.location.search);
     const slugResult = urlParams.get("Slug");

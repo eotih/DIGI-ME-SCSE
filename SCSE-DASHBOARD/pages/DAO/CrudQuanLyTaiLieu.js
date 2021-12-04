@@ -1,6 +1,5 @@
 const url = "https://api.scse-vietnam.org/";
 window.addEventListener('load', loadData)
-window.addEventListener('load', getListDocumentNotVersionEN)
 async function loadData() {
     fetch(url + "Interface/ListDocument")
         .then(function (response) {
@@ -68,7 +67,7 @@ async function loadData() {
                 <td>${Title}</td>
                 <td>${SlugEN}</td>
                 <td>
-                <button onclick="deleteData(${IDEN})" class="btn btn-outline-primary">Delete</button></td>
+                <button onclick="deleteDataEN(${IDEN})" class="btn btn-outline-primary">Delete</button></td>
                 </tr>`;
                 })
                 $('#tbodyENG').html(html);
@@ -230,7 +229,7 @@ async function deleteData(ID) {
             }
         })
 }
-async function deleteData(IDEN) {
+async function deleteDataEN(IDEN) {
     fetch(url + "Interface/DeleteDocumentEN?id=" + IDEN, {
         method: "DELETE",
         headers: {
